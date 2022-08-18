@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EditProfileFooterView" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="467" height="131"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iap-80-lo8">
+                    <rect key="frame" x="0.0" y="0.0" width="467" height="131"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ls0-8B-Vpz">
+                            <rect key="frame" x="20" y="30" width="427" height="51"/>
+                            <color key="backgroundColor" red="0.19185617569999999" green="0.55153471229999995" blue="0.77536672350000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="23"/>
+                            <state key="normal" title="SAVE">
+                                <color key="titleColor" red="0.94109410049999997" green="0.94122928380000004" blue="0.9410645366" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Ls0-8B-Vpz" secondAttribute="bottom" constant="50" id="pAi-j4-I1i"/>
+                        <constraint firstItem="Ls0-8B-Vpz" firstAttribute="leading" secondItem="iap-80-lo8" secondAttribute="leading" constant="20" id="rta-22-Y0J"/>
+                        <constraint firstItem="Ls0-8B-Vpz" firstAttribute="top" secondItem="iap-80-lo8" secondAttribute="top" constant="30" id="wM8-vC-Gcj"/>
+                        <constraint firstAttribute="trailing" secondItem="Ls0-8B-Vpz" secondAttribute="trailing" constant="20" id="wfk-8S-OHA"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="iap-80-lo8" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="2xm-Z1-hI9"/>
+                <constraint firstItem="iap-80-lo8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vzu-GX-erk"/>
+                <constraint firstItem="iap-80-lo8" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="nej-8U-tMU"/>
+                <constraint firstAttribute="bottom" secondItem="iap-80-lo8" secondAttribute="bottom" id="yyw-8v-dxr"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-44.20289855072464" y="27.120535714285712"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
