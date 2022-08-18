@@ -814,7 +814,6 @@
 				188F151B2865927C000D96D1 /* Initiate Classes */,
 				188F14F028658A58000D96D1 /* Constant */,
 				1809E54A2869B08400AE294B /* Model */,
-				18A8EB4D2844EEDB005F0DE4 /* Chat */,
 				188F151A28659269000D96D1 /* Auth Module */,
 				18CE1B7C28926E9C00498AF5 /* In-App Purchase */,
 				188F15182865923F000D96D1 /* Business Module */,
@@ -1101,6 +1100,7 @@
 				1855748728239A5C00AFB18E /* LogIn */,
 				1855748628239A4500AFB18E /* VerifyNumber */,
 				1855748528239A2A00AFB18E /* OtpAuthentication */,
+				18A8EB4D2844EEDB005F0DE4 /* Chat */,
 			);
 			path = "Auth Module";
 			sourceTree = "<group>";
@@ -1206,6 +1206,13 @@
 			path = CustomerSkillViewController;
 			sourceTree = "<group>";
 		};
+		1896FBBF28AE227E00DC8A07 /* CustomerManageJob */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CustomerManageJob;
+			sourceTree = "<group>";
+		};
 		18A09A4528A174C600E91938 /* ConnectList */ = {
 			isa = PBXGroup;
 			children = (
@@ -1277,6 +1284,7 @@
 		18A7DDC2288F224400AE9729 /* Customer Module */ = {
 			isa = PBXGroup;
 			children = (
+				1896FBBF28AE227E00DC8A07 /* CustomerManageJob */,
 				1896FBB828ACAD1E00DC8A07 /* CustomerAddJob */,
 				1816213D289E328B00743DE4 /* CoustomerLocation */,
 				18A7DDC8288F230500AE9729 /* CustomerProfileModule */,
