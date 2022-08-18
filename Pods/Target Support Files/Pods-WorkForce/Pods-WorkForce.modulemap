@@ -1,0 +1,6 @@
+framework module Pods_WorkForce {
+  umbrella header "Pods-WorkForce-umbrella.h"
+
+  export *
+  module * { export * }
+}

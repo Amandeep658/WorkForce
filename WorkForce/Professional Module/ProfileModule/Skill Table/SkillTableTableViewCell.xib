@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SkillTableTableViewCell" rowHeight="54" id="KGk-i7-Jjw" customClass="SkillTableTableViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="229" height="54"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="229" height="54"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Designer" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNT-92-sy8">
+                        <rect key="frame" x="56" y="20" width="163" height="20"/>
+                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LF4-3E-Voe">
+                        <rect key="frame" x="10" y="15" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Ss8-ny-FdC"/>
+                            <constraint firstAttribute="height" constant="30" id="iQJ-i7-V6V"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="6" minY="4" maxX="7" maxY="6"/>
+                        <inset key="imageEdgeInsets" minX="3" minY="4" maxX="2" maxY="4"/>
+                        <state key="normal" image="ck1"/>
+                        <state key="selected" image="ck"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="LF4-3E-Voe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BP8-Mk-qqX"/>
+                    <constraint firstItem="bNT-92-sy8" firstAttribute="centerY" secondItem="LF4-3E-Voe" secondAttribute="centerY" id="CvT-ja-CZC"/>
+                    <constraint firstItem="LF4-3E-Voe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Qp9-96-rIx"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="LF4-3E-Voe" secondAttribute="bottom" constant="9" id="RgO-d2-Xui"/>
+                    <constraint firstItem="bNT-92-sy8" firstAttribute="leading" secondItem="LF4-3E-Voe" secondAttribute="trailing" constant="16" id="WTt-lk-Y14"/>
+                    <constraint firstItem="LF4-3E-Voe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="f9l-SP-0F0"/>
+                    <constraint firstAttribute="trailing" secondItem="bNT-92-sy8" secondAttribute="trailing" constant="10" id="mU8-uA-pYA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="tableLbl" destination="bNT-92-sy8" id="d1e-gm-D0g"/>
+                <outlet property="tickBtn" destination="LF4-3E-Voe" id="c9t-25-JAG"/>
+            </connections>
+            <point key="canvasLocation" x="248.55072463768118" y="85.044642857142847"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ck" width="30" height="22"/>
+        <image name="ck1" width="30" height="22"/>
+    </resources>
+</document>

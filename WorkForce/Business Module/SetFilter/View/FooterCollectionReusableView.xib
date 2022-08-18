@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FooterCollectionReusableView" id="U6b-Vx-4bR" customClass="FooterCollectionReusableView" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="246" height="87"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m70-aH-t5a">
+                    <rect key="frame" x="0.0" y="0.0" width="246" height="87"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SeD-vV-cCz">
+                            <rect key="frame" x="20" y="30" width="206" height="48"/>
+                            <color key="backgroundColor" red="0.23484150979999999" green="0.62361981759999996" blue="0.76972920980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="X8J-Ob-U8j"/>
+                            </constraints>
+                            <state key="normal" title="APPLY FILTER">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="SeD-vV-cCz" firstAttribute="leading" secondItem="m70-aH-t5a" secondAttribute="leading" constant="20" id="ODN-fc-H9t"/>
+                        <constraint firstAttribute="bottom" secondItem="SeD-vV-cCz" secondAttribute="bottom" constant="9" id="alc-pQ-qLS"/>
+                        <constraint firstAttribute="trailing" secondItem="SeD-vV-cCz" secondAttribute="trailing" constant="20" id="f7H-Wp-f8n"/>
+                        <constraint firstItem="SeD-vV-cCz" firstAttribute="top" secondItem="m70-aH-t5a" secondAttribute="top" constant="30" id="g0Y-Gw-UsU"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
+            <constraints>
+                <constraint firstItem="m70-aH-t5a" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="5JI-cD-FAS"/>
+                <constraint firstItem="m70-aH-t5a" firstAttribute="trailing" secondItem="VXr-Tz-HHm" secondAttribute="trailing" id="9X5-YJ-d5c"/>
+                <constraint firstItem="m70-aH-t5a" firstAttribute="bottom" secondItem="VXr-Tz-HHm" secondAttribute="bottom" id="FkU-Eg-Gur"/>
+                <constraint firstItem="m70-aH-t5a" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="cFd-bM-V5i"/>
+            </constraints>
+            <connections>
+                <outlet property="applyBtn" destination="SeD-vV-cCz" id="4m3-ll-rUd"/>
+            </connections>
+            <point key="canvasLocation" x="13.043478260869566" y="128.90625"/>
+        </collectionReusableView>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

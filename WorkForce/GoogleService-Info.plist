@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>854410304892-ra4vijucii0pnek0erg2cngn8aijqgh3.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.854410304892-ra4vijucii0pnek0erg2cngn8aijqgh3</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>854410304892-p43etequrq0a6ot9cerje3r594mrajn5.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB5PePj2hCYc-WiOzUdSJ_e6EgdoKAHxfQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>854410304892</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.devu2connect.app</string>
+	<key>PROJECT_ID</key>
+	<string>workforce-e8f26</string>
+	<key>STORAGE_BUCKET</key>
+	<string>workforce-e8f26.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:854410304892:ios:ae97f22f9e8529eca5d8f9</string>
+</dict>
+</plist>

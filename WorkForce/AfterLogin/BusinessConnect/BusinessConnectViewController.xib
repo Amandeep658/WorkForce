@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessConnectViewController" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="connectTableView" destination="1FL-mp-RSi" id="atB-L3-t3Z"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lpn-3i-Kcs">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="bli-Wx-zfT"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
+                    <rect key="frame" x="0.0" y="30" width="414" height="90"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liked Professionals" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Vj-FLa">
+                            <rect key="frame" x="20" y="15" width="214" height="75"/>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
+                            <color key="textColor" red="0.2297952771" green="0.58074873689999995" blue="0.71872895960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="90" id="06T-YT-yKr"/>
+                        <constraint firstAttribute="trailing" secondItem="iFb-Vj-FLa" secondAttribute="trailing" constant="180" id="0Ir-o5-AT1"/>
+                        <constraint firstItem="iFb-Vj-FLa" firstAttribute="leading" secondItem="IMi-af-ZdI" secondAttribute="leading" constant="20" id="9iq-sp-dLU"/>
+                        <constraint firstItem="iFb-Vj-FLa" firstAttribute="top" secondItem="IMi-af-ZdI" secondAttribute="top" constant="15" id="lh1-Tj-WNT"/>
+                        <constraint firstAttribute="bottom" secondItem="iFb-Vj-FLa" secondAttribute="bottom" id="qKH-6d-qAS"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-mp-RSi">
+                    <rect key="frame" x="0.0" y="120" width="414" height="776"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.96070033310000003" green="0.96083813910000004" blue="0.96067017320000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="1FL-mp-RSi" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="1Y7-TC-LxR"/>
+                <constraint firstAttribute="bottom" secondItem="1FL-mp-RSi" secondAttribute="bottom" id="DRp-UC-C9t"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MwD-YW-TpF"/>
+                <constraint firstItem="lpn-3i-Kcs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wmx-Pt-JG5"/>
+                <constraint firstItem="lpn-3i-Kcs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wxj-UN-cBq"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="top" secondItem="lpn-3i-Kcs" secondAttribute="bottom" id="eWi-5T-gsd"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="g5D-yl-YWb"/>
+                <constraint firstItem="1FL-mp-RSi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mcJ-vP-Z3M"/>
+                <constraint firstItem="1FL-mp-RSi" firstAttribute="top" secondItem="IMi-af-ZdI" secondAttribute="bottom" id="q61-Po-KWV"/>
+                <constraint firstItem="lpn-3i-Kcs" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yvk-G8-pIF"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="47.826086956521742" y="65.625"/>
+        </view>
+    </objects>
+</document>

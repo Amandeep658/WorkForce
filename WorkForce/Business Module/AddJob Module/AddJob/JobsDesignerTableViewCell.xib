@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="JobsDesignerTableViewCell" rowHeight="60" id="KGk-i7-Jjw" customClass="JobsDesignerTableViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="297" height="79"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="297" height="79"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJY-e5-P4X">
+                        <rect key="frame" x="10" y="12" width="277" height="65"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nike" translatesAutoresizingMaskIntoConstraints="NO" id="05u-Py-CWh">
+                                <rect key="frame" x="10" y="10" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="eUU-cp-62t"/>
+                                    <constraint firstAttribute="width" constant="40" id="gbG-xB-C6B"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI/UX Designer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkT-0n-Ehb">
+                                <rect key="frame" x="60" y="10" width="213" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40/h" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fPW-BW-9jH">
+                                <rect key="frame" x="60" y="29" width="34" height="15.5"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GkT-0n-Ehb" firstAttribute="leading" secondItem="05u-Py-CWh" secondAttribute="trailing" constant="10" id="BJP-xn-GaA"/>
+                            <constraint firstItem="05u-Py-CWh" firstAttribute="top" secondItem="zJY-e5-P4X" secondAttribute="top" constant="10" id="HdK-pg-KBF"/>
+                            <constraint firstItem="05u-Py-CWh" firstAttribute="leading" secondItem="zJY-e5-P4X" secondAttribute="leading" constant="10" id="L4J-lV-GSk"/>
+                            <constraint firstAttribute="trailing" secondItem="GkT-0n-Ehb" secondAttribute="trailing" constant="4" id="ZgL-gQ-HPM"/>
+                            <constraint firstItem="GkT-0n-Ehb" firstAttribute="top" secondItem="zJY-e5-P4X" secondAttribute="top" constant="10" id="aiy-1d-NbY"/>
+                            <constraint firstItem="fPW-BW-9jH" firstAttribute="top" secondItem="GkT-0n-Ehb" secondAttribute="bottom" constant="2" id="bHJ-ag-1VF"/>
+                            <constraint firstItem="fPW-BW-9jH" firstAttribute="leading" secondItem="05u-Py-CWh" secondAttribute="trailing" constant="10" id="di4-HR-c2c"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="05u-Py-CWh" secondAttribute="bottom" constant="11" id="hvU-53-tI3"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="15"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="zJY-e5-P4X" secondAttribute="bottom" constant="2" id="JKz-5P-Ej6"/>
+                    <constraint firstItem="zJY-e5-P4X" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="NsO-fG-tk4"/>
+                    <constraint firstItem="zJY-e5-P4X" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="UV4-VU-Xgx"/>
+                    <constraint firstAttribute="trailing" secondItem="zJY-e5-P4X" secondAttribute="trailing" constant="10" id="cZJ-jr-1MD"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="jobsDesignLbl" destination="GkT-0n-Ehb" id="cKP-HG-257"/>
+                <outlet property="jobsImg" destination="05u-Py-CWh" id="Lgj-nq-ZQ4"/>
+                <outlet property="jobsPriceLbl" destination="fPW-BW-9jH" id="pT1-zl-cCp"/>
+            </connections>
+            <point key="canvasLocation" x="132.60869565217394" y="72.65625"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="nike" width="132" height="130"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

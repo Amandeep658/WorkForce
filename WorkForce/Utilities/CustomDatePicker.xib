@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomDatePicker" customModule="MyPadi" customModuleProvider="target">
+            <connections>
+                <outlet property="datePicker" destination="eZw-jS-8cm" id="jb1-98-9cw"/>
+                <outlet property="datePickerBGView" destination="f4Y-76-3HA" id="c9X-v0-vQn"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f4Y-76-3HA">
+                    <rect key="frame" x="0.0" y="407" width="375" height="260"/>
+                    <subviews>
+                        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HgA-Az-NwK">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="CN1-DA-Cqg"/>
+                            </constraints>
+                            <items>
+                                <barButtonItem systemItem="cancel" id="6pk-Pm-nzi">
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="cancelAction:" destination="-1" id="2YV-7I-qrg"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="Syq-IB-rBJ"/>
+                                <barButtonItem systemItem="done" id="EQ0-hv-A2Z">
+                                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <connections>
+                                        <action selector="doneAction:" destination="-1" id="jZh-xx-i6U"/>
+                                    </connections>
+                                </barButtonItem>
+                            </items>
+                        </toolbar>
+                        <datePicker clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="eZw-jS-8cm">
+                            <rect key="frame" x="0.0" y="44" width="375" height="216"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="216" id="7Lo-Ly-uQt"/>
+                            </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="575552535.55627799">
+                                <!--2019-03-29 11:42:15 +0000-->
+                            </date>
+                        </datePicker>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="eZw-jS-8cm" firstAttribute="leading" secondItem="f4Y-76-3HA" secondAttribute="leading" id="1C1-BN-reI"/>
+                        <constraint firstItem="HgA-Az-NwK" firstAttribute="leading" secondItem="f4Y-76-3HA" secondAttribute="leading" id="KCk-4b-kkn"/>
+                        <constraint firstItem="eZw-jS-8cm" firstAttribute="top" secondItem="HgA-Az-NwK" secondAttribute="bottom" id="Zwl-XO-8t4"/>
+                        <constraint firstAttribute="trailing" secondItem="HgA-Az-NwK" secondAttribute="trailing" id="dNj-FR-ZtD"/>
+                        <constraint firstAttribute="bottom" secondItem="eZw-jS-8cm" secondAttribute="bottom" id="hut-HR-UB0"/>
+                        <constraint firstAttribute="trailing" secondItem="eZw-jS-8cm" secondAttribute="trailing" id="qe7-Kg-G79"/>
+                        <constraint firstItem="HgA-Az-NwK" firstAttribute="top" secondItem="f4Y-76-3HA" secondAttribute="top" id="vcQ-dn-N0X"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.085991010270000001" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="f4Y-76-3HA" secondAttribute="trailing" id="4V3-2o-f7i"/>
+                <constraint firstItem="f4Y-76-3HA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="ljI-cW-O0h"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="f4Y-76-3HA" secondAttribute="bottom" id="xRP-Xu-0Vm"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <point key="canvasLocation" x="82" y="12"/>
+        </view>
+    </objects>
+</document>

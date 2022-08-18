@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="96" id="KGk-i7-Jjw" customClass="connectListViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="96"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hD4-W5-ZCt">
+                        <rect key="frame" x="15" y="15" width="470" height="81"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="bSI-fN-nC7">
+                                <rect key="frame" x="10" y="15.5" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="QDU-2z-Dnf"/>
+                                    <constraint firstAttribute="width" constant="50" id="rTN-bO-bdn"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$40/h" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTV-wo-iTB">
+                                <rect key="frame" x="362" y="33" width="100" height="15.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="4PZ-IX-fnI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dd-kY-RMD">
+                                <rect key="frame" x="70" y="10" width="291" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ3-5U-OWY">
+                                        <rect key="frame" x="4" y="2" width="69" height="20"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                        <color key="textColor" red="0.7528852224" green="0.75297397379999997" blue="0.75284439329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI/UX Designer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmp-xQ-FF8">
+                                        <rect key="frame" x="4" y="24" width="277" height="35"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="mmp-xQ-FF8" secondAttribute="bottom" constant="2" id="9Dl-pR-IPC"/>
+                                    <constraint firstItem="mmp-xQ-FF8" firstAttribute="leading" secondItem="7dd-kY-RMD" secondAttribute="leading" constant="4" id="CX5-Hb-Et1"/>
+                                    <constraint firstAttribute="trailing" secondItem="mmp-xQ-FF8" secondAttribute="trailing" constant="10" id="UWj-4Q-U9G"/>
+                                    <constraint firstItem="EZ3-5U-OWY" firstAttribute="leading" secondItem="7dd-kY-RMD" secondAttribute="leading" constant="4" id="ix4-z5-eWy"/>
+                                    <constraint firstItem="mmp-xQ-FF8" firstAttribute="top" secondItem="EZ3-5U-OWY" secondAttribute="bottom" constant="2" id="uXi-oe-PBW"/>
+                                    <constraint firstItem="EZ3-5U-OWY" firstAttribute="top" secondItem="7dd-kY-RMD" secondAttribute="top" constant="2" id="v2Q-Sq-KGF"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.99992686509999995" green="1" blue="0.99987357850000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="7dd-kY-RMD" firstAttribute="top" secondItem="hD4-W5-ZCt" secondAttribute="top" constant="10" id="6a6-1z-d5K"/>
+                            <constraint firstItem="bSI-fN-nC7" firstAttribute="leading" secondItem="hD4-W5-ZCt" secondAttribute="leading" constant="10" id="DJg-hC-LFW"/>
+                            <constraint firstItem="kTV-wo-iTB" firstAttribute="centerY" secondItem="hD4-W5-ZCt" secondAttribute="centerY" id="M1S-jJ-AAe"/>
+                            <constraint firstItem="bSI-fN-nC7" firstAttribute="centerY" secondItem="hD4-W5-ZCt" secondAttribute="centerY" id="SIV-ld-GNP"/>
+                            <constraint firstAttribute="trailing" secondItem="kTV-wo-iTB" secondAttribute="trailing" constant="8" id="VSP-yO-MVt"/>
+                            <constraint firstItem="7dd-kY-RMD" firstAttribute="leading" secondItem="bSI-fN-nC7" secondAttribute="trailing" constant="10" id="isT-mh-AWB"/>
+                            <constraint firstItem="kTV-wo-iTB" firstAttribute="leading" secondItem="7dd-kY-RMD" secondAttribute="trailing" constant="1" id="rhW-mk-aYp"/>
+                            <constraint firstAttribute="bottom" secondItem="7dd-kY-RMD" secondAttribute="bottom" constant="10" id="rzd-Zk-bbt"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="14"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="hD4-W5-ZCt" secondAttribute="trailing" constant="15" id="0TS-0S-joc"/>
+                    <constraint firstAttribute="bottom" secondItem="hD4-W5-ZCt" secondAttribute="bottom" id="I3m-1l-p3J"/>
+                    <constraint firstItem="hD4-W5-ZCt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="K8V-9P-Vkw"/>
+                    <constraint firstItem="hD4-W5-ZCt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="up5-Cb-vgQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="categoryLbl" destination="mmp-xQ-FF8" id="DPN-R8-0X8"/>
+                <outlet property="rateLbl" destination="kTV-wo-iTB" id="eqA-63-DUC"/>
+                <outlet property="workerImgView" destination="bSI-fN-nC7" id="RLI-pl-qva"/>
+                <outlet property="workerName" destination="EZ3-5U-OWY" id="eaN-bC-MQp"/>
+            </connections>
+            <point key="canvasLocation" x="268.1159420289855" y="145.3125"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="facebook" width="132" height="130"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
