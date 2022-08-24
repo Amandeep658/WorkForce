@@ -109,6 +109,7 @@ public class AppleReceiptValidator: ReceiptValidator {
 				*/
 				let receiptStatus = ReceiptStatus(rawValue: status) ?? ReceiptStatus.unknown
 				if case .testReceipt = receiptStatus {
+//                    MARK: CHANGE AS ACCORDING TO PAYMENT METHODS
                     self.service = .sandbox
                     self.validate(receiptData: receiptData, completion: completion)
 				} else {

@@ -22,7 +22,6 @@ class ConnectViewController: UIViewController {
     var showConnectJobListArr = [BusinessConnectCompanyListData]()
     var connectcompanyList = [NearWorkerData]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -62,11 +61,45 @@ class ConnectViewController: UIViewController {
             self.companyBtn.isSelected =  true
             self.companyLbl.backgroundColor = #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)
             self.jobLbl.backgroundColor = UIColor.lightGray
-            self.getConnectCompanyList()
-            self.connectTableView.reloadData()
-
+            hitSubscriptionCheckforChatApi()
         }
     }
+    
+    
+//    MARK: GET COMPANT LIST CHECK SUBSCRIPTION
+    
+    func hitSubscriptionCheckforChatApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+        }
+        let authToken = AppDefaults.token ?? ""
+        let header: HTTPHeaders = ["Token": authToken]
+        print("subscriptionStatus == >>>>", header)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.subscriptionstatus, params: [:], headers: header) { [self] (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            let status = response["status"] as? Int ?? 0
+            print(status)
+            if status == 1 {
+                if UserType.userTypeInstance.userLogin == .Professional{
+                    self.getConnectCompanyList()
+                    self.connectTableView.reloadData()
+                }
+            }else if status == 0{
+               if UserType.userTypeInstance.userLogin == .Professional{
+                    let vc = SubcribeViewController()
+                    vc.VC = self
+                    vc.modalPresentationStyle = .fullScreen
+                    self.present(vc, true)
+                }
+            }
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+            }
+    }
+    
+    
     
     //    MARK: GET JOB LIST
     func getConnectHitList(){
@@ -93,8 +126,8 @@ class ConnectViewController: UIViewController {
                     DispatchQueue.main.async {
                         self.connectTableView.setBackgroundView(message: "")
                         self.connectjobList = aContact.data!
-                        let uniqueListData = self.connectjobList.unique { $0.user_id}
-                        self.showConnectJobListArr = uniqueListData
+//                        let uniqueListData = self.connectjobList.unique { $0.user_id}
+                        self.showConnectJobListArr = self.connectjobList
                         self.connectTableView.reloadData()
                     }
                 }else if status == 0{
@@ -186,11 +219,21 @@ extension ConnectViewController:UITableViewDelegate,UITableViewDataSource{
                 cell.categoryLbl.text = "\(showConnectJobListArr[indexPath.row].catagory_details?.first?.category_name ?? "") "
             }
             if showConnectJobListArr[indexPath.row].rate_type == "Per Day"{
-                cell.rateLbl.isHidden = false
-                cell.rateLbl.text = "$\(showConnectJobListArr[indexPath.row].rate_from ?? "")/d - $\(showConnectJobListArr[indexPath.row].rate_to ?? "")/d"
+                if showConnectJobListArr[indexPath.row].rate_from == "" || showConnectJobListArr[indexPath.row].rate_to == "" {
+                    cell.rateLbl.text = ""
+                    cell.rateLbl.isHidden = true
+                }else{
+                    cell.rateLbl.isHidden = false
+                    cell.rateLbl.text = "$\(showConnectJobListArr[indexPath.row].rate_from ?? "")/d - $\(showConnectJobListArr[indexPath.row].rate_to ?? "")/d"
+                }
             }else if showConnectJobListArr[indexPath.row].rate_type == "Per Hour"{
-                cell.rateLbl.isHidden = false
-                cell.rateLbl.text = "$\(showConnectJobListArr[indexPath.row].rate_from ?? "")/h - $\(showConnectJobListArr[indexPath.row].rate_to ?? "")/h"
+                if showConnectJobListArr[indexPath.row].rate_from == "" || showConnectJobListArr[indexPath.row].rate_to == "" {
+                    cell.rateLbl.text = ""
+                    cell.rateLbl.isHidden = true
+                }else{
+                    cell.rateLbl.isHidden = false
+                    cell.rateLbl.text = "$\(showConnectJobListArr[indexPath.row].rate_from ?? "")/h - $\(showConnectJobListArr[indexPath.row].rate_to ?? "")/h"
+                }
             }else{
                 cell.rateLbl.isHidden = true
                 cell.rateLbl.text = ""

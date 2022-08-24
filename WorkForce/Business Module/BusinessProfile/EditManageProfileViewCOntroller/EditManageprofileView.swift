@@ -51,7 +51,7 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
     var doneTool = UIToolbar()
     var imgArray = [Data]()
     var imageData = Data()
-    var isselect:Bool = true
+    var isselect:Bool = Bool()
     var jobTypePicker = UIPickerView()
     var jobDone = UIToolbar()
     var jobType = ["Full Time", "Part Time", "Contract", "Freelance","Remote"]
@@ -222,7 +222,7 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
         }else{
             isRateType = ""
             perDayBtn.setTitleColor(.gray, for: .normal)
-            perHourBtn.setTitleColor(UIColor(red: 58, green: 148, blue: 184), for: .normal)
+            perHourBtn.setTitleColor(.gray, for: .normal)
         }
         var sPhotoStr = jobDetailByJobdict?.data?.job_image ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

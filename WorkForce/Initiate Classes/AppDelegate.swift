@@ -33,6 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             application.registerUserNotificationSettings(settings)
         }
         application.registerForRemoteNotifications()
+        UIApplication.shared.applicationIconBadgeNumber = 0
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.shouldResignOnTouchOutside = true
         //        GMSServices.provideAPIKey("AIzaSyAGY0Xsa05iLDkxF93vUfX-MRcBE3vdz5E")
@@ -40,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GMSPlacesClient.provideAPIKey("AIzaSyCzdtjehNkbBv2JsYR2pVxq1qB866Pk72M")
         GMSServices.provideAPIKey("AIzaSyCzdtjehNkbBv2JsYR2pVxq1qB866Pk72M")
         self.configureNotification()
-
         self.setupIAP()
         return true
     }
@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
     }
-
+    
     func setupIAP() {
         SwiftyStoreKit.completeTransactions(atomically: true) { purchases in
             for purchase in purchases {
@@ -167,7 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             return
         }
     }
-
+    
     //    MARK: PUSH NOTIFICATION
     func configureNotification() {
         if #available(iOS 10.0, *) {
@@ -193,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         completionHandler([.alert, .badge ,.sound])
     }
-
+    
     
     func userNotificationCenter(_ center: UNUserNotificationCenter,didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         if let userInfo = response.notification.request.content.userInfo as? [String:Any]{
@@ -202,9 +202,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 if let data = notifData["data"] as? [String:Any]{
                     print(data)
                     let state  = UIApplication.shared.applicationState
-//                    if (state == .inactive || state == .background) {
+                    //                    if (state == .inactive || state == .background) {
                     self.checkFeedbackNotification(data: data)
-                    }
+                }
                 completionHandler()
                 
             }
@@ -216,42 +216,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let notificationType = data["notification_type"] as? String
         switch notificationType {
         case "1":
-            print("its checkfeedback=======>>>>>..>>>>")
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            let chatViewController = SingleChatController()
-            chatViewController.pushNav = true
-            chatViewController.userName = (data["username"] as? String ?? "")!
-            chatViewController.chatRoomId = (data["room_id"] as? String ?? "")!
-            chatViewController.companyname = (data["username"] as? String ?? "")!
-            let homeVC = TabBarVC()
-            homeVC.selectedIndex = 0
-            let nav = UINavigationController()
-            nav.setViewControllers([homeVC,chatViewController], animated: true)
-            nav.navigationBar.isHidden = true
-            appdelegate.window?.rootViewController = nav
-            break
+            let isSubscription =  data["isSubscribed"] as? String
+            if isSubscription == "1"{
+                print("Please take subscription")
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let chatViewController = SingleChatController()
+                chatViewController.pushNav = true
+                chatViewController.userName = (data["username"] as? String ?? "")!
+                chatViewController.chatRoomId = (data["room_id"] as? String ?? "")!
+                chatViewController.companyname = (data["username"] as? String ?? "")!
+                let homeVC = TabBarVC()
+                homeVC.selectedIndex = 0
+                let nav = UINavigationController()
+                nav.setViewControllers([homeVC,chatViewController], animated: true)
+                nav.navigationBar.isHidden = true
+                appdelegate.window?.rootViewController = nav
+            }else{
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let subscription = SubscribePlanViewController()
+                let homeVC = TabBarVC()
+                homeVC.selectedIndex = 0
+                let nav = UINavigationController()
+                nav.setViewControllers([homeVC,subscription], animated: true)
+                nav.navigationBar.isHidden = true
+                appdelegate.window?.rootViewController = nav
+                }
+                break
         case "2":
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            let notificationVC = NotificationViewController()
-            let homeVC = TabBarVC()
-            homeVC.selectedIndex = 0
-            let nav = UINavigationController()
-            nav.setViewControllers([homeVC,notificationVC], animated: true)
-            nav.navigationBar.isHidden = true
-            appdelegate.window?.rootViewController = nav
-            break
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let notificationVC = NotificationViewController()
+                let homeVC = TabBarVC()
+                homeVC.selectedIndex = 0
+                let nav = UINavigationController()
+                nav.setViewControllers([homeVC, notificationVC], animated: true)
+                nav.navigationBar.isHidden = true
+                appdelegate.window?.rootViewController = nav
+                break
         case "3":
-            let appdelegate = UIApplication.shared.delegate as! AppDelegate
-            let notificationVC = NotificationViewController()
-            let homeVC = TabBarVC()
-            homeVC.selectedIndex = 0
-            let nav = UINavigationController()
-            nav.setViewControllers([homeVC,notificationVC], animated: true)
-            nav.navigationBar.isHidden = true
-            appdelegate.window?.rootViewController = nav
-            break
+                let appdelegate = UIApplication.shared.delegate as! AppDelegate
+                let notificationVC = NotificationViewController()
+                let homeVC = TabBarVC()
+                homeVC.selectedIndex = 0
+                let nav = UINavigationController()
+                nav.setViewControllers([homeVC,notificationVC], animated: true)
+                nav.navigationBar.isHidden = true
+                appdelegate.window?.rootViewController = nav
+                break
         default:
-            break
+                break
         }
     }
 }

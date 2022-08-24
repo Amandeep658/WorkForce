@@ -79,7 +79,7 @@ class LocationVC: UIViewController,MKLocalSearchCompleterDelegate, UISearchBarDe
                 vc.professionalUserDict = professionalUserDict
                 self.pushViewController(vc,true)
             }else if UserType.userTypeInstance.userLogin == .Coustomer{
-                professionalUserDict.city =  typeAddressTF.text ?? ""
+                professionalUserDict.location =  typeAddressTF.text ?? ""
                 let vc = JobPhotoViewController()
                 vc.professionalUserDict = professionalUserDict
                 self.pushViewController(vc,true)

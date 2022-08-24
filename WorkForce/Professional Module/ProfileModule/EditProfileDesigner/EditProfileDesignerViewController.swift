@@ -84,7 +84,6 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
-        print("****** here is user id\(skillUserIdKey)~**********")
         uiUpdate()
         setTextField()
         createDatePicker()
@@ -509,6 +508,9 @@ extension EditProfileDesignerViewController : ListSelectionDelegate{
                 self.category2.text = data.last?.category_name ?? ""
             }
         }
+        self.professionalUserDate?.first_name =  firstNameTF.text ?? ""
+        self.professionalUserDate?.last_name =  lastNameTF.text ?? ""
+        self.professionalUserDate?.date_of_birth =  dobTF.text ?? ""
         self.professionalUserDate?.catagory_details = data
         self.professionalEditUserDict.catagory_details = data
         self.uiUpdate()

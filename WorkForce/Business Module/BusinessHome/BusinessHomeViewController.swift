@@ -16,10 +16,10 @@ import Kingfisher
 import FirebaseCrashlytics
 
 class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocationManagerDelegate,FilterBackDelegate {
-    
     func userDidBack(Data: [BusinessHomeData]) {
         DispatchQueue.main.async { [self] in
             nearByWorkerArr.removeAll()
+            businessFilter = "Nav from home filter"
             nearByWorkerArr = Data
             self.businessHomeTableView.reloadData()
         }
@@ -39,6 +39,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     var nearByLocation = ""
     var currentlat = ""
     var currentlong = ""
+    var businessFilter = ""
     var page = 100
     var pageCount = 1
     var pin = UIView()
@@ -54,6 +55,11 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
         searchView.addGestureRecognizer(tapGesture)
         searchView.isUserInteractionEnabled = true
         setTable()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.homeTabPressed(_:)), name: Notification.Name(rawValue: "homeTabPressed"), object: nil)
+    }
+    
+    @objc func homeTabPressed(_ notification : Notification){
+        getLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -114,13 +120,13 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
             let long = location.coordinate.longitude
             self.currentlong = "\(Double(long))"
             let currentlocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                self.getPlaceAddressFrom(location: currentlocation) { [self] address in
-                    print("here is resultttt", address)
-                    self.nearByLocation = address
-                    print("Get current Location address ======>>>>",nearByLocation)
-                    self.addMarkers(lat: lat, long: long)
-                    self.nearByWorkerList()
-                }
+            self.getPlaceAddressFrom(location: currentlocation) { [self] address in
+                print("here is resultttt", address)
+                self.nearByLocation = address
+                print("Get current Location address ======>>>>",nearByLocation)
+                self.addMarkers(lat: lat, long: long)
+                self.nearByWorkerList()
+            }
             if placemarks!.count > 0 {
                 let pm = placemarks![0] as CLPlacemark
                 self.displayLocationInfo(placemark: pm)
@@ -250,6 +256,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
                     UserDefaults.standard.removeObject(forKey: "authToken")
                     appDel.navigation()
                 }else if status == 1 {
+                    self.businessFilter = ""
                     self.nearByWorkerArr = aContact.data!
                     self.addMarkers(lat: locationss?.latitude ?? 0.0, long: locationss?.longitude ?? 0.0)
                     let fltr = self.nearByWorkerArr.filter({$0.latitude != "0"})
@@ -258,19 +265,14 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
                         print("count is ****** \(data.latitude ?? "") ** \(data.longitude ?? "") ** \(data.username ?? "")")
                         self.addMarkers(lat: Double(data.latitude ?? "0") ?? 0.0, long: Double(data.longitude ?? "0") ?? 0.0, object: data)
                     }
-                    DispatchQueue.main.async {
-                        self.businessHomeTableView.reloadData()
-                    }
-                }else if status == 0 {
-                    if nearByWorkerArr.count < 0 {
-                        self.businessHomeTableView.backgroundView = nil
-                    }else{
-                        self.businessHomeTableView.setBackgroundView(message: message)
-                    }
+                    self.businessHomeTableView.setBackgroundView(message: "")
+                    self.businessHomeTableView.reloadData()
                 }else{
+                    self.businessHomeTableView.setBackgroundView(message: message)
                     self.nearByWorkerArr.removeAll()
                     self.businessHomeTableView.reloadData()
                 }
+                
             }
             catch let parseError {
                 print("JSON Error \(parseError.localizedDescription)")
@@ -278,7 +280,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
             
         } failure: { error in
             AFWrapperClass.svprogressHudDismiss(view: self)
-//            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+            //            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
     }
 }
@@ -293,17 +295,29 @@ extension BusinessHomeViewController : UITableViewDelegate , UITableViewDataSour
         var sPhotoStr = nearByWorkerArr[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.cellImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
-        if nearByWorkerArr[indexPath.row].catagory_details?.count ?? 0 > 1{
-            cell.designerLbl.text = "\(nearByWorkerArr[indexPath.row].catagory_details?.first?.category_name ?? "") , \(nearByWorkerArr[indexPath.row].catagory_details?.last?.category_name ?? "") "
-        }
-        else{
-            cell.designerLbl.text = "\(nearByWorkerArr[indexPath.row].catagory_details?.first?.category_name ?? "") "
+        if businessFilter != "Nav from home filter" {
+            if nearByWorkerArr[indexPath.row].catagory_details?.count ?? 0 > 1{
+                cell.designerLbl.text = "\(nearByWorkerArr[indexPath.row].catagory_details?.first?.category_name ?? "") , \(nearByWorkerArr[indexPath.row].catagory_details?.last?.category_name ?? "") "
+            }
+            else{
+                cell.designerLbl.text = "\(nearByWorkerArr[indexPath.row].catagory_details?.first?.category_name ?? "") "
+            }
+        }else{
+            cell.designerLbl.text = nearByWorkerArr[indexPath.row].category_name ?? ""
         }
         cell.cellLbl.text = nearByWorkerArr[indexPath.row].username ?? ""
         if nearByWorkerArr[indexPath.row].rate_type == "Per Day"{
-            cell.priceLbl.text = "$\(nearByWorkerArr[indexPath.row].rate_to ?? "")/d"
+            if nearByWorkerArr[indexPath.row].rate_to == ""{
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(nearByWorkerArr[indexPath.row].rate_to ?? "")/d"
+            }
         }else if nearByWorkerArr[indexPath.row].rate_type == "Per Hour"{
-            cell.priceLbl.text = " $\(nearByWorkerArr[indexPath.row].rate_to ?? "")/h"
+            if nearByWorkerArr[indexPath.row].rate_to == ""{
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(nearByWorkerArr[indexPath.row].rate_to ?? "")/h"
+            }
         }else if nearByWorkerArr[indexPath.row].rate_type == ""{
             cell.priceLbl.text = ""
         }
@@ -314,7 +328,7 @@ extension BusinessHomeViewController : UITableViewDelegate , UITableViewDataSour
         vc.userID = nearByWorkerArr[indexPath.row].user_id ?? ""
         self.pushViewController(vc, true)
     }
-
+    
 }
 
 extension BusinessHomeViewController: GMSMapViewDelegate {
@@ -325,7 +339,6 @@ extension BusinessHomeViewController: GMSMapViewDelegate {
 
 
 extension UIImage {
-    
     func cropped() -> UIImage {
         let targetSize: CGSize = .init(width: 44, height: 44)
         let widthRatio = targetSize.width / size.width

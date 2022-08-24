@@ -178,9 +178,17 @@ class ConnectDetailVC: UIViewController {
                         self.workerDetailUserDate = aContact.data
                         self.headerLbl.text = workerDetailUserDate?.username ?? ""
                         if workerDetailUserDate?.rate_type == "Per Day"{
-                            self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/d", for: .normal)
+                            if workerDetailUserDate?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/d", for: .normal)
+                            }
                         }else if workerDetailUserDate?.rate_type == "Per Hour"{
-                            self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/h", for: .normal)
+                            if workerDetailUserDate?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/h", for: .normal)
+                            }
                         }else{
                             self.amountBtn.setTitle("No rate selected.", for: .normal)
                         }
@@ -264,9 +272,17 @@ class ConnectDetailVC: UIViewController {
                             self.categoryLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.category_name ?? "") "
                         }
                         if jobDetailByJobId?.data?.rate_type == "Per Day"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)
+                            if jobDetailByJobId?.data?.rate_from == "" || jobDetailByJobId?.data?.rate_to == "" {
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)
+                            }
                         }else if jobDetailByJobId?.data?.rate_type == "Per Hour"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)
+                            if jobDetailByJobId?.data?.rate_from == "" || jobDetailByJobId?.data?.rate_to == "" {
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)
+                            }
                         }else{
                             self.amountBtn.setTitle("No rate selected.", for: .normal)
                         }

@@ -233,9 +233,9 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func verifyAction(_ sender: UIButton) {
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            if self.verifyOTP == "123456"{
-                self.hitSignUpApi()
-            }else{
+//            if self.verifyOTP == "123456"{
+//                self.hitSignUpApi()
+//            }else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -250,12 +250,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-            }
+//            }
         }else if UserType.userTypeInstance.userLogin == .Professional{
-            if self.verifyOTP == "123456"{
-                self.hitSignUpApi()
-            }
-            else{
+//            if self.verifyOTP == "123456"{
+//                self.hitSignUpApi()
+//            }
+//            else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -270,12 +270,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-            }
+//            }
         }else{
-            if self.verifyOTP == "123456"{
-                self.hitSignUpApi()
-            }
-            else{
+//            if self.verifyOTP == "123456"{
+//                self.hitSignUpApi()
+//            }
+//            else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -290,7 +290,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-            }
+//            }
         }
     }
     

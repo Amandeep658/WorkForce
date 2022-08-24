@@ -163,10 +163,13 @@ class CityViewController: UIViewController,UITextFieldDelegate,CLLocationManager
             if (UserType.userTypeInstance.userLogin == .Bussiness){
                 let vc = JobPhotoViewController()
                 self.pushViewController(vc,true)
-            }else{
+            }else if UserType.userTypeInstance.userLogin == .Professional{
                 self.professionalUserDict.city = self.cityTF.text
                 self.professionalUserDict.state = self.stateTF.text
                 hitProfessionalSignUpApi()
+            }else if UserType.userTypeInstance.userLogin == .Coustomer{
+                let vc = JobPhotoViewController()
+                self.pushViewController(vc,true)
             }
         }
     }

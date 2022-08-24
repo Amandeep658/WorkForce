@@ -38,9 +38,17 @@ class ProfileDesignViewController: UIViewController {
     func uiUpdate(){
         self.professionalTitleView.text = professionalUserDate?.username ?? ""
         if professionalUserDate?.rate_type == "Per Day"{
-            self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/d", for: .normal)
+            if professionalUserDate?.rate_to == ""{
+                self.btnAmount.setTitle("Nor rate selected", for: .normal)
+            }else{
+                self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/d", for: .normal)
+            }
         }else if professionalUserDate?.rate_type == "Per Hour"{
-            self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/h", for: .normal)
+            if professionalUserDate?.rate_to == ""{
+                self.btnAmount.setTitle("Nor rate selected", for: .normal)
+            }else{
+                self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/h", for: .normal)
+            }
         }else{
             self.btnAmount.setTitle("Nor rate selected", for: .normal)
         }

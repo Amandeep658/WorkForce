@@ -12,7 +12,6 @@ import SDWebImage
 
 class SearchListVC: UIViewController,UISearchBarDelegate {
     
-    
 //    MARK: OUTLETS
     @IBOutlet weak var searchListTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -142,9 +141,17 @@ extension SearchListVC : UITableViewDelegate, UITableViewDataSource{
         cell.designerLbl.text = searchjobListArr[indexPath.row].category_name ?? ""
         cell.cellLbl.text = searchjobListArr[indexPath.row].username ?? ""
         if searchjobListArr[indexPath.row].rate_type == "Per Day"{
-            cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/d"
+            if searchjobListArr[indexPath.row].rate_to == ""{
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/d"
+            }
         }else if searchjobListArr[indexPath.row].rate_type == "Per Hour"{
-            cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/h"
+            if searchjobListArr[indexPath.row].rate_to == ""{
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/h"
+            }
         }else{
             cell.priceLbl.text = ""
         }

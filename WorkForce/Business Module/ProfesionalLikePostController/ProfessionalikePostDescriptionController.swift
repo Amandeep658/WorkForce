@@ -39,7 +39,11 @@ class ProfessionalikePostDescriptionController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
-        hitUserListDetailApi()
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            hitUserListDetailApi()
+        }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            hitUserListDetailApi()
+        }
     }
     
     @IBAction func backBtn(_ sender: UIButton) {
@@ -47,7 +51,11 @@ class ProfessionalikePostDescriptionController: UIViewController {
     }
     
     @IBAction func connectBtn(_ sender: UIButton) {
-        getCompanyLikeWorker()
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            getCompanyLikeWorker()
+        }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            getCompanyLikeWorker()
+        }
     }
     
     @IBAction func disconnectBtn(_ sender: UIButton) {
@@ -88,9 +96,19 @@ class ProfessionalikePostDescriptionController: UIViewController {
                             self.descriptionLbl.text = "N/A"
                         }
                         if workerDetailUser?.rate_type == "Per Day"{
-                            self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/d", for: .normal)
+                            if workerDetailUser?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/d", for: .normal)
+                            }
+                        }else if workerDetailUser?.rate_type == "Per Hour"{
+                            if workerDetailUser?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/h", for: .normal)
+                            }
                         }else{
-                            self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/h", for: .normal)
+                            self.amountBtn.setTitle("No rate selected", for: .normal)
                         }
                         if workerDetailUser?.catagory_details?.count ?? 0 > 1{
                             self.categoryLbl.text = "\(workerDetailUser?.catagory_details?.first?.category_name ?? "") , \(workerDetailUser?.catagory_details?.last?.category_name ?? "") "

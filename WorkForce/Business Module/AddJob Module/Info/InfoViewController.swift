@@ -74,9 +74,15 @@ class InfoViewController: UIViewController {
                             self.categoryLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.category_name ?? "") "
                         }
                         if jobDetailByJobId?.data?.rate_type == "Per Day"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)
+                            if  jobDetailByJobId?.data?.rate_from == "" {
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)}
                         }else if jobDetailByJobId?.data?.rate_type == "Per Hour"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)
+                            if  jobDetailByJobId?.data?.rate_from == "" {
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)}
                         }else{
                             self.amountBtn.setTitle("No rate selected.", for: .normal)
                         }

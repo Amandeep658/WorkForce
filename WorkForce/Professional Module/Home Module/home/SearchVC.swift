@@ -146,9 +146,19 @@ extension SearchVC:UITableViewDelegate,UITableViewDataSource{
         cell.designerLbl.text = searchjobListArr[indexPath.row].category_name ?? ""
         cell.cellLbl.text = searchjobListArr[indexPath.row].company_name ?? ""
         if searchjobListArr[indexPath.row].rate_type == "Per Day"{
-            cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/d"
-        }else{
+            if searchjobListArr[indexPath.row].rate_to == "" {
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/d"
+            }
+        }else if searchjobListArr[indexPath.row].rate_type == "Per Hour"{
+            if searchjobListArr[indexPath.row].rate_to == ""{
+                cell.priceLbl.text = ""
+            }else{
             cell.priceLbl.text = "$\(searchjobListArr[indexPath.row].rate_to ?? "")/h"
+            }
+        }else{
+            cell.priceLbl.text = ""
         }
         return cell
     }

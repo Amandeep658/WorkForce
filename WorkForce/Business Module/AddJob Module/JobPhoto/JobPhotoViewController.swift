@@ -99,13 +99,17 @@ class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDel
             }
             else{
                 professionalUserDict.description = descriptionTV.text ?? ""
-                hitAddCompanyApi()
+                if UserType.userTypeInstance.userLogin == .Bussiness{
+                    self.hitAddCompanyApi()
+                }else if UserType.userTypeInstance.userLogin == .Coustomer{
+                    self.hitCompanyAddJobApi()
+                }
+
             }
         }
     
 
-    //MARK: HIT ADD COMPANY API
-
+    //    MARK: CompanyAddJobApi
     func hitAddCompanyApi() {
         let compressedData = (jobImg.image?.jpegData(compressionQuality: 0.3))!
         if compressedData.isEmpty == false{
@@ -114,7 +118,20 @@ class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDel
         
         let strURL = kBASEURL + WSMethods.addJob
         self.requestWith(endUrl: strURL , parameters: self.professionalUserDict.convertModelToDict() as! Parameters )
+        print("URL************>>>>>>>",strURL)
+    }
+    
+    //    MARK: CustomerAddJobApi
+    func hitCompanyAddJobApi() {
+        let compressedData = (jobImg.image?.jpegData(compressionQuality: 0.3))!
+        if compressedData.isEmpty == false{
+            imgArray.append(compressedData)
         }
+        
+        let strURL = kBASEURL + WSMethods.customerAddJob
+        self.requestWith(endUrl: strURL , parameters: self.professionalUserDict.convertModelToDict() as! Parameters )
+        print("URL************>>>>>>>",strURL)
+    }
     
     func requestWith(endUrl: String, parameters: [AnyHashable : Any]){
         let url = endUrl /* your API url */

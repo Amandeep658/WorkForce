@@ -88,9 +88,15 @@ class SearchDetailVC: UIViewController {
                             self.categoryLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.category_name ?? "") "
                         }
                         if jobDetailByJobIdArr?.data?.rate_type == "Per Day"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)
+                            if jobDetailByJobIdArr?.data?.rate_from == "" || jobDetailByJobIdArr?.data?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)}
                         }else if jobDetailByJobIdArr?.data?.rate_type == "Per Hour"{
-                            self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)
+                            if jobDetailByJobIdArr?.data?.rate_from == "" || jobDetailByJobIdArr?.data?.rate_to == ""{
+                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)}
                         }else{
                             self.amountBtn.setTitle("No rate selected.", for: .normal)
                         }

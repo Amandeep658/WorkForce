@@ -37,19 +37,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsw-M3-OB2">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="317"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                             <subviews>
                                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JsL-ri-Jbe">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="317"/>
                                 </mapView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cFb-3z-oQt" customClass="GMSMapView">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="317"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="400"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="317" id="C3s-be-zAU"/>
+                                <constraint firstAttribute="height" constant="400" id="C3s-be-zAU"/>
                                 <constraint firstItem="JsL-ri-Jbe" firstAttribute="centerY" secondItem="Tsw-M3-OB2" secondAttribute="centerY" id="Jwx-El-tBo"/>
                                 <constraint firstItem="cFb-3z-oQt" firstAttribute="leading" secondItem="Tsw-M3-OB2" secondAttribute="leading" id="Q0a-0w-IY8"/>
                                 <constraint firstItem="cFb-3z-oQt" firstAttribute="top" secondItem="Tsw-M3-OB2" secondAttribute="top" id="QJU-v9-0YH"/>
@@ -157,7 +157,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fFh-WF-RPt">
-                            <rect key="frame" x="0.0" y="325" width="414" height="40"/>
+                            <rect key="frame" x="0.0" y="408" width="414" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ue-DT-ziZ">
                                     <rect key="frame" x="179.5" y="8" width="55" height="2"/>
@@ -202,8 +202,8 @@
                                 <constraint firstItem="2Ue-DT-ziZ" firstAttribute="top" secondItem="fFh-WF-RPt" secondAttribute="top" constant="8" id="qjs-0W-UTA"/>
                             </constraints>
                         </view>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gs5-MP-7Wx">
-                            <rect key="frame" x="0.0" y="365" width="414" height="531"/>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gs5-MP-7Wx">
+                            <rect key="frame" x="0.0" y="448" width="414" height="448"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>

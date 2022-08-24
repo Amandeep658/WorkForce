@@ -17,7 +17,7 @@ protocol FilterBackDelegate {
 
 class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UIPickerViewDataSource,CLLocationManagerDelegate {
     
-//    MARK: OUTLETS
+    //    MARK: OUTLETS
     @IBOutlet weak var lbl: UILabel!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var setFilterLbl: UILabel!
@@ -43,7 +43,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
     var businessjobtype = ""
     var latitude = ""
     var longitute = ""
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +53,16 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
         jobTypecollection.dataSource = self
         jobTypecollection.allowsMultipleSelection = true
         jobTypecollection.register(UINib(nibName: "JobTypeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "JobTypeCollectionViewCell")
-//        if isBool == true{
-//            hitCategoryListing()
-//        }else{
-            hitCategoryListing()
-//        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        hitCategoryListing()
     }
     
     @IBAction func applyFilterBtn(_ sender: UIButton) {
         hitFilterApi()
     }
-
+    
     @IBAction func categoryBtn(_ sender: UIButton) {
         doneToolBar.removeFromSuperview()
         setFilterPicker.removeFromSuperview()
@@ -89,33 +88,25 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
     
     
     //    MARK: PICKER VIEW DELEGATE
-        func numberOfComponents(in pickerView: UIPickerView) -> Int {
-            return 1
-        }
-        
-        func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-            return categoryArr.count
-        }
-        func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            self.view.endEditing(true)
-            return categoryArr[row].category_name ?? ""
-        }
-        
-        func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-            self.categoryTF.text = self.categoryArr[row].category_name ?? ""
-        }
-        
-        func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-            if textField == self.categoryTF{
-                if textField.text == ""{
-                    textField.text = self.categoryArr.first?.category_name ?? ""
-                }
-            }
-        }
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
-
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryArr.count
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.view.endEditing(true)
+        return categoryArr[row].category_name ?? ""
+    }
     
-//    MARK: TEXTFIELD DELEGATES
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        self.categoryTF.text = self.categoryArr[row].category_name ?? ""
+    }
+    
+    
+    
+    //    MARK: TEXTFIELD DELEGATES
     
     func uiConfigure(){
         categoryTF.delegate = self
@@ -140,8 +131,8 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
             present(autocompleteController, animated: true, completion: nil)
         }
         
-        }
-
+    }
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         categoryView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         locationView.layer.borderColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -152,7 +143,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
         return true
     }
     
-//    MARK: HIT FILTER API'S
+    //    MARK: HIT FILTER API'S
     
     func hitFilterApi(){
         DispatchQueue.main.async {
@@ -196,7 +187,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
         parameters["per_page"] = "10" as AnyObject
         parameters["location"] = locationTF.text as AnyObject
         parameters["categoty"] = categoryTF.text as AnyObject
-        parameters["job_type"] = self.businessjobtype as AnyObject
+        parameters["job_type"] = businessjobtype as AnyObject
         parameters["rate_to"] = self.salaryTF.text as AnyObject
         parameters["deviceType"] = "1"  as AnyObject
         parameters["deviceToken"] = AppDefaults.deviceToken
@@ -225,6 +216,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
                 let message = aContact.message ?? ""
                 if status == 1{
                     self.categoryArr = aContact.data!
+                    self.categoryTF.text =  self.categoryArr.first?.category_name ?? ""
                 }
                 else{
                     alert(AppAlertTitle.appName.rawValue, message: message, view: self)
@@ -266,8 +258,9 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
         }else{
             self.jobArray.append(str)
         }
-        let firstElement = jobArray.first ?? ""
-        self.businessjobtype = firstElement
+        let string = jobArray.joined(separator: ",")
+        self.businessjobtype = string
+        print("sperator Arr************>>>>>>>>",businessjobtype)
         print(businessjobtype)
         print(self.jobArray)
         self.jobTypecollection.reloadData()
@@ -276,7 +269,7 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JobTypeCollectionViewCell", for: indexPath) as! JobTypeCollectionViewCell
-      let str = viewModel.jobTypes[indexPath.item].title ?? ""
+        let str = viewModel.jobTypes[indexPath.item].title ?? ""
         cell.fullTimeLbl.text = str
         cell.fullTimeLbl.backgroundColor = self.jobArray.contains(str) ? #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.fullTimeLbl.textColor =  self.jobArray.contains(str) ? #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1) : #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
@@ -334,20 +327,20 @@ extension SetFilterVC : GMSAutocompleteViewControllerDelegate{
     }
     
     func getPlaceAddressFrom(location: CLLocationCoordinate2D, completion: @escaping (_ address: String , _ line: [String]) -> Void) {
-            let geocoder = GMSGeocoder()
-            geocoder.reverseGeocodeCoordinate(location) { response, error in
-                if error != nil {
-                    print("reverse geodcode fail: \(error!.localizedDescription)")
-                } else {
-                    guard let places = response?.results(),
-                        let place = places.first,
-                        let lines = place.lines else {
-                        completion("", [""])
-                            return
-                    }
-                    print("addressssss",place)
-                    completion(place.locality ?? "", place.lines ?? [])
+        let geocoder = GMSGeocoder()
+        geocoder.reverseGeocodeCoordinate(location) { response, error in
+            if error != nil {
+                print("reverse geodcode fail: \(error!.localizedDescription)")
+            } else {
+                guard let places = response?.results(),
+                      let place = places.first,
+                      let lines = place.lines else {
+                    completion("", [""])
+                    return
                 }
+                print("addressssss",place)
+                completion(place.locality ?? "", place.lines ?? [])
             }
         }
+    }
 }

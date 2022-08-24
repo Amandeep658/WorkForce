@@ -12,17 +12,15 @@ import SDWebImage
 class ManageJobsViewController: UIViewController {
     
     @IBOutlet weak var backBtn: UIButton!
-    
-    var jobListDataArr = [AddJobData]()
-    
-    
     @IBOutlet weak var manageTableView: UITableView!
+
+    var jobListDataArr = [AddJobData]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
         hitJobListApi()
-       
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,9 +94,17 @@ extension ManageJobsViewController : UITableViewDelegate , UITableViewDataSource
             cell.jobsDesignLbl.text = "\(jobListDataArr[indexPath.row].catagory_details?.first?.category_name ?? "") "
         }
         if jobListDataArr[indexPath.row].rate_type == "Per Day"{
-            cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/d - $\(jobListDataArr[indexPath.row].rate_to ?? "")/d"
+            if jobListDataArr[indexPath.row].rate_from == "" || jobListDataArr[indexPath.row].rate_to == "" {
+                cell.jobsPriceLbl.text = ""
+            }else{
+                cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/d - $\(jobListDataArr[indexPath.row].rate_to ?? "")/d"
+            }
         }else if jobListDataArr[indexPath.row].rate_type == "Per Hour"{
-            cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/h - $\(jobListDataArr[indexPath.row].rate_to ?? "")/h"
+            if jobListDataArr[indexPath.row].rate_from == "" || jobListDataArr[indexPath.row].rate_to == "" {
+                cell.jobsPriceLbl.text = ""
+            }else{
+                cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/h - $\(jobListDataArr[indexPath.row].rate_to ?? "")/h"
+            }
         }else{
             cell.jobsPriceLbl.text = ""
         }

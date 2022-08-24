@@ -10,7 +10,7 @@ import WebKit
 
 class AboutUsVC: UIViewController,WKUIDelegate {
 
-    var aboutUrl = "http://161.97.132.85/work-force/webservice/about.html"
+    var aboutUrl = "https://u2connect.com/about/"
     
     
     @IBOutlet weak var backBtn: UIButton!

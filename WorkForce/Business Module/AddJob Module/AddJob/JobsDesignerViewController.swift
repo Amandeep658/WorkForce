@@ -21,6 +21,7 @@ class JobsDesignerViewController: UIViewController {
     var professionalUserDict = SingletonLocalModel()
     var isJobPhoto:Bool?
     var workerJObId = ""
+    var customerJobID = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,8 +31,11 @@ class JobsDesignerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
-        self.hitJobListApi()
-
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            self.hitJobListApi()
+        }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            self.hitcustomerJobListApi()
+        }
     }
     
     func setTable(){
@@ -132,6 +136,57 @@ class JobsDesignerViewController: UIViewController {
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
     }
+//    MARK: CUSTOMER JOB LIST API
+    func hitcustomerJobListApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        let param = ["job_id": jobId ] as [String : Any]
+        print(param)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.customerGetJobDetailsByuserId, params: param, headers: headers) { [self] response in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+        print(response)
+            do{
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(AddJobModel.self, from: data!)
+                print(aContact)
+                let status = aContact.status
+                if status == 1{
+                    self.jobListDataArr = aContact.data!
+                    if jobListDataArr.count > 0{
+                        self.imgView.isHidden = true
+                    }else{
+                        self.imgView.isHidden = false
+                    }
+                    self.jobsTableView.reloadData()
+                }else if status == 0{
+                    self.jobListDataArr = aContact.data!
+                    if jobListDataArr.count > 0{
+                        self.imgView.isHidden = true
+                    }else{
+                        self.imgView.isHidden = false
+                    }
+                    self.jobsTableView.reloadData()
+                }else{
+                    self.jobListDataArr.removeAll()
+                    self.jobsTableView.reloadData()
+                }
+            }
+            catch let parseError {
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
     
 
 }
@@ -150,9 +205,17 @@ extension JobsDesignerViewController : UITableViewDelegate , UITableViewDataSour
             cell.jobsDesignLbl.text = "\(jobListDataArr[indexPath.row].catagory_details?.first?.category_name ?? "") "
         }
         if jobListDataArr[indexPath.row].rate_type == "Per Day"{
-            cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/d , $\(jobListDataArr[indexPath.row].rate_to ?? "")/d"
+            if jobListDataArr[indexPath.row].rate_from == "" || jobListDataArr[indexPath.row].rate_to == "" {
+                cell.jobsPriceLbl.text = ""
+            }else{
+                cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/d , $\(jobListDataArr[indexPath.row].rate_to ?? "")/d"
+            }
         }else if jobListDataArr[indexPath.row].rate_type == "Per Hour"{
-            cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/h , $\(jobListDataArr[indexPath.row].rate_to ?? "")/h"
+            if jobListDataArr[indexPath.row].rate_from == "" || jobListDataArr[indexPath.row].rate_to == "" {
+                cell.jobsPriceLbl.text = ""
+            }else{
+                cell.jobsPriceLbl.text = "$\(jobListDataArr[indexPath.row].rate_from ?? "")/h , $\(jobListDataArr[indexPath.row].rate_to ?? "")/h"
+            }
         }else{
             cell.jobsPriceLbl.text = ""
         }
@@ -163,9 +226,16 @@ extension JobsDesignerViewController : UITableViewDelegate , UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.workerJObId =  jobListDataArr[indexPath.row].job_id ?? ""
-        UserDefaults.standard.set(workerJObId, forKey: "setWorkerID")
-        hitBusinessJObSubCheckApi()
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            self.workerJObId =  jobListDataArr[indexPath.row].job_id ?? ""
+            UserDefaults.standard.set(workerJObId, forKey: "setWorkerID")
+            self.hitBusinessJObSubCheckApi()
+        }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            let vc = ProfessionalLikePostViewController()
+            vc.customerJobId = jobListDataArr[indexPath.row].customer_job_id ?? ""
+            UserDefaults.standard.set(customerJobID, forKey: "setCustomerWorkerID")
+            self.pushViewController(vc, true)
+        }
     }
     
 }

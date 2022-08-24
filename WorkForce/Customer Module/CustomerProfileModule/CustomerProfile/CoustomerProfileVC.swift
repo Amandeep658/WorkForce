@@ -11,15 +11,14 @@ import IQKeyboardManagerSwift
 import SDWebImage
 
 class CoustomerProfileVC: UIViewController {
-   
     
     @IBOutlet weak var customerProfileTableView: UITableView!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var customerProfileView: UIImageView!
     
-    var imageArr = ["re","ic","abb","pp","log"]
-    var listArr = ["Recovery Email","Terms of Use","About Us","Privacy Policy","Logout"]
+    var imageArr = ["job-1","re","ic","abb","pp","log"]
+    var listArr = ["Manage Jobs","Recovery Email","Terms of Use","About Us","Privacy Policy","Logout"]
     var companyProfileData:CompanyListingModel?
     
     override func viewDidLoad() {
@@ -148,6 +147,10 @@ extension CoustomerProfileVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch listArr[indexPath.row] {
+        case "Manage Jobs":
+            let manageJobs = CustomerManageJobVC()
+            self.pushViewController(manageJobs, true)
+            break
         case "Recovery Email" :
             let email = RecoveryEmailVC()
             self.pushViewController(email, true)

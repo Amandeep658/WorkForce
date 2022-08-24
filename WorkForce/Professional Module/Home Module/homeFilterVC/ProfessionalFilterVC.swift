@@ -271,9 +271,9 @@ extension ProfessionalFilterVC : UICollectionViewDelegate,UICollectionViewDataSo
         }else{
             self.jobArr.append(str)
         }
-        let firstElement = jobArr.first ?? ""
-        self.jobtype = firstElement
-        print(jobtype)
+        let string = jobArr.joined(separator: ",")
+        self.jobtype = string
+        print("sperator Arr************>>>>>>>>",jobtype)
         self.professjobTypecollection.reloadData()
     }
     

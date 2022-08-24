@@ -16,6 +16,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     func userDidBack(Data: [ProfessionalListJobData]) {
         DispatchQueue.main.async { [self] in
             jobNearMeArr.removeAll()
+            self.filterData = "nav from professional filter"
             jobNearMeArr = Data
             self.homeTableView.reloadData()
         }
@@ -41,6 +42,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     var page = 100
     var pageCount = 1
     var currentlocation = ""
+    var filterData = ""
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
@@ -51,6 +53,12 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
         searchView.addGestureRecognizer(tapGesture)
         searchView.isUserInteractionEnabled = true
         setCell()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.professionalhomeTabPressed(_:)), name: Notification.Name(rawValue: "professionalhomeTabPressed"), object: nil)
+    }
+    @objc func professionalhomeTabPressed(_ notification : Notification){
+        self.categoryId = ""
+        getCurntLocation()
+        hitCategoryListing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -286,6 +294,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
                     appDel.navigation()
                 }
                 else if status == 1{
+                    self.filterData = ""
                     self.jobNearMeArr =  aContact.data!
                     self.homeTableView.reloadData()
                 }else{
@@ -393,7 +402,7 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.cellImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
         cell.cellLbl.text = jobNearMeArr[indexPath.row].company_name ?? ""
-        if categoryId != ""{
+        if categoryId != "" || filterData == "nav from professional filter"{
             cell.designerLbl.text =  jobNearMeArr[indexPath.row].category_name ?? ""
         } else {
             if jobNearMeArr[indexPath.row].catagory_details?.count ?? 0 > 1{
@@ -404,9 +413,17 @@ extension HomeViewController:UITableViewDelegate,UITableViewDataSource{
             }
         }
         if jobNearMeArr[indexPath.row].rate_type == "Per Day"{
-            cell.priceLbl.text = "$\(jobNearMeArr[indexPath.row].rate_from ?? "")/d - $\(jobNearMeArr[indexPath.row].rate_to ?? "")/d "
+            if jobNearMeArr[indexPath.row].rate_from == "" || jobNearMeArr[indexPath.row].rate_to == "" {
+                cell.priceLbl.text = ""
+            }else{
+                cell.priceLbl.text = "$\(jobNearMeArr[indexPath.row].rate_from ?? "")/d - $\(jobNearMeArr[indexPath.row].rate_to ?? "")/d "
+            }
         }else if jobNearMeArr[indexPath.row].rate_type == "Per Hour"{
+            if jobNearMeArr[indexPath.row].rate_from == "" || jobNearMeArr[indexPath.row].rate_to == "" {
+                cell.priceLbl.text = ""
+            }else{
             cell.priceLbl.text = "$\(jobNearMeArr[indexPath.row].rate_from ?? "")/h - $\(jobNearMeArr[indexPath.row].rate_to ?? "")/h"
+            }
         }else{
             cell.priceLbl.text = ""
         }

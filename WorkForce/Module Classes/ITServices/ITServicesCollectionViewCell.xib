@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="ITServicesCollectionViewCell" id="gTV-IL-0wX" customClass="ITServicesCollectionViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="129" height="43"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="129" height="43"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DbZ-IA-smG">
+                        <rect key="frame" x="0.0" y="0.0" width="129" height="43"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IT Services &amp; ConsultingKJNLJHLHLJHKLH" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nqK-RG-v3J">
+                                <rect key="frame" x="8" y="2.5" width="113" height="38"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="9"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95285779240000001" green="0.95299452539999996" blue="0.95282799009999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nqK-RG-v3J" firstAttribute="centerY" secondItem="DbZ-IA-smG" secondAttribute="centerY" id="4Bd-Z8-oia"/>
+                            <constraint firstAttribute="trailing" secondItem="nqK-RG-v3J" secondAttribute="trailing" constant="8" id="Ape-6p-Fek"/>
+                            <constraint firstItem="nqK-RG-v3J" firstAttribute="leading" secondItem="DbZ-IA-smG" secondAttribute="leading" constant="8" id="C2g-ym-LXw"/>
+                            <constraint firstItem="nqK-RG-v3J" firstAttribute="centerX" secondItem="DbZ-IA-smG" secondAttribute="centerX" id="u3d-Qd-7LT"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="18"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="DbZ-IA-smG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="1C7-jP-H7t"/>
+                <constraint firstAttribute="trailing" secondItem="DbZ-IA-smG" secondAttribute="trailing" id="A6b-GT-emu"/>
+                <constraint firstAttribute="bottom" secondItem="DbZ-IA-smG" secondAttribute="bottom" id="OeM-CQ-FvU"/>
+                <constraint firstItem="DbZ-IA-smG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="rlh-5H-Kec"/>
+            </constraints>
+            <size key="customSize" width="129" height="43"/>
+            <connections>
+                <outlet property="collectionLbl" destination="nqK-RG-v3J" id="spd-1S-GoB"/>
+                <outlet property="serviceView" destination="DbZ-IA-smG" id="ib4-rL-eys"/>
+            </connections>
+            <point key="canvasLocation" x="169" y="72"/>
+        </collectionViewCell>
+    </objects>
+</document>

@@ -93,11 +93,19 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
                             self.categoryLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.category_name ?? "") "
                         }
                         if jobDetailByJobIdArr?.data?.rate_type == "Per Day"{
-                            self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)
+                            if jobDetailByJobIdArr?.data?.rate_to == "" || jobDetailByJobIdArr?.data?.rate_from == "" {
+                               self.hourbtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)
+                            }
                         }else if jobDetailByJobIdArr?.data?.rate_type == "Per Hour"{
-                            self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)
+                            if jobDetailByJobIdArr?.data?.rate_to == "" || jobDetailByJobIdArr?.data?.rate_from == "" {
+                               self.hourbtn.setTitle("No rate selected.", for: .normal)
+                            }else{
+                                self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)
+                            }
                         }else{
-                            self.hourbtn.setTitle("No rate selected.", for: .normal)
+                            print("its job edit")
                         }
                         if jobDetailByJobIdArr?.data?.catagory_details == nil{
                             self.experiencelbl.text = "0 Year"
@@ -133,3 +141,6 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
     }
     
 }
+//else if jobDetailByJobIdArr?.data?.rate_type == "" {
+//    self.hourbtn.setTitle("No rate selected.", for: .normal)
+//}

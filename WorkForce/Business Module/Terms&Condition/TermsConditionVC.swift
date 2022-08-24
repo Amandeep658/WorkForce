@@ -10,7 +10,7 @@ import WebKit
 
 class TermsConditionVC: UIViewController,WKUIDelegate {
     
-    var termsConditions = "http://161.97.132.85/work-force/webservice/terms&services.html"
+    var termsConditions = "https://u2connect.com/terms-and-conditions/"
     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var termsWebView: WKWebView!
