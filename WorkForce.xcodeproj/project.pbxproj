@@ -161,6 +161,12 @@
 		1890C1F628B4A6BC00DAEAB3 /* CustomerJobListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C1F528B4A6BC00DAEAB3 /* CustomerJobListModel.swift */; };
 		1890C1F928B5FF7A00DAEAB3 /* CustomerDeleteJob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C1F728B5FF7A00DAEAB3 /* CustomerDeleteJob.swift */; };
 		1890C1FA28B5FF7A00DAEAB3 /* CustomerDeleteJob.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C1F828B5FF7A00DAEAB3 /* CustomerDeleteJob.xib */; };
+		1890C1FE28B62FBE00DAEAB3 /* EnterEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C1FC28B62FBE00DAEAB3 /* EnterEmailVC.swift */; };
+		1890C1FF28B62FBE00DAEAB3 /* EnterEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C1FD28B62FBE00DAEAB3 /* EnterEmailVC.xib */; };
+		1890C20228B63ECD00DAEAB3 /* RecoverEmailOTPVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C20028B63ECD00DAEAB3 /* RecoverEmailOTPVC.swift */; };
+		1890C20328B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C20128B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib */; };
+		1890C20928B65B6C00DAEAB3 /* PhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C20728B65B6C00DAEAB3 /* PhoneNumberVC.swift */; };
+		1890C20A28B65B6C00DAEAB3 /* PhoneNumberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C20828B65B6C00DAEAB3 /* PhoneNumberVC.xib */; };
 		1896FBAC28ABA2AE00DC8A07 /* RecoveryEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896FBAA28ABA2AE00DC8A07 /* RecoveryEmailVC.swift */; };
 		1896FBAD28ABA2AE00DC8A07 /* RecoveryEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1896FBAB28ABA2AE00DC8A07 /* RecoveryEmailVC.xib */; };
 		1896FBB128ABAECC00DC8A07 /* EmailOtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896FBAF28ABAECC00DC8A07 /* EmailOtpVC.swift */; };
@@ -494,6 +500,12 @@
 		1890C1F528B4A6BC00DAEAB3 /* CustomerJobListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerJobListModel.swift; sourceTree = "<group>"; };
 		1890C1F728B5FF7A00DAEAB3 /* CustomerDeleteJob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerDeleteJob.swift; sourceTree = "<group>"; };
 		1890C1F828B5FF7A00DAEAB3 /* CustomerDeleteJob.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerDeleteJob.xib; sourceTree = "<group>"; };
+		1890C1FC28B62FBE00DAEAB3 /* EnterEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterEmailVC.swift; sourceTree = "<group>"; };
+		1890C1FD28B62FBE00DAEAB3 /* EnterEmailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnterEmailVC.xib; sourceTree = "<group>"; };
+		1890C20028B63ECD00DAEAB3 /* RecoverEmailOTPVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverEmailOTPVC.swift; sourceTree = "<group>"; };
+		1890C20128B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecoverEmailOTPVC.xib; sourceTree = "<group>"; };
+		1890C20728B65B6C00DAEAB3 /* PhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVC.swift; sourceTree = "<group>"; };
+		1890C20828B65B6C00DAEAB3 /* PhoneNumberVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneNumberVC.xib; sourceTree = "<group>"; };
 		1896FBAA28ABA2AE00DC8A07 /* RecoveryEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryEmailVC.swift; sourceTree = "<group>"; };
 		1896FBAB28ABA2AE00DC8A07 /* RecoveryEmailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecoveryEmailVC.xib; sourceTree = "<group>"; };
 		1896FBAF28ABAECC00DC8A07 /* EmailOtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOtpVC.swift; sourceTree = "<group>"; };
@@ -837,6 +849,7 @@
 				1809E54A2869B08400AE294B /* Models */,
 				1896FBC928AE59D800DC8A07 /* Chat Module  */,
 				188F151A28659269000D96D1 /* Auth Module */,
+				1890C1FB28B62E0F00DAEAB3 /* RecoverAccount */,
 				18CE1B7C28926E9C00498AF5 /* In-App Purchase */,
 				188F15182865923F000D96D1 /* Business Module */,
 				188F15192865924A000D96D1 /* Professional Module */,
@@ -1186,6 +1199,43 @@
 			children = (
 			);
 			path = CustomerProfessionalLikeVC;
+			sourceTree = "<group>";
+		};
+		1890C1FB28B62E0F00DAEAB3 /* RecoverAccount */ = {
+			isa = PBXGroup;
+			children = (
+				1890C20628B65B4C00DAEAB3 /* PhoneNumber */,
+				1890C20528B63EF700DAEAB3 /* RecoverEmailOTP */,
+				1890C20428B63EE900DAEAB3 /* EmailVC */,
+			);
+			path = RecoverAccount;
+			sourceTree = "<group>";
+		};
+		1890C20428B63EE900DAEAB3 /* EmailVC */ = {
+			isa = PBXGroup;
+			children = (
+				1890C1FC28B62FBE00DAEAB3 /* EnterEmailVC.swift */,
+				1890C1FD28B62FBE00DAEAB3 /* EnterEmailVC.xib */,
+			);
+			path = EmailVC;
+			sourceTree = "<group>";
+		};
+		1890C20528B63EF700DAEAB3 /* RecoverEmailOTP */ = {
+			isa = PBXGroup;
+			children = (
+				1890C20028B63ECD00DAEAB3 /* RecoverEmailOTPVC.swift */,
+				1890C20128B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib */,
+			);
+			path = RecoverEmailOTP;
+			sourceTree = "<group>";
+		};
+		1890C20628B65B4C00DAEAB3 /* PhoneNumber */ = {
+			isa = PBXGroup;
+			children = (
+				1890C20728B65B6C00DAEAB3 /* PhoneNumberVC.swift */,
+				1890C20828B65B6C00DAEAB3 /* PhoneNumberVC.xib */,
+			);
+			path = PhoneNumber;
 			sourceTree = "<group>";
 		};
 		1896FBA828ABA26900DC8A07 /* RecoveryEmail */ = {
@@ -2024,6 +2074,7 @@
 				7C48B43F283394C500E4C5B1 /* BusinessHomeViewController.xib in Resources */,
 				185574822823988600AFB18E /* OtpAuthenticationViewController.xib in Resources */,
 				1896FBB228ABAECC00DC8A07 /* EmailOtpVC.xib in Resources */,
+				1890C1FF28B62FBE00DAEAB3 /* EnterEmailVC.xib in Resources */,
 				7C479287283CB1E4000C13C9 /* ProfessionalLikePostViewController.xib in Resources */,
 				7C45F9B728531A2E00941CD2 /* ExpTableViewCell.xib in Resources */,
 				188F2489287D5CA80076C518 /* ProfessionalFilterVC.xib in Resources */,
@@ -2053,7 +2104,9 @@
 				18A09A4A28A1756000E91938 /* ConnectListDetailVC.xib in Resources */,
 				18E6BC2D282BA4AD00650D95 /* ProfileTableViewCell.xib in Resources */,
 				18A8A9D8282B8658003253C5 /* Poppins-Regular.ttf in Resources */,
+				1890C20A28B65B6C00DAEAB3 /* PhoneNumberVC.xib in Resources */,
 				18BBFF58286BA193007CBD39 /* ProfessionalProfileVC.xib in Resources */,
+				1890C20328B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib in Resources */,
 				181B6CB7282A568B008B2D0A /* FooterCollectionReusableView.xib in Resources */,
 				1838C8BB2822837F004A6FE7 /* Main.storyboard in Resources */,
 				1896FBBD28ACAD5C00DC8A07 /* CustomerSkillVC.xib in Resources */,
@@ -2181,6 +2234,7 @@
 				185574B62823B24800AFB18E /* Double+Custom.swift in Sources */,
 				185574C02823B24800AFB18E /* UIImageView+Custom.swift in Sources */,
 				185574BC2823B24800AFB18E /* Date+Custom.swift in Sources */,
+				1890C20928B65B6C00DAEAB3 /* PhoneNumberVC.swift in Sources */,
 				18A7DDCF288F236800AE9729 /* CustomerDOBVC.swift in Sources */,
 				185574BE2823B24800AFB18E /* NSLayoutContraint+Custom.swift in Sources */,
 				1896FBC728AE307700DC8A07 /* CustomerManageJobVC.swift in Sources */,
@@ -2205,6 +2259,7 @@
 				18B31D1A2845D5A8002B79F1 /* ESTabBar.swift in Sources */,
 				185574C22823B24800AFB18E /* UITextField+Custom.swift in Sources */,
 				18B31D1B2845D5A8002B79F1 /* ESTabBarItemContainer.swift in Sources */,
+				1890C1FE28B62FBE00DAEAB3 /* EnterEmailVC.swift in Sources */,
 				18A7DDD3288F267400AE9729 /* CustomerHomeVC.swift in Sources */,
 				181B6CB6282A568B008B2D0A /* FooterCollectionReusableView.swift in Sources */,
 				7C1276FE2836030400044746 /* SkillTableViewController.swift in Sources */,
@@ -2264,6 +2319,7 @@
 				7C488A17283210A900B5B328 /* JobTypeViewController.swift in Sources */,
 				188F151F286594A5000D96D1 /* ConstantFile.swift in Sources */,
 				181FA91A2875C1400049D8D6 /* JobListModel.swift in Sources */,
+				1890C20228B63ECD00DAEAB3 /* RecoverEmailOTPVC.swift in Sources */,
 				18EB27782824019F001A0799 /* YearOfExpViewController.swift in Sources */,
 				18DBBDDE2825278C0047A42D /* ConnectTableViewCell.swift in Sources */,
 				18B31D0E2845D5A8002B79F1 /* ExampleBouncesContentView.swift in Sources */,

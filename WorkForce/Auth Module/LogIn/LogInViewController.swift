@@ -15,6 +15,7 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var loginBtnView: UIView!
     @IBOutlet weak var backAction: UIButton!
+    @IBOutlet weak var recoveryouAccountBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +43,10 @@ class LogInViewController: UIViewController {
         }
     }
     
+    @IBAction func recoveryouAccountBtn(_ sender: UIButton) {
+        let vc = EnterEmailVC()
+        self.pushViewController(vc, true)
+    }
     
 
 }

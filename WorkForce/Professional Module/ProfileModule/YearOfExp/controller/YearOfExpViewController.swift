@@ -72,7 +72,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
             }
         }else{
             if professionalUserDict.catagory_details!.count > 0 {
-                let vc = ProfessionalsViewController()
+                let vc = ProfessionalRateViewController()
                 vc.professionalUserDict = self.professionalUserDict
                 self.pushViewController(vc, true)
             }else{
