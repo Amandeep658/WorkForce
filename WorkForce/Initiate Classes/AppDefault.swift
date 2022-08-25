@@ -25,6 +25,14 @@ struct AppDefaults {
             return UserDefaults.standard.string(forKey: "authToken")
         }
     }
+    static var emailStatus:String?{
+        set{
+            UserDefaults.standard.set(newValue, forKey: "emailStatus")
+        }
+        get{
+            return UserDefaults.standard.string(forKey: "emailStatus")
+        }
+    }
     
     static var userName:String?{
         set{

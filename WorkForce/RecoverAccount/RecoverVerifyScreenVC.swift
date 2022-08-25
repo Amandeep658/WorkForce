@@ -1,16 +1,17 @@
 //
-//  RecoverEmailOTPVC.swift
+//  RecoverVerifyScreenVC.swift
 //  WorkForce
 //
-//  Created by Aman's MacBookPro on 24/08/22.
+//  Created by Aman's MacBookPro on 25/08/22.
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 import Alamofire
 
-class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
-
-//    MARK: OUTLETS
+class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
+    
+    //    MARK: OUTLETS
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var firstView: UIView!
     @IBOutlet weak var firstTF: UITextField!
@@ -26,10 +27,12 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var sixthTF: UITextField!
     
     var verifyOTP = ""
+    var enterEmail = ""
     let customerVC = CoustomerProfileVC()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +40,7 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
         uiConfigure()
     }
     
-//    MARK: UI_CONFIGURE
+    //    MARK: UI_CONFIGURE
     func uiConfigure(){
         self.firstTF.delegate = self
         self.secondTF.delegate = self
@@ -47,7 +50,7 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
         self.sixthTF.delegate = self
     }
     
-//    MARK: TEXTFIELD_DELEGATES
+    //    MARK: TEXTFIELD_DELEGATES
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string.count > 0 {
             textField.text = (string as NSString).substring(to: 1)
@@ -117,55 +120,20 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func submitBtn(_ sender: UIButton) {
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            self.hitVerifyEmailAPI()
+            let vc = PhoneNumberVC()
+            vc.OTPNumber = verifyOTP
+            vc.emailUpdated = enterEmail
+            self.pushViewController(vc, true)
         }else if UserType.userTypeInstance.userLogin == .Professional{
-            self.hitVerifyEmailAPI()
+            let vc = PhoneNumberVC()
+            vc.OTPNumber = verifyOTP
+            vc.emailUpdated = enterEmail
+            self.pushViewController(vc, true)
         }else{
-            self.hitVerifyEmailAPI()
+            let vc = PhoneNumberVC()
+            vc.OTPNumber =  verifyOTP
+            vc.emailUpdated = enterEmail
+            self.pushViewController(vc, true)
         }
     }
-    
-    //    MARK: HIT VERIFY OTP API
-    func hitVerifyEmailAPI(){
-        DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
-        }
-        let AToken = AppDefaults.token ?? ""
-        print(AToken)
-        let headers: HTTPHeaders = ["Token": AToken]
-        let parameter = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","code":verifyOTP] as [String : Any]
-        print(parameter)
-        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.verify, params: parameter, headers: headers) { (response) in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            print(response)
-            let status = response["status"] as? Int ?? 0
-            let logMessage = response["message"] as? String ?? ""
-            print(status)
-            if status == 1 {
-                self.showAlert(message: logMessage, title: AppAlertTitle.appName.rawValue) {
-                    if UserType.userTypeInstance.userLogin == .Bussiness{
-                        let showpop = VerifyEmailVC()
-                        showpop.isModalInPresentation = true
-                        self.present(showpop, animated: true)
-                    }else if UserType.userTypeInstance.userLogin == .Professional {
-                        let showpop = VerifyEmailVC()
-                        showpop.isModalInPresentation = true
-                        self.present(showpop, animated: true)
-                    }else{
-                        let showpop = VerifyEmailVC()
-                        showpop.isModalInPresentation = true
-                        self.present(showpop, animated: true)
-                    }
-                }
-            }else{
-                self.Alert(message:logMessage )
-            }
-        } failure: { error in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-        }
-        
-    }
-    
-
 }

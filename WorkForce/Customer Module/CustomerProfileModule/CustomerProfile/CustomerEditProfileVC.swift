@@ -11,7 +11,7 @@ import SDWebImage
 import GoogleMaps
 import GooglePlaces
 
-var customerDataUpdate: (()->())?
+var customDataUpdate: (()->())?
 class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDelegate,CLLocationManagerDelegate {
     
     func didSelect(image: UIImage?) {
@@ -196,7 +196,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
                 print(status)
                 if status == 1{
                     showAlertMessage(title: AppAlertTitle.appName.rawValue, message: respDict["message"] as? String ?? "" , okButton: "OK", controller: self) {
-                        customerDataUpdate?()
+                        customDataUpdate?()
                         if let tabBar = self.tabBarController as? TabBarVC {
                             print("tab bar is \(tabBar)")
                             tabBar.updateProfileImage()

@@ -30,6 +30,11 @@ let kBASEURL = "http://161.97.132.85/work-force/webservice/"
 let urlInAppSubscriptionString = "https://sandbox.itunes.apple.com/verifyReceipt"
 
 struct WSMethods {
+    
+//    Restore Account API's
+    static let getRecoverEmail = "getRecoverEmail.php"
+    static let updateMobileNumber = "updateMobileNumber.php"
+    
 //    Business Module API's
     static let loginCheck = "loginCheck.php"
     static let signUpCheck = "signUp.php"

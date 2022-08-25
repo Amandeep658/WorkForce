@@ -51,8 +51,57 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func continueBtn(_ sender: UIButton) {
-        let vc = RecoverEmailOTPVC()
-        self.pushViewController(vc, true)
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            hitRecoverEmailApi()
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+            hitRecoverEmailApi()
+        }else{
+            hitRecoverEmailApi()
+        }
+    }
+    
+    
+// MARK: HIT RECOVER EMAIL API
+    func hitRecoverEmailApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+        }
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getRecoverEmail, params: getRecoverEmailAccountgeneratingParameters(), headers: nil) { [self] (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let status = response["status"] as? Int ?? 0
+            let message = response["message"] as? String ?? ""
+            print(status)
+            if status == 0 {
+                showAlert(message: message, title: AppAlertTitle.appName.rawValue)
+            }else if status == 1 {
+                let recoverEmailOTP = RecoverVerifyScreenVC()
+                recoverEmailOTP.enterEmail = emailTF.text ?? ""
+                self.pushViewController(recoverEmailOTP, true)
+            }
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+
+    }
+    
+    //MARK: Generating Login Check Parameters
+    func getRecoverEmailAccountgeneratingParameters() -> [String:AnyObject] {
+        var parameters : [String:AnyObject] = [:]
+        parameters["email"] = emailTF.text  as AnyObject
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            parameters["type"] = "1" as AnyObject
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+            parameters["type"] = "2" as AnyObject
+        }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            parameters["type"] = "3" as AnyObject
+        }
+        parameters["deviceType"] = "1"  as AnyObject
+        parameters["deviceToken"] = AppDefaults.deviceToken as AnyObject?
+        print(parameters)
+        return parameters
     }
     
 }

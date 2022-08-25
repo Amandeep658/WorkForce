@@ -17,6 +17,8 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var continueBtn: UIButton!
     
+    var mobileNumber = ""
+    var isFromAccount: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,9 +77,15 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
         let AToken = AppDefaults.token ?? ""
         print(AToken)
         let headers: HTTPHeaders = ["Token": AToken]
-        let parameter = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","email":emailTF.text ?? ""] as [String : Any]
-        print(parameter)
-        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.ResentVerficationEmail, params: parameter, headers: headers) { (response) in
+        var param = [String:Any]()
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            param = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","email":emailTF.text ?? "", "mobile_no": mobileNumber,"type":"1"] as [String : Any]
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+             param = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","email":emailTF.text ?? "", "mobile_no": mobileNumber,"type":"2"] as [String : Any]
+        }else{
+            param = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","email":emailTF.text ?? "", "mobile_no": mobileNumber,"type":"3"] as [String : Any]
+        }
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.ResentVerficationEmail, params: param, headers: headers) { (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let status = response["status"] as? Int ?? 0
@@ -85,8 +93,22 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
             print(status)
             if status == 1 {
                 self.showAlert(message: logMessage, title: AppAlertTitle.appName.rawValue) {
-                    let vc = EmailOtpVC()
-                    self.pushViewController(vc, true)
+                    if UserType.userTypeInstance.userLogin == .Bussiness{
+                        print("its Business")
+                        let vc = EmailOtpVC()
+                        vc.isFromAccount = self.isFromAccount
+                        self.pushViewController(vc, true)
+                    }else if UserType.userTypeInstance.userLogin == .Professional{
+                        print("its Professional")
+                        let vc = EmailOtpVC()
+                        vc.isFromAccount = self.isFromAccount
+                        self.pushViewController(vc, true)
+                    }else{
+                        print("its customer")
+                        let vc = EmailOtpVC()
+                        vc.isFromAccount = self.isFromAccount
+                        self.pushViewController(vc, true)
+                    }
                 }
             }else{
                 self.Alert(message:logMessage )

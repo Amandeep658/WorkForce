@@ -13,10 +13,11 @@ class BusinessProfileViewController: UIViewController {
     
     var company_isselect:Bool = true
     var companyProfileDataArr:CompanyListingModel?
+    var detailArr:CompanyListingData?
 
     var tapGesture = UITapGestureRecognizer()
-    let imageArr = ["job-1","sb","ic","abb","pp","deleteUser","log"]
-    let label = ["Manage Jobs","Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
+    let imageArr = ["re","job-1","sb","ic","abb","pp","deleteUser","log"]
+    let label = ["Recovery Email","Manage Jobs","Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
     
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var profleImgView: UIImageView!
@@ -29,6 +30,9 @@ class BusinessProfileViewController: UIViewController {
         setTable()
         hitCompanyListing()
         companyDataUpdate = {
+            self.hitCompanyListing()
+        }
+        businessDataUpdate = {
             self.hitCompanyListing()
         }
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -85,9 +89,10 @@ class BusinessProfileViewController: UIViewController {
                     UserDefaults.standard.removeObject(forKey: "authToken")
                     appDel.navigation()
                 } else if status == 1{
+                    self.detailArr =  aContact.data!
                     DispatchQueue.main.async { [self] in
                         self.namelbl.text = aContact.data?.company_name ?? ""
-                        self.emailLbl.text = aContact.data?.location ?? ""
+                        self.emailLbl.text = aContact.data?.email ?? ""
                         var sPhotoStr = aContact.data?.photo ?? ""
                         UserDefaults.standard.set(sPhotoStr, forKey: "BusinessProfileImage")
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -197,6 +202,15 @@ extension BusinessProfileViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch label[indexPath.row] {
+        case "Recovery Email":
+            if detailArr?.verified == "1"{
+                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+            }else{
+                let vc = RecoveryEmailVC()
+                vc.isFromAccount = true
+                self.pushViewController(vc, true)
+            }
+            break
         case "Manage Jobs":
             let vc = ManageJobsViewController()
             self.pushViewController(vc, true)

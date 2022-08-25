@@ -9,11 +9,11 @@ import UIKit
 import IQKeyboardManagerSwift
 import Alamofire
 
-class EmailOtpVC: UIViewController,UITextFieldDelegate,BackToViewDelegate {
-    func userDidPressCancel() {
-//        self.navigationController?.popToViewController(ofClass: self.customerVC)
-        self.navigationController?.popViewController(animated: true)
-    }
+var businessDataUpdate: (()->())?
+var professionalDataUpdate: (()->())?
+var customerDataUpdate: (()->())?
+
+class EmailOtpVC: UIViewController,UITextFieldDelegate {
 
 //    MARK: OUTLETS
     @IBOutlet weak var backBtn: UIButton!
@@ -32,6 +32,7 @@ class EmailOtpVC: UIViewController,UITextFieldDelegate,BackToViewDelegate {
     
     var verifyOTP = ""
     let customerVC = CoustomerProfileVC()
+    var isFromAccount: Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,10 +144,23 @@ class EmailOtpVC: UIViewController,UITextFieldDelegate,BackToViewDelegate {
             print(status)
             if status == 1 {
                 self.showAlert(message: logMessage, title: AppAlertTitle.appName.rawValue) {
-                    let showpop = VerifyEmailVC()
-                    showpop.isModalInPresentation = true
-                    showpop.crossDelegate = self
-                    self.present(showpop, animated: true)
+                    if self.isFromAccount {
+                        businessDataUpdate?()
+                        professionalDataUpdate?()
+                        customerDataUpdate?()
+                        self.navigationController?.popToRootViewController(animated: true)
+                    } else {
+                        if UserType.userTypeInstance.userLogin == .Bussiness{
+                            let vc = CompanyDetailsViewController()
+                            self.pushViewController(vc, true)
+                        }else if UserType.userTypeInstance.userLogin == .Professional{
+                            let vc =  FullNameViewController()
+                            self.pushViewController(vc, true)
+                        }else{
+                            let vc = FullNameViewController()
+                            self.pushViewController(vc, true)
+                        }
+                    }
                 }
             }else{
                 self.Alert(message:logMessage )

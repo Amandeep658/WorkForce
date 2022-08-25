@@ -38,6 +38,7 @@ struct CompanyListingData : Codable {
     let state : String?
     let location : String?
     let description : String?
+    let email : String?
     let photo : String?
     let type : String?
     let latitude : String?
@@ -53,6 +54,7 @@ struct CompanyListingData : Codable {
     let rate_to : String?
     let rate_type : String?
     let job_type : String?
+    let verified : String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -67,6 +69,7 @@ struct CompanyListingData : Codable {
         case state = "state"
         case location = "location"
         case description = "description"
+        case email = "email"
         case photo = "photo"
         case type = "type"
         case latitude = "latitude"
@@ -82,6 +85,7 @@ struct CompanyListingData : Codable {
         case rate_to = "rate_to"
         case rate_type = "rate_type"
         case job_type = "job_type"
+        case verified = "verified"
     }
 
     init(from decoder: Decoder) throws {
@@ -97,6 +101,7 @@ struct CompanyListingData : Codable {
         state = try values.decodeIfPresent(String.self, forKey: .state)
         location = try values.decodeIfPresent(String.self, forKey: .location)
         description = try values.decodeIfPresent(String.self, forKey: .description)
+        email = try values.decodeIfPresent(String.self, forKey: .email)
         photo = try values.decodeIfPresent(String.self, forKey: .photo)
         type = try values.decodeIfPresent(String.self, forKey: .type)
         latitude = try values.decodeIfPresent(String.self, forKey: .latitude)
@@ -112,6 +117,7 @@ struct CompanyListingData : Codable {
         rate_to = try values.decodeIfPresent(String.self, forKey: .rate_to)
         rate_type = try values.decodeIfPresent(String.self, forKey: .rate_type)
         job_type = try values.decodeIfPresent(String.self, forKey: .job_type)
+        verified = try values.decodeIfPresent(String.self, forKey: .verified)
     }
 
 }

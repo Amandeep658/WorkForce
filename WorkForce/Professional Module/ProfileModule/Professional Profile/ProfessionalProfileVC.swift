@@ -18,20 +18,22 @@ class ProfessionalProfileVC: UIViewController {
     @IBOutlet weak var editProfile: UIButton!
     @IBOutlet weak var professionalTableView: UITableView!
     
-    let imageArr = ["sb","ic","abb","pp","deleteUser","log"]
-    let Label = ["Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
+    let imageArr = ["re","sb","ic","abb","pp","deleteUser","log"]
+    let Label = ["Recovery Email","Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
     var professionalUserDate:ProfessionalProfileData?
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setTable()
         self.hitCompanyListing()
+        professionalDataUpdate = {
+            self.hitCompanyListing()
+        }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-        hitCompanyListing()
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
 
@@ -80,9 +82,10 @@ class ProfessionalProfileVC: UIViewController {
                     UserDefaults.standard.removeObject(forKey: "authToken")
                     appDel.navigation()
                 } else if status == 1{
+                    self.professionalUserDate =  aContact.data!
                     DispatchQueue.main.async { [self] in
                         self.nameLbl.text =  aContact.data?.username ?? ""
-                        self.emailLbl.text = aContact.data?.city ?? ""
+                        self.emailLbl.text = aContact.data?.email ?? ""
                         var sPhotoStr = aContact.data?.photo ?? ""
                         UserDefaults.standard.set(sPhotoStr, forKey: "ProfessionalProfileImage")
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -176,6 +179,15 @@ extension ProfessionalProfileVC : UITableViewDelegate , UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Label[indexPath.row] {
+        case "Recovery Email":
+            if professionalUserDate?.verified == "1"{
+                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+            }else{
+                let vc = RecoveryEmailVC()
+                vc.isFromAccount = true
+                self.pushViewController(vc, true)
+            }
+            break
         case "Update Subscription Plan":
             print("its update")
             let vc = SubscribePlanViewController()

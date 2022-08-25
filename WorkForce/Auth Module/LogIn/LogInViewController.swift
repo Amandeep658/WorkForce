@@ -44,8 +44,16 @@ class LogInViewController: UIViewController {
     }
     
     @IBAction func recoveryouAccountBtn(_ sender: UIButton) {
-        let vc = EnterEmailVC()
-        self.pushViewController(vc, true)
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            let vc = EnterEmailVC()
+            self.pushViewController(vc, true)
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+            let vc = EnterEmailVC()
+            self.pushViewController(vc, true)
+        }else{
+            let vc = EnterEmailVC()
+            self.pushViewController(vc, true)
+        }
     }
     
 

@@ -76,12 +76,17 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
             self.professionalUserDict.userId = userID
             let authToekn = response["auth_token"] as? String ?? ""
             AppDefaults.token = authToekn
+            let emailStatus = response["email_status"] as? String ?? ""
+            AppDefaults.emailStatus = emailStatus
             let loginStatus = response["login_status"] as? Int ?? 0
             if status == 1{
                 if  UserType.userTypeInstance.userLogin == .Bussiness {
-                    if loginStatus == 0{
-                        let vc = CompanyDetailsViewController()
+                    if loginStatus == 0 {
+                        let vc = RecoveryEmailVC()
+                        vc.mobileNumber = "\(postCode ?? "")\(number ?? "")"
                         self.pushViewController(vc, true)
+                        //  let vc = CompanyDetailsViewController()
+                        //  self.pushViewController(vc, true)
                     }else{
                         AppDefaults.checkLogin = true
                         let vc = TabBarVC()
@@ -89,9 +94,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                     }
                 }else if UserType.userTypeInstance.userLogin == .Professional{
                     if loginStatus == 0{
-                        let vc = FullNameViewController()
-                        vc.professionalUserDict = self.professionalUserDict
+                        let vc = RecoveryEmailVC()
+                        vc.mobileNumber = "\(postCode ?? "")\(number ?? "")"
                         self.pushViewController(vc, true)
+                        //  let vc = FullNameViewController()
+                        //  vc.professionalUserDict = self.professionalUserDict
+                        //  self.pushViewController(vc, true)
                     }else{
                         AppDefaults.checkLogin = true
                         let vc = TabBarVC()
@@ -99,9 +107,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                     }
                 }else if UserType.userTypeInstance.userLogin == .Coustomer{
                     if loginStatus == 0{
-                        let vc = FullNameViewController()
-                        vc.professionalUserDict = self.professionalUserDict
+                        let vc = RecoveryEmailVC()
+                        vc.mobileNumber = "\(postCode ?? "")\(number ?? "")"
                         self.pushViewController(vc, true)
+                        //  let vc = FullNameViewController()
+                        //  vc.professionalUserDict = self.professionalUserDict
+                        //  self.pushViewController(vc, true)
                     }else{
                         AppDefaults.checkLogin = true
                         let vc = TabBarVC()
@@ -233,9 +244,9 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func verifyAction(_ sender: UIButton) {
         if UserType.userTypeInstance.userLogin == .Bussiness{
-//            if self.verifyOTP == "123456"{
-//                self.hitSignUpApi()
-//            }else{
+            if self.verifyOTP == "123456"{
+                self.hitSignUpApi()
+            }else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -250,12 +261,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-//            }
+            }
         }else if UserType.userTypeInstance.userLogin == .Professional{
-//            if self.verifyOTP == "123456"{
-//                self.hitSignUpApi()
-//            }
-//            else{
+            if self.verifyOTP == "123456"{
+                self.hitSignUpApi()
+            }
+            else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -270,12 +281,12 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-//            }
+            }
         }else{
-//            if self.verifyOTP == "123456"{
-//                self.hitSignUpApi()
-//            }
-//            else{
+            if self.verifyOTP == "123456"{
+                self.hitSignUpApi()
+            }
+            else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
                 print(verificationID)
                 let credential = PhoneAuthProvider.provider().credential(
@@ -290,7 +301,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
                     }
                 }
-//            }
+            }
         }
     }
     

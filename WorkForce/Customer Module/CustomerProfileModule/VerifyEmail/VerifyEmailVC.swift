@@ -9,10 +9,6 @@ import UIKit
 import SDWebImage
 import Alamofire
 
-protocol BackToViewDelegate {
-    func userDidPressCancel()
-}
-
 class VerifyEmailVC: UIViewController {
     
 //    MARK: OUTLETS
@@ -21,22 +17,28 @@ class VerifyEmailVC: UIViewController {
     @IBOutlet weak var descriptionMsgLbl: UILabel!
     @IBOutlet weak var verifyBtn: UIButton!
     
-    var crossDelegate : BackToViewDelegate?
+    var viewContrl:UIViewController?
 
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     @IBAction func cancelBtn(_ sender: UIButton) {
-        self.dismiss(animated: true) {
-            self.crossDelegate?.userDidPressCancel()
-        }
+        
     }
     
     @IBAction func verifyBtn(_ sender: UIButton) {
-        self.dismiss(animated: true)
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            let vc = CompanyDetailsViewController()
+            self.pushViewController(vc, true)
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+            let vc =  FullNameViewController()
+            self.pushViewController(vc, true)
+        }else{
+            let vc = FullNameViewController()
+            self.pushViewController(vc, true)
+        }
+          
     }
-
 }

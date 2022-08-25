@@ -20,10 +20,14 @@ class CoustomerProfileVC: UIViewController {
     var imageArr = ["job-1","re","ic","abb","pp","log"]
     var listArr = ["Manage Jobs","Recovery Email","Terms of Use","About Us","Privacy Policy","Logout"]
     var companyProfileData:CompanyListingModel?
+    var customerData:CompanyListingData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hitGetProfileApi()
+        customDataUpdate = {
+            self.hitGetProfileApi()
+        }
         customerDataUpdate = {
             self.hitGetProfileApi()
         }
@@ -32,6 +36,7 @@ class CoustomerProfileVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        hitGetProfileApi()
         uiConfigure()
     }
 
@@ -73,9 +78,10 @@ class CoustomerProfileVC: UIViewController {
                     UserDefaults.standard.removeObject(forKey: "authToken")
                     appDel.navigation()
                 } else if status == 1{
+                    self.customerData =  aContact.data!
                     DispatchQueue.main.async { [self] in
                         self.nameLbl.text = aContact.data?.username ?? ""
-                        self.addressLbl.text = aContact.data?.city ?? ""
+                        self.addressLbl.text = aContact.data?.email ?? ""
                         var sPhotoStr = aContact.data?.photo ?? ""
                         UserDefaults.standard.set(sPhotoStr, forKey: "CoustomerProfileImage")
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -152,8 +158,13 @@ extension CoustomerProfileVC : UITableViewDelegate, UITableViewDataSource{
             self.pushViewController(manageJobs, true)
             break
         case "Recovery Email" :
-            let email = RecoveryEmailVC()
-            self.pushViewController(email, true)
+            if customerData?.verified == "1"{
+                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+            }else{
+                let email = RecoveryEmailVC()
+                email.isFromAccount = true
+                self.pushViewController(email, true)
+            }
             break
         case "Terms of Use" :
             let terms =  TermsConditionVC()

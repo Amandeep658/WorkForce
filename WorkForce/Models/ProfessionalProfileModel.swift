@@ -16,6 +16,7 @@ struct ProfessionalProfileData : Decodable {
     var last_name : String?
     var date_of_birth : String?
     var city : String?
+    var email : String?
     var state : String?
     var location : String?
     var description : String?
@@ -34,6 +35,7 @@ struct ProfessionalProfileData : Decodable {
     var rate_to : String?
     var rate_type : String?
     var job_type : String?
+    var verified : String?
     var catagory_details : [CategoryData]?
 
     enum CodingKeys: String, CodingKey {
@@ -42,6 +44,7 @@ struct ProfessionalProfileData : Decodable {
         case username = "username"
         case company_name = "company_name"
         case mobile_no = "mobile_no"
+        case email = "email"
         case first_name = "first_name"
         case last_name = "last_name"
         case date_of_birth = "date_of_birth"
@@ -64,6 +67,7 @@ struct ProfessionalProfileData : Decodable {
         case rate_to = "rate_to"
         case rate_type = "rate_type"
         case job_type = "job_type"
+        case verified = "verified"
         case catagory_details = "catagory_details"
     }
 
@@ -73,6 +77,7 @@ struct ProfessionalProfileData : Decodable {
         username = try values.decodeIfPresent(String.self, forKey: .username)
         company_name = try values.decodeIfPresent(String.self, forKey: .company_name)
         mobile_no = try values.decodeIfPresent(String.self, forKey: .mobile_no)
+        email = try values.decodeIfPresent(String.self, forKey: .email)
         first_name = try values.decodeIfPresent(String.self, forKey: .first_name)
         last_name = try values.decodeIfPresent(String.self, forKey: .last_name)
         date_of_birth = try values.decodeIfPresent(String.self, forKey: .date_of_birth)
@@ -95,6 +100,7 @@ struct ProfessionalProfileData : Decodable {
         rate_to = try values.decodeIfPresent(String.self, forKey: .rate_to)
         rate_type = try values.decodeIfPresent(String.self, forKey: .rate_type)
         job_type = try values.decodeIfPresent(String.self, forKey: .job_type)
+        verified = try values.decodeIfPresent(String.self, forKey: .verified)
         catagory_details = try values.decodeIfPresent([CategoryData].self, forKey: .catagory_details)
     }
 

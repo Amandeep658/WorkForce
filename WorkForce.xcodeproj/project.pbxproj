@@ -167,6 +167,8 @@
 		1890C20328B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C20128B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib */; };
 		1890C20928B65B6C00DAEAB3 /* PhoneNumberVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C20728B65B6C00DAEAB3 /* PhoneNumberVC.swift */; };
 		1890C20A28B65B6C00DAEAB3 /* PhoneNumberVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C20828B65B6C00DAEAB3 /* PhoneNumberVC.xib */; };
+		1890C20D28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1890C20B28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift */; };
+		1890C20E28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1890C20C28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.xib */; };
 		1896FBAC28ABA2AE00DC8A07 /* RecoveryEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896FBAA28ABA2AE00DC8A07 /* RecoveryEmailVC.swift */; };
 		1896FBAD28ABA2AE00DC8A07 /* RecoveryEmailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1896FBAB28ABA2AE00DC8A07 /* RecoveryEmailVC.xib */; };
 		1896FBB128ABAECC00DC8A07 /* EmailOtpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1896FBAF28ABAECC00DC8A07 /* EmailOtpVC.swift */; };
@@ -506,6 +508,8 @@
 		1890C20128B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecoverEmailOTPVC.xib; sourceTree = "<group>"; };
 		1890C20728B65B6C00DAEAB3 /* PhoneNumberVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberVC.swift; sourceTree = "<group>"; };
 		1890C20828B65B6C00DAEAB3 /* PhoneNumberVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhoneNumberVC.xib; sourceTree = "<group>"; };
+		1890C20B28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoverVerifyScreenVC.swift; sourceTree = "<group>"; };
+		1890C20C28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecoverVerifyScreenVC.xib; sourceTree = "<group>"; };
 		1896FBAA28ABA2AE00DC8A07 /* RecoveryEmailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryEmailVC.swift; sourceTree = "<group>"; };
 		1896FBAB28ABA2AE00DC8A07 /* RecoveryEmailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecoveryEmailVC.xib; sourceTree = "<group>"; };
 		1896FBAF28ABAECC00DC8A07 /* EmailOtpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailOtpVC.swift; sourceTree = "<group>"; };
@@ -1207,6 +1211,8 @@
 				1890C20628B65B4C00DAEAB3 /* PhoneNumber */,
 				1890C20528B63EF700DAEAB3 /* RecoverEmailOTP */,
 				1890C20428B63EE900DAEAB3 /* EmailVC */,
+				1890C20B28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift */,
+				1890C20C28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.xib */,
 			);
 			path = RecoverAccount;
 			sourceTree = "<group>";
@@ -2102,6 +2108,7 @@
 				1838C8BD28228380004A6FE7 /* Assets.xcassets in Resources */,
 				7C4911FE2834B97200F931A0 /* BusinessConnectTableViewCell.xib in Resources */,
 				18A09A4A28A1756000E91938 /* ConnectListDetailVC.xib in Resources */,
+				1890C20E28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.xib in Resources */,
 				18E6BC2D282BA4AD00650D95 /* ProfileTableViewCell.xib in Resources */,
 				18A8A9D8282B8658003253C5 /* Poppins-Regular.ttf in Resources */,
 				1890C20A28B65B6C00DAEAB3 /* PhoneNumberVC.xib in Resources */,
@@ -2407,6 +2414,7 @@
 				7C42425C2844D5ED0016163F /* Singleton.swift in Sources */,
 				188D0D6028786C0F007C7295 /* JobNearByModel.swift in Sources */,
 				7C97664D282CFE8A00336F43 /* EditProfileFooterView.swift in Sources */,
+				1890C20D28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift in Sources */,
 				188F711F2897FFE8005250DC /* SubcriptionClass.swift in Sources */,
 				7C4161B0283BA6EB003D8099 /* EditProfileDesignerViewController.swift in Sources */,
 				7C47B134284877F700E1D767 /* BusinessDesignerViewController.swift in Sources */,
