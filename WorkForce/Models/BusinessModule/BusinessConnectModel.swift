@@ -27,6 +27,7 @@ struct BusinessConnectComapnyModel : Codable {
 
 }
 struct BusinessConnectCompanyListData : Codable {
+    let customer_job_id : String?
     let user_id : String?
     let username : String?
     let isSubscribed : String?
@@ -64,7 +65,7 @@ struct BusinessConnectCompanyListData : Codable {
     let catagory_details : [BusinessConnectCompanyCatagory_details]?
 
     enum CodingKeys: String, CodingKey {
-
+        case customer_job_id = "customer_job_id"
         case user_id = "user_id"
         case username = "username"
         case isSubscribed = "isSubscribed"
@@ -104,6 +105,7 @@ struct BusinessConnectCompanyListData : Codable {
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
+        customer_job_id = try values.decodeIfPresent(String.self, forKey: .customer_job_id)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
         username = try values.decodeIfPresent(String.self, forKey: .username)
         isSubscribed = try values.decodeIfPresent(String.self, forKey: .isSubscribed)
@@ -144,6 +146,7 @@ struct BusinessConnectCompanyListData : Codable {
 }
 struct BusinessConnectCompanyCatagory_details : Codable {
     let id : String?
+    let customer_job_id : String?
     let user_id : String?
     let cat_id : String?
     let experience : String?
@@ -153,6 +156,7 @@ struct BusinessConnectCompanyCatagory_details : Codable {
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
+        case customer_job_id = "customer_job_id"
         case user_id = "user_id"
         case cat_id = "cat_id"
         case experience = "experience"
@@ -163,6 +167,7 @@ struct BusinessConnectCompanyCatagory_details : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
+        customer_job_id = try values.decodeIfPresent(String.self, forKey: .customer_job_id)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
         cat_id = try values.decodeIfPresent(String.self, forKey: .cat_id)
         experience = try values.decodeIfPresent(String.self, forKey: .experience)

@@ -64,9 +64,8 @@ class CustomerSkillVC: UIViewController {
             showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select categories." , okButton: "Ok", controller: self) {
             }
         }else{
-                let vc = YearOfExpViewController()
+                let vc = JobTypeViewController()
                 vc.professionalUserDict = self.professionalUserDict
-                vc.categoryListDelegate = self
                 self.pushViewController(vc, true)
             }
         }

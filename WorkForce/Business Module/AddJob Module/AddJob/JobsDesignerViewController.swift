@@ -234,6 +234,7 @@ extension JobsDesignerViewController : UITableViewDelegate , UITableViewDataSour
             let vc = ProfessionalLikePostViewController()
             vc.customerJobId = jobListDataArr[indexPath.row].customer_job_id ?? ""
             UserDefaults.standard.set(customerJobID, forKey: "setCustomerWorkerID")
+            vc.customerUserId = jobListDataArr[indexPath.row].user_id ?? ""
             self.pushViewController(vc, true)
         }
     }

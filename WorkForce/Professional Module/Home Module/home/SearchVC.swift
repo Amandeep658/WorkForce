@@ -43,6 +43,7 @@ class SearchVC: UIViewController,UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == ""{
             showAlert(message: "Please enter category name", title: AppAlertTitle.appName.rawValue)
+            self.searchListTableView.reloadData()
         }else{
             self.homeSearchJobListing()
             self.searchListTableView.reloadData()
@@ -58,6 +59,8 @@ class SearchVC: UIViewController,UISearchBarDelegate {
         if searchText == ""{
             self.page = 100
             self.pageCount = 1
+            self.searchjobListArr.removeAll()
+            self.countLabel.text  = "0 Job Opportunity"
             self.searchListTableView.reloadData()
         }
         else{
@@ -160,6 +163,7 @@ extension SearchVC:UITableViewDelegate,UITableViewDataSource{
         }else{
             cell.priceLbl.text = ""
         }
+        cell.contentListView.backgroundColor = .clear
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

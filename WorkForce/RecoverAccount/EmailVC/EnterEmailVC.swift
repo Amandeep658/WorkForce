@@ -43,6 +43,22 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
         return true
     }
     
+//    MARK: VALIDATION
+    func validation(){
+        if emailTF.text == "" {
+            showAlert(message: "Please enter email.", title: AppAlertTitle.appName.rawValue)
+        }else if emailTF.text!.isValidEmail == false{
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter vaild email." , okButton: "Ok", controller: self) {}
+        }else{
+            if UserType.userTypeInstance.userLogin == .Bussiness{
+                hitRecoverEmailApi()
+            }else if UserType.userTypeInstance.userLogin == .Professional{
+                hitRecoverEmailApi()
+            }else{
+                hitRecoverEmailApi()
+            }
+        }
+    }
     
     //    MARK: BUTTON ACTION
     @IBAction func backBtn(_ sender: UIButton) {
@@ -51,13 +67,7 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
     
     
     @IBAction func continueBtn(_ sender: UIButton) {
-        if UserType.userTypeInstance.userLogin == .Bussiness{
-            hitRecoverEmailApi()
-        }else if UserType.userTypeInstance.userLogin == .Professional{
-            hitRecoverEmailApi()
-        }else{
-            hitRecoverEmailApi()
-        }
+        validation()
     }
     
     
@@ -104,4 +114,10 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
         return parameters
     }
     
+}
+extension String {
+    func itisValidEmail() -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        return regex.firstMatch(in: self, options: [], range: NSRange(location: 0, length: count)) != nil
+    }
 }

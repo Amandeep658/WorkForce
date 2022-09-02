@@ -67,6 +67,18 @@
 		1848ACDC282640710040E069 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848ACDA282640710040E069 /* NotificationTableViewCell.xib */; };
 		1848ACE0282659810040E069 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848ACDE282659810040E069 /* HomeCollectionViewCell.swift */; };
 		1848ACE1282659810040E069 /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848ACDF282659810040E069 /* HomeCollectionViewCell.xib */; };
+		185171EA28BCA2460085ED8E /* BusinessHmVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185171E828BCA2460085ED8E /* BusinessHmVC.swift */; };
+		185171EB28BCA2460085ED8E /* BusinessHmVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185171E928BCA2460085ED8E /* BusinessHmVC.xib */; };
+		185171F128BCC19D0085ED8E /* CustomerJobListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185171EF28BCC19D0085ED8E /* CustomerJobListVC.swift */; };
+		185171F228BCC19D0085ED8E /* CustomerJobListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185171F028BCC19D0085ED8E /* CustomerJobListVC.xib */; };
+		185171F528BDDF160085ED8E /* CustomerListDetailScreenVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185171F328BDDF160085ED8E /* CustomerListDetailScreenVC.swift */; };
+		185171F628BDDF160085ED8E /* CustomerListDetailScreenVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185171F428BDDF160085ED8E /* CustomerListDetailScreenVC.xib */; };
+		1851720028BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185171FE28BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift */; };
+		1851720128BE18340085ED8E /* ConnectCustomerJobListDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185171FF28BE18340085ED8E /* ConnectCustomerJobListDetailVC.xib */; };
+		1851720528BE37B00085ED8E /* ConnectJobListNotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720328BE37B00085ED8E /* ConnectJobListNotificationVC.swift */; };
+		1851720628BE37B00085ED8E /* ConnectJobListNotificationVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851720428BE37B00085ED8E /* ConnectJobListNotificationVC.xib */; };
+		1851720A28BE3B7D0085ED8E /* CustomerJobListSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1851720828BE3B7D0085ED8E /* CustomerJobListSearchVC.swift */; };
+		1851720B28BE3B7D0085ED8E /* CustomerJobListSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1851720928BE3B7D0085ED8E /* CustomerJobListSearchVC.xib */; };
 		185574812823988600AFB18E /* OtpAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855747F2823988600AFB18E /* OtpAuthenticationViewController.swift */; };
 		185574822823988600AFB18E /* OtpAuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185574802823988600AFB18E /* OtpAuthenticationViewController.xib */; };
 		185574922823AF6300AFB18E /* FullNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185574902823AF6300AFB18E /* FullNameViewController.swift */; };
@@ -100,6 +112,12 @@
 		1876C4512828E10D00C6C9B2 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876C44F2828E10D00C6C9B2 /* SearchViewController.xib */; };
 		1876C46F2828F1E300C6C9B2 /* SetFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */; };
 		1876C4702828F1E300C6C9B2 /* SetFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */; };
+		1879802228B89129006A6C64 /* CustomerSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879802028B89129006A6C64 /* CustomerSearchVC.swift */; };
+		1879802328B89129006A6C64 /* CustomerSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879802128B89129006A6C64 /* CustomerSearchVC.xib */; };
+		1879802628B89B34006A6C64 /* companiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879802428B89B34006A6C64 /* companiesTableViewCell.swift */; };
+		1879802728B89B34006A6C64 /* companiesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879802528B89B34006A6C64 /* companiesTableViewCell.xib */; };
+		1879802B28B8A9CD006A6C64 /* CustomerSearchDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1879802928B8A9CD006A6C64 /* CustomerSearchDetailVC.swift */; };
+		1879802C28B8A9CD006A6C64 /* CustomerSearchDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1879802A28B8A9CD006A6C64 /* CustomerSearchDetailVC.xib */; };
 		188BE6B92887D0AA0088CBBA /* mapPinImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BE6B82887D0AA0088CBBA /* mapPinImage.swift */; };
 		188BE6BB28881C2C0088CBBA /* JobDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BE6BA28881C2C0088CBBA /* JobDetailModel.swift */; };
 		188BE6BD2888269C0088CBBA /* UserChatUserListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BE6BC2888269C0088CBBA /* UserChatUserListModel.swift */; };
@@ -191,6 +209,10 @@
 		18A09A4F28A24E2E00E91938 /* SearchDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A09A4D28A24E2E00E91938 /* SearchDetailVC.xib */; };
 		18A09A5228A27BAD00E91938 /* CustomerEditProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A09A5028A27BAD00E91938 /* CustomerEditProfileVC.swift */; };
 		18A09A5328A27BAD00E91938 /* CustomerEditProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A09A5128A27BAD00E91938 /* CustomerEditProfileVC.xib */; };
+		18A43ABC28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A43ABA28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift */; };
+		18A43ABD28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A43ABB28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.xib */; };
+		18A43AC128C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A43ABF28C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift */; };
+		18A43AC228C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A43AC028C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.xib */; };
 		18A6976E28742F9A009ED604 /* AppDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6976D28742F9A009ED604 /* AppDefault.swift */; };
 		18A7DDCB288F234B00AE9729 /* CoustomerFullNameVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A7DDC9288F234B00AE9729 /* CoustomerFullNameVC.swift */; };
 		18A7DDCC288F234B00AE9729 /* CoustomerFullNameVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A7DDCA288F234B00AE9729 /* CoustomerFullNameVC.xib */; };
@@ -403,6 +425,18 @@
 		1848ACDA282640710040E069 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
 		1848ACDE282659810040E069 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
 		1848ACDF282659810040E069 /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		185171E828BCA2460085ED8E /* BusinessHmVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHmVC.swift; sourceTree = "<group>"; };
+		185171E928BCA2460085ED8E /* BusinessHmVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusinessHmVC.xib; sourceTree = "<group>"; };
+		185171EF28BCC19D0085ED8E /* CustomerJobListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerJobListVC.swift; sourceTree = "<group>"; };
+		185171F028BCC19D0085ED8E /* CustomerJobListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerJobListVC.xib; sourceTree = "<group>"; };
+		185171F328BDDF160085ED8E /* CustomerListDetailScreenVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerListDetailScreenVC.swift; sourceTree = "<group>"; };
+		185171F428BDDF160085ED8E /* CustomerListDetailScreenVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerListDetailScreenVC.xib; sourceTree = "<group>"; };
+		185171FE28BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectCustomerJobListDetailVC.swift; sourceTree = "<group>"; };
+		185171FF28BE18340085ED8E /* ConnectCustomerJobListDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectCustomerJobListDetailVC.xib; sourceTree = "<group>"; };
+		1851720328BE37B00085ED8E /* ConnectJobListNotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectJobListNotificationVC.swift; sourceTree = "<group>"; };
+		1851720428BE37B00085ED8E /* ConnectJobListNotificationVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConnectJobListNotificationVC.xib; sourceTree = "<group>"; };
+		1851720828BE3B7D0085ED8E /* CustomerJobListSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerJobListSearchVC.swift; sourceTree = "<group>"; };
+		1851720928BE3B7D0085ED8E /* CustomerJobListSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerJobListSearchVC.xib; sourceTree = "<group>"; };
 		1855747F2823988600AFB18E /* OtpAuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtpAuthenticationViewController.swift; sourceTree = "<group>"; };
 		185574802823988600AFB18E /* OtpAuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtpAuthenticationViewController.xib; sourceTree = "<group>"; };
 		185574902823AF6300AFB18E /* FullNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullNameViewController.swift; sourceTree = "<group>"; };
@@ -436,6 +470,12 @@
 		1876C44F2828E10D00C6C9B2 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFilterViewController.swift; sourceTree = "<group>"; };
 		1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFilterViewController.xib; sourceTree = "<group>"; };
+		1879802028B89129006A6C64 /* CustomerSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSearchVC.swift; sourceTree = "<group>"; };
+		1879802128B89129006A6C64 /* CustomerSearchVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerSearchVC.xib; sourceTree = "<group>"; };
+		1879802428B89B34006A6C64 /* companiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = companiesTableViewCell.swift; sourceTree = "<group>"; };
+		1879802528B89B34006A6C64 /* companiesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = companiesTableViewCell.xib; sourceTree = "<group>"; };
+		1879802928B8A9CD006A6C64 /* CustomerSearchDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerSearchDetailVC.swift; sourceTree = "<group>"; };
+		1879802A28B8A9CD006A6C64 /* CustomerSearchDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerSearchDetailVC.xib; sourceTree = "<group>"; };
 		188BE6B82887D0AA0088CBBA /* mapPinImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapPinImage.swift; sourceTree = "<group>"; };
 		188BE6BA28881C2C0088CBBA /* JobDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobDetailModel.swift; sourceTree = "<group>"; };
 		188BE6BC2888269C0088CBBA /* UserChatUserListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserChatUserListModel.swift; sourceTree = "<group>"; };
@@ -532,6 +572,16 @@
 		18A09A4D28A24E2E00E91938 /* SearchDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchDetailVC.xib; sourceTree = "<group>"; };
 		18A09A5028A27BAD00E91938 /* CustomerEditProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerEditProfileVC.swift; sourceTree = "<group>"; };
 		18A09A5128A27BAD00E91938 /* CustomerEditProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerEditProfileVC.xib; sourceTree = "<group>"; };
+		18A43ABA28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerJobSearchListDetailVC.swift; sourceTree = "<group>"; };
+		18A43ABB28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerJobSearchListDetailVC.xib; sourceTree = "<group>"; };
+		18A43ABF28C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerLikeBusinessDetailVC.swift; sourceTree = "<group>"; };
+		18A43AC028C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerLikeBusinessDetailVC.xib; sourceTree = "<group>"; };
+		18A43AC828C0CA09006B8BA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		18A43AC928C0CA0B006B8BA7 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		18A43ACB28C0CA42006B8BA7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Main.strings"; sourceTree = "<group>"; };
+		18A43ACC28C0CA43006B8BA7 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		18A43ACE28C0CA4C006B8BA7 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Main.strings"; sourceTree = "<group>"; };
+		18A43ACF28C0CA4D006B8BA7 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		18A6976D28742F9A009ED604 /* AppDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefault.swift; sourceTree = "<group>"; };
 		18A7DDC9288F234B00AE9729 /* CoustomerFullNameVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoustomerFullNameVC.swift; sourceTree = "<group>"; };
 		18A7DDCA288F234B00AE9729 /* CoustomerFullNameVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoustomerFullNameVC.xib; sourceTree = "<group>"; };
@@ -902,6 +952,93 @@
 			path = notification;
 			sourceTree = "<group>";
 		};
+		185171E728BCA1C90085ED8E /* ADD-ONHOMESCREENMODULE */ = {
+			isa = PBXGroup;
+			children = (
+				1851720728BE3B580085ED8E /* CustomerJobListSearch */,
+				1851720228BE37880085ED8E /* ConnectJobListNotification */,
+				185171FD28BE18110085ED8E /* ConnectCustomerJobList */,
+				185171F928BDDF4C0085ED8E /* CustomerJobListVC */,
+				185171F828BDDF390085ED8E /* BusinessHomeVC */,
+				185171F728BDDF1B0085ED8E /* CustomerListDetail */,
+			);
+			path = "ADD-ONHOMESCREENMODULE";
+			sourceTree = "<group>";
+		};
+		185171F728BDDF1B0085ED8E /* CustomerListDetail */ = {
+			isa = PBXGroup;
+			children = (
+				185171F328BDDF160085ED8E /* CustomerListDetailScreenVC.swift */,
+				185171F428BDDF160085ED8E /* CustomerListDetailScreenVC.xib */,
+			);
+			path = CustomerListDetail;
+			sourceTree = "<group>";
+		};
+		185171F828BDDF390085ED8E /* BusinessHomeVC */ = {
+			isa = PBXGroup;
+			children = (
+				185171E828BCA2460085ED8E /* BusinessHmVC.swift */,
+				185171E928BCA2460085ED8E /* BusinessHmVC.xib */,
+			);
+			path = BusinessHomeVC;
+			sourceTree = "<group>";
+		};
+		185171F928BDDF4C0085ED8E /* CustomerJobListVC */ = {
+			isa = PBXGroup;
+			children = (
+				185171EF28BCC19D0085ED8E /* CustomerJobListVC.swift */,
+				185171F028BCC19D0085ED8E /* CustomerJobListVC.xib */,
+			);
+			path = CustomerJobListVC;
+			sourceTree = "<group>";
+		};
+		185171FA28BDDF5E0085ED8E /* BusinessHomeMapView */ = {
+			isa = PBXGroup;
+			children = (
+				7C48B43C283394C500E4C5B1 /* BusinessHomeViewController.swift */,
+				7C48B43D283394C500E4C5B1 /* BusinessHomeViewController.xib */,
+			);
+			path = BusinessHomeMapView;
+			sourceTree = "<group>";
+		};
+		185171FB28BDDF840085ED8E /* HomeMapSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				189851042861EBE700E81312 /* SearchListVC.swift */,
+				189851052861EBE700E81312 /* SearchListVC.xib */,
+			);
+			path = HomeMapSearchView;
+			sourceTree = "<group>";
+		};
+		185171FD28BE18110085ED8E /* ConnectCustomerJobList */ = {
+			isa = PBXGroup;
+			children = (
+				185171FE28BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift */,
+				185171FF28BE18340085ED8E /* ConnectCustomerJobListDetailVC.xib */,
+			);
+			path = ConnectCustomerJobList;
+			sourceTree = "<group>";
+		};
+		1851720228BE37880085ED8E /* ConnectJobListNotification */ = {
+			isa = PBXGroup;
+			children = (
+				1851720328BE37B00085ED8E /* ConnectJobListNotificationVC.swift */,
+				1851720428BE37B00085ED8E /* ConnectJobListNotificationVC.xib */,
+			);
+			path = ConnectJobListNotification;
+			sourceTree = "<group>";
+		};
+		1851720728BE3B580085ED8E /* CustomerJobListSearch */ = {
+			isa = PBXGroup;
+			children = (
+				1851720828BE3B7D0085ED8E /* CustomerJobListSearchVC.swift */,
+				1851720928BE3B7D0085ED8E /* CustomerJobListSearchVC.xib */,
+				18A43ABA28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift */,
+				18A43ABB28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.xib */,
+			);
+			path = CustomerJobListSearch;
+			sourceTree = "<group>";
+		};
 		1855748528239A2A00AFB18E /* OtpAuthentication */ = {
 			isa = PBXGroup;
 			children = (
@@ -1032,6 +1169,24 @@
 				189851012861CEC400E81312 /* SetFilterVC.xib */,
 			);
 			path = SetFilter;
+			sourceTree = "<group>";
+		};
+		1879801F28B8910F006A6C64 /* CustomerSearch */ = {
+			isa = PBXGroup;
+			children = (
+				1879802028B89129006A6C64 /* CustomerSearchVC.swift */,
+				1879802128B89129006A6C64 /* CustomerSearchVC.xib */,
+			);
+			path = CustomerSearch;
+			sourceTree = "<group>";
+		};
+		1879802828B8A9A5006A6C64 /* CustomerSearchDetail */ = {
+			isa = PBXGroup;
+			children = (
+				1879802928B8A9CD006A6C64 /* CustomerSearchDetailVC.swift */,
+				1879802A28B8A9CD006A6C64 /* CustomerSearchDetailVC.xib */,
+			);
+			path = CustomerSearchDetail;
 			sourceTree = "<group>";
 		};
 		188D0780288D0F8C000861A5 /* ProfesionalLikePostController */ = {
@@ -1285,6 +1440,7 @@
 		1896FBB828ACAD1E00DC8A07 /* CustomerAddJob */ = {
 			isa = PBXGroup;
 			children = (
+				18A43ABE28C0A1AB006B8BA7 /* CustomerLikeBusinessDetail */,
 				1890C1F028B399F000DAEAB3 /* CustomerProfessionalLikeVC */,
 				1890C1EF28B399E100DAEAB3 /* CustomerInfoVIewController */,
 				1896FBB928ACAD3300DC8A07 /* CustomerSkillViewController */,
@@ -1456,6 +1612,15 @@
 			path = "AddJob Module";
 			sourceTree = "<group>";
 		};
+		18A43ABE28C0A1AB006B8BA7 /* CustomerLikeBusinessDetail */ = {
+			isa = PBXGroup;
+			children = (
+				18A43ABF28C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift */,
+				18A43AC028C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.xib */,
+			);
+			path = CustomerLikeBusinessDetail;
+			sourceTree = "<group>";
+		};
 		18A7DDC2288F224400AE9729 /* Customer Module */ = {
 			isa = PBXGroup;
 			children = (
@@ -1485,8 +1650,12 @@
 		18A7DDC5288F22E500AE9729 /* HomeModule */ = {
 			isa = PBXGroup;
 			children = (
+				1879802828B8A9A5006A6C64 /* CustomerSearchDetail */,
+				1879801F28B8910F006A6C64 /* CustomerSearch */,
 				1816215328A0D7E500743DE4 /* CustomerHome */,
 				1816214E28A0D7BF00743DE4 /* CoustomerDetail */,
+				1879802428B89B34006A6C64 /* companiesTableViewCell.swift */,
+				1879802528B89B34006A6C64 /* companiesTableViewCell.xib */,
 			);
 			path = HomeModule;
 			sourceTree = "<group>";
@@ -1857,10 +2026,9 @@
 		7C48B441283394CE00E4C5B1 /* BusinessHome */ = {
 			isa = PBXGroup;
 			children = (
-				7C48B43C283394C500E4C5B1 /* BusinessHomeViewController.swift */,
-				7C48B43D283394C500E4C5B1 /* BusinessHomeViewController.xib */,
-				189851042861EBE700E81312 /* SearchListVC.swift */,
-				189851052861EBE700E81312 /* SearchListVC.xib */,
+				185171FB28BDDF840085ED8E /* HomeMapSearchView */,
+				185171FA28BDDF5E0085ED8E /* BusinessHomeMapView */,
+				185171E728BCA1C90085ED8E /* ADD-ONHOMESCREENMODULE */,
 			);
 			path = BusinessHome;
 			sourceTree = "<group>";
@@ -2008,6 +2176,9 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				"pt-BR",
+				"pt-PT",
 			);
 			mainGroup = 1838C8A72822837F004A6FE7;
 			productRefGroup = 1838C8B12822837F004A6FE7 /* Products */;
@@ -2028,6 +2199,7 @@
 				1838C8CB2822851C004A6FE7 /* BusinessesViewController.xib in Resources */,
 				18162141289E32AA00743DE4 /* CoustomerLocationVC.xib in Resources */,
 				181B6CB1282A41E6008B2D0A /* HeaderCollectionReusableView.xib in Resources */,
+				1851720B28BE3B7D0085ED8E /* CustomerJobListSearchVC.xib in Resources */,
 				18A7DDD0288F236800AE9729 /* CustomerDOBVC.xib in Resources */,
 				18A8EB602844EEEA005F0DE4 /* SingleChatController.xib in Resources */,
 				18DBBDDF2825278C0047A42D /* ConnectTableViewCell.xib in Resources */,
@@ -2036,12 +2208,16 @@
 				18A8EB4C2844EE80005F0DE4 /* TabBarVC.xib in Resources */,
 				1848ACDC282640710040E069 /* NotificationTableViewCell.xib in Resources */,
 				7C43EEA6283676D600095170 /* BusinessEditProfileViewController.xib in Resources */,
+				185171F628BDDF160085ED8E /* CustomerListDetailScreenVC.xib in Resources */,
+				185171F228BCC19D0085ED8E /* CustomerJobListVC.xib in Resources */,
 				7C488A18283210A900B5B328 /* JobTypeViewController.xib in Resources */,
 				7C3D95A52851CD16008689F5 /* ProfessionalRateViewController.xib in Resources */,
 				7C1276FF2836030400044746 /* SkillTableViewController.xib in Resources */,
 				18A09A5328A27BAD00E91938 /* CustomerEditProfileVC.xib in Resources */,
 				189851072861EBE700E81312 /* SearchListVC.xib in Resources */,
+				18A43ABD28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.xib in Resources */,
 				18A8A9D6282B8658003253C5 /* Poppins-Bold.ttf in Resources */,
+				1851720128BE18340085ED8E /* ConnectCustomerJobListDetailVC.xib in Resources */,
 				181B6CF1282A8DBF008B2D0A /* ChatTableViewCell.xib in Resources */,
 				1896FBC828AE307700DC8A07 /* CustomerManageJobVC.xib in Resources */,
 				1848ACD528263ADA0040E069 /* NotificationViewController.xib in Resources */,
@@ -2086,6 +2262,7 @@
 				188F2489287D5CA80076C518 /* ProfessionalFilterVC.xib in Resources */,
 				7C97664A282CFC0200336F43 /* EditProfileHeaderView.xib in Resources */,
 				18DBBDCE282514400047A42D /* ChatViewController.xib in Resources */,
+				185171EB28BCA2460085ED8E /* BusinessHmVC.xib in Resources */,
 				7C127706283604A400044746 /* SkillTableTableViewCell.xib in Resources */,
 				7C4257392847D8AD003FE968 /* YearOfExpTableViewCell.xib in Resources */,
 				18A7DDCC288F234B00AE9729 /* CoustomerFullNameVC.xib in Resources */,
@@ -2116,6 +2293,7 @@
 				1890C20328B63ECD00DAEAB3 /* RecoverEmailOTPVC.xib in Resources */,
 				181B6CB7282A568B008B2D0A /* FooterCollectionReusableView.xib in Resources */,
 				1838C8BB2822837F004A6FE7 /* Main.storyboard in Resources */,
+				1851720628BE37B00085ED8E /* ConnectJobListNotificationVC.xib in Resources */,
 				1896FBBD28ACAD5C00DC8A07 /* CustomerSkillVC.xib in Resources */,
 				1896FBB728ABB6EB00DC8A07 /* VerifyEmailVC.xib in Resources */,
 				18162149289E504B00743DE4 /* CoustomerChatVC.xib in Resources */,
@@ -2123,7 +2301,9 @@
 				1890C1F428B3AAD700DAEAB3 /* CustomerInfoDetailVC.xib in Resources */,
 				7CB34F77283B9175001FD67E /* ManagerJobsDesignerViewController.xib in Resources */,
 				18E6BC3A282BD41700650D95 /* DesignerViewController.xib in Resources */,
+				1879802C28B8A9CD006A6C64 /* CustomerSearchDetailVC.xib in Resources */,
 				183D06792824F08600CC9B07 /* ProfessionalsViewController.xib in Resources */,
+				18A43AC228C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.xib in Resources */,
 				7C48B44C2833960A00E4C5B1 /* BusinessChatViewController.xib in Resources */,
 				7C12771228362BAE00044746 /* YearListTableViewCell.xib in Resources */,
 				1838C8D62822A0DB004A6FE7 /* VerifyNumberViewController.xib in Resources */,
@@ -2134,12 +2314,14 @@
 				188F248D287DADC10076C518 /* SearchVC.xib in Resources */,
 				181FA91328757E950049D8D6 /* LocationVC.xib in Resources */,
 				1848ACE1282659810040E069 /* HomeCollectionViewCell.xib in Resources */,
+				1879802328B89129006A6C64 /* CustomerSearchVC.xib in Resources */,
 				181FA916287583110049D8D6 /* CountryViewCell.xib in Resources */,
 				185574932823AF6300AFB18E /* FullNameViewController.xib in Resources */,
 				7C48B4272833614B00E4C5B1 /* CompanyDetailsViewController.xib in Resources */,
 				188F15342865AFB9000D96D1 /* TermsConditionVC.xib in Resources */,
 				18A8A9D9282B8658003253C5 /* Poppins-Light.ttf in Resources */,
 				7C47B135284877F700E1D767 /* BusinessDesignerViewController.xib in Resources */,
+				1879802728B89B34006A6C64 /* companiesTableViewCell.xib in Resources */,
 				1816215228A0D7DC00743DE4 /* CustomerDetailVC.xib in Resources */,
 				1838C8D128229020004A6FE7 /* LogInViewController.xib in Resources */,
 				188D0784288D0FC4000861A5 /* ProfessionalikePostDescriptionController.xib in Resources */,
@@ -2254,6 +2436,7 @@
 				188BE6B92887D0AA0088CBBA /* mapPinImage.swift in Sources */,
 				1890C1F928B5FF7A00DAEAB3 /* CustomerDeleteJob.swift in Sources */,
 				18B31D0F2845D5A8002B79F1 /* ExampleAnimateTipsContentView.swift in Sources */,
+				1879802B28B8A9CD006A6C64 /* CustomerSearchDetailVC.swift in Sources */,
 				18589163282CE2C800655F79 /* EditProfileTableViewCell.swift in Sources */,
 				7C48B4512833963B00E4C5B1 /* BusinessProfileViewController.swift in Sources */,
 				188D077F288AC049000861A5 /* ProfessionalLikeJobModel.swift in Sources */,
@@ -2286,6 +2469,7 @@
 				18A09A5228A27BAD00E91938 /* CustomerEditProfileVC.swift in Sources */,
 				1896FBBC28ACAD5C00DC8A07 /* CustomerSkillVC.swift in Sources */,
 				7C4161AA283B9C32003D8099 /* NikeIncDesignerViewController.swift in Sources */,
+				18A43AC128C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift in Sources */,
 				18DBBDCD282514400047A42D /* ChatViewController.swift in Sources */,
 				183E2F3C287EA5B500756823 /* connectListViewCell.swift in Sources */,
 				185574B82823B24800AFB18E /* UIView+Custom.swift in Sources */,
@@ -2344,6 +2528,7 @@
 				185574B32823B24800AFB18E /* UILabel+Custom.swift in Sources */,
 				185574BA2823B24800AFB18E /* UITableView+Custom.swift in Sources */,
 				18B31D172845D5A8002B79F1 /* ExampleNavigationController.swift in Sources */,
+				185171F528BDDF160085ED8E /* CustomerListDetailScreenVC.swift in Sources */,
 				7C479286283CB1E4000C13C9 /* ProfessionalLikePostViewController.swift in Sources */,
 				1896FBAC28ABA2AE00DC8A07 /* RecoveryEmailVC.swift in Sources */,
 				18B31D132845D5A8002B79F1 /* ExampleIrregularityContentView.swift in Sources */,
@@ -2357,7 +2542,9 @@
 				7CB34F66283B55CB001FD67E /* ManageJobsViewController.swift in Sources */,
 				188F711D2897FCA4005250DC /* IAPService.swift in Sources */,
 				188CEE1C286CA76B00CD975C /* SingletonLocal.swift in Sources */,
+				1851720528BE37B00085ED8E /* ConnectJobListNotificationVC.swift in Sources */,
 				182560832886E16800AFB618 /* PlaceMarker.swift in Sources */,
+				1851720A28BE3B7D0085ED8E /* CustomerJobListSearchVC.swift in Sources */,
 				7C45F9B1285310B400941CD2 /* ExperienceTableViewCell.swift in Sources */,
 				185574C12823B24800AFB18E /* UIStoryboard+Custom.swift in Sources */,
 				185574B92823B24800AFB18E /* String+Custom.swift in Sources */,
@@ -2381,11 +2568,13 @@
 				1816215128A0D7DC00743DE4 /* CustomerDetailVC.swift in Sources */,
 				18C810F02869D04600305AB1 /* CompanyListing.swift in Sources */,
 				181FA90E28757E410049D8D6 /* JobsDesignerViewController.swift in Sources */,
+				1879802228B89129006A6C64 /* CustomerSearchVC.swift in Sources */,
 				7C48B4262833614B00E4C5B1 /* CompanyDetailsViewController.swift in Sources */,
 				18B31D162845D5A8002B79F1 /* ESTabBarItemContentView.swift in Sources */,
 				1816215628A0FB0E00743DE4 /* CustomerDetailModel.swift in Sources */,
 				18A89F312889273B004B2F93 /* SocketManager.swift in Sources */,
 				7C127717283633ED00044746 /* ProfileDesignViewController.swift in Sources */,
+				18A43ABC28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift in Sources */,
 				18DBBD8828250AB70047A42D /* HomeViewController.swift in Sources */,
 				188D0783288D0FC4000861A5 /* ProfessionalikePostDescriptionController.swift in Sources */,
 				188CEE1A286C779500CD975C /* ProfessionalProfileModel.swift in Sources */,
@@ -2406,17 +2595,20 @@
 				18162144289E503300743DE4 /* CoustomerConnectVC.swift in Sources */,
 				188F15112865921E000D96D1 /* GetImageFromPicker.swift in Sources */,
 				188D0D5E28784848007C7295 /* NearByWorkerModel.swift in Sources */,
+				1879802628B89B34006A6C64 /* companiesTableViewCell.swift in Sources */,
 				188D0D542876E53D007C7295 /* DeleteJobVC.swift in Sources */,
 				7C48B43E283394C500E4C5B1 /* BusinessHomeViewController.swift in Sources */,
 				1890C1E928B34EB500DAEAB3 /* CustomerManageJobListDetailVC.swift in Sources */,
 				1876C4502828E10D00C6C9B2 /* SearchViewController.swift in Sources */,
 				1848ACE0282659810040E069 /* HomeCollectionViewCell.swift in Sources */,
 				7C42425C2844D5ED0016163F /* Singleton.swift in Sources */,
+				185171F128BCC19D0085ED8E /* CustomerJobListVC.swift in Sources */,
 				188D0D6028786C0F007C7295 /* JobNearByModel.swift in Sources */,
 				7C97664D282CFE8A00336F43 /* EditProfileFooterView.swift in Sources */,
 				1890C20D28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift in Sources */,
 				188F711F2897FFE8005250DC /* SubcriptionClass.swift in Sources */,
 				7C4161B0283BA6EB003D8099 /* EditProfileDesignerViewController.swift in Sources */,
+				185171EA28BCA2460085ED8E /* BusinessHmVC.swift in Sources */,
 				7C47B134284877F700E1D767 /* BusinessDesignerViewController.swift in Sources */,
 				18B31D0D2845D5A8002B79F1 /* ExampleBackgroundContentView.swift in Sources */,
 				7C417124282E85F300D836D0 /* SubcribeViewController.swift in Sources */,
@@ -2431,6 +2623,7 @@
 				1816214C289E506000743DE4 /* CoustomerProfileVC.swift in Sources */,
 				188F2488287D5CA80076C518 /* ProfessionalFilterVC.swift in Sources */,
 				181FA918287583240049D8D6 /* CountryViewCell.swift in Sources */,
+				1851720028BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift in Sources */,
 				18B31D152845D5A8002B79F1 /* ESTabBarController.swift in Sources */,
 				18A8EB5F2844EEEA005F0DE4 /* SingleChatController.swift in Sources */,
 				18B31D102845D5A8002B79F1 /* ExampleBasicContentView.swift in Sources */,
@@ -2450,6 +2643,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				1838C8BA2822837F004A6FE7 /* Base */,
+				18A43AC828C0CA09006B8BA7 /* es */,
+				18A43ACB28C0CA42006B8BA7 /* pt-BR */,
+				18A43ACE28C0CA4C006B8BA7 /* pt-PT */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -2458,6 +2654,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				1838C8BF28228380004A6FE7 /* Base */,
+				18A43AC928C0CA0B006B8BA7 /* es */,
+				18A43ACC28C0CA43006B8BA7 /* pt-BR */,
+				18A43ACF28C0CA4D006B8BA7 /* pt-PT */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -2469,6 +2668,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2530,6 +2730,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -2590,7 +2791,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 42;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
@@ -2616,7 +2817,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 42;
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

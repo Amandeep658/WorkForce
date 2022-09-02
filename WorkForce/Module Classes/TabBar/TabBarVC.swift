@@ -67,7 +67,7 @@ class TabBarVC: ESTabBarController {
         self.tabBar.borderColor = .black
         self.tabBar.borderWidth = 1.0
         if  UserType.userTypeInstance.userLogin == .Bussiness{
-            let v1 =  UINavigationController(rootViewController: BusinessHomeViewController())
+            let v1 =  UINavigationController(rootViewController: BusinessHmVC())
             v1.navigationBar.isHidden = true
             let v2 =  UINavigationController(rootViewController: BusinessConnectViewController())
             v2.navigationBar.isHidden = true

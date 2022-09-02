@@ -163,6 +163,10 @@ class BusinessDesignerViewController: UIViewController {
             let status = response["status"] as? Int ?? 0
             let message = response["message"] as? String ?? ""
             if status == 1 {
+                let navVC = tabBarController?.viewControllers![1] as! UINavigationController//
+                let cartTableViewController = navVC.topViewController as! BusinessConnectViewController
+                cartTableViewController.currentIndex = 0
+                print("cartTableViewController.currentIndex*****************>>>>>>>>>",cartTableViewController.currentIndex)
                 self.tabBarController?.selectedIndex = 1
                 }else{
                     print(message)

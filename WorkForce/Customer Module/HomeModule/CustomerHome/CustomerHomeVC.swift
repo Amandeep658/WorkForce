@@ -40,14 +40,13 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
         super.viewWillAppear(animated)
         companiesListTableView.delegate = self
         companiesListTableView.dataSource = self
-        companiesListTableView.register(UINib(nibName: "ConnectTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
+        companiesListTableView.register(UINib(nibName: "customerConnectListCell", bundle: nil), forCellReuseIdentifier: "customerConnectListCell")
         self.tabBarController?.tabBar.isHidden = false
         self.getLocation()
     }
 
     @IBAction func searchBtn(_ sender: UIButton) {
-        let vc =  SearchListVC()
-//        vc.currentLocation = nearByLocation
+        let vc =  CustomerSearchVC()
         self.pushViewController(vc, true)
     }
     
@@ -207,7 +206,6 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
                 }else if status == 1 {
                     self.nearByComapniessArr = aContact.data!
                     self.companiesListTableView.setBackgroundView(message: "")
-                    self.companiesListTableView.setBackgroundView(message: "message")
                     self.addMarkers(lat: locationss?.latitude ?? 0.0, long: locationss?.longitude ?? 0.0)
                     let fltr = self.nearByComapniessArr.filter({$0.latitude != "0"})
                     print("count is ****** \(fltr.count)")
@@ -242,14 +240,16 @@ extension CustomerHomeVC : UITableViewDelegate , UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ConnectTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customerConnectListCell", for: indexPath) as! customerConnectListCell
         var sPhotoStr = nearByComapniessArr[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
-        cell.cellImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
-        cell.designerLbl.text = "\(nearByComapniessArr[indexPath.row].location ?? "") "
-        cell.cellLbl.text = nearByComapniessArr[indexPath.row].company_name ?? ""
-        cell.priceLbl.text = ""
+        cell.customeImgView.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
+        cell.locationLbl.text = "\(nearByComapniessArr[indexPath.row].location ?? "") "
+        cell.companyName.text = nearByComapniessArr[indexPath.row].company_name ?? ""
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

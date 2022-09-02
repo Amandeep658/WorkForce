@@ -286,7 +286,6 @@ extension SingleChatController: GrowingTextViewDelegate {
                     self.chatHistory.reverse()
                     self.chatTable.reloadData()
                     self.chatTable.tableViewScrollToBottom(animated: true)
-                    
                 }else{
                     self.chatTable.reloadData()
                 }
@@ -331,14 +330,10 @@ extension SingleChatController: GrowingTextViewDelegate {
     
     //    MARK: PROFILE DEATIL DATA
     func hitCompanyListing(){
-//        DispatchQueue.main.async {
-//            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
-//        }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getCompanyListing, params: [:], headers: headers) { response in
-//            AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)

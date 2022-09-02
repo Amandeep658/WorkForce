@@ -7,14 +7,10 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Poppins-Bold.ttf">
-            <string>Poppins-Bold</string>
-        </array>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessConnectViewController" customModule="WorkForce" customModuleProvider="target">
             <connections>
+                <outlet property="connectSegmentControl" destination="gpz-G0-AyL" id="u2I-9Z-MWc"/>
                 <outlet property="connectTableView" destination="1FL-mp-RSi" id="atB-L3-t3Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -32,26 +28,26 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
-                    <rect key="frame" x="0.0" y="30" width="414" height="90"/>
+                    <rect key="frame" x="0.0" y="30" width="414" height="60"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liked Professionals" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFb-Vj-FLa">
-                            <rect key="frame" x="20" y="15" width="214" height="75"/>
-                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="24"/>
-                            <color key="textColor" red="0.2297952771" green="0.58074873689999995" blue="0.71872895960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gpz-G0-AyL">
+                            <rect key="frame" x="57.5" y="14.5" width="299" height="32"/>
+                            <segments>
+                                <segment title="Liked Professionals"/>
+                                <segment title="Customer Liked Jobs"/>
+                            </segments>
+                            <color key="selectedSegmentTintColor" red="0.22805979849999999" green="0.58245855570000005" blue="0.72041785719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="90" id="06T-YT-yKr"/>
-                        <constraint firstAttribute="trailing" secondItem="iFb-Vj-FLa" secondAttribute="trailing" constant="180" id="0Ir-o5-AT1"/>
-                        <constraint firstItem="iFb-Vj-FLa" firstAttribute="leading" secondItem="IMi-af-ZdI" secondAttribute="leading" constant="20" id="9iq-sp-dLU"/>
-                        <constraint firstItem="iFb-Vj-FLa" firstAttribute="top" secondItem="IMi-af-ZdI" secondAttribute="top" constant="15" id="lh1-Tj-WNT"/>
-                        <constraint firstAttribute="bottom" secondItem="iFb-Vj-FLa" secondAttribute="bottom" id="qKH-6d-qAS"/>
+                        <constraint firstAttribute="height" constant="60" id="06T-YT-yKr"/>
+                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerY" secondItem="IMi-af-ZdI" secondAttribute="centerY" id="310-Wc-DCH"/>
+                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerX" secondItem="IMi-af-ZdI" secondAttribute="centerX" id="ImU-nj-SYo"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-mp-RSi">
-                    <rect key="frame" x="0.0" y="120" width="414" height="776"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-mp-RSi">
+                    <rect key="frame" x="0.0" y="90" width="414" height="806"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>

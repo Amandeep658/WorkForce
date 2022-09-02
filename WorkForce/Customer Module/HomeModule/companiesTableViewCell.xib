@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="companiesTableViewCell" rowHeight="102" id="KGk-i7-Jjw" customClass="companiesTableViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="526" height="102"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="526" height="102"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8jO-2g-YuW">
+                        <rect key="frame" x="10" y="15" width="506" height="85"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook" translatesAutoresizingMaskIntoConstraints="NO" id="Pff-tV-WpI">
+                                <rect key="frame" x="10" y="15.5" width="54" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="54" id="m62-ls-7zA"/>
+                                    <constraint firstAttribute="height" constant="54" id="tnr-fP-p5t"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nxQ-ul-WI3">
+                                <rect key="frame" x="10" y="15.5" width="54" height="54"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Facebook" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJc-Co-fqn">
+                                <rect key="frame" x="83" y="15.5" width="59.5" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="IXw-qu-LEF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                <color key="textColor" red="0.7528852224" green="0.75297397379999997" blue="0.75284439329999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UI/UX Designer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tdN-ry-KWK">
+                                <rect key="frame" x="83" y="39.5" width="403" height="20"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Pff-tV-WpI" firstAttribute="centerY" secondItem="8jO-2g-YuW" secondAttribute="centerY" id="68t-me-Xd4"/>
+                            <constraint firstItem="kJc-Co-fqn" firstAttribute="top" secondItem="nxQ-ul-WI3" secondAttribute="top" id="GMD-hX-t8i"/>
+                            <constraint firstItem="nxQ-ul-WI3" firstAttribute="centerX" secondItem="Pff-tV-WpI" secondAttribute="centerX" id="Hu5-5b-nVu"/>
+                            <constraint firstItem="tdN-ry-KWK" firstAttribute="top" secondItem="kJc-Co-fqn" secondAttribute="bottom" constant="4" id="NuZ-OL-hWI"/>
+                            <constraint firstItem="nxQ-ul-WI3" firstAttribute="height" secondItem="Pff-tV-WpI" secondAttribute="height" id="SkL-qF-aDe"/>
+                            <constraint firstItem="kJc-Co-fqn" firstAttribute="leading" secondItem="nxQ-ul-WI3" secondAttribute="trailing" constant="19" id="aOO-8L-Ids"/>
+                            <constraint firstAttribute="trailing" secondItem="tdN-ry-KWK" secondAttribute="trailing" constant="20" id="f6L-ey-0wT"/>
+                            <constraint firstItem="nxQ-ul-WI3" firstAttribute="centerY" secondItem="Pff-tV-WpI" secondAttribute="centerY" id="iqq-UH-LPd"/>
+                            <constraint firstItem="tdN-ry-KWK" firstAttribute="leading" secondItem="kJc-Co-fqn" secondAttribute="leading" id="vu9-SP-XAw"/>
+                            <constraint firstItem="nxQ-ul-WI3" firstAttribute="width" secondItem="Pff-tV-WpI" secondAttribute="width" id="ylx-U7-ber"/>
+                            <constraint firstItem="Pff-tV-WpI" firstAttribute="leading" secondItem="8jO-2g-YuW" secondAttribute="leading" constant="10" id="zG7-ll-HbU"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="12"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="8jO-2g-YuW" secondAttribute="bottom" constant="2" id="1AJ-yj-nby"/>
+                    <constraint firstItem="8jO-2g-YuW" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Fr2-Be-OY1"/>
+                    <constraint firstItem="8jO-2g-YuW" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="S16-Sr-zZh"/>
+                    <constraint firstAttribute="trailing" secondItem="8jO-2g-YuW" secondAttribute="trailing" constant="10" id="oi5-gt-6Eb"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="companyNameLbl" destination="kJc-Co-fqn" id="RUq-Eh-qFU"/>
+                <outlet property="headerContentView" destination="8jO-2g-YuW" id="6Fs-zJ-OAL"/>
+                <outlet property="imgView" destination="Pff-tV-WpI" id="FIN-ZP-YUE"/>
+                <outlet property="locationLbl" destination="tdN-ry-KWK" id="DYX-gB-UiG"/>
+            </connections>
+            <point key="canvasLocation" x="-381.15942028985512" y="22.767857142857142"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="facebook" width="132" height="130"/>
+    </resources>
+</document>

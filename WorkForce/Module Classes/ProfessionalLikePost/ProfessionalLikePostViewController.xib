@@ -16,6 +16,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfessionalLikePostViewController" customModule="WorkForce" customModuleProvider="target">
             <connections>
                 <outlet property="backBtn" destination="Bla-Em-APf" id="6Jt-Mh-pcL"/>
+                <outlet property="headerLbl" destination="SMn-fx-fsE" id="M30-b3-4PO"/>
                 <outlet property="infoBtn" destination="mL4-lz-edc" id="gG2-9y-baX"/>
                 <outlet property="likeTableView" destination="hOo-Q5-sD6" id="7kk-xZ-MrT"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>

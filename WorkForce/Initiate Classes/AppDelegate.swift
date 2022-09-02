@@ -52,6 +52,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.window?.makeKeyAndVisible()
     }
     
+    func specificNavigation(){
+        let nav = UINavigationController(rootViewController: CustomerJobListVC(nibName: "CustomerJobListVC", bundle: nil))
+        nav.navigationBar.isHidden = true
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+    }
+    
     func ManageClassnavigation(){
         let nav = UINavigationController(rootViewController: ManageJobsViewController(nibName: "ManageJobsViewController", bundle: nil))
         nav.navigationBar.isHidden = true
@@ -216,8 +223,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let notificationType = data["notification_type"] as? String
         switch notificationType {
         case "1":
+            let isType = data["type"] as? String
             let isSubscription =  data["isSubscribed"] as? String
-            if isSubscription == "1"{
+            if isSubscription == "1" || isType == "3"{
                 print("Please take subscription")
                 let appdelegate = UIApplication.shared.delegate as! AppDelegate
                 let chatViewController = SingleChatController()

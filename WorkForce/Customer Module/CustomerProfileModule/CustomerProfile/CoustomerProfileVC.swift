@@ -17,8 +17,8 @@ class CoustomerProfileVC: UIViewController {
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var customerProfileView: UIImageView!
     
-    var imageArr = ["job-1","re","ic","abb","pp","log"]
-    var listArr = ["Manage Jobs","Recovery Email","Terms of Use","About Us","Privacy Policy","Logout"]
+    var imageArr = ["job-1","re","ic","abb","pp","deleteUser","log"]
+    var listArr = ["Manage Jobs","Recovery Email","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
     var companyProfileData:CompanyListingModel?
     var customerData:CompanyListingData?
     
@@ -135,7 +135,28 @@ class CoustomerProfileVC: UIViewController {
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
     }
-        
+    //    MARK: HIT DELETE ACCOUNT API
+    func hitDeleteprofessionalAccountApi(){
+        let AToken = AppDefaults.token ?? ""
+        print(AToken)
+        let headers: HTTPHeaders = ["Token": AToken]
+        let parameter = ["user_id": UserDefaults.standard.string(forKey: "uID") ?? "","type":"3"] as [String : Any]
+        print(parameter)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.deleteUserAccount, params: parameter, headers: headers) { (response) in
+            print(response)
+            let status = response["status"] as? Int ?? 0
+            let logMessage = response["message"] as? String ?? ""
+            print(status)
+            if status == 1 {
+                self.hitLogoutApi()
+            }else{
+                self.Alert(message:logMessage )
+            }
+        } failure: { (error) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
     
 }
 extension CoustomerProfileVC : UITableViewDelegate, UITableViewDataSource{
@@ -177,6 +198,14 @@ extension CoustomerProfileVC : UITableViewDelegate, UITableViewDataSource{
         case "Privacy Policy" :
             let privacy =  PrivacyPolicyVC()
             self.pushViewController(privacy, true)
+            break
+        case "Delete Account" :
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+                self.hitDeleteprofessionalAccountApi()
+            },{
+                cancel in
+                self.dismiss(animated: false, completion: nil)
+            }])
             break
         case "Logout" :
             self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in

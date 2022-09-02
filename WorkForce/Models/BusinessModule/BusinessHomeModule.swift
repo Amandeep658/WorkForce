@@ -129,8 +129,11 @@ struct BusinessHomeData : Codable {
 }
 struct BusinessCatagory_details : Codable {
     let id : String?
+    let customer_job_id : String?
     let user_id : String?
     let cat_id : String?
+    let category_id : String?
+    let is_delete : String?
     let experience : String?
     let create_date : String?
     let category_name : String?
@@ -138,8 +141,11 @@ struct BusinessCatagory_details : Codable {
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
+        case customer_job_id = "customer_job_id"
         case user_id = "user_id"
         case cat_id = "cat_id"
+        case category_id = "category_id"
+        case is_delete = "is_delete"
         case experience = "experience"
         case create_date = "create_date"
         case category_name = "category_name"
@@ -148,8 +154,11 @@ struct BusinessCatagory_details : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
+        customer_job_id = try values.decodeIfPresent(String.self, forKey: .customer_job_id)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
         cat_id = try values.decodeIfPresent(String.self, forKey: .cat_id)
+        category_id = try values.decodeIfPresent(String.self, forKey: .category_id)
+        is_delete = try values.decodeIfPresent(String.self, forKey: .is_delete)
         experience = try values.decodeIfPresent(String.self, forKey: .experience)
         create_date = try values.decodeIfPresent(String.self, forKey: .create_date)
         category_name = try values.decodeIfPresent(String.self, forKey: .category_name)

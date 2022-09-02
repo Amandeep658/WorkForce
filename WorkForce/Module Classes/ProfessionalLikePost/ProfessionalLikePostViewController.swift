@@ -11,6 +11,7 @@ import SDWebImage
 
 class ProfessionalLikePostViewController: UIViewController {
 
+    @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var infoBtn: UIButton!
     @IBOutlet weak var likeTableView: UITableView!
@@ -18,6 +19,7 @@ class ProfessionalLikePostViewController: UIViewController {
     var jobLDatArr = [AddJobData]()
     var jobIdentity = ""
     var customerJobId = ""
+    var customerUserId = ""
     var professionalWorkerList = [ProfessionalLikeJobPostData]()
     var filterProfessionalLikeListData = [ProfessionalLikeJobPostData]()
     override func viewDidLoad() {
@@ -29,9 +31,11 @@ class ProfessionalLikePostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         if UserType.userTypeInstance.userLogin == .Bussiness{
+            self.headerLbl.text = "Professionals that likes your Job post"
             self.hitprofessionalLikePostApi()
         }else if UserType.userTypeInstance.userLogin == .Coustomer {
-            self.hitprofessionalLikePostApi()
+            self.headerLbl.text = "Companies that likes your Job post"
+            self.hitcuromerLikePostApi()
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -61,6 +65,7 @@ class ProfessionalLikePostViewController: UIViewController {
         self.popViewController(true)
     }
     
+//    MARK: HIT PROFESSIONAL LIKE POST
     func hitprofessionalLikePostApi(){
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
@@ -69,7 +74,6 @@ class ProfessionalLikePostViewController: UIViewController {
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
         let workersJObID = UserDefaults.standard.string(forKey: "setWorkerID") ?? ""
-        print("workersjob ID ====>>>>",workersJObID as Any)
         let param = ["job_id": workersJObID as Any] as [String : Any]
         print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.professionalLikePost, params: param, headers: headers) { [self] response in
@@ -109,7 +113,52 @@ class ProfessionalLikePostViewController: UIViewController {
             AFWrapperClass.svprogressHudDismiss(view: self)
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
-
+    }
+    
+//    MARK: HIT CUSTOMERS JOBS LIKE
+    func hitcuromerLikePostApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        let param = ["customer_job_id": customerJobId as Any] as [String : Any]
+        print(param)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.companyLikeAndUnlikeBycustomer, params: param, headers: headers) { [self] response in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            do{
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(ProfessionalLikeJobPostModel.self, from: data!)
+                print(aContact)
+                let status = aContact.status ?? 0
+                if status == 1{
+                    self.professionalWorkerList = aContact.data!
+                    let uniqueLikepostdata = professionalWorkerList.unique { $0.user_id}
+                    self.filterProfessionalLikeListData = uniqueLikepostdata
+                    self.likeTableView.setBackgroundView(message: "")
+                    self.likeTableView.reloadData()
+                }else if status == 0 {
+                    self.filterProfessionalLikeListData.removeAll()
+                    self.likeTableView.setBackgroundView(message: "No worker found.")
+                    self.likeTableView.reloadData()
+                }else{
+                    self.professionalWorkerList.removeAll()
+                    self.likeTableView.reloadData()
+                }
+            }
+            catch let parseError {
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+            
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
     }
     
     
@@ -124,13 +173,22 @@ extension ProfessionalLikePostViewController : UITableViewDelegate , UITableView
         var sPhotoStr = filterProfessionalLikeListData[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.cellImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
-        cell.cellLbl.text = filterProfessionalLikeListData[indexPath.row].username ?? ""
-        if filterProfessionalLikeListData[indexPath.row].catagory_details?.count ?? 0 > 1{
-            cell.designerLbl.text = "\(filterProfessionalLikeListData[indexPath.row].catagory_details?.first?.category_name ?? "") , \(filterProfessionalLikeListData[indexPath.row].catagory_details?.last?.category_name ?? "") "
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            cell.cellLbl.text = filterProfessionalLikeListData[indexPath.row].username ?? ""
+        }else{
+            cell.cellLbl.text = filterProfessionalLikeListData[indexPath.row].company_name ?? ""
         }
-        else{
-            cell.designerLbl.text = "\(filterProfessionalLikeListData[indexPath.row].catagory_details?.first?.category_name ?? "") "
+        if UserType.userTypeInstance.userLogin  == .Bussiness{
+            if filterProfessionalLikeListData[indexPath.row].catagory_details?.count ?? 0 > 1{
+                cell.designerLbl.text = "\(filterProfessionalLikeListData[indexPath.row].catagory_details?.first?.category_name ?? "") , \(filterProfessionalLikeListData[indexPath.row].catagory_details?.last?.category_name ?? "") "
+            }
+            else{
+                cell.designerLbl.text = "\(filterProfessionalLikeListData[indexPath.row].catagory_details?.first?.category_name ?? "") "
+            }
+        }else{
+            cell.designerLbl.text = filterProfessionalLikeListData[indexPath.row].location ?? ""
         }
+      
         if filterProfessionalLikeListData[indexPath.row].rate_type == "Per Day"{
             if filterProfessionalLikeListData[indexPath.row].rate_to == ""{
                 cell.priceLbl.text = ""
@@ -159,7 +217,7 @@ extension ProfessionalLikePostViewController : UITableViewDelegate , UITableView
             vc.userNumberId = filterProfessionalLikeListData[indexPath.row].user_id ?? ""
             self.pushViewController(vc, true)
         }else if UserType.userTypeInstance.userLogin == .Coustomer{
-            let vc = ProfessionalikePostDescriptionController()
+            let vc = CustomerLikeBusinessDetailVC()
             vc.job_id = filterProfessionalLikeListData[indexPath.row].job_id ?? ""
             vc.userNumberId =  filterProfessionalLikeListData[indexPath.row].user_id ?? ""
             vc.cat_ID =  filterProfessionalLikeListData[indexPath.row].catagory_details?.first?.cat_id ?? ""

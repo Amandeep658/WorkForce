@@ -19,15 +19,17 @@ class BusinessChatViewController: UIViewController {
     var getUserListAllUser = [ChatUSerListAll_users]()
     var isNavFromBusiness:Bool?
     var businessNav = ""
+    var selectedIndex = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.chatPressed(_:)), name: Notification.Name(rawValue: "chatPressed"), object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(self.chatPressed(_:)), name: Notification.Name(rawValue: "chatPressed"), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
+        self.getAllChatList()
         setTable()
     }
     
@@ -43,7 +45,6 @@ class BusinessChatViewController: UIViewController {
     
     
     //    MARK: SUBSCRIPTION STAUTS CHECK
-    
     func hitSubscriptionCheckApi(){
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "", view: self)
@@ -57,8 +58,11 @@ class BusinessChatViewController: UIViewController {
             let status = response["status"] as? Int ?? 0
             print(status)
             if status == 1 {
-                self.getAllChatList()
-                self.chatTableView.reloadData()
+                let vc = SingleChatController()
+                vc.chatRoomId = getUserListAllUser[selectedIndex].room_no ?? ""
+                vc.userName = getUserListAllUser[selectedIndex].username ?? ""
+                vc.userProfileImage = getUserListAllUser[selectedIndex].photo ?? ""
+                self.pushViewController(vc, true)
             }else if status == 0{
                 let vc = SubcribeViewController()
                 vc.VC = self
@@ -159,14 +163,22 @@ extension BusinessChatViewController : UITableViewDelegate , UITableViewDataSour
         cell.setImage()
         return cell
     }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = SingleChatController()
-        vc.chatRoomId = getUserListAllUser[indexPath.row].room_no ?? ""
-        vc.userName = getUserListAllUser[indexPath.row].username ?? ""
-        vc.userProfileImage = getUserListAllUser[indexPath.row].photo ?? ""
-        self.pushViewController(vc, true)
+        self.selectedIndex = indexPath.row
+        if getUserListAllUser[indexPath.row].type == "3"{
+            let vc = SingleChatController()
+            vc.chatRoomId = getUserListAllUser[indexPath.row].room_no ?? ""
+            vc.userName = getUserListAllUser[indexPath.row].username ?? ""
+            vc.userProfileImage = getUserListAllUser[indexPath.row].photo ?? ""
+            self.pushViewController(vc, true)
+        }else{
+            self.selectedIndex = indexPath.row
+            self.hitSubscriptionCheckApi()
+        }
     }
 }

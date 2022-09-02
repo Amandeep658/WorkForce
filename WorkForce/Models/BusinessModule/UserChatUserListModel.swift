@@ -140,6 +140,7 @@ struct ChatUSerListAll_users : Codable {
     let username : String?
     let company_name : String?
     let is_delete : String?
+    let type : String?
     let message : String?
     let message_time : String?
     let unread_count : String?
@@ -155,6 +156,7 @@ struct ChatUSerListAll_users : Codable {
         case username = "username"
         case company_name = "company_name"
         case is_delete = "is_delete"
+        case type = "type"
         case message = "message"
         case message_time = "message_time"
         case unread_count = "unread_count"
@@ -171,6 +173,7 @@ struct ChatUSerListAll_users : Codable {
         username = try values.decodeIfPresent(String.self, forKey: .username)
         company_name = try values.decodeIfPresent(String.self, forKey: .company_name)
         is_delete = try values.decodeIfPresent(String.self, forKey: .is_delete)
+        type = try values.decodeIfPresent(String.self, forKey: .type)
         message = try values.decodeIfPresent(String.self, forKey: .message)
         message_time = try values.decodeIfPresent(String.self, forKey: .message_time)
         unread_count = try values.decodeIfPresent(String.self, forKey: .unread_count)

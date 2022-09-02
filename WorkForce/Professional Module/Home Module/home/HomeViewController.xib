@@ -180,7 +180,7 @@ Job</string>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Slg-qf-sKc">
-                    <rect key="frame" x="0.0" y="348" width="414" height="548"/>
+                    <rect key="frame" x="0.0" y="394" width="414" height="502"/>
                     <color key="backgroundColor" red="0.96071392300000003" green="0.96082550290000002" blue="0.96066254380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
@@ -195,7 +195,7 @@ Job</string>
                 <constraint firstItem="tfa-NA-O4w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="StZ-8a-1Hk"/>
                 <constraint firstItem="Rr0-4C-9bP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wot-mU-2YN"/>
                 <constraint firstItem="tfa-NA-O4w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iio-ow-IE5"/>
-                <constraint firstItem="Slg-qf-sKc" firstAttribute="top" secondItem="ZSf-tK-hbr" secondAttribute="bottom" id="p4p-Z7-2mG"/>
+                <constraint firstItem="Slg-qf-sKc" firstAttribute="top" secondItem="ZSf-tK-hbr" secondAttribute="bottom" constant="46" id="p4p-Z7-2mG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZSf-tK-hbr" secondAttribute="trailing" constant="2" id="qat-V3-tzg"/>
                 <constraint firstItem="Slg-qf-sKc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="t13-9T-Cg6"/>
                 <constraint firstItem="Slg-qf-sKc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xqE-Ap-sLp"/>

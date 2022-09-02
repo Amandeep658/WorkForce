@@ -27,6 +27,7 @@ class CustomerManageJobListDetailVC: UIViewController,DoBackDelegate {
     @IBOutlet weak var experienceLbl: UITextField!
     @IBOutlet weak var jobtypeLbl: UITextField!
     @IBOutlet weak var contentView: UIView!
+    @IBOutlet weak var cScrolView: UIScrollView!
     
     var CustomerjobDetail:JobDetailByJobIdModel?
     var customerJobId  = ""
@@ -41,10 +42,10 @@ class CustomerManageJobListDetailVC: UIViewController,DoBackDelegate {
         self.hitCustomerJobListDetailApi()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        self.contentView.setCornerRadius(topLeft: 40, topRight: 40, bottomLeft: 0, bottomRight: 0)
-        self.contentView.clipsToBounds = true
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.cScrolView.roundViewCorners(corners: [.topLeft , .topRight], radius: 20)
+        self.cScrolView.clipsToBounds = true
     }
     
     

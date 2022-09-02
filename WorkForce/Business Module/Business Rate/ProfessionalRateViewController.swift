@@ -17,6 +17,7 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
     @IBOutlet weak var bachBtn: UIButton!
     @IBOutlet weak var hourBtn: UIButton!
     @IBOutlet weak var dayBtn: UIButton!
+    @IBOutlet weak var headerbl: UILabel!
     @IBOutlet weak var continueBtn: ActualGradientButton!
     
     var professionalUserDict = SingletonLocalModel()
@@ -32,6 +33,13 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            headerbl.text = "Professionals rate from"
+        }else if UserType.userTypeInstance.userLogin == .Professional{
+            headerbl.text = "Professionals rate from"
+        }else{
+            headerbl.text = "Rate"
+        }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
     }

@@ -64,6 +64,8 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
         if (emailTF.text?.trimWhiteSpace.isEmpty)! {
             showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter email address." , okButton: "Ok", controller: self) {
             }
+        }else if emailTF.text!.isValidEmail == false{
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter vaild email." , okButton: "Ok", controller: self) {}
         }else{
             self.hitRecoveryEmailAPI()
         }

@@ -13,6 +13,7 @@ class ProfessionalikePostDescriptionController: UIViewController {
     
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var connectBtn: UIButton!
+    @IBOutlet weak var detailScrollView: UIScrollView!
     @IBOutlet weak var notConnectBtn: UIButton!
     @IBOutlet weak var userimgView: UIImageView!
     @IBOutlet weak var categoryLbl: UILabel!
@@ -44,6 +45,12 @@ class ProfessionalikePostDescriptionController: UIViewController {
         }else if UserType.userTypeInstance.userLogin == .Coustomer{
             hitUserListDetailApi()
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        detailScrollView.roundViewCorners(corners: [.topLeft , .topRight], radius: 20)
+        detailScrollView.clipsToBounds = true
     }
     
     @IBAction func backBtn(_ sender: UIButton) {

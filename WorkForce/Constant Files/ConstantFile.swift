@@ -40,6 +40,7 @@ struct WSMethods {
     static let signUpCheck = "signUp.php"
     static let addCompany = "addCompany.php"
     static let getCompanyListing = "getCompanyListing.php"
+    static let nearCustomerByJobs = "nearCustomerByJobs.php"
     static let editCompany = "editCompany.php"
     static let editJob = "editJob.php"
     static let logout = "logout.php"
@@ -91,6 +92,9 @@ struct WSMethods {
     static let customerGetJobDetailsByJobId = "customerGetJobDetailsByJobId.php"
     static let editCustomerJob = "editCustomerJob.php"
     static let deletetCustomerManageJob = "deletetCustomerManageJob.php"
+    static let customerLikeAndUnlike = "customerLikeAndUnlike.php"
+    static let getAllcustomerJobLike = "getAllcustomerJobLike.php"
+    static let companyLikeAndUnlikeBycustomer = "companyLikeAndUnlikeBycustomer.php"
 }
 
 

@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerSearchVC" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="backBtn" destination="0il-jW-6Aw" id="70d-4E-iCq"/>
+                <outlet property="customerSearchListTable" destination="lL7-Gw-PEb" id="3v8-VF-5XQ"/>
+                <outlet property="opportunityCountLbl" destination="h3d-kX-txL" id="bg8-Uq-nlb"/>
+                <outlet property="searchBar" destination="LgN-AM-P7y" id="leq-oB-TLf"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9RM-bj-Uhv">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0il-jW-6Aw">
+                            <rect key="frame" x="20" y="13" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="ME9-QY-9dl"/>
+                                <constraint firstAttribute="height" constant="24" id="pO8-p8-iUf"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                            <state key="normal" image="arrow.backward" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium" weight="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="backBtn:" destination="-1" eventType="touchUpInside" id="vb4-UB-PIP"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7HE-e0-tyo">
+                            <rect key="frame" x="178.5" y="14" width="57" height="22.5"/>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="0il-jW-6Aw" firstAttribute="leading" secondItem="9RM-bj-Uhv" secondAttribute="leading" constant="20" id="CzE-7K-Tto"/>
+                        <constraint firstItem="0il-jW-6Aw" firstAttribute="centerY" secondItem="9RM-bj-Uhv" secondAttribute="centerY" id="N1t-mS-TfE"/>
+                        <constraint firstItem="7HE-e0-tyo" firstAttribute="centerY" secondItem="9RM-bj-Uhv" secondAttribute="centerY" id="QE9-qA-6Ct"/>
+                        <constraint firstAttribute="height" constant="50" id="Xc1-eE-KZP"/>
+                        <constraint firstItem="7HE-e0-tyo" firstAttribute="centerX" secondItem="9RM-bj-Uhv" secondAttribute="centerX" id="el8-T8-mjU"/>
+                    </constraints>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rao-iI-AW8">
+                    <rect key="frame" x="20" y="104" width="374" height="46"/>
+                    <subviews>
+                        <searchBar clipsSubviews="YES" contentMode="redraw" searchBarStyle="minimal" placeholder="Search for companies" translatesAutoresizingMaskIntoConstraints="NO" id="LgN-AM-P7y">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="46"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </searchBar>
+                    </subviews>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="LgN-AM-P7y" firstAttribute="leading" secondItem="Rao-iI-AW8" secondAttribute="leading" id="3yI-e7-eDW"/>
+                        <constraint firstAttribute="bottom" secondItem="LgN-AM-P7y" secondAttribute="bottom" id="7cP-xB-U78"/>
+                        <constraint firstItem="LgN-AM-P7y" firstAttribute="top" secondItem="Rao-iI-AW8" secondAttribute="top" id="Xxc-eU-Wox"/>
+                        <constraint firstAttribute="height" constant="46" id="be6-Mu-8ah"/>
+                        <constraint firstAttribute="trailing" secondItem="LgN-AM-P7y" secondAttribute="trailing" id="yaG-En-PWe"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3d-kX-txL">
+                    <rect key="frame" x="28" y="150" width="38" height="20"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="lL7-Gw-PEb">
+                    <rect key="frame" x="20" y="170" width="374" height="692"/>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="9RM-bj-Uhv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="0Ul-Ai-fEH"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="9RM-bj-Uhv" secondAttribute="trailing" id="2q2-eK-9QC"/>
+                <constraint firstItem="9RM-bj-Uhv" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="AcQ-TH-lmG"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Rao-iI-AW8" secondAttribute="trailing" constant="20" id="Bad-lZ-xCk"/>
+                <constraint firstItem="lL7-Gw-PEb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Z1o-Ex-uuu"/>
+                <constraint firstItem="Rao-iI-AW8" firstAttribute="top" secondItem="9RM-bj-Uhv" secondAttribute="bottom" constant="10" id="bTc-Fv-J8d"/>
+                <constraint firstItem="h3d-kX-txL" firstAttribute="top" secondItem="Rao-iI-AW8" secondAttribute="bottom" id="dbi-LU-vCs"/>
+                <constraint firstItem="lL7-Gw-PEb" firstAttribute="leading" secondItem="h3d-kX-txL" secondAttribute="leading" constant="-8" id="gDI-dR-TNe"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="lL7-Gw-PEb" secondAttribute="bottom" id="m5Z-0Y-aIa"/>
+                <constraint firstItem="lL7-Gw-PEb" firstAttribute="top" secondItem="h3d-kX-txL" secondAttribute="bottom" id="maX-6q-N3e"/>
+                <constraint firstItem="Rao-iI-AW8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="ssn-79-LF2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lL7-Gw-PEb" secondAttribute="trailing" constant="20" id="uPU-du-isn"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+    </resources>
+</document>

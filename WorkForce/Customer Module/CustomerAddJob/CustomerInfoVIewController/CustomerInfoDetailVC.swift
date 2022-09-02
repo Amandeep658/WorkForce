@@ -19,6 +19,7 @@ class CustomerInfoDetailVC: UIViewController {
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var jobtypeLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
+    @IBOutlet weak var infoScrollView: UIScrollView!
     
     
     var CustomerjobDetail:CJobListModel?
@@ -34,8 +35,11 @@ class CustomerInfoDetailVC: UIViewController {
         super.viewWillAppear(animated)
         hitJobListDetailApi()
     }
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+  
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        infoScrollView.roundViewCorners(corners: [.topLeft, .topRight], radius: 20)
+        infoScrollView.clipsToBounds = true
     }
 
     @IBAction func backAction(_ sender: UIButton) {
