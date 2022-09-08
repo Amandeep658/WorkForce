@@ -12,11 +12,11 @@ class SetFilterVM: NSObject {
     
     
     func setJobs(){
-        jobTypes.append(JobTypeModel(title : "Full Time", isSelected : false))
-        jobTypes.append(JobTypeModel(title : "Part Time", isSelected : true))
-        jobTypes.append(JobTypeModel(title : "Contract", isSelected : false))
-        jobTypes.append(JobTypeModel(title : "Freelance", isSelected : true))
-        jobTypes.append(JobTypeModel(title : "Remote", isSelected : false))
+        jobTypes.append(JobTypeModel(title : "Full Time".localized(), isSelected : false))
+        jobTypes.append(JobTypeModel(title : "Part Time".localized(), isSelected : true))
+        jobTypes.append(JobTypeModel(title : "Contract".localized(), isSelected : false))
+        jobTypes.append(JobTypeModel(title : "Freelance".localized(), isSelected : true))
+        jobTypes.append(JobTypeModel(title : "Remote".localized(), isSelected : false))
     } 
     
 }

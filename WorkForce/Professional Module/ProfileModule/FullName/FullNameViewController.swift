@@ -92,11 +92,11 @@ class FullNameViewController: UIViewController,UITextFieldDelegate {
 //   MARK: VALIDATION
     func validation(){
         if (firstNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter first name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_FIRST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }
         else if (lastNameTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter last name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_LAST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }
         else{

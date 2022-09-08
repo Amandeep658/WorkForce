@@ -1,0 +1,102 @@
+/* 
+  Localizable.strings
+  WorkForce
+
+  Created by Aman's MacBookPro on 05/09/22.
+  
+*/
+
+"Verify Your Number" = "revisa tu numero";
+"ENTER_PHONE_NUMBER" = "Por favor, introduzca el número de teléfono.";
+"AUTH_TEXT" = "Se ha enviado un código de autenticación a";
+"LOADING" = "CARGANDO..";
+"INVALID_OTP_PLEASE_ENTER" = "OTP inválido por favor ingrese de nuevo.";
+"ENTER_FIRST_NAME" = "Por favor ingrese el primer nombre.";
+"ENTER_LAST_NAME" = "Por favor, introduzca el apellido.";
+"Companies Opportunity" = "Oportunidad Empresas";
+"ENTER_ADDRESS" = "Por favor ingrese la dirección.";
+"ENTER_VALID_EMAIL" = "Por favor, introduzca un correo electrónico válido.";
+"ENTER_EMAIL" = "Por favor ingrese el correo electrónico.";
+"Please select job type." = "Seleccione el tipo de trabajo.";
+"ENTER_COMPANY_NAME" = "Introduzca el nombre de la empresa.";
+"ENTER_SELECTED_YEAR" = "Seleccione un Año.";
+"Please enter location." = "Ingrese la ubicación.";
+"Professionals that likes your Job post" = "Profesionales a los que les gusta tu puesto de trabajo";
+"Companies that likes your Job post" = "Empresas a las que les gusta tu puesto de trabajo";
+"Please select city first." = "Seleccione la ciudad primero";
+"Please select category first." = "Seleccione la categoría primero.";
+"Please enter description." = "Por favor, introduzca la descripción.";
+"ENTER_RATE" = "Por favor ingrese una Tarifa.";
+"ENTER_HOURLY_RATE" = "Por favor, introduzca la tarifa por hora.";
+"ENTER_EXPERIENCE" = "Por favor seleccione Experiencia";
+"OTP_SENT" = "Nuevo otp enviado al número registrado";
+"Please select job type." = "Seleccione el tipo de trabajo.";
+"Done" = "Hecho";
+"Company Detail" = "Detalle de la empresa";
+"ENTER_VALID_CODE" = "Por favor, introduzca un código válido";
+"ENTER_CODE" = "Por favor ingrese el código";
+"PROFILE_UPDATE" = "Perfil actualizado con éxito.";
+"ADD_IMAGE" = "Por favor agregue una imagen";
+"ADD_ONE_CATEGORY" = "Seleccione al menos una categoría";
+"LOCATION_NOT_FOUND" = "Ubicación no encontrada";
+"SELECT_LOCATION" = "Por favor seleccione la ubicación";
+"NO_PURCHASE_RESTORE" = "No hay compras para restaurar";
+"THERE_IS_NO_PURCHASE" = "No hay compras con esta suscripción para restaurar relacionadas con su cuenta.";
+"Purchase plan"= "Purchase plan";
+"Per Day" = "Por día";
+"Per Hour" = "Por hora";
+"0 Year" = "0 año";
+"Years" = "Años";
+"Year" = "año";
+"Job Type" = "Tipo de trabajo";
+"catagory_details" = "detalles_de_la_categoría";
+"experience" = "experiencia";
+"job_image" = "imagen_trabajo";
+"Please enter company name." = "Introduzca el nombre de la empresa.";
+"Please enter date of birth." = "Por favor, introduzca la fecha de nacimiento.";
+"Recovery Email" = "Correo electrónico de recuperación";
+"Manage Jobs" = "Administrar trabajos";
+"Update Subscription Plan" = "actualizar plan de suscripción";
+"What professional Skills are you looking for?" = "¿Qué habilidades profesionales estás buscando?";
+"Please select atleast one category." = "Seleccione al menos una categoría.";
+"You can select only two category." = "Puede seleccionar sólo dos categorías.";
+"What professional Skills can you offer?" = "¿Qué habilidades profesionales puedes ofrecer?";
+"Terms of use" = "términos de uso";
+"Terms of Use" = "Términos de Uso";
+"About us" = "sobre nosotros";
+"About Us" = "sobre nosotros";
+"Job Opportunity" = "Oportunidad de trabajo";
+"Privacy Policy" = "política de privacidad";
+"Please take subscription plan." = "Por favor, tome el plan de suscripción.";
+"Delete Account" = "eliminar cuenta";
+"Logout" = "cerrar sesión";
+"Are you sure you want to delete your account?" = "¿Estás segura de que quieres eliminar tu cuenta?";
+ "Yes" = "Sí";
+"No" = "No";
+"Done" = "Hecho";
+"Profile update successfully." = "Actualización de perfil con éxito.";
+"Email already registered" = "Correo electrónico ya registrado";
+"Please enter category name" = "Por favor ingrese el nombre de la categoría";
+"No rate selected." = "Ninguna tarifa seleccionada.";
+"Professionals rate from" = "Tarifa de profesionales desde";
+"Rate" = "Velocidad";
+"Please enter second rate." = "Por favor, introduzca la segunda tasa.";
+"Please enter first rate." = "Por favor, introduzca la primera tarifa.";
+"please select rate type." = "seleccione el tipo de tarifa.";
+"No Job found." = "No se encontró trabajo.";
+"Please enter job type." = "Por favor ingrese el tipo de trabajo.";
+"Please enter city." = "Por favor, introduzca la ciudad.";
+
+//TabBar
+"Home" = "Inicio";
+"Connect" = "Conexiones";
+"Jobs" = "Trabajos";
+"Chat" = "chat";
+"Profile" = "Perfil";
+
+//jobType
+"Full Time" = "Tiempo completo";
+"Part Time" = "Tiempo parcial";
+"Contract" = "Contrato";
+"Freelance" = "Lanza libre";
+"Remote" = "Remota";

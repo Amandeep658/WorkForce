@@ -43,7 +43,7 @@ class PhoneNumberVC: UIViewController,UITextFieldDelegate {
     
     @IBAction func continueBtn(_ sender: UIButton) {
         if mobileNumberTF.text == "" {
-            showAlert(message: "Please enter mobile number.", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "ENTER_PHONE_NUMBER".localized(), title: AppAlertTitle.appName.rawValue)
         }else{
             hitVerifyPhoneNumberApi()
         }
@@ -99,7 +99,7 @@ class PhoneNumberVC: UIViewController,UITextFieldDelegate {
 //    MARK: HIT VERIFY PHONE NUMBER
     func hitVerifyPhoneNumberApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.updateMobileNumber, params: getUpdatePhoneGeneratingParameters(), headers: nil) {  [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -163,7 +163,7 @@ extension PhoneNumberVC: ADCountryPickerDelegate{
         print("her is code--->>>>",code)
         let image =  picker.getFlag(countryCode: code)
         flagImg.image = image
-        postCodeLbl.text = dialCode
+        postCodeLbl.text = dialCode.localized()
         let xx =  picker.getCountryName(countryCode: code)
         let xxx =  picker.getDialCode(countryCode: code)
     }

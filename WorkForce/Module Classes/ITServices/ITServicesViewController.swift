@@ -61,7 +61,7 @@ class ITServicesViewController: UIViewController {
 //    MARK: HIT API JOBDETAIL LIST
     func jobWorkerList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

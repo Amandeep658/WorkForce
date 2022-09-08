@@ -76,7 +76,7 @@ class SkillTableViewController: UIViewController {
     //    MARK: hIT GET CATEGORY LISTING API's
     func hitCategoryListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -154,7 +154,7 @@ extension SkillTableViewController : UITableViewDelegate , UITableViewDataSource
                 cell.tickBtn.setImage(UIImage(named: "ck"), for: .normal)
                 self.categoryArr[indexPath.row].isSelected = true
             }else{
-                showAlert(message: "You can select only two category.", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "You can select only two category.".localized(), title: AppAlertTitle.appName.rawValue)
             }
         }
     }

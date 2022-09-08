@@ -147,7 +147,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
     
     func hitFilterApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -198,7 +198,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
     //    MARK: HIT CATEGORY LISTNING API
     func hitCategoryListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

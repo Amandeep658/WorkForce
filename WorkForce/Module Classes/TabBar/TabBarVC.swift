@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import Alamofire
 
 class TabBarVC: ESTabBarController {
     
@@ -25,6 +26,7 @@ class TabBarVC: ESTabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        getCurrentlangugaeUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
     
@@ -77,11 +79,11 @@ class TabBarVC: ESTabBarController {
             v4.navigationBar.isHidden = true
             let v5 =  UINavigationController(rootViewController: BusinessProfileViewController())
             v5.navigationBar.isHidden = true
-            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home", image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
-            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect", image:UIImage(named: "Unstar"),selectedImage: UIImage(named: "fillStar"))
-            v3.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Jobs", image:UIImage(named: "job"),selectedImage: UIImage(named: "jobs"))
-            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat", image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
-            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "  Profile", image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
+            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home".localized(), image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
+            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect".localized(), image:UIImage(named: "Unstar"),selectedImage: UIImage(named: "fillStar"))
+            v3.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Jobs".localized(), image:UIImage(named: "job"),selectedImage: UIImage(named: "jobs"))
+            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat".localized(), image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
+            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Profile".localized(), image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
             tabItem.contentView?.imageView.layer.cornerRadius = 12
             tabItem.contentView?.imageView.clipsToBounds = true
             v5.tabBarItem = tabItem
@@ -99,11 +101,11 @@ class TabBarVC: ESTabBarController {
             v4.navigationBar.isHidden = true
             let v5 =  UINavigationController(rootViewController: ProfessionalProfileVC())
             v5.navigationBar.isHidden = true
-            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home", image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
-            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect", image:UIImage(named: "Unstar"),
+            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home".localized(), image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
+            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect".localized(), image:UIImage(named: "Unstar"),
                                          selectedImage: UIImage(named: "fillStar"))
-            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat", image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
-            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "  Profile", image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
+            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat".localized(), image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
+            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Profile".localized(), image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
             tabItem.contentView?.imageView.layer.cornerRadius = 12
             tabItem.contentView?.imageView.clipsToBounds = true
             v5.tabBarItem = tabItem
@@ -122,11 +124,11 @@ class TabBarVC: ESTabBarController {
             v4.navigationBar.isHidden = true
             let v5 =  UINavigationController(rootViewController: CoustomerProfileVC())
             v5.navigationBar.isHidden = true
-            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home", image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
-            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect", image:UIImage(named: "Unstar"),selectedImage: UIImage(named: "fillStar"))
-            v3.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Jobs", image:UIImage(named: "job"),selectedImage: UIImage(named: "jobs"))
-            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat", image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
-            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "  Profile", image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
+            v1.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Home".localized(), image: UIImage(named: "hm"), selectedImage: UIImage(named: "ho"))
+            v2.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Connect".localized(), image:UIImage(named: "Unstar"),selectedImage: UIImage(named: "fillStar"))
+            v3.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Jobs".localized(), image:UIImage(named: "job"),selectedImage: UIImage(named: "jobs"))
+            v4.tabBarItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Chat".localized(), image: UIImage(named: "3"), selectedImage: UIImage(named: "ch"))
+            let tabItem = ESTabBarItem(ExampleIrregularityBasicContentView(), title: "Profile".localized(), image: UIImage(named: "placeholder"), selectedImage: UIImage(named: "placeholder"))
             tabItem.contentView?.imageView.layer.cornerRadius = 12
             tabItem.contentView?.imageView.clipsToBounds = true
             v5.tabBarItem = tabItem
@@ -161,6 +163,39 @@ class TabBarVC: ESTabBarController {
         
     }
     
+    //    MARK: LANGUAGE UPDATE
+    func getCurrentlangugaeUpdate(){
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print("headers*****>>>",headers)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getCurrentlangugae, params: getCurrentLanguageParametres(), headers: headers){ [self] (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let status = response["code"] as? Int ?? 0
+            print(status)
+            if status == 200 {
+                
+            }else {
+            }
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
+    
+    
+    func getCurrentLanguageParametres() -> [String:AnyObject] {
+        var parameters : [String:AnyObject] = [:]
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else if Locale.current.languageCode == "en"{
+            parameters["is_language"] = "0"  as AnyObject
+        }
+        print(parameters)
+        return parameters
+    }
 }
 
 extension TabBarVC : UITabBarControllerDelegate{

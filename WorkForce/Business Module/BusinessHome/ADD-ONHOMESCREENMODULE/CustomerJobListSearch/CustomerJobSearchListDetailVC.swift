@@ -61,7 +61,7 @@ class CustomerJobSearchListDetailVC: UIViewController {
     //    MARK: CUSTOMER JOB DETAIL
     func hitCustomerJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -114,7 +114,7 @@ class CustomerJobSearchListDetailVC: UIViewController {
     //    MARK: CUSTOMER JOB LIKE AND UNLIKE
         func hitCustomerJobLike(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]

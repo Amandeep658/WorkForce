@@ -11,25 +11,25 @@ import Alamofire
 import Firebase
 import FirebaseAuth
 
-class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
+class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate, UITextPasteDelegate {
     
     @IBOutlet weak var verifyBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
+    @IBOutlet weak var resendOTPBtn: UIButton!
+    @IBOutlet weak var authenticationNumberTF: UILabel!
     @IBOutlet weak var firstTF: UITextField!
     @IBOutlet weak var secondTF: UITextField!
     @IBOutlet weak var thirdTf: UITextField!
     @IBOutlet weak var fourthTF: UITextField!
     @IBOutlet weak var fifthTF: UITextField!
     @IBOutlet weak var sixthTF: UITextField!
-    @IBOutlet weak var resendOTPBtn: UIButton!
-    @IBOutlet weak var authenticationNumberTF: UILabel!
-    
+//
     
     var ifCome:Bool?
     var phoneNumber:String?
     var postCode:String?
     var number:String?
-    var verifyOTP = ""
+    var verifyOTP = " "
     var professionalUserDict = SingletonLocalModel()
 
     override func viewDidLoad() {
@@ -43,11 +43,11 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
     
     //    MARK: GET OTP FUNCTION
     func getOTP(){
-        AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+        AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         Auth.auth().settings?.isAppVerificationDisabledForTesting = false
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber ?? "" , uiDelegate: nil) { [self] verificationID, error in
             print(phoneNumber ?? "")
-            print(verificationID)
+            print(verificationID as Any)
             AFWrapperClass.svprogressHudDismiss(view: self)
             UserDefaults.standard.set(verificationID, forKey: "authVerificationID")
             if let error = error {
@@ -57,22 +57,21 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    
+    
     //    MARK: HIT SIGNUP API FUNCTION
     func hitSignUpApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.signUpCheck, params: signUpParameters(), headers: nil){ [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             let status = response["status"] as? Int ?? 0
-            let verifyMessage = response["message"] as? String ?? ""
             let userID = response["user_id"] as? String ?? ""
-            print(" before UserId ***********=== >>>>", userID )
             UserDefaults.standard.set(userID, forKey: "uID")
             UserDefaults.standard.synchronize()
             let userUdid = UserDefaults.standard.value(forKey: "uID")
-            print("after UserId ***********=== >>>>", userUdid )
             self.professionalUserDict.userId = userID
             let authToekn = response["auth_token"] as? String ?? ""
             AppDefaults.token = authToekn
@@ -80,6 +79,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
             AppDefaults.emailStatus = emailStatus
             let loginStatus = response["login_status"] as? Int ?? 0
             if status == 1{
+                getCurrentlangugaeUpdate()
                 if  UserType.userTypeInstance.userLogin == .Bussiness {
                     if loginStatus == 0 {
                         let vc = RecoveryEmailVC()
@@ -127,8 +127,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
         alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
     }
-    
-    
+//    MARK: SIGNUP PARAMETERS
     func signUpParameters() -> [String:AnyObject] {
         var parameters : [String:AnyObject] = [:]
         parameters["mobile_no"] = phoneNumber as AnyObject
@@ -145,6 +144,43 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
         print(parameters)
         return parameters
     }
+    
+    //    MARK: LANGUAGE UPDATE
+    func getCurrentlangugaeUpdate(){
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print("headers*****>>>",headers)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getCurrentlangugae, params: getCurrentLanguageParametres(), headers: headers){ [self] (response) in
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let status = response["code"] as? Int ?? 0
+            print(status)
+            if status == 200 {
+                
+            }else {
+            }
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
+    
+    
+    func getCurrentLanguageParametres() -> [String:AnyObject] {
+        var parameters : [String:AnyObject] = [:]
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else if Locale.current.languageCode == "en"{
+            parameters["is_language"] = "0"  as AnyObject
+        }
+        print(parameters)
+        return parameters
+    }
+    
+    
+    
     
     @IBAction func resendOTPBtn(_ sender: UIButton) {
         firstTF.text = ""
@@ -163,13 +199,25 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
     //    MARK: SET UPDATE FUNCTIONS
     func updateUI(){
         firstTF.delegate = self
-        secondTF.delegate = self
-        thirdTf.delegate = self
-        fourthTF.delegate = self
-        fifthTF.delegate = self
-        sixthTF.delegate = self
-        verifyBtn.layer.cornerRadius = 5
-        authenticationNumberTF.text = "An authentication code has been sent to (\(postCode ?? ""))\(number ?? "")"
+        self.secondTF.delegate = self
+        self.thirdTf.delegate = self
+        self.fourthTF.delegate = self
+        self.fifthTF.delegate = self
+        self.sixthTF.delegate = self
+        self.firstTF.textContentType = .oneTimeCode
+        self.secondTF.textContentType = .oneTimeCode
+        self.thirdTf.textContentType = .oneTimeCode
+        self.fourthTF.textContentType = .oneTimeCode
+        self.fifthTF.textContentType = .oneTimeCode
+        self.sixthTF.textContentType = .oneTimeCode
+        self.firstTF.pasteDelegate = self
+        self.secondTF.pasteDelegate = self
+        self.thirdTf.pasteDelegate = self
+        self.fourthTF.pasteDelegate = self
+        self.fifthTF.pasteDelegate = self
+        self.sixthTF.pasteDelegate = self
+        self.verifyBtn.layer.cornerRadius = 5
+        self.authenticationNumberTF.text = "\("AUTH_TEXT".localized())(\(postCode ?? ""))\(number ?? "")"
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -186,7 +234,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
             }else if textField == fifthTF {
                 sixthTF.becomeFirstResponder()
             }else if textField == sixthTF {
-                dismisKeyboard()
+                self.dismisKeyboard()
             }
         }
         return true
@@ -239,6 +287,8 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+   
+    
     
     
     
@@ -248,7 +298,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                 self.hitSignUpApi()
             }else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-                print(verificationID)
+                print(verificationID as Any)
                 let credential = PhoneAuthProvider.provider().credential(
                     withVerificationID: verificationID ?? "0",
                     verificationCode: verifyOTP)
@@ -258,7 +308,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         print(success ?? "")
                         self.hitSignUpApi()
                     }else{
-                        alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
+                        alert(AppAlertTitle.appName.rawValue, message: "INVALID_OTP_PLEASE_ENTER".localized(), view: self)
                     }
                 }
             }
@@ -268,7 +318,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
             }
             else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-                print(verificationID)
+                print(verificationID as Any)
                 let credential = PhoneAuthProvider.provider().credential(
                     withVerificationID: verificationID ?? "0",
                     verificationCode: verifyOTP)
@@ -278,7 +328,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         print(success ?? "")
                         self.hitSignUpApi()
                     }else{
-                        alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
+                        alert(AppAlertTitle.appName.rawValue, message: "INVALID_OTP_PLEASE_ENTER".localized(), view: self)
                     }
                 }
             }
@@ -288,7 +338,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
             }
             else{
                 let verificationID = UserDefaults.standard.string(forKey: "authVerificationID")
-                print(verificationID)
+                print(verificationID as Any)
                 let credential = PhoneAuthProvider.provider().credential(
                     withVerificationID: verificationID ?? "0",
                     verificationCode: verifyOTP)
@@ -298,7 +348,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate {
                         print(success ?? "")
                         self.hitSignUpApi()
                     }else{
-                        alert(AppAlertTitle.appName.rawValue, message: "Invalid OTP please enter again", view: self)
+                        alert(AppAlertTitle.appName.rawValue, message: "INVALID_OTP_PLEASE_ENTER".localized(), view: self)
                     }
                 }
             }
@@ -315,3 +365,16 @@ extension UINavigationController {
     }
   }
 }
+//if let myString = UIPasteboard.general.string {
+//    print("myString>>>>>>>",myString)
+//    let chracters = myString.map({ String($0)})
+//    print("chracters>>>>>>>.",chracters)
+//    print("charcterfirstString",chracters[0])
+//    if string.count > 0 {
+//        textField.text = (string as NSString).substring(to: 1)
+//        self.firstTF.text = chracters[0]
+//        self.secondTF.text = chracters[1]
+//        self.thirdTf.text = chracters[2]
+//        self.fourthTF.text = chracters[3]
+//        self.fifthTF.text = chracters[4]
+//        self.sixthTF.text = chracters[5]

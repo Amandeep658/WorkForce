@@ -1,0 +1,27 @@
+/* 
+  Localizable(Spanish).strings
+  WorkForce
+
+  Created by Aman's MacBookPro on 05/09/22.
+  
+*/
+"Verify Your Number" = "revisa tu numero";
+"ENTER_PHONE_NUMBER" = "Por favor, introduzca el número de teléfono.";
+"LOADING" = "CARGANDO..";
+"INVALID_OTP_PLEASE" = "OTP inválido por favor ingrese de nuevo.";
+"ENTER_FIRST_NAME" = "Por favor ingrese el primer nombre.";
+"ENTER_LAST_NAME" = "Por favor, introduzca el apellido.";
+"ENTER_ADDRESS" = "Por favor ingrese la dirección.";
+"ENTER_COMPANY_NAME" = "Introduzca el nombre de la empresa.";
+"ENTER_SELECTED_YEAR" = "Seleccione un Año.";
+"ENTER_RATE" = "Por favor ingrese una Tarifa.";
+"ENTER_HOURLY_RATE" = "Por favor, introduzca la tarifa por hora.";
+"ENTER_EXPERIENCE" = "Por favor seleccione Experiencia" ;
+"OTP_SENT" = "Nuevo otp enviado al número registrado";
+"ENTER_VALID_CODE" = "Por favor, introduzca un código válido";
+"ENTER_CODE" = "Por favor ingrese el código";
+"PROFILE_UPDATE" = "Perfil actualizado con éxito.";
+"ADD_IMAGE" = "Por favor agregue una imagen";
+"ADD_ONE_CATEGORY" = "Seleccione al menos una categoría";
+"LOCATION_NOT_FOUND" = "Ubicación no encontrada";
+"SELECT_LOCATION" = "Por favor seleccione la ubicación";

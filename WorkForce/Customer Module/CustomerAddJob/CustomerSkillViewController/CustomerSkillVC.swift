@@ -61,7 +61,7 @@ class CustomerSkillVC: UIViewController {
     //   MARK: VALIDATION
     func validation(){
         if (categoryLbl1.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select categories." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.".localized() , okButton: "Ok", controller: self) {
             }
         }else{
                 let vc = JobTypeViewController()

@@ -15,7 +15,7 @@ class JobTypeViewController: UIViewController,UITextFieldDelegate,UIPickerViewDe
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var dropDownBtn: UIButton!
     
-    var jobType = ["Full Time", "Part Time", "Contract", "Freelance","Remote"]
+    var jobType = ["Full Time".localized(), "Part Time".localized(), "Contract".localized(), "Freelance".localized(),"Remote".localized()]
     var countdown = UIPickerView()
     var doneToolBar = UIToolbar()
     var professionalJobDict = [String:Any]()
@@ -48,7 +48,7 @@ class JobTypeViewController: UIViewController,UITextFieldDelegate,UIPickerViewDe
         self.view.addSubview(countdown)
         self.doneToolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         self.doneToolBar.barStyle = .default
-        self.doneToolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.doneToolBar.items = [UIBarButtonItem.init(title: "Done".localized(), style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(doneToolBar)
     }
     
@@ -94,7 +94,7 @@ class JobTypeViewController: UIViewController,UITextFieldDelegate,UIPickerViewDe
     //   MARK: VALIDATION
     func validation(){
         if (jobTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter job type." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter job type.".localized() , okButton: "Ok", controller: self) {
             }
         }
         else{

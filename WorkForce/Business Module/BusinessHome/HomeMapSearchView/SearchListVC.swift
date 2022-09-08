@@ -38,7 +38,7 @@ class SearchListVC: UIViewController,UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == ""{
-            showAlert(message: "Please enter category name", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "Please enter category name".localized(), title: AppAlertTitle.appName.rawValue)
         }else{
             self.nearByWorkerList()
             self.searchListTableView.reloadData()
@@ -70,7 +70,7 @@ class SearchListVC: UIViewController,UISearchBarDelegate {
     //    MARK: HIT NEAR BY WORKER
         func nearByWorkerList(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow( title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow( title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]
@@ -94,7 +94,7 @@ class SearchListVC: UIViewController,UISearchBarDelegate {
                         if searchjobListArr.count > 0 {
                         self.searchListTableView.backgroundView =  nil
                     }else{
-                        self.searchListTableView.setBackgroundView(message: "No worker list found.")
+                        self.searchListTableView.setBackgroundView(message: message)
                     }
                         
                     }else{

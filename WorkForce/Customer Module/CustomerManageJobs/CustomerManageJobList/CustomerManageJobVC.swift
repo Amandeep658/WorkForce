@@ -36,7 +36,7 @@ class CustomerManageJobVC: UIViewController {
     //    MARK: JOB LIST API'S
     func hitJobListApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

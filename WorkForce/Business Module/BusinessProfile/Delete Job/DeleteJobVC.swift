@@ -53,7 +53,7 @@ class DeleteJobVC: UIViewController {
     
     func hitJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow( title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow( title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

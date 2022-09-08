@@ -70,7 +70,7 @@ class ConnectViewController: UIViewController {
     
     func hitSubscriptionCheckforChatApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken = AppDefaults.token ?? ""
         let header: HTTPHeaders = ["Token": authToken]
@@ -104,7 +104,7 @@ class ConnectViewController: UIViewController {
     //    MARK: GET JOB LIST
     func getConnectHitList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -150,7 +150,7 @@ class ConnectViewController: UIViewController {
     //    MARK: GET COMPANIES LIST
     func getConnectCompanyList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

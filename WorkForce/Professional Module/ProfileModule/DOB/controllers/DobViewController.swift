@@ -110,7 +110,7 @@ class DobViewController: UIViewController,UITextFieldDelegate {
     //   MARK: VALIDATION
         func validation(){
             if (dobTF.text?.trimWhiteSpace.isEmpty)! {
-                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter date of birth." , okButton: "Ok", controller: self) {
+                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter date of birth.".localized() , okButton: "Ok", controller: self) {
                 }
             }else{
                 if UserType.userTypeInstance.userLogin == .Coustomer{

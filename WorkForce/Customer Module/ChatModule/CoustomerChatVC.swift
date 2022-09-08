@@ -36,7 +36,7 @@ class CoustomerChatVC: UIViewController {
     //    MARK: GET USER LIST FOR CHAT SCREEN
     func getAllChatList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -54,6 +54,8 @@ class CoustomerChatVC: UIViewController {
                 let aContact = try jsonDecoder.decode(UserChatListModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status
+                let message = aContact.message ?? ""
+                print("message>>>>>>",message)
                 if status == 1{
                     self.getChatListData = aContact
                     self.getUserListAllUser = aContact.all_users!
@@ -62,7 +64,7 @@ class CoustomerChatVC: UIViewController {
                 }
                 else if status == 0{
                     self.getUserListAllUser.removeAll()
-                    self.customerChatListTV.setBackgroundView(message: "No message found")
+                    self.customerChatListTV.setBackgroundView(message: message)
                     self.customerChatListTV.reloadData()
                 }
             }

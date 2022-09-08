@@ -127,15 +127,15 @@ class BusinessEditProfileViewController: UIViewController , UITextFieldDelegate 
     
     func validation(){
         if (companyTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter company name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_COMPANY_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }
         else if addressTF.text!.trimWhiteSpace.isEmpty{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter address." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_ADDRESS".localized() , okButton: "Ok", controller: self) {
             }
         }
         else if (descriptionTV.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description.".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             self.hitAddCompanyApi()
@@ -159,7 +159,7 @@ class BusinessEditProfileViewController: UIViewController , UITextFieldDelegate 
         print(headers)
         DispatchQueue.main.async {
             
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AF.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {

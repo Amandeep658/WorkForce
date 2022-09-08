@@ -158,7 +158,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
         let headers: HTTPHeaders = ["Token": AToken]
         print(headers)
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AF.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
@@ -243,15 +243,15 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     //    MARK: VALIDATIONS
     func validation(){
         if (firstNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter first name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_FIRST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }
         else if (lastNameTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter last name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_LAST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }
         else if locationTF.text!.trimWhiteSpace.isEmpty{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter location." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter location.".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             hitCustomerEditProfileAPI()

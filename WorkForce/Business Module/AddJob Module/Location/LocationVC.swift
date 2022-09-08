@@ -70,7 +70,7 @@ class LocationVC: UIViewController,MKLocalSearchCompleterDelegate, UISearchBarDe
     //   MARK: VALIDATION
     func validation(){
         if (typeAddressTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter address." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_ADDRESS".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             if (UserType.userTypeInstance.userLogin == .Bussiness){

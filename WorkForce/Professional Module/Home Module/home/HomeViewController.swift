@@ -157,7 +157,6 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     }
     
     
-    
     @IBAction func filterAction(_ sender: UIButton) {
         let vc = ProfessionalFilterVC()
         vc.reloadTable = self
@@ -223,7 +222,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     
     func hitCategoryFilterApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -272,7 +271,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     //    MARK: HIT JOB LISTNING API
     func homeJobListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

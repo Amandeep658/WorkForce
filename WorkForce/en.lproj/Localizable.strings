@@ -1,0 +1,100 @@
+/* 
+  Localizable.strings
+  WorkForce
+  Created by Aman's MacBookPro on 05/09/22.
+  
+*/
+
+"ENTER_PHONE_NUMBER" = "Please enter phone number";
+"LOADING" = "Loading..";
+"AUTH_TEXT" = "An authentication code has been sent to ";
+"INVALID_OTP_PLEASE_ENTER" = "Invalid OTP please enter again.";
+"ENTER_FIRST_NAME" = "Please enter firstname.";
+"ENTER_LAST_NAME" = "Please enter lastname.";
+"Companies Opportunity" = "Companies Opportunity";
+"ENTER_EMAIL" = "Please enter email.";
+"ENTER_VALID_EMAIL" = "Please enter vaild email.";
+"ENTER_ADDRESS" = "Please enter Address.";
+"Please enter description." = "Please enter description.";
+"Please enter date of birth." = "Please enter date of birth.";
+"ENTER_COMPANY_NAME" = "Please enter company name.";
+"Professionals that likes your Job post" = "Professionals that likes your Job post";
+"Companies that likes your Job post" = "Companies that likes your Job post";
+"Please enter location." = "Please enter location.";
+"Please select city first." = "Please select city first.";
+"Please select category first." = "Please select category first.";
+"Please select atleast one category." = "Please select atleast one category.";
+"What professional Skills are you looking for?" = "What professional Skills are you looking for?";
+"What professional Skills can you offer?" = "What professional Skills can you offer?";
+"ENTER_SELECTED_YEAR" = "Please select Year.";
+"Please select job type." = "Please select job type.";
+"ENTER_RATE" = "Please enter Rate.";
+"ENTER_HOURLY_RATE" = "Please enter Hourly Rate.";
+"ENTER_EXPERIENCE" = "Please select Experience";
+"Please select job type." = "Please select job type.";
+"OTP_SENT" = "New otp sent in Registered Number";
+"ENTER_VALID_CODE" = "Please enter valid code";
+"ENTER_CODE" = "Please enter code";
+"PROFILE_UPDATE" = "Profile updated successfully.";
+"ADD_IMAGE" = "Please add image";
+"ADD_ONE_CATEGORY" = "Please select at least one CategoryPlease enter category";
+"LOCATION_NOT_FOUND" = "Location not found";
+"SELECT_LOCATION" = "Please select location";
+"NO_PURCHASE_RESTORE" = "No purchases to restore";
+"THERE_IS_NO_PURCHASE" = "There are no purchases with this subscription to restore related to your account.";
+"You can select only two category." = "You can select only two category.";
+"Purchase plan" = "Purchase plan";
+"Per Day" = "Per Day";
+"Per Hour" = "Per Hour";
+"0 Year" = "0 Year";
+"Years" = "Years";
+"Year" = "Year";
+"Job Type" = "Job Type";
+"catagory_details" = "catagory_details";
+"experience" = "experience";
+"job_image" = "imagen_trabajo";
+"Please enter company name." = "Please enter company name.";
+"Please enter category name" = "Please enter category name";
+"Company Detail" = "Company Detail";
+"Recovery Email" = "Recovery Email";
+"Manage Jobs" = "Manage Jobs";
+"Update Subscription Plan" = "Update Subscription Plan";
+"Terms of use" = "Terms of use";
+"Terms of Use" = "Terms of Use";
+"About us" = "About us";
+"About Us" = "About us";
+"Please take subscription plan." = "Please take subscription plan.";
+"Job Opportunity" = "Job Opportunity";
+"Privacy Policy" = "Privacy Policy";
+"Delete Account" = "Delete Account";
+"Logout" = "Logout";
+"Are you sure you want to delete your account?" = "Are you sure you want to delete you account?";
+"Yes" = "Yes";
+"No" = "No";
+"Done" = "Done";
+"Email already registered" = "Email already registered";
+"No rate selected." = "No rate selected.";
+"Profile update successfully." = "Profile update successfully.";
+"Professionals rate from" = "Professionals rate from";
+"Rate" = "Rate";
+"Please enter second rate." = "Please enter second rate.";
+"Please enter first rate." = "Please enter first rate." ;
+"please select rate type." = "please select rate type.";
+"No Job found." = "No Job found.";
+"Please enter job type." = "Please enter job type.";
+"Please enter city." = "Please enter city.";
+
+//TabBar
+"Home" = "Home";
+"Connect" = "Connect";
+"Jobs" = "Jobs";
+"Chat" = "Chat";
+"Profile" = "Profile";
+
+//jobType
+"Full Time" = "Full Time";
+"Part Time" = "Part Time";
+"Contract" = "Contract";
+"Freelance" = "Freelance";
+"Remote" = "Remote";
+

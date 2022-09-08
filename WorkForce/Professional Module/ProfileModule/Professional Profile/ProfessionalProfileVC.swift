@@ -11,7 +11,6 @@ import SDWebImage
 
 class ProfessionalProfileVC: UIViewController {
 
-
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var emailLbl: UILabel!
@@ -19,7 +18,8 @@ class ProfessionalProfileVC: UIViewController {
     @IBOutlet weak var professionalTableView: UITableView!
     
     let imageArr = ["re","sb","ic","abb","pp","deleteUser","log"]
-    let Label = ["Recovery Email","Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
+    let Label = ["Recovery Email".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
+    
     var professionalUserDate:ProfessionalProfileData?
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +61,7 @@ class ProfessionalProfileVC: UIViewController {
         
     func hitCompanyListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -137,7 +137,7 @@ class ProfessionalProfileVC: UIViewController {
 //    MARK: LOGOUT API
     func hitprofessionalLogoutApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)
@@ -179,42 +179,42 @@ extension ProfessionalProfileVC : UITableViewDelegate , UITableViewDataSource{
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch Label[indexPath.row] {
-        case "Recovery Email":
+        case "Recovery Email".localized():
             if professionalUserDate?.verified == "1"{
-                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "Email already registered".localized(), title: AppAlertTitle.appName.rawValue)
             }else{
                 let vc = RecoveryEmailVC()
                 vc.isFromAccount = true
                 self.pushViewController(vc, true)
             }
             break
-        case "Update Subscription Plan":
+        case "Update Subscription Plan".localized():
             print("its update")
             let vc = SubscribePlanViewController()
             vc.hidesBottomBarWhenPushed = true
              self.pushViewController(vc,true)
-        case "Terms of Use" :
+        case "Terms of Use".localized():
             let terms =  TermsConditionVC()
             self.pushViewController(terms, true)
             break
-        case "About Us" :
+        case "About Us".localized():
             let about =  AboutUsVC()
             self.pushViewController(about, true)
             break
-        case "Privacy Policy" :
+        case "Privacy Policy".localized():
             let privacy =  PrivacyPolicyVC()
             self.pushViewController(privacy, true)
             break
-        case "Delete Account" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Delete Account".localized():
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitDeleteprofessionalAccountApi()
             },{
                 cancel in
                 self.dismiss(animated: false, completion: nil)
             }])
             break
-        case "Logout" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Logout".localized() :
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitprofessionalLogoutApi()
             },{
                 cancel in

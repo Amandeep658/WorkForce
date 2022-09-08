@@ -129,7 +129,7 @@ class EmailOtpVC: UIViewController,UITextFieldDelegate {
 //    MARK: HIT VERIFY OTP API
     func hitVerifyEmailAPI(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)

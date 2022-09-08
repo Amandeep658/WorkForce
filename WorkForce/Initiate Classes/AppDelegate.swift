@@ -18,6 +18,7 @@ import SwiftyStoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
     var window: UIWindow?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         if #available(iOS 10.0, *) {
@@ -42,8 +43,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         GMSServices.provideAPIKey("AIzaSyCzdtjehNkbBv2JsYR2pVxq1qB866Pk72M")
         self.configureNotification()
         self.setupIAP()
+        let sddssdsd = getLenguage()
+        print(sddssdsd)
+        
+//        if let currentLanguage = Locale.currentLanguage {
+//            print(currentLanguage.rawValue)
+//            // Your code here.
+//        }
+       checkLen()
         return true
     }
+    
+    
+    
+    func checkLen() {
+        let lan = NSLocale.preferredLanguages.first
+        let lanDict = NSLocale.components(fromLocaleIdentifier: lan ?? "")
+        let lanCOde = lanDict["kCFLocalLanguageCodeKey"]
+        print(lanCOde)
+    }
+    
+    func currentLanguageTrigger() {
+        // This is done so that network calls now have the Accept-Language as Language.getCurrentLanguage() (Using Alamofire) Check if you can remove these
+        //        let language = Bundle.main.preferredLocalizations.first
+        //        UserDefaults.standard.set([Locale.current.languageCode ], forKey: "AppleLanguages")
+        //        UserDefaults.standard.synchronize()
+        //        Bundle.setLanguage(NSLocale.current.languageCode!)
+        
+        var preferredLanguage : String = Bundle.main.preferredLocalizations.first!
+        print(preferredLanguage)
+    }
+    
+    
+    func getLenguage() -> Locale {
+        guard let lenguage = NSLocale.preferredLanguages.first else {
+            return NSLocale.current }
+        return NSLocale(localeIdentifier: lenguage) as Locale
+    }
+    
     
     func navigation(){
         let nav = UINavigationController(rootViewController: BusinessesViewController(nibName: "BusinessesViewController", bundle: nil))
@@ -248,30 +285,86 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 nav.setViewControllers([homeVC,subscription], animated: true)
                 nav.navigationBar.isHidden = true
                 appdelegate.window?.rootViewController = nav
-                }
-                break
+            }
+            break
         case "2":
-                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                let notificationVC = NotificationViewController()
-                let homeVC = TabBarVC()
-                homeVC.selectedIndex = 0
-                let nav = UINavigationController()
-                nav.setViewControllers([homeVC, notificationVC], animated: true)
-                nav.navigationBar.isHidden = true
-                appdelegate.window?.rootViewController = nav
-                break
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            let notificationVC = NotificationViewController()
+            let homeVC = TabBarVC()
+            homeVC.selectedIndex = 0
+            let nav = UINavigationController()
+            nav.setViewControllers([homeVC, notificationVC], animated: true)
+            nav.navigationBar.isHidden = true
+            appdelegate.window?.rootViewController = nav
+            break
         case "3":
-                let appdelegate = UIApplication.shared.delegate as! AppDelegate
-                let notificationVC = NotificationViewController()
-                let homeVC = TabBarVC()
-                homeVC.selectedIndex = 0
-                let nav = UINavigationController()
-                nav.setViewControllers([homeVC,notificationVC], animated: true)
-                nav.navigationBar.isHidden = true
-                appdelegate.window?.rootViewController = nav
-                break
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            let notificationVC = NotificationViewController()
+            let homeVC = TabBarVC()
+            homeVC.selectedIndex = 0
+            let nav = UINavigationController()
+            nav.setViewControllers([homeVC,notificationVC], animated: true)
+            nav.navigationBar.isHidden = true
+            appdelegate.window?.rootViewController = nav
+            break
         default:
-                break
+            break
         }
+    }
+}
+
+
+
+enum Language: String {
+    
+    case none = ""
+    case en = "English"
+    case es = "Spanish"
+    case pt = "Portuguese"
+    
+}
+
+
+extension Locale {
+    
+    static var enLocale: Locale {
+        
+        return Locale(identifier: "en-EN")
+    } // to use in **currentLanguage** to get the localizedString in English
+    
+    static var currentLanguage: Language? {
+        
+        guard let code = preferredLanguages.first?.components(separatedBy: "-").last else {
+            
+            print("could not detect language code")
+            
+            return nil
+        }
+        
+        guard let rawValue = enLocale.localizedString(forLanguageCode: code) else {
+            
+            print("could not localize language code")
+            
+            return nil
+        }
+        
+        guard let language = Language(rawValue: rawValue) else {
+            
+            print("could not init language from raw value")
+            
+            return nil
+        }
+        print("language: \(code)-\(rawValue)")
+        
+        return language
+    }
+    static var preferredLanguageCode: String {
+        let defaultLanguage = "en"
+        let preferredLanguage = preferredLanguages.first ?? defaultLanguage
+        return Locale(identifier: preferredLanguage).languageCode ?? defaultLanguage
+    }
+    
+    static var preferredLanguageCodes: [String] {
+        return Locale.preferredLanguages.compactMap({Locale(identifier: $0).languageCode})
     }
 }

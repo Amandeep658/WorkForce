@@ -50,9 +50,9 @@ class SkillsViewController: UIViewController, UITextFieldDelegate {
     
     func setView(){
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            self.headerTextLabel.text = "What professional Skills are you looking for?"
+            self.headerTextLabel.text = "What professional Skills are you looking for?".localized()
         }else{
-            self.headerTextLabel.text = "What professional Skills can you offer?"
+            self.headerTextLabel.text = "What professional Skills can you offer?".localized()
         }
         categoryView.layer.borderWidth = 1
         categoryView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -61,7 +61,7 @@ class SkillsViewController: UIViewController, UITextFieldDelegate {
     //   MARK: VALIDATION
     func validation(){
         if (categoryTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select categories." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             if (UserType.userTypeInstance.userLogin == .Bussiness){

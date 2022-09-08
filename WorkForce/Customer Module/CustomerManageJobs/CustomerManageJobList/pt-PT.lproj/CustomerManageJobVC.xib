@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomerManageJobVC" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="backBtn" destination="p9w-3V-2vz" id="Cfp-Sl-Wy3"/>
+                <outlet property="customerManageJobList" destination="Yh1-St-q4W" id="lOe-Hr-HFR"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yka-GB-ubN">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p9w-3V-2vz">
+                            <rect key="frame" x="20" y="13" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="FPN-8g-zAU"/>
+                                <constraint firstAttribute="height" constant="24" id="X32-96-NDk"/>
+                            </constraints>
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <inset key="imageEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                            <state key="normal" image="arrow.backward" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" weight="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="backBtnAction:" destination="-1" eventType="touchUpInside" id="bgc-Yf-OgL"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gerenciar trabalhos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uIr-e5-OgM">
+                            <rect key="frame" x="136" y="15" width="142" height="20"/>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="p9w-3V-2vz" firstAttribute="centerY" secondItem="yka-GB-ubN" secondAttribute="centerY" id="Tgg-kb-7Tj"/>
+                        <constraint firstAttribute="height" constant="50" id="aGd-zw-Ter"/>
+                        <constraint firstItem="p9w-3V-2vz" firstAttribute="leading" secondItem="yka-GB-ubN" secondAttribute="leading" constant="20" id="fKa-ny-hWE"/>
+                        <constraint firstItem="uIr-e5-OgM" firstAttribute="centerX" secondItem="yka-GB-ubN" secondAttribute="centerX" id="fvr-FK-DvZ"/>
+                        <constraint firstItem="uIr-e5-OgM" firstAttribute="centerY" secondItem="yka-GB-ubN" secondAttribute="centerY" id="zjX-dN-7DE"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Yh1-St-q4W">
+                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Yh1-St-q4W" secondAttribute="trailing" id="99Q-SD-22F"/>
+                <constraint firstItem="yka-GB-ubN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CDG-Mx-CuM"/>
+                <constraint firstItem="Yh1-St-q4W" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CQ3-X0-Pla"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="yka-GB-ubN" secondAttribute="trailing" id="Qes-iz-Wkl"/>
+                <constraint firstItem="Yh1-St-q4W" firstAttribute="top" secondItem="yka-GB-ubN" secondAttribute="bottom" id="U9U-1n-P6m"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Yh1-St-q4W" secondAttribute="bottom" id="dEd-B7-KeB"/>
+                <constraint firstItem="yka-GB-ubN" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="s3c-2P-Zj3"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="95.758928571428569"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.backward" catalog="system" width="128" height="98"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

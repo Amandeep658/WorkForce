@@ -261,7 +261,7 @@ extension SingleChatController: GrowingTextViewDelegate {
     //    MARK: GET ALL MESSAGE API
     func getAllMessagesApi(view: UIViewController) {
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: view)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: view)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

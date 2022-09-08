@@ -25,26 +25,16 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     @IBOutlet weak var editJobBtn: UIButton!
     @IBOutlet weak var categorylbl1: UILabel!
     @IBOutlet weak var categoryLbl2: UILabel!
-    @IBOutlet weak var rateFromTF: UITextField!
-    @IBOutlet weak var rateToTF: UITextField!
-    @IBOutlet weak var perHourBtn: UIButton!
-    @IBOutlet weak var perDayBtn: UIButton!
     @IBOutlet weak var jobTypeTF: UITextField!
     @IBOutlet weak var cityTF: UITextField!
     @IBOutlet weak var localityTF: UITextField!
     @IBOutlet weak var descriptionTxtView: UITextView!
     @IBOutlet weak var saveBtn: UIButton!
-    @IBOutlet weak var rateFromView: UIView!
-    @IBOutlet weak var rateToView: UIView!
-    @IBOutlet weak var perhourView: UIView!
     @IBOutlet weak var jobTypeView: UIView!
     @IBOutlet weak var cityView: UIView!
     @IBOutlet weak var localityView: UIView!
     @IBOutlet weak var descriptionView: UIView!
     @IBOutlet weak var categoryView: UIView!
-    @IBOutlet weak var yearsTableView: UITableView!
-    @IBOutlet weak var tableViewHeightConstantraints: NSLayoutConstraint!
-    @IBOutlet weak var rateView: UIView!
     
     
     var imagePicker : ImagePicker?
@@ -97,25 +87,6 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
         vc.isModalInPresentation = true
         self.present(vc, true)
     
-    }
-    
-    @IBAction func perHourBtn(_ sender: UIButton) {
-        isselect = true
-        if isselect {
-            isRateType = "Per Hour"
-            perHourBtn.setTitleColor(UIColor(red: 58, green: 148, blue: 184), for: .normal)
-            perDayBtn.setTitleColor(.gray, for: .normal)
-        }
-    }
-    
-    @IBAction func perDayBtn(_ sender: UIButton) {
-        isselect = false
-        if !isselect  {
-            isRateType = "Per Day"
-            perDayBtn.setTitleColor(UIColor(red: 58, green: 148, blue: 184), for: .normal)
-            perHourBtn.setTitleColor(.gray, for: .normal)
-        }
-
     }
     
     @IBAction func jobTypeBtn(_ sender: UIButton) {
@@ -181,29 +152,20 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     //    MARK: UI UPDATES
     func uiUpdate(){
         jobTypeTF.delegate = self
-        rateFromTF.delegate = self
-        rateToTF.delegate = self
         cityTF.delegate = self
         localityTF.delegate = self
         descriptionTxtView.delegate = self
         jobTypeView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateFromView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateToView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cityView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         localityView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         descriptionView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         categoryView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        yearsTableView.delegate = self
-        yearsTableView.dataSource = self
-        yearsTableView.register(UINib(nibName: "ExperienceTableViewCell", bundle: nil), forCellReuseIdentifier: "ExperienceTableViewCell")
         jobeditImgView.layer.cornerRadius = jobeditImgView.frame.height/2
         self.imagePicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     func updateEditManageUI(){
         self.jobTypeTF.text = jobDetailByJobdict?.data?.job_type ?? ""
-        self.rateFromTF.text = jobDetailByJobdict?.data?.rate_from ?? ""
-        self.rateToTF.text = jobDetailByJobdict?.data?.rate_to ?? ""
         self.cityTF.text = jobDetailByJobdict?.data?.location ?? ""
         self.descriptionTxtView.text = jobDetailByJobdict?.data?.description ?? ""
         self.categorylbl1.text =  jobDetailByJobdict?.data?.catagory_details?.first?.category_name ?? ""
@@ -212,19 +174,7 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
         }else{
             self.categoryLbl2.text = ""
         }
-        if jobDetailByJobdict?.data?.rate_type == "Per Hour"{
-            isRateType = "Per Hour"
-            perHourBtn.setTitleColor(UIColor(red: 58, green: 148, blue: 184), for: .normal)
-            perDayBtn.setTitleColor(.gray, for: .normal)
-        }else if jobDetailByJobdict?.data?.rate_type == "Per Day"{
-            isRateType = "Per Day"
-            perDayBtn.setTitleColor(UIColor(red: 58, green: 148, blue: 184), for: .normal)
-            perHourBtn.setTitleColor(.gray, for: .normal)
-        }else{
-            isRateType = ""
-            perDayBtn.setTitleColor(.gray, for: .normal)
-            perHourBtn.setTitleColor(.gray, for: .normal)
-        }
+     
         var sPhotoStr = jobDetailByJobdict?.data?.job_image ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         self.jobeditImgView.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
@@ -235,8 +185,6 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     func updateDict(){
         self.professionalEditUserDict.customer_job_id =  jobID
         self.professionalEditUserDict.userId =  UserDefaults.standard.string(forKey: "uID")
-        self.professionalEditUserDict.rate_from =  rateFromTF.text
-        self.professionalEditUserDict.rate_to = rateToTF .text
         self.professionalEditUserDict.rate_type =  isRateType
         self.professionalEditUserDict.job_type = jobTypeTF.text
         self.professionalEditUserDict.location = cityTF.text
@@ -248,16 +196,16 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
 //    MARK: VALIDATIONS
     func validation(){
         if (categorylbl1.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (jobTypeTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (cityTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select city first." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select city first.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (descriptionTxtView.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description.".localized() , okButton: "Ok", controller: self) {
             }
         }
         else{
@@ -270,8 +218,6 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     //    MARK: TEXT FIELD DELEGATES
     func textFieldDidBeginEditing(_ textField: UITextField) {
         jobTypeView.layer.borderColor = textField == jobTypeTF ?  #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)  :  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateFromView.layer.borderColor = textField == rateFromTF ?  #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)  :  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateToView.layer.borderColor = textField == rateToTF ?  #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)  :  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cityView.layer.borderColor = textField == cityTF ?  #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)  :  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         localityView.layer.borderColor = textField == localityTF ?  #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)  :  #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         if textField == cityTF{
@@ -292,8 +238,6 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         jobTypeView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateFromView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        rateToView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         cityView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         localityView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         descriptionView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
@@ -323,7 +267,7 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
         let headers: HTTPHeaders = ["Token": AToken]
         print(headers)
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AF.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
@@ -389,24 +333,20 @@ extension CustomerManageEditJobVC : UITableViewDelegate , UITableViewDataSource 
         self.hasExperinceValue = true
         if jobDetailByJobdict?.data?.catagory_details?[indexPath.row].experience != nil{
             let exp0 = Double(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") ?? 0.0
-            cell.experienceLbl.text = "\(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+            cell.experienceLbl.text = "\(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
         }else{
-            cell.experienceLbl.text = "0 Year"
+            cell.experienceLbl.text = "0 Year".localized()
         }
         cell.dropDownBtn.tag = indexPath.row
         cell.dropDownBtn.addTarget(self, action: #selector(drpdwnAction), for: .touchUpInside)
         cell.cancelBtn.tag = indexPath.row
         cell.cancelBtn.addTarget(self, action: #selector(dltRowBtn), for: .touchUpInside)
-        DispatchQueue.main.async{
-            self.tableViewHeightConstantraints.constant = self.yearsTableView.contentSize.height
-        }
         return cell
     }
     
     @objc func dltRowBtn(sender : UIButton){
         self.jobDetailByJobdict?.data?.catagory_details?.remove(at: sender.tag)
         self.UserDidSelectList(data: jobDetailByJobdict?.data?.catagory_details ?? [])
-        self.yearsTableView.reloadData()
         self.updateEditManageUI()
     }
     
@@ -423,14 +363,13 @@ extension CustomerManageEditJobVC : UITableViewDelegate , UITableViewDataSource 
         self.view.addSubview(yearListArr)
         self.doneTool = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         self.doneTool.barStyle = .default
-        self.doneTool.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(doneButtonTapped))]
+        self.doneTool.items = [UIBarButtonItem.init(title: "Done".localized(), style: .done, target: self, action: #selector(doneButtonTapped))]
         self.view.addSubview(doneTool)
     }
     @objc func doneButtonTapped(){
         self.jobDetailByJobdict?.data?.catagory_details?[self.currentIndex].experience = selectedID
         doneTool.removeFromSuperview()
         yearListArr.removeFromSuperview()
-        yearsTableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -439,7 +378,6 @@ extension CustomerManageEditJobVC : UITableViewDelegate , UITableViewDataSource 
 }
 extension CustomerManageEditJobVC : ListSelectionDelegate{
     func UserDidSelectList(data: [CategoryData]) {
-        self.yearsTableView.reloadData()
         if data.count > 0{
             self.categorylbl1.text = data.first?.category_name ?? ""
             if data.count > 1{
@@ -449,7 +387,6 @@ extension CustomerManageEditJobVC : ListSelectionDelegate{
         self.jobDetailByJobdict?.data?.catagory_details = data
 //        self.professionalEditUserDict.catagory_details = data
         self.uiUpdate()
-        self.yearsTableView.reloadData()
     }
 }
 extension CustomerManageEditJobVC: GMSAutocompleteViewControllerDelegate {

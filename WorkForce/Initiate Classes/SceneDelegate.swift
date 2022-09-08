@@ -14,6 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let _ = (scene as? UIWindowScene) else { return }
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = window
+        appDelegate.currentLanguageTrigger()
         appDelegate.checkLogin()
     }
 

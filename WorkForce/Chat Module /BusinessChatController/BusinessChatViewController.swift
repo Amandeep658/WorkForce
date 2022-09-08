@@ -71,7 +71,7 @@ class BusinessChatViewController: UIViewController {
                 if businessNav == "6"{
                     vc.dismiss(animated: true)
                 }
-                self.chatTableView.setBackgroundView(message: "Please take subscription plan.")
+                self.chatTableView.setBackgroundView(message: "Please take subscription plan.".localized())
             }
         } failure: { (error) in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -83,7 +83,7 @@ class BusinessChatViewController: UIViewController {
     //    MARK: GET USER LIST FOR CHAT SCREEN
     func getAllChatList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -101,6 +101,7 @@ class BusinessChatViewController: UIViewController {
                 let aContact = try jsonDecoder.decode(UserChatListModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status
+                let message = aContact.message
                 if status == 1{
                     self.getChatListData = aContact
                     self.getUserListAllUser = aContact.all_users!
@@ -108,7 +109,7 @@ class BusinessChatViewController: UIViewController {
                     self.chatTableView.reloadData()
                 }
                 else if status == 0{
-                    self.chatTableView.setBackgroundView(message: "No message found")
+                    self.chatTableView.setBackgroundView(message: message!)
                     self.getUserListAllUser.removeAll()
                     self.chatTableView.reloadData()
                 }

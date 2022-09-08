@@ -39,18 +39,18 @@ class ProfileDesignViewController: UIViewController {
         self.professionalTitleView.text = professionalUserDate?.username ?? ""
         if professionalUserDate?.rate_type == "Per Day"{
             if professionalUserDate?.rate_to == ""{
-                self.btnAmount.setTitle("Nor rate selected", for: .normal)
+                self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
             }else{
                 self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/d", for: .normal)
             }
         }else if professionalUserDate?.rate_type == "Per Hour"{
             if professionalUserDate?.rate_to == ""{
-                self.btnAmount.setTitle("Nor rate selected", for: .normal)
+                self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
             }else{
                 self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/h", for: .normal)
             }
         }else{
-            self.btnAmount.setTitle("Nor rate selected", for: .normal)
+            self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
         }
         if professionalUserDate?.catagory_details?.count ?? 0 > 1{
             self.jobTypeTF.text = "\(professionalUserDate?.catagory_details?.first?.category_name ?? "") , \(professionalUserDate?.catagory_details?.last?.category_name ?? "") "
@@ -61,15 +61,15 @@ class ProfileDesignViewController: UIViewController {
         self.partTimeTF.text = professionalUserDate?.job_type ?? ""
         
         if professionalUserDate?.catagory_details == nil{
-            self.experienceLbl.text = "0 Year"
+            self.experienceLbl.text = "0 Year".localized()
         }else{
             let exp0 = Double(professionalUserDate?.catagory_details?.first?.experience ?? "0") ?? 0.0
             let exp1 = Double(professionalUserDate?.catagory_details?.last?.experience ?? "0") ?? 0.0
             if professionalUserDate?.catagory_details?.count ?? 0 > 1 {
-                self.experienceLbl.text = "\(professionalUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year") , \(professionalUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year") "
+                self.experienceLbl.text = "\(professionalUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized()) , \(professionalUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized()) "
             }
             else{
-                self.experienceLbl.text = "\(professionalUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                self.experienceLbl.text = "\(professionalUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
             }
         }
         let dateFormatter = DateFormatter()
@@ -78,7 +78,7 @@ class ProfileDesignViewController: UIViewController {
         if let date = dateFormatter.date(from: professionalUserDate?.date_of_birth ?? "") {
             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
             print(age)
-            self.AgeLbl.text =  "\(Int(age)) Years"
+            self.AgeLbl.text =  "\(Int(age)) Years".localized()
         }
         var sPhotoStr = professionalUserDate?.photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

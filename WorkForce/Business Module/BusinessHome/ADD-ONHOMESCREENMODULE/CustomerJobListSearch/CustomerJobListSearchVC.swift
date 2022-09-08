@@ -41,7 +41,7 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == ""{
-            showAlert(message: "Please enter company name", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "Please enter company name".localized(), title: AppAlertTitle.appName.rawValue)
             self.customerShowTableView.reloadData()
         }else{
             self.hitCoustomerListingApi()
@@ -73,7 +73,7 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
     //    MARK: HIT COUSTOMER JOB LISTING API
         func hitCoustomerListingApi(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]
@@ -100,7 +100,7 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
                             self.countLbl.text = "\(jobNearMeArr.count) Customers Opportunity"
                         }else{
                             self.countLbl.text = "0 Customers Opportunity"
-                            self.customerShowTableView.setBackgroundView(message: "No Job found.")
+                            self.customerShowTableView.setBackgroundView(message: message)
                         }
                         self.customerShowTableView.reloadData()
                     }else if status == 0{

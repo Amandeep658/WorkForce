@@ -66,6 +66,7 @@ class ProfessionalsViewController: UIViewController,UITextFieldDelegate {
     
     func setView(){
         firstTF.delegate = self
+        self.firstTF.keyboardType = .decimalPad
         firstView.layer.borderWidth = 1.5
         hoursDayView.layer.borderWidth = 1.5
         firstView.layer.borderColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
@@ -97,7 +98,7 @@ class ProfessionalsViewController: UIViewController,UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let firstName = firstTF
         if textField == firstName {
-            let allowedCharacters = "1234567890"
+            let allowedCharacters = ".1234567890"
             let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
             let typedCharacterSet = CharacterSet(charactersIn: string)
             let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
@@ -128,7 +129,7 @@ class ProfessionalsViewController: UIViewController,UITextFieldDelegate {
                 vc.professionalUserDict = self.professionalUserDict
                 self.pushViewController(vc, true)
         } else {
-            showAlert(message: "please select rate type.", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "please select rate type.".localized(), title: AppAlertTitle.appName.rawValue)
         }
     }
 }

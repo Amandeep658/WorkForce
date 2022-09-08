@@ -13,9 +13,7 @@ class CustomerInfoDetailVC: UIViewController {
     
     @IBOutlet weak var userImgView: UIImageView!
     @IBOutlet weak var categoryLbl: UILabel!
-    @IBOutlet weak var amountBtn: UIButton!
     @IBOutlet weak var descriptionLbl: UILabel!
-    @IBOutlet weak var experiencelbl: UILabel!
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var jobtypeLbl: UILabel!
     @IBOutlet weak var locationLbl: UILabel!
@@ -49,7 +47,7 @@ class CustomerInfoDetailVC: UIViewController {
 //    MARK: CUSTOMER JOB LIST DETAIL
     func hitJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -81,36 +79,11 @@ class CustomerInfoDetailVC: UIViewController {
                         else{
                             self.categoryLbl.text = "\(CustomerjobDetail?.data?.catagory_details?.first?.category_name ?? "") "
                         }
-                        if CustomerjobDetail?.data?.rate_type == "Per Day"{
-                            if  CustomerjobDetail?.data?.rate_from == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
-                            }else{
-                                self.amountBtn.setTitle("$\(CustomerjobDetail?.data?.rate_from ?? "")/d - $\(CustomerjobDetail?.data?.rate_to ?? "")/d", for: .normal)}
-                        }else if CustomerjobDetail?.data?.rate_type == "Per Hour"{
-                            if  CustomerjobDetail?.data?.rate_from == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
-                            }else{
-                                self.amountBtn.setTitle("$\(CustomerjobDetail?.data?.rate_from ?? "")/h - $\(CustomerjobDetail?.data?.rate_to ?? "")/h", for: .normal)}
-                        }else{
-                            self.amountBtn.setTitle("No rate selected.", for: .normal)
-                        }
                         self.jobtypeLbl.text = CustomerjobDetail?.data?.job_type ?? ""
                         var photoStr = CustomerjobDetail?.data?.job_image ?? ""
                         photoStr = photoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
                         self.userImgView.sd_setImage(with: URL(string: photoStr ), placeholderImage:UIImage(named:"placeholder"))
                         self.descriptionLbl.text = CustomerjobDetail?.data?.description ?? ""
-                        if CustomerjobDetail?.data?.catagory_details == nil{
-                            self.experiencelbl.text = "0 Year"
-                        }else{
-                            let exp0 = Double(CustomerjobDetail?.data?.catagory_details?.first?.experience ?? "0") ?? 0.0
-                            let exp1 = Double(CustomerjobDetail?.data?.catagory_details?.last?.experience ?? "0") ?? 0.0
-                            if CustomerjobDetail?.data?.catagory_details?.count ?? 0 > 1 {
-                                self.experiencelbl.text = "\(CustomerjobDetail?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year")  , \(CustomerjobDetail?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year")"
-                            }
-                            else{
-                                self.experiencelbl.text = "\(CustomerjobDetail?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
-                            }
-                        }
                         self.headerLbl.text =  CustomerjobDetail?.data?.username ?? ""
                     }
                 }else{

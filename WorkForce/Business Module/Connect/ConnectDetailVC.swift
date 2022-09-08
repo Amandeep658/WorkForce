@@ -50,7 +50,7 @@ class ConnectDetailVC: UIViewController {
     
     func hitSubscriptionCheckforChatApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken = AppDefaults.token ?? ""
         let header: HTTPHeaders = ["Token": authToken]
@@ -99,7 +99,7 @@ class ConnectDetailVC: UIViewController {
     //    MARK: CHAT ROOM CREATED API
     func hitRoomCreateApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -179,18 +179,18 @@ class ConnectDetailVC: UIViewController {
                         self.headerLbl.text = workerDetailUserDate?.username ?? ""
                         if workerDetailUserDate?.rate_type == "Per Day"{
                             if workerDetailUserDate?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/d", for: .normal)
                             }
                         }else if workerDetailUserDate?.rate_type == "Per Hour"{
                             if workerDetailUserDate?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if workerDetailUserDate?.catagory_details?.count ?? 0 > 1{
                             self.categoryLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.category_name ?? "") , \(workerDetailUserDate?.catagory_details?.last?.category_name ?? "") "
@@ -200,15 +200,15 @@ class ConnectDetailVC: UIViewController {
                         }
                         self.jobTypeLbl.text = workerDetailUserDate?.job_type ?? ""
                         if workerDetailUserDate?.catagory_details == nil{
-                            self.experinceLbl.text = "0 Year"
+                            self.experinceLbl.text = "0 Year".localized()
                         }else{
                             let exp0 = Double(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if workerDetailUserDate?.catagory_details?.count ?? 0 > 1 {
-                                self.experinceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year") , \(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year") "
+                                self.experinceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized()) , \(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized()) "
                             }
                             else{
-                                self.experinceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experinceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         let dateFormatter = DateFormatter()
@@ -217,7 +217,7 @@ class ConnectDetailVC: UIViewController {
                         if let date = dateFormatter.date(from: workerDetailUserDate?.date_of_birth ?? "") {
                             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
                             print(age)
-                            self.locationLbl.text =  "\(Int(age)) Years"
+                            self.locationLbl.text =  "\(Int(age)) Years".localized()
                         }
                         var sPhotoStr = workerDetailUserDate?.photo ?? ""
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -240,7 +240,7 @@ class ConnectDetailVC: UIViewController {
     //      MARK: HIT CONNECT JOB DETAIL API
     func hitJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -273,18 +273,18 @@ class ConnectDetailVC: UIViewController {
                         }
                         if jobDetailByJobId?.data?.rate_type == "Per Day"{
                             if jobDetailByJobId?.data?.rate_from == "" || jobDetailByJobId?.data?.rate_to == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)
                             }
                         }else if jobDetailByJobId?.data?.rate_type == "Per Hour"{
                             if jobDetailByJobId?.data?.rate_from == "" || jobDetailByJobId?.data?.rate_to == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if jobDetailByJobId?.data?.catagory_details == nil{
                             self.experinceLbl.text = "0 Year"
@@ -292,10 +292,10 @@ class ConnectDetailVC: UIViewController {
                             let exp0 = Double(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if jobDetailByJobId?.data?.catagory_details?.count ?? 0 > 1 {
-                                self.experinceLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year")  , \(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year")"
+                                self.experinceLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized())  , \(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                             else{
-                                self.experinceLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experinceLbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         self.jobTypeLbl.text = jobDetailByJobId?.data?.job_type ?? ""

@@ -52,7 +52,7 @@ class ConnectListDetailVC: UIViewController {
 //    MARK: HIT CUSTOMER CONNECT DETAIL API
     func hitCustomerConnectDetail(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -97,7 +97,7 @@ class ConnectListDetailVC: UIViewController {
 //    MARK: CHAT ROOM CREATED API
     func hitRoomCreateApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

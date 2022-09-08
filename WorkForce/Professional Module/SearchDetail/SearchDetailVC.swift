@@ -89,27 +89,27 @@ class SearchDetailVC: UIViewController {
                         }
                         if jobDetailByJobIdArr?.data?.rate_type == "Per Day"{
                             if jobDetailByJobIdArr?.data?.rate_from == "" || jobDetailByJobIdArr?.data?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)}
                         }else if jobDetailByJobIdArr?.data?.rate_type == "Per Hour"{
                             if jobDetailByJobIdArr?.data?.rate_from == "" || jobDetailByJobIdArr?.data?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)}
                         }else{
-                            self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if jobDetailByJobIdArr?.data?.catagory_details == nil{
-                            self.experienceLbl.text = "0 Year"
+                            self.experienceLbl.text = "0 Year".localized()
                         }else{
                             let exp0 = Double(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if jobDetailByJobIdArr?.data?.catagory_details?.count ?? 0 > 1 {
-                                self.experienceLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year")  , \(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year")"
+                                self.experienceLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized())  , \(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                             else{
-                                self.experienceLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experienceLbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         self.locationLbl.text = jobDetailByJobIdArr?.data?.city ?? ""
@@ -140,7 +140,7 @@ class SearchDetailVC: UIViewController {
 //    MARK: HIT CONNECT API
     func getCompanyJobLike(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

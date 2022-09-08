@@ -62,10 +62,10 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
 //    MARK: VALIDATIONS
     func emailValidation(){
         if (emailTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter email address." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_EMAIL".localized() , okButton: "Ok", controller: self) {
             }
         }else if emailTF.text!.isValidEmail == false{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter vaild email." , okButton: "Ok", controller: self) {}
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_VALID_EMAIL".localized() , okButton: "Ok", controller: self) {}
         }else{
             self.hitRecoveryEmailAPI()
         }
@@ -74,7 +74,7 @@ class RecoveryEmailVC: UIViewController,UITextFieldDelegate {
 //    MARK: HIT RECOVERY EMAIL API
     func hitRecoveryEmailAPI(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)

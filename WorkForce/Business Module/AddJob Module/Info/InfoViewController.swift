@@ -41,7 +41,7 @@ class InfoViewController: UIViewController {
     
     func hitJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -75,12 +75,12 @@ class InfoViewController: UIViewController {
                         }
                         if jobDetailByJobId?.data?.rate_type == "Per Day"{
                             if  jobDetailByJobId?.data?.rate_from == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/d - $\(jobDetailByJobId?.data?.rate_to ?? "")/d", for: .normal)}
                         }else if jobDetailByJobId?.data?.rate_type == "Per Hour"{
                             if  jobDetailByJobId?.data?.rate_from == "" {
-                                self.amountBtn.setTitle("No rate selected.", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)}
                         }else{
@@ -92,10 +92,10 @@ class InfoViewController: UIViewController {
                             let exp0 = Double(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if jobDetailByJobId?.data?.catagory_details?.count ?? 0 > 1 {
-                                self.experiencelbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year")  , \(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year")"
+                                self.experiencelbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized())  , \(jobDetailByJobId?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                             else{
-                                self.experiencelbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experiencelbl.text = "\(jobDetailByJobId?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         self.jobtypeLbl.text = jobDetailByJobId?.data?.job_type ?? ""

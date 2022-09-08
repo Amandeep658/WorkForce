@@ -13,7 +13,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var continueBtn: UIButton!
     
-    let yearArr = ["0 Year","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years","4.5 Years","5 Years","5.5 Years","6 Years","6.5 Years","7 Years","7.5 Years","8 Years","8.5 Years","9 Years","1.5 Years","10 Years","10.5 Years","11 Years","11.5 Years","12 Years","12.5 Years","13 Years","13.5 Years","14 Years","14.5 Years","15 Years","15.5 Years","16 Years","16.5 Years","17 Years","17.5 Years","18 Years","18.5 Years","19 Years","19.5 Years","20 Years"]
+    let yearArr = ["0 Year".localized(),"1 \("Year".localized())","1.5 \("Years".localized())","2 \("Years".localized())","2.5 \("Years".localized())","3 \("Years".localized())","3.5 \("Years".localized())","4 \("Years".localized())","4.5 \("Years".localized())","5 \("Years".localized())","5.5 \("Years".localized())","6 \("Years".localized())","6.5 \("Years".localized())","7 \("Years".localized())","7.5 \("Years".localized())","8 \("Years".localized())","8.5 \("Years".localized())","9 \("Years".localized())","1.5 \("Years".localized())","10 \("Years".localized())","10.5 \("Years".localized())","11 \("Years".localized())","11.5 \("Years".localized())","12 \("Years".localized())","12.5 \("Years".localized())","13 \("Years".localized())","13.5 \("Years".localized())","14 \("Years".localized())","14.5 \("Years".localized())","15 \("Years".localized())","15.5 \("Years".localized())","16 \("Years".localized())","16.5 \("Years".localized())","17 \("Years".localized())","17.5 \("Years".localized())","18 \("Years".localized())","18.5 \("Years".localized())","19 \("Years".localized())","19.5 \("Years".localized())","20 \("Years".localized())"]
     let onlyYearValues = ["0","1","1.5","2","2.5","3","3.5","4","4.5","5","5.5","6","6.5","7","7.5","8","8.5","9","9.5","10","10.5","11","11.5","12","12.5","13","13.5","14","14.5","15","15.5","16","16.5","17","17.5","18","18.5","19","19.5","20"]
     let label = ["Designer","Software Developer"]
     var yearListArr = UIPickerView()
@@ -56,7 +56,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
                 vc.professionalUserDict = self.professionalUserDict
                 self.pushViewController(vc, true)
             }else{
-                showAlert(message: "Please select category first.", title: AppAlertTitle.appName.rawValue) {
+                showAlert(message: "Please select category first.".localized(), title: AppAlertTitle.appName.rawValue) {
                 }
                 print("===>>>> please add experience","\(professionalUserDict.catagory_details?.count)")
             }
@@ -66,7 +66,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
                 vc.professionalUserDict = self.professionalUserDict
                 self.pushViewController(vc, true)
             }else{
-                showAlert(message: "Please select category first.", title: AppAlertTitle.appName.rawValue) {
+                showAlert(message: "Please select category first.".localized(), title: AppAlertTitle.appName.rawValue) {
                 }
                 print("===>>>> please add experience","\(professionalUserDict.catagory_details?.count)")
             }
@@ -76,7 +76,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
                 vc.professionalUserDict = self.professionalUserDict
                 self.pushViewController(vc, true)
             }else{
-                showAlert(message: "Please select category first.", title: AppAlertTitle.appName.rawValue) {
+                showAlert(message: "Please select category first.".localized(), title: AppAlertTitle.appName.rawValue) {
                 }
                 print("===>>>> please add experience","\(professionalUserDict.catagory_details?.count)")
             }
@@ -91,7 +91,7 @@ class YearOfExpViewController: UIViewController,UIPickerViewDelegate, UIPickerVi
         if professionalUserDict.catagory_details!.count > 0{
             self.yearOfExpTableView.backgroundView = nil
         }else{
-            self.yearOfExpTableView.setBackgroundView(message: "Please select category first")
+            self.yearOfExpTableView.setBackgroundView(message: "Please select category first.".localized())
         }
     }
     
@@ -133,14 +133,14 @@ extension YearOfExpViewController : UITableViewDelegate , UITableViewDataSource{
         cell.dropDownBtn.addTarget(self, action: #selector(dropdwnAction), for: .touchUpInside)
         let val = dict?.experience ?? ""
         if val == "" {
-            cell.experienceLbl.text = "0 Year"
+            cell.experienceLbl.text = "0 \("Year".localized())"
         }else{
             if val == "0"{
-                cell.experienceLbl.text = "0 Year"
+                cell.experienceLbl.text = "0 \("Year".localized())"
             }else if val == "1"{
-                cell.experienceLbl.text = "1 Year"
+                cell.experienceLbl.text = "1 \("Year".localized())"
             }else{
-                cell.experienceLbl.text = "\(val) Years"
+                cell.experienceLbl.text = "\(val) \("Years".localized())"
             }
 //            cell.experienceLbl.text = "\(val == ("0" || "1") ? "Years" : "Year")"
         }
@@ -156,7 +156,7 @@ extension YearOfExpViewController : UITableViewDelegate , UITableViewDataSource{
         if professionalUserDict.catagory_details!.count > 0{
             self.yearOfExpTableView.backgroundView = nil
         }else{
-            self.yearOfExpTableView.setBackgroundView(message: "Please select atleast one category.")
+            self.yearOfExpTableView.setBackgroundView(message: "Please select atleast one category.".localized())
         }
     }
     
@@ -173,7 +173,7 @@ extension YearOfExpViewController : UITableViewDelegate , UITableViewDataSource{
         self.view.addSubview(yearListArr)
         self.doneTool = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300, width: UIScreen.main.bounds.size.width, height: 50))
         self.doneTool.barStyle = .default
-        self.doneTool.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(onDoneButtonTapped))]
+        self.doneTool.items = [UIBarButtonItem.init(title: "Done".localized(), style: .done, target: self, action: #selector(onDoneButtonTapped))]
         self.view.addSubview(doneTool)
     }
     @objc func onDoneButtonTapped(){

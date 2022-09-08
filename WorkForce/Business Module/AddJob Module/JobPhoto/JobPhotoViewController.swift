@@ -90,11 +90,11 @@ class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDel
     //   MARK: VALIDATION
         func validation(){
             if (descriptionTV.text?.trimWhiteSpace.isEmpty)! {
-                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description." , okButton: "Ok", controller: self) {
+                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description.".localized() , okButton: "Ok", controller: self) {
                 }
             }
             else if selectedImage == nil {
-                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select image." , okButton: "Ok", controller: self) {
+                showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ADD_IMAGE".localized() , okButton: "Ok", controller: self) {
                 }
             }
             else{
@@ -186,7 +186,7 @@ class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDel
                 let jobIDD = data["job_id"] as? String ?? ""
                 print(data)
                 if status == 1{
-                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message: respDict["message"] as? String ?? "" , okButton: "OK", controller: self) {
+                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message: respDict["message".localized()] as? String ?? "" , okButton: "OK".localized(), controller: self) {
                         let vc = JobsDesignerViewController()
                         vc.jobId = jobIDD
                         vc.isJobPhoto = true

@@ -63,7 +63,7 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
     
     func hitJobListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -94,13 +94,13 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
                         }
                         if jobDetailByJobIdArr?.data?.rate_type == "Per Day"{
                             if jobDetailByJobIdArr?.data?.rate_to == "" || jobDetailByJobIdArr?.data?.rate_from == "" {
-                               self.hourbtn.setTitle("No rate selected.", for: .normal)
+                                self.hourbtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/d - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/d", for: .normal)
                             }
                         }else if jobDetailByJobIdArr?.data?.rate_type == "Per Hour"{
                             if jobDetailByJobIdArr?.data?.rate_to == "" || jobDetailByJobIdArr?.data?.rate_from == "" {
-                               self.hourbtn.setTitle("No rate selected.", for: .normal)
+                                self.hourbtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)
                             }
@@ -113,10 +113,10 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
                             let exp0 = Double(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if jobDetailByJobIdArr?.data?.catagory_details?.count ?? 0 > 1 {
-                                self.experiencelbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year")  , \(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year")"
+                                self.experiencelbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized())  , \(jobDetailByJobIdArr?.data?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                             else{
-                                self.experiencelbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experiencelbl.text = "\(jobDetailByJobIdArr?.data?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         self.locationlbl.text = jobDetailByJobIdArr?.data?.city ?? ""

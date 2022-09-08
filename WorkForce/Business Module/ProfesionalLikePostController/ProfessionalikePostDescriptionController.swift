@@ -70,11 +70,10 @@ class ProfessionalikePostDescriptionController: UIViewController {
     }
     
     
-    
     //    MARK: WORKER DETAIL
     func hitUserListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow( title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow( title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -115,7 +114,7 @@ class ProfessionalikePostDescriptionController: UIViewController {
                                 self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            self.amountBtn.setTitle("No rate selected", for: .normal)
+                            self.amountBtn.setTitle("No rate selected".localized(), for: .normal)
                         }
                         if workerDetailUser?.catagory_details?.count ?? 0 > 1{
                             self.categoryLbl.text = "\(workerDetailUser?.catagory_details?.first?.category_name ?? "") , \(workerDetailUser?.catagory_details?.last?.category_name ?? "") "
@@ -125,15 +124,15 @@ class ProfessionalikePostDescriptionController: UIViewController {
                         }
                         self.jobTypelbl.text = workerDetailUser?.job_type ?? ""
                         if workerDetailUser?.catagory_details == nil{
-                            self.experienceLbl.text = "0 Year"
+                            self.experienceLbl.text = "0 Year".localized()
                         }else{
                             let exp0 = Double(workerDetailUser?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(workerDetailUser?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if workerDetailUser?.catagory_details?.count ?? 0 > 1 {
-                                self.experienceLbl.text = "\(workerDetailUser?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year") , \(workerDetailUser?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year") "
+                                self.experienceLbl.text = "\(workerDetailUser?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized()) , \(workerDetailUser?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized()) "
                             }
                             else{
-                                self.experienceLbl.text = "\(workerDetailUser?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experienceLbl.text = "\(workerDetailUser?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         let dateFormatter = DateFormatter()
@@ -142,7 +141,7 @@ class ProfessionalikePostDescriptionController: UIViewController {
                         if let date = dateFormatter.date(from: workerDetailUser?.date_of_birth ?? "") {
                             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
                             print(age)
-                            self.locationLbl.text =  "\(Int(age)) Years"
+                            self.locationLbl.text =  "\(Int(age)) Years".localized()
                         }
                         var sPhotoStr = workerDetailUser?.photo ?? ""
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -166,7 +165,7 @@ class ProfessionalikePostDescriptionController: UIViewController {
     //    MARK: GET COMPANY WORKER CONNECT
     func getCompanyLikeWorker(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

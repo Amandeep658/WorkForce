@@ -31,10 +31,10 @@ class ProfessionalLikePostViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            self.headerLbl.text = "Professionals that likes your Job post"
+            self.headerLbl.text = "Professionals that likes your Job post".localized()
             self.hitprofessionalLikePostApi()
         }else if UserType.userTypeInstance.userLogin == .Coustomer {
-            self.headerLbl.text = "Companies that likes your Job post"
+            self.headerLbl.text = "Companies that likes your Job post".localized()
             self.hitcuromerLikePostApi()
         }
     }
@@ -68,7 +68,7 @@ class ProfessionalLikePostViewController: UIViewController {
 //    MARK: HIT PROFESSIONAL LIKE POST
     func hitprofessionalLikePostApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -87,6 +87,7 @@ class ProfessionalLikePostViewController: UIViewController {
                 let aContact = try jsonDecoder.decode(ProfessionalLikeJobPostModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status ?? 0
+                let message = aContact.message ?? ""
                 if status == 1{
                     self.professionalWorkerList = aContact.data!
                     let uniqueLikepostdata = professionalWorkerList.unique { $0.user_id}
@@ -96,7 +97,7 @@ class ProfessionalLikePostViewController: UIViewController {
                     if professionalWorkerList.count >  0 {
                         self.likeTableView.backgroundView =  nil
                     }else{
-                        self.likeTableView.setBackgroundView(message: "No worker found.")
+                        self.likeTableView.setBackgroundView(message: message)
                     }
 
                     self.likeTableView.reloadData()
@@ -118,7 +119,7 @@ class ProfessionalLikePostViewController: UIViewController {
 //    MARK: HIT CUSTOMERS JOBS LIKE
     func hitcuromerLikePostApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -136,6 +137,7 @@ class ProfessionalLikePostViewController: UIViewController {
                 let aContact = try jsonDecoder.decode(ProfessionalLikeJobPostModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status ?? 0
+                let message = aContact.message ?? ""
                 if status == 1{
                     self.professionalWorkerList = aContact.data!
                     let uniqueLikepostdata = professionalWorkerList.unique { $0.user_id}
@@ -144,7 +146,7 @@ class ProfessionalLikePostViewController: UIViewController {
                     self.likeTableView.reloadData()
                 }else if status == 0 {
                     self.filterProfessionalLikeListData.removeAll()
-                    self.likeTableView.setBackgroundView(message: "No worker found.")
+                    self.likeTableView.setBackgroundView(message: message)
                     self.likeTableView.reloadData()
                 }else{
                     self.professionalWorkerList.removeAll()

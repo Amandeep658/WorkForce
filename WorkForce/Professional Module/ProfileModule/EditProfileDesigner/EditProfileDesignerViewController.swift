@@ -243,25 +243,25 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
 //    MARK: VALIDATIONS
     func validation(){
         if (firstNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter first name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_FIRST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }else if (lastNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter last name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_LAST_NAME".localized() , okButton: "Ok", controller: self) {
             }
         }else if (dobTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select date of birth." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter date of birth.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (category1.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.".localized() , okButton: "Ok", controller: self) {
             }
         }else if finalexperienceValue == "Year" {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select experience." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_EXPERIENCE".localized() , okButton: "Ok", controller: self) {
             }
         }else if (JobTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (cityTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter city." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter city.".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             self.professionalEditUserDict.city =  cityTF.text
@@ -373,7 +373,7 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
         let headers: HTTPHeaders = ["Token": AToken]
         print(headers)
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AF.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
@@ -423,7 +423,7 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
                 print(professionalEditUserDict)
                 print(status)
                 if status == 1{
-                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message: respDict["message"] as? String ?? "" , okButton: "OK", controller: self) {
+                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message:"Profile update successfully.".localized(), okButton: "OK", controller: self) {
                         if let tabBar = self.tabBarController as? TabBarVC {
                             print("tab bar is \(tabBar)")
                             tabBar.updateProfileImage()
@@ -450,9 +450,9 @@ extension EditProfileDesignerViewController : UITableViewDelegate , UITableViewD
         self.hasExperinceValue = true
         if professionalUserDate?.catagory_details?[indexPath.row].experience != nil{
             let exp0 = Double(professionalUserDate?.catagory_details![indexPath.row].experience ?? "0") ?? 0.0
-            cell.experienceLbl.text = "\(professionalUserDate?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+            cell.experienceLbl.text = "\(professionalUserDate?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
         }else{
-            cell.experienceLbl.text = "0 Year"
+            cell.experienceLbl.text = "0 Year".localized()
         }
         cell.dropDownBtn.tag = indexPath.row
         cell.dropDownBtn.addTarget(self, action: #selector(dropdwnAction), for: .touchUpInside)

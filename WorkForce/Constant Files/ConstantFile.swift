@@ -26,7 +26,8 @@ let appDel = (UIApplication.shared.delegate as! AppDelegate)
 @available(iOS 13.0, *)
 let appScene = (UIApplication.shared.delegate as! SceneDelegate)
 
-let kBASEURL = "http://161.97.132.85/work-force/webservice/"
+//let kBASEURL = "http://161.97.132.85/work-force/webservice/"
+let kBASEURL = "http://161.97.132.85/work-forcev2/webservice/"
 let urlInAppSubscriptionString = "https://sandbox.itunes.apple.com/verifyReceipt"
 
 struct WSMethods {
@@ -34,6 +35,9 @@ struct WSMethods {
 //    Restore Account API's
     static let getRecoverEmail = "getRecoverEmail.php"
     static let updateMobileNumber = "updateMobileNumber.php"
+    
+//    Language Update
+    static let getCurrentlangugae = "UpdateLanguage.php"
     
 //    Business Module API's
     static let loginCheck = "loginCheck.php"
@@ -95,6 +99,15 @@ struct WSMethods {
     static let customerLikeAndUnlike = "customerLikeAndUnlike.php"
     static let getAllcustomerJobLike = "getAllcustomerJobLike.php"
     static let companyLikeAndUnlikeBycustomer = "companyLikeAndUnlikeBycustomer.php"
+}
+
+
+
+struct Pagination{
+    var canLoadMore: Bool = true
+        var pageNum: Int = 1
+        var isLoading: Bool = false
+        var limit: Int = 10
 }
 
 

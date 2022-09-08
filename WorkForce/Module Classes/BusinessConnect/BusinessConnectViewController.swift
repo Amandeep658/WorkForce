@@ -70,7 +70,7 @@ class BusinessConnectViewController: UIViewController {
 //    MARK: CONNECT LIST API
     func getConnectHitList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -113,7 +113,7 @@ class BusinessConnectViewController: UIViewController {
     //    MARK: GET All CUSTOMER JOB LIKE
     func getConnectCompanyList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -187,7 +187,7 @@ extension BusinessConnectViewController : UITableViewDelegate , UITableViewDataS
                 }else{
                     cell.rateLbl.text = "$\(connectlikeCompanyList[indexPath.row].rate_to ?? "")/d"
                 }
-            }else if connectlikeCompanyList[indexPath.row].rate_type == "Per Hour" {
+            }else if connectlikeCompanyList[indexPath.row].rate_type == "Per Hour"{
                 if connectlikeCompanyList[indexPath.row].rate_to == "" {
                     cell.rateLbl.text = ""
                 }else{

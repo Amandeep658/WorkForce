@@ -88,7 +88,7 @@ class JobsDesignerViewController: UIViewController {
 //    MARK: JOB LIST API'S
     func hitJobListApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -139,7 +139,7 @@ class JobsDesignerViewController: UIViewController {
 //    MARK: CUSTOMER JOB LIST API
     func hitcustomerJobListApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

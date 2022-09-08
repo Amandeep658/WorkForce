@@ -46,9 +46,9 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
 //    MARK: VALIDATION
     func validation(){
         if emailTF.text == "" {
-            showAlert(message: "Please enter email.", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "ENTER_EMAIL".localized(), title: AppAlertTitle.appName.rawValue)
         }else if emailTF.text!.isValidEmail == false{
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter vaild email." , okButton: "Ok", controller: self) {}
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_VALID_EMAIL".localized() , okButton: "Ok", controller: self) {}
         }else{
             if UserType.userTypeInstance.userLogin == .Bussiness{
                 hitRecoverEmailApi()
@@ -74,7 +74,7 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
 // MARK: HIT RECOVER EMAIL API
     func hitRecoverEmailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getRecoverEmail, params: getRecoverEmailAccountgeneratingParameters(), headers: nil) { [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)

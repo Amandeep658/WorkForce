@@ -28,8 +28,8 @@ class SearchVC: UIViewController,UISearchBarDelegate {
         self.searchListTableView.dataSource = self
         self.searchListTableView.register(UINib(nibName: "ConnectTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         self.searchBar.delegate = self
-        self.countLabel.text  = "0 Job Opportunity"
-        self.searchListTableView.setBackgroundView(message: "No Job found.")
+        self.countLabel.text  = "0 \("Job Opportunity".localized())"
+        self.searchListTableView.setBackgroundView(message: "No Job found.".localized())
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,7 +42,7 @@ class SearchVC: UIViewController,UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == ""{
-            showAlert(message: "Please enter category name", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "Please enter category name".localized(), title: AppAlertTitle.appName.rawValue)
             self.searchListTableView.reloadData()
         }else{
             self.homeSearchJobListing()
@@ -60,7 +60,7 @@ class SearchVC: UIViewController,UISearchBarDelegate {
             self.page = 100
             self.pageCount = 1
             self.searchjobListArr.removeAll()
-            self.countLabel.text  = "0 Job Opportunity"
+            self.countLabel.text  = "0 \("Job Opportunity".localized())"
             self.searchListTableView.reloadData()
         }
         else{
@@ -95,10 +95,10 @@ class SearchVC: UIViewController,UISearchBarDelegate {
                     self.searchjobListArr =  aContact.data!
                     if searchjobListArr.count > 0 {
                         self.searchListTableView.backgroundView =  nil
-                        self.countLabel.text = "\(searchjobListArr.count) Job Opportunity"
+                        self.countLabel.text = "\(searchjobListArr.count) \("Job Opportunity".localized())"
                     }else{
-                        self.countLabel.text = "0 Job Opportunity"
-                        self.searchListTableView.setBackgroundView(message: "No Job found.")
+                        self.countLabel.text = "0 \("Job Opportunity".localized())"
+                        self.searchListTableView.setBackgroundView(message: message)
                     }
                     self.searchListTableView.reloadData()
                 }else{

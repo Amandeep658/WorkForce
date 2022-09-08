@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import IQKeyboardManagerSwift
 
 class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
 
@@ -49,7 +50,18 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
     
 //    MARK: TEXTFIELD_DELEGATES
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.count > 0 {
+        let chracters = string.map({ String($0)})
+        if chracters.count == 6{
+            textField.text = (string as NSString).substring(to: 1)
+            self.firstTF.text = chracters[0]
+            self.secondTF.text = chracters[1]
+            self.thirdTF.text = chracters[2]
+            self.fourthTF.text = chracters[3]
+            self.fifthTF.text = chracters[4]
+            self.sixthTF.text = chracters[5]
+            return false
+        }
+        else if string.count > 0 {
             textField.text = (string as NSString).substring(to: 1)
             if textField == firstTF {
                 secondTF.becomeFirstResponder()
@@ -62,10 +74,13 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
             }else if textField == fifthTF {
                 sixthTF.becomeFirstResponder()
             }else if textField == sixthTF {
-                self.dismisKeyboard()
+                dismisKeyboard()
             }
+            return true
         }
-        return true
+        else{
+            return false
+        }
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text == ""{
@@ -128,7 +143,7 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
     //    MARK: HIT VERIFY OTP API
     func hitVerifyEmailAPI(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading..", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)
@@ -169,3 +184,20 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
     
 
 }
+//if string.count > 0 {
+//    textField.text = (string as NSString).substring(to: 1)
+//    if textField == firstTF {
+//        secondTF.becomeFirstResponder()
+//    } else if textField == secondTF {
+//        thirdTF.becomeFirstResponder()
+//    }else if textField == thirdTF {
+//        fourthTF.becomeFirstResponder()
+//    }else if textField == fourthTF {
+//        fifthTF.becomeFirstResponder()
+//    }else if textField == fifthTF {
+//        sixthTF.becomeFirstResponder()
+//    }else if textField == sixthTF {
+//        self.dismisKeyboard()
+//    }
+//}
+//return true

@@ -17,7 +17,7 @@ class BusinessProfileViewController: UIViewController {
 
     var tapGesture = UITapGestureRecognizer()
     let imageArr = ["re","job-1","sb","ic","abb","pp","deleteUser","log"]
-    let label = ["Recovery Email","Manage Jobs","Update Subscription Plan","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
+    let label = ["Recovery Email".localized(),"Manage Jobs".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
     
     @IBOutlet weak var editBtn: UIButton!
     @IBOutlet weak var profleImgView: UIImageView!
@@ -67,7 +67,7 @@ class BusinessProfileViewController: UIViewController {
 //    MARK: COMPANY LISTING API
     func hitCompanyListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -122,7 +122,7 @@ class BusinessProfileViewController: UIViewController {
 //    MARK: HIT DELETE ACCOUNT API
     func hitDeleteAccountApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)
@@ -157,7 +157,7 @@ class BusinessProfileViewController: UIViewController {
 //    MARK: HIT LOGOUT API
     func hitLogoutApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)
@@ -202,45 +202,45 @@ extension BusinessProfileViewController : UITableViewDelegate , UITableViewDataS
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch label[indexPath.row] {
-        case "Recovery Email":
+        case "Recovery Email".localized():
             if detailArr?.verified == "1"{
-                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "Email already registered".localized(), title: AppAlertTitle.appName.rawValue)
             }else{
                 let vc = RecoveryEmailVC()
                 vc.isFromAccount = true
                 self.pushViewController(vc, true)
             }
             break
-        case "Manage Jobs":
+        case "Manage Jobs".localized():
             let vc = ManageJobsViewController()
             self.pushViewController(vc, true)
             break
-        case "Update Subscription Plan" :
+        case "Update Subscription Plan".localized() :
             let vc = SubscribePlanViewController()
             self.pushViewController(vc, true)
             break
-        case "Terms of Use" :
+        case "Terms of Use".localized() :
             let terms =  TermsConditionVC()
             self.pushViewController(terms, true)
             break
-        case "About Us" :
+        case "About Us".localized() :
             let about =  AboutUsVC()
             self.pushViewController(about, true)
             break
-        case "Privacy Policy" :
+        case "Privacy Policy".localized():
             let privacy =  PrivacyPolicyVC()
             self.pushViewController(privacy, true)
             break
-        case "Delete Account" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Delete Account".localized() :
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitDeleteAccountApi()
             },{
                 cancel in
                 self.dismiss(animated: false, completion: nil)
             }])
             break
-        case "Logout" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Logout".localized() :
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitLogoutApi()
             },{
                 cancel in

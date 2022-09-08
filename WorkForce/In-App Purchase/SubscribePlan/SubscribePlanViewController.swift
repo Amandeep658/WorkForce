@@ -125,7 +125,7 @@ class SubscribePlanViewController: UIViewController{
     
     //    MARK: RESTORE PURCHASE
     func restorePurchases() {
-        AFWrapperClass.svprogressHudShow(title: "loading", view: self)
+        AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         SwiftyStoreKit.restorePurchases(atomically: true) { [self] results in
             AFWrapperClass.svprogressHudDismiss(view: self)
             if results.restoreFailedPurchases.count > 0 {
@@ -154,10 +154,10 @@ class SubscribePlanViewController: UIViewController{
                         self.validate(product: IAPProduct.TwentyDollarsixMonth.rawValue)
                     }
                 }else{
-                    alert("No purchases to restore", message: "There are no purchases with this subscription to restore related to your account.", view: self)
+                    alert("NO_PURCHASE_RESTORE".localized(), message: "THERE_IS_NO_PURCHASE".localized(), view: self)
                 }
             }else{
-                alert("No purchases to restore", message: "There are no purchases with this subscription to restore related to your account.", view: self)
+                alert("NO_PURCHASE_RESTORE".localized(), message: "THERE_IS_NO_PURCHASE".localized(), view: self)
             }
         }
     }
@@ -167,7 +167,7 @@ class SubscribePlanViewController: UIViewController{
     //    MARK: PURCHASE PRODUCT
     func purchaseProduct(product: String){
         print(product)
-        AFWrapperClass.svprogressHudShow(title: "Purchase plan", view: self)
+        AFWrapperClass.svprogressHudShow(title: "Purchase plan".localized(), view: self)
         SwiftyStoreKit.purchaseProduct(product, quantity: 1, atomically: true) { [self] result in
             AFWrapperClass.svprogressHudDismiss(view: self)
             switch result {
@@ -266,7 +266,7 @@ class SubscribePlanViewController: UIViewController{
         }
         let params = ["user_id":uid,"plan_id":"1","product_id":product_id,"plan_price":plan_price,"expire_date":expire_date,"type":"1","isfree":"0","subscription_id":subscription_id,"plan_duration":planString,"purchase_plan":purchasePlan] as [String : Any]
         print(params)
-        AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+        AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         AFWrapperClass.requestPOSTURL(url, params: params, headers: headers, success: { [self] (dict) in
             print("subscribed response is", dict)
             AFWrapperClass.svprogressHudDismiss(view: self)

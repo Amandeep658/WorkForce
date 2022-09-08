@@ -34,11 +34,11 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            headerbl.text = "Professionals rate from"
+            headerbl.text = "Professionals rate from".localized()
         }else if UserType.userTypeInstance.userLogin == .Professional{
-            headerbl.text = "Professionals rate from"
+            headerbl.text = "Professionals rate from".localized()
         }else{
-            headerbl.text = "Rate"
+            headerbl.text = "Rate".localized()
         }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
 
@@ -73,6 +73,8 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
     func setView(){
         firstTF.delegate = self
         secondTF.delegate = self
+        self.firstTF.keyboardType = .decimalPad
+        self.secondTF.keyboardType = .decimalPad
         firstView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         secondView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
         dayHrView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
@@ -110,13 +112,13 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
         let firstName = firstTF
         let second = secondTF
         if textField == firstName {
-            let allowedCharacters = "1234567890"
+            let allowedCharacters = ".1234567890"
             let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
             let typedCharacterSet = CharacterSet(charactersIn: string)
             let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
             return alphabet
         } else if textField ==  second {
-            let allowedCharacters = "1234567890"
+            let allowedCharacters = ".1234567890"
             let allowedCharacterSet = CharacterSet(charactersIn: allowedCharacters)
             let typedCharacterSet = CharacterSet(charactersIn: string)
             let alphabet = allowedCharacterSet.isSuperset(of: typedCharacterSet)
@@ -135,7 +137,7 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
                 self.dayBtn.isEnabled = true
                 checkRateButton()
             } else {
-                showAlert(message: "Please enter second rate.", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "Please enter second rate.".localized(), title: AppAlertTitle.appName.rawValue)
             }
             print("its test 23")
         } else if secondTF.text != "" {
@@ -144,7 +146,7 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
                 self.dayBtn.isEnabled = true
                 checkRateButton()
             } else {
-                showAlert(message: "Please enter first rate.", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "Please enter first rate.".localized(), title: AppAlertTitle.appName.rawValue)
             }
             print("its test 4")
         } else{
@@ -180,7 +182,7 @@ class ProfessionalRateViewController: UIViewController ,UITextFieldDelegate {
                 self.pushViewController(vc, true)
             }
         } else {
-            showAlert(message: "please select rate type.", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "please select rate type.".localized(), title: AppAlertTitle.appName.rawValue)
         }
     }
     

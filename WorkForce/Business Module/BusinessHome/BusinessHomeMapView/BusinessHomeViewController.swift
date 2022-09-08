@@ -32,6 +32,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     @IBOutlet weak var businessHomeTableView: UITableView!
     @IBOutlet weak var googleMap: GMSMapView!
     
+    private var workerPagination : Pagination?
     var tapGesture = UITapGestureRecognizer()
     var nearByWorkerDict:BusinessHomemodule?
     var nearByWorkerArr = [BusinessHomeData]()
@@ -55,6 +56,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
         searchView.addGestureRecognizer(tapGesture)
         searchView.isUserInteractionEnabled = true
         setTable()
+        self.workerPagination = Pagination()
         NotificationCenter.default.addObserver(self, selector: #selector(self.homeTabPressed(_:)), name: Notification.Name(rawValue: "homeTabPressed"), object: nil)
     }
     
@@ -232,13 +234,18 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     
     //    MARK: HIT NEAR BY WORKER
     func nearByWorkerList(){
+        
+        guard (!(self.workerPagination?.isLoading ?? false) && self.workerPagination?.canLoadMore ?? true) else {return}
+        self.workerPagination?.isLoading = true
+
+
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        let param = ["location": nearByLocation ,"page_no" : "1","per_page" : "40","search":""] as [String : Any]
+        let param = ["location": nearByLocation ,"page_no" : self.workerPagination?.pageNum ?? 1,"per_page" : "10","search":""] as [String : Any]
         print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearByWorker, params: param, headers: headers) { [self] response in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -257,14 +264,30 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
                     appDel.navigation()
                 }else if status == 1 {
                     self.businessFilter = ""
-                    self.nearByWorkerArr = aContact.data!
+                    if self.workerPagination?.pageNum == 1{
+                        self.nearByWorkerArr = aContact.data!
+                    }else{
+                        self.nearByWorkerArr.append(contentsOf: aContact.data!)
+                    }
+                    if aContact.data!.count > 0{
+                        let canLoadMore = aContact.data!.count > 0
+                        self.workerPagination?.canLoadMore = canLoadMore
+                        self.workerPagination?.pageNum += 1
+                        self.workerPagination?.isLoading = false
+                    }
+                    
                     self.addMarkers(lat: locationss?.latitude ?? 0.0, long: locationss?.longitude ?? 0.0)
                     let fltr = self.nearByWorkerArr.filter({$0.latitude != "0"})
+                    
                     print("count is ****** \(fltr.count)")
                     fltr.forEach { data in
                         print("count is ****** \(data.latitude ?? "") ** \(data.longitude ?? "") ** \(data.username ?? "")")
                         self.addMarkers(lat: Double(data.latitude ?? "0") ?? 0.0, long: Double(data.longitude ?? "0") ?? 0.0, object: data)
                     }
+                    
+                   
+
+                    
                     self.businessHomeTableView.setBackgroundView(message: "")
                     self.businessHomeTableView.reloadData()
                 }else{
@@ -275,6 +298,8 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
                 
             }
             catch let parseError {
+                self.workerPagination?.isLoading = false
+
                 print("JSON Error \(parseError.localizedDescription)")
             }
             

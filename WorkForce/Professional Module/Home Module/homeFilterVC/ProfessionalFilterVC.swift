@@ -160,7 +160,7 @@ class ProfessionalFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDel
         
         func hitFilterApi(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]
@@ -213,7 +213,7 @@ class ProfessionalFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDel
     //    MARK: HIT CATEGORY LISTNING API
     func professCategoryListing(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

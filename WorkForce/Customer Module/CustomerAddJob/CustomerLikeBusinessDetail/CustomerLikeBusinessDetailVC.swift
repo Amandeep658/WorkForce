@@ -16,14 +16,12 @@ class CustomerLikeBusinessDetailVC: UIViewController {
     @IBOutlet weak var LikeCompanyScrollView: UIScrollView!
     @IBOutlet weak var imgVIew: UIImageView!
     @IBOutlet weak var categoryLbl: UILabel!
-    @IBOutlet weak var rateLbl: UIButton!
     @IBOutlet weak var locationLbl: UILabel!
     @IBOutlet weak var descriptionLbl: UILabel!
-    @IBOutlet weak var experienceLbl: UITextField!
-    @IBOutlet weak var jobtypeLbl: UITextField!
     @IBOutlet weak var headerLbl: UILabel!
     @IBOutlet weak var backBtn: UIButton!
-    
+    @IBOutlet weak var yesBtn: UIButton!
+    @IBOutlet weak var noBtn: UIButton!
     
     var job_id = ""
     var cat_ID = ""
@@ -50,11 +48,18 @@ class CustomerLikeBusinessDetailVC: UIViewController {
         self.popVC()
     }
     
+    @IBAction func yesBtn(_ sender: UIButton) {
+        hitCompanyLike()
+    }
     
+    @IBAction func noBtn(_ sender: UIButton) {
+        self.popVC()
+    }
+        
 //    MARK: USER LIST DETAIL API
     func hitUserListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow( title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow( title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -76,7 +81,7 @@ class CustomerLikeBusinessDetailVC: UIViewController {
                 if status == 1{
                     DispatchQueue.main.async { [self] in
                         self.workerDetailUser = aContact.data
-                        self.headerLbl.text = "Company Detail"
+                        self.headerLbl.text = "Company Detail".localized()
                         if workerDetailUser?.description != nil{
                             self.descriptionLbl.text = workerDetailUser?.description ?? ""
                         }else{
@@ -101,4 +106,31 @@ class CustomerLikeBusinessDetailVC: UIViewController {
             alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
         }
     }
+    
+    //       MARK: GET COMPANY CONNECT
+            func hitCompanyLike(){
+                DispatchQueue.main.async {
+                    AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+                }
+                let authToken  = AppDefaults.token ?? ""
+                let headers: HTTPHeaders = ["Token":authToken]
+                print(headers)
+                let parameters = ["company_id": userNumberId , "user_id" : UserDefaults.standard.string(forKey: "uID") ?? ""]
+                print(parameters)
+                AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.customerLikeAndUnlikecompany, params: parameters, headers: headers) { [self] response in
+                    AFWrapperClass.svprogressHudDismiss(view: self)
+                    print(response)
+                    let status = response["status"] as? Int ?? 0
+                    let message = response["message"] as? String ?? ""
+                    if status == 1 {
+                        self.tabBarController?.selectedIndex = 1
+                        }else{
+                            print("")
+                    }
+                
+                } failure: { error in
+                    AFWrapperClass.svprogressHudDismiss(view: self)
+                    alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+                }
+            }
 }

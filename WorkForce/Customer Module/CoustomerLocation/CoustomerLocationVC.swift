@@ -78,7 +78,7 @@ class CoustomerLocationVC: UIViewController,UITextFieldDelegate, CLLocationManag
     
     func hitValidation(){
         if (addressTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter address." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_ADDRESS".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             if (UserType.userTypeInstance.userLogin == .Coustomer){
@@ -91,7 +91,7 @@ class CoustomerLocationVC: UIViewController,UITextFieldDelegate, CLLocationManag
     }
     func hitCoustomerSignUpApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

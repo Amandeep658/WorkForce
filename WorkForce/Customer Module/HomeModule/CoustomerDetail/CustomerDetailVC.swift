@@ -62,7 +62,7 @@ class CustomerDetailVC: UIViewController {
 //    MARK: HIT DETAIL OF CUSTOMER
     func hitCustomerDetail(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -115,7 +115,7 @@ class CustomerDetailVC: UIViewController {
 //       MARK: GET COMPANY CONNECT
         func hitCompanyLike(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]

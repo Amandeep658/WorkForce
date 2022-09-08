@@ -22,7 +22,7 @@ struct Section {
     func countryPicker(_ picker: ADCountryPicker,
                                       didSelectCountryWithName name: String,
                                       code: String,
-                                      dialCode: String)
+                       dialCode: String)
 }
 
 open class ADCountryPicker: UITableViewController {

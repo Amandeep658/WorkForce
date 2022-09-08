@@ -7,6 +7,7 @@
 
 import UIKit
 import Alamofire
+import SDWebImage
 
 class BusinessDesignerViewController: UIViewController {
     
@@ -58,7 +59,7 @@ class BusinessDesignerViewController: UIViewController {
     //    MARK: HIT USERDETAIL
     func hitUserListDetailApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -89,18 +90,18 @@ class BusinessDesignerViewController: UIViewController {
                         
                         if workerDetailUserDate?.rate_type == "Per Day"{
                             if workerDetailUserDate?.rate_to == "" {
-                                self.btnHourAmountlbl.setTitle("No rate selected.", for: .normal)
+                                self.btnHourAmountlbl.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.btnHourAmountlbl.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/d", for: .normal)
                             }
                         }else if workerDetailUserDate?.rate_type == "Per Hour"{
                             if workerDetailUserDate?.rate_to == "" {
-                                self.btnHourAmountlbl.setTitle("No rate selected.", for: .normal)
+                                self.btnHourAmountlbl.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.btnHourAmountlbl.setTitle("$\(workerDetailUserDate?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            self.btnHourAmountlbl.setTitle("No rate selected.", for: .normal)
+                            self.btnHourAmountlbl.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if workerDetailUserDate?.catagory_details?.count ?? 0 > 1{
                             self.categoryNameLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.category_name ?? "") , \(workerDetailUserDate?.catagory_details?.last?.category_name ?? "") "
@@ -110,15 +111,15 @@ class BusinessDesignerViewController: UIViewController {
                         }
                         self.jobTypeLbl.text = workerDetailUserDate?.job_type ?? ""
                         if workerDetailUserDate?.catagory_details == nil{
-                            self.experienceLbl.text = "0 Year"
+                            self.experienceLbl.text = "0 Year".localized()
                         }else{
                             let exp0 = Double(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") ?? 0.0
                             let exp1 = Double(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") ?? 0.0
                             if workerDetailUserDate?.catagory_details?.count ?? 0 > 1 {
-                                self.experienceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years" : "Year") , \(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years" : "Year") "
+                                self.experienceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0" ) \(exp0 > 1.0 ? "Years".localized() : "Year".localized()) , \(workerDetailUserDate?.catagory_details?.last?.experience ?? "0") \(exp1 > 1.0 ? "Years".localized() : "Year".localized()) "
                             }
                             else{
-                                self.experienceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+                                self.experienceLbl.text = "\(workerDetailUserDate?.catagory_details?.first?.experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
                             }
                         }
                         let dateFormatter = DateFormatter()
@@ -150,7 +151,7 @@ class BusinessDesignerViewController: UIViewController {
 //    MARK: GET COMPANY WORKER CONNECT
     func getCompanyWorkerLike(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]

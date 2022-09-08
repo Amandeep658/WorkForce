@@ -118,7 +118,7 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
     //    MARK: HIT COUSTOMER JOB LISTING API
         func hitCoustomerListingApi(){
             DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
             }
             let authToken  = AppDefaults.token ?? ""
             let headers: HTTPHeaders = ["Token":authToken]
@@ -244,7 +244,7 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
 //    MARK: CATEGORY FILTER API
     func hitCategoryFilterApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -347,7 +347,6 @@ extension CustomerJobListVC:UICollectionViewDelegate,UICollectionViewDataSource 
         }
         self.categoryId = categoryArr[indexPath.item].cat_id ?? ""
         self.page = 100
-        self.jobNearMeArr.removeAll()
         self.hitCategoryFilterApi()
         self.homeCollectionView.reloadData()
     }

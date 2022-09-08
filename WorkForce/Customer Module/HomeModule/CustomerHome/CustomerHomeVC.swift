@@ -180,7 +180,7 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
 //    MARK: HIT COUSTOMER LISTING API
     func hitCoustomerListingApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -230,6 +230,49 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
         } failure: { error in
             AFWrapperClass.svprogressHudDismiss(view: self)
         }
+    }
+    
+    
+    //    MARK: LANGUAGE UPDATE
+    func getCurrelangugaeUpdate(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getCurrentlangugae, params: getCuLanguageParametres(), headers: headers){ [self] (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            let status = response["status"] as? Int ?? 0
+            let message = response["message"] as? String ?? ""
+            print(status)
+            if status == 0 {
+                showAlert(message: message, title: AppAlertTitle.appName.rawValue)
+            }else if status == 1 {
+                showAlert(message: message, title: AppAlertTitle.appName.rawValue)
+            }else {
+            }
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
+    
+    
+    func getCuLanguageParametres() -> [String:AnyObject] {
+        var parameters : [String:AnyObject] = [:]
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else{
+            parameters["is_language"] = "0"  as AnyObject
+        }
+        parameters["deviceType"] = "1"  as AnyObject
+        parameters["deviceToken"] = AppDefaults.deviceToken as AnyObject?
+        print(parameters)
+        return parameters
     }
     
     

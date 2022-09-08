@@ -62,7 +62,7 @@ class ChatViewController: UIViewController {
                 vc.subcriptionType = "chat"
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, true)
-                self.chatTableView.setBackgroundView(message: "Please take subscription plan.")
+                self.chatTableView.setBackgroundView(message: "Please take subscription plan.".localized())
             }
         } failure: { (error) in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -75,7 +75,7 @@ class ChatViewController: UIViewController {
     //    MARK: GET USER LIST FOR CHAT SCREEN
     func getAllChatList(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -93,6 +93,7 @@ class ChatViewController: UIViewController {
                 let aContact = try jsonDecoder.decode(UserChatListModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status
+                let message = aContact.message
                 if status == 1{
                     self.getChatListData = aContact
                     self.getMessagesListArr = aContact.user_data!
@@ -101,7 +102,7 @@ class ChatViewController: UIViewController {
                     self.chatTableView.reloadData()
                 }
                 else{
-                    self.chatTableView.setBackgroundView(message: "No message found")
+                    self.chatTableView.setBackgroundView(message: message!)
                     self.getUserListAllUser.removeAll()
                     self.chatTableView.reloadData()
                 }

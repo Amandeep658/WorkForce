@@ -18,7 +18,7 @@ class CoustomerProfileVC: UIViewController {
     @IBOutlet weak var customerProfileView: UIImageView!
     
     var imageArr = ["job-1","re","ic","abb","pp","deleteUser","log"]
-    var listArr = ["Manage Jobs","Recovery Email","Terms of Use","About Us","Privacy Policy","Delete Account","Logout"]
+    var listArr = ["Manage Jobs".localized(),"Recovery Email".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
     var companyProfileData:CompanyListingModel?
     var customerData:CompanyListingData?
     
@@ -56,7 +56,7 @@ class CoustomerProfileVC: UIViewController {
     //    MARK: HIT GET PROFILE API
     func hitGetProfileApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
@@ -111,7 +111,7 @@ class CoustomerProfileVC: UIViewController {
     //    MARK: HIT LOGOUT API
     func hitLogoutApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let AToken = AppDefaults.token ?? ""
         print(AToken)
@@ -125,6 +125,7 @@ class CoustomerProfileVC: UIViewController {
             if status == 1 {
                 PurchaseHelper.shared.removePurchaseDefaults()
                 UserDefaults.standard.removeObject(forKey: "uID")
+                UserDefaults.standard.removeObject(forKey: "")
                 UserDefaults.standard.removeObject(forKey: "authToken")
                 appDel.navigation()
             }else{
@@ -174,41 +175,41 @@ extension CoustomerProfileVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch listArr[indexPath.row] {
-        case "Manage Jobs":
+        case "Manage Jobs".localized():
             let manageJobs = CustomerManageJobVC()
             self.pushViewController(manageJobs, true)
             break
-        case "Recovery Email" :
+        case "Recovery Email".localized():
             if customerData?.verified == "1"{
-                showAlert(message: "Email already registered", title: AppAlertTitle.appName.rawValue)
+                showAlert(message: "Email already registered".localized(), title: AppAlertTitle.appName.rawValue)
             }else{
                 let email = RecoveryEmailVC()
                 email.isFromAccount = true
                 self.pushViewController(email, true)
             }
             break
-        case "Terms of Use" :
+        case "Terms of Use".localized():
             let terms =  TermsConditionVC()
             self.pushViewController(terms, true)
             break
-        case "About Us" :
+        case "About Us".localized() :
             let about =  AboutUsVC()
             self.pushViewController(about, true)
             break
-        case "Privacy Policy" :
+        case "Privacy Policy".localized():
             let privacy =  PrivacyPolicyVC()
             self.pushViewController(privacy, true)
             break
-        case "Delete Account" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Delete Account".localized():
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to delete your account?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitDeleteprofessionalAccountApi()
             },{
                 cancel in
                 self.dismiss(animated: false, completion: nil)
             }])
             break
-        case "Logout" :
-            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?", actionTitle: ["Yes","No"], actionStyle: [.default, .cancel], action: [{ ok in
+        case "Logout".localized():
+            self.popActionAlert(title: AppAlertTitle.appName.rawValue, message: "Are you sure you want to logout ?".localized(), actionTitle: ["Yes".localized(),"No".localized()], actionStyle: [.default, .cancel], action: [{ ok in
                 self.hitLogoutApi()
             },{
                 cancel in

@@ -40,7 +40,7 @@ class VerifyNumberViewController: UIViewController,UITextFieldDelegate {
     
     func hitPhoneNumberVerificationApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized().localized(), view: self)
         }
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.loginCheck, params: generatingParameters(), headers: nil){ [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -149,7 +149,7 @@ class VerifyNumberViewController: UIViewController,UITextFieldDelegate {
     
     func validation(){
         if phoneNumberTextField.text?.trimWhiteSpace == "" {
-            self.Alert(message: "Please enter phone number" )
+            self.Alert(message: "ENTER_PHONE_NUMBER".localized())
         }else{
             self.hitPhoneNumberVerificationApi()
         }
@@ -163,10 +163,7 @@ extension VerifyNumberViewController: ADCountryPickerDelegate{
         print("her is code--->>>>",code)
         let image =  picker.getFlag(countryCode: code)
         flagImgView.image = image
-       
-        codeLbl.text = dialCode
-        let xx =  picker.getCountryName(countryCode: code)
-        let xxx =  picker.getDialCode(countryCode: code)
+        codeLbl.text = dialCode.localized()
     }
 }
 
@@ -193,7 +190,7 @@ extension UIViewController{
             NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16),
             NSAttributedString.Key.foregroundColor : clr
         ])
-        let Alert = UIAlertController.init(title: "U2 CONNECT", message: message, preferredStyle: .alert)
+        let Alert = UIAlertController.init(title: "U2 CONNECT", message: message.localized(), preferredStyle: .alert)
         Alert.setValue(attributedString, forKey: "attributedTitle")
         let ok = UIAlertAction.init(title: "Ok", style: .default, handler: {
             Action in
@@ -249,3 +246,23 @@ extension CAGradientLayer {
  }
 }
 
+extension String {
+ func localized() -> String{
+     if Locale.current.languageCode == "es" {
+         let path = Bundle.main.path(forResource: "es", ofType: "lproj")
+         let bundle = Bundle(path: path!)
+         return NSLocalizedString(self, tableName: nil, bundle: bundle!,value: "", comment: "")
+     }else if Locale.current.languageCode == "pt"{
+         let path = Bundle.main.path(forResource: "pt-PT", ofType: "lproj")
+         let bundle = Bundle(path: path!)
+         return NSLocalizedString(self, tableName: nil, bundle: bundle!,value: "", comment: "")
+     }else{
+         let path = Bundle.main.path(forResource: "en", ofType: "lproj")
+         let bundle = Bundle(path: path!)
+         return NSLocalizedString(self, tableName: nil, bundle: bundle!,value: "", comment: "")
+     }
+//     let path = Bundle.main.path(forResource: Locale.current.languageCode, ofType: "lproj")
+//     let bundle = Bundle(path: path!)
+//     return NSLocalizedString(self, tableName: nil, bundle: bundle!,value: "", comment: "")
+   }
+ }

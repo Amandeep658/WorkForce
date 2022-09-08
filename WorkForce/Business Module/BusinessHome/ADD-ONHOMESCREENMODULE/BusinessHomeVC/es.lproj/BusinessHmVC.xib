@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessHmVC" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="homeSegmentController" destination="CFb-15-am3" id="fNh-c3-BLA"/>
+                <outlet property="jobView" destination="qo3-E0-JHh" id="if5-9T-3Cm"/>
+                <outlet property="parentView" destination="T1d-2o-bus" id="mSW-lT-8qm"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1d-2o-bus">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qo3-E0-JHh">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmH-RQ-ZXC">
+                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <subviews>
+                        <segmentedControl opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="CFb-15-am3">
+                            <rect key="frame" x="47.5" y="9.5" width="319" height="32"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <segments>
+                                <segment title="Trabajos profesionales"/>
+                                <segment title="Trabajos de clientes"/>
+                            </segments>
+                            <color key="selectedSegmentTintColor" red="0.22805979849999999" green="0.58245855570000005" blue="0.72041785719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </segmentedControl>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="WYS-qF-oNk"/>
+                        <constraint firstItem="CFb-15-am3" firstAttribute="centerY" secondItem="mmH-RQ-ZXC" secondAttribute="centerY" id="cHK-Nj-ZFp"/>
+                        <constraint firstItem="CFb-15-am3" firstAttribute="centerX" secondItem="mmH-RQ-ZXC" secondAttribute="centerX" id="rUW-8m-kih"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.96078437569999997" green="0.96078437569999997" blue="0.96078437569999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="T1d-2o-bus" secondAttribute="bottom" id="2o6-Du-fLX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="qo3-E0-JHh" secondAttribute="trailing" id="4fL-ul-LHD"/>
+                <constraint firstItem="mmH-RQ-ZXC" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="9zF-Og-OZt"/>
+                <constraint firstItem="T1d-2o-bus" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BF7-Ow-wM1"/>
+                <constraint firstItem="mmH-RQ-ZXC" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="GFB-Xm-4A5"/>
+                <constraint firstItem="mmH-RQ-ZXC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="NkV-cJ-8iN"/>
+                <constraint firstItem="T1d-2o-bus" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ZeG-IF-WDq"/>
+                <constraint firstAttribute="trailing" secondItem="T1d-2o-bus" secondAttribute="trailing" id="bAl-A8-sSw"/>
+                <constraint firstItem="mmH-RQ-ZXC" firstAttribute="trailing" secondItem="T1d-2o-bus" secondAttribute="trailing" id="c9P-Za-uoK"/>
+                <constraint firstItem="qo3-E0-JHh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jJp-80-hsu"/>
+                <constraint firstItem="qo3-E0-JHh" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="o2a-sc-D7R"/>
+                <constraint firstItem="qo3-E0-JHh" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="uqt-aE-qcr"/>
+                <constraint firstItem="mmH-RQ-ZXC" firstAttribute="leading" secondItem="T1d-2o-bus" secondAttribute="leading" id="yVb-uB-Qwx"/>
+            </constraints>
+            <point key="canvasLocation" x="-252.17391304347828" y="79.6875"/>
+        </view>
+    </objects>
+</document>

@@ -246,16 +246,16 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
     
     func validation(){
         if (categorylbl1.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select category first.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (jobTypeTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select job type.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (cityTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select city first." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select city first.".localized() , okButton: "Ok", controller: self) {
             }
         }else if (descriptionTxtView.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description.".localized() , okButton: "Ok", controller: self) {
             }
         }
         else{
@@ -323,7 +323,7 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
         let headers: HTTPHeaders = ["Token": AToken]
         print(headers)
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view:self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
         }
         AF.upload(multipartFormData: { (multipartFormData) in
             for (key, value) in parameters {
@@ -389,9 +389,9 @@ extension EditManageprofileView : UITableViewDelegate , UITableViewDataSource {
         self.hasExperinceValue = true
         if jobDetailByJobdict?.data?.catagory_details?[indexPath.row].experience != nil{
             let exp0 = Double(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") ?? 0.0
-            cell.experienceLbl.text = "\(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years" : "Year")"
+            cell.experienceLbl.text = "\(jobDetailByJobdict?.data?.catagory_details![indexPath.row].experience ?? "0") \(exp0 > 1.0 ? "Years".localized() : "Year".localized())"
         }else{
-            cell.experienceLbl.text = "0 Year"
+            cell.experienceLbl.text = "0 Year".localized()
         }
         cell.dropDownBtn.tag = indexPath.row
         cell.dropDownBtn.addTarget(self, action: #selector(drpdwnAction), for: .touchUpInside)

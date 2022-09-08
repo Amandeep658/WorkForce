@@ -30,7 +30,7 @@ class CustomerSearchVC: UIViewController,UISearchBarDelegate {
         self.customerSearchListTable.dataSource = self
         self.customerSearchListTable.register(UINib(nibName: "companiesTableViewCell", bundle: nil), forCellReuseIdentifier: "companiesTableViewCell")
         self.searchBar.delegate = self
-        self.opportunityCountLbl.text  = "0 Companies Opportunity"
+        self.opportunityCountLbl.text  = "0 \("Companies Opportunity".localized())"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,7 +44,7 @@ class CustomerSearchVC: UIViewController,UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == ""{
-            showAlert(message: "Please enter company name", title: AppAlertTitle.appName.rawValue)
+            showAlert(message: "ENTER_COMPANY_NAME".localized(), title: AppAlertTitle.appName.rawValue)
             self.customerSearchListTable.reloadData()
         }else{
             self.homeSearchJobListing()
@@ -62,7 +62,7 @@ class CustomerSearchVC: UIViewController,UISearchBarDelegate {
             self.page = 100
             self.pageCount = 1
             self.searchCompanyListArr.removeAll()
-            self.opportunityCountLbl.text  = "0 Companies Opportunity"
+            self.opportunityCountLbl.text  = "0 \("Companies Opportunity".localized())"
             self.customerSearchListTable.reloadData()
         }
         else{
@@ -99,8 +99,8 @@ class CustomerSearchVC: UIViewController,UISearchBarDelegate {
                         self.customerSearchListTable.backgroundView =  nil
                         self.opportunityCountLbl.text = "\(searchCompanyListArr.count) Companies Opportunity"
                     }else{
-                        self.opportunityCountLbl.text = "0 Companies Opportunity"
-                        self.customerSearchListTable.setBackgroundView(message: "No Company found.")
+                        self.opportunityCountLbl.text = "0 \("Companies Opportunity".localized())"
+                        self.customerSearchListTable.setBackgroundView(message: message)
                     }
                     self.customerSearchListTable.reloadData()
                 }else{

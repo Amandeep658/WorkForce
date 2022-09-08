@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessesViewController" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="businessesBtn" destination="5uk-bo-J0N" id="2gA-go-ZFN"/>
+                <outlet property="coustomerAction" destination="dB1-Tb-AMZ" id="Wek-HC-V8o"/>
+                <outlet property="professionalsBtn" destination="PMQ-HG-qLu" id="ljB-kz-bUI"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-bW-cYq">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp" translatesAutoresizingMaskIntoConstraints="NO" id="141-UT-JMf">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wej-9Q-Oh1">
+                            <rect key="frame" x="24" y="716" width="366" height="140"/>
+                            <subviews>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dB1-Tb-AMZ">
+                                    <rect key="frame" x="0.0" y="0.0" width="366" height="40"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="nFt-yc-cfC"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                    <color key="tintColor" systemColor="systemBlueColor"/>
+                                    <inset key="imageEdgeInsets" minX="-14" minY="4" maxX="5" maxY="6"/>
+                                    <state key="normal" title="Customer" image="cart">
+                                        <color key="titleColor" red="0.23529411759999999" green="0.62352941179999999" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="coustomerAction:" destination="-1" eventType="touchUpInside" id="72I-MU-RHe"/>
+                                    </connections>
+                                </button>
+                                <button clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5uk-bo-J0N">
+                                    <rect key="frame" x="0.0" y="50" width="366" height="40"/>
+                                    <color key="backgroundColor" red="0.99999994039999995" green="0.99999994039999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="LF6-hT-TGo"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                    <inset key="imageEdgeInsets" minX="-23" minY="1" maxX="-6" maxY="1"/>
+                                    <state key="normal" title="Business" image="st">
+                                        <color key="titleColor" red="0.23484150979999999" green="0.62361981759999996" blue="0.76972920980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="businessesAction:" destination="-1" eventType="touchUpInside" id="rcR-ee-14V"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PMQ-HG-qLu">
+                                    <rect key="frame" x="0.0" y="100" width="366" height="40"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="pqR-uM-ojR"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
+                                    <color key="tintColor" systemColor="systemBlueColor"/>
+                                    <inset key="imageEdgeInsets" minX="-13" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="Professional" image="cm">
+                                        <color key="titleColor" red="0.23529411764705882" green="0.62352941176470589" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="professionalsAction:" destination="-1" eventType="touchUpInside" id="iIa-Bw-G1k"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="141-UT-JMf" secondAttribute="trailing" id="0YO-K8-DSh"/>
+                        <constraint firstItem="Wej-9Q-Oh1" firstAttribute="leading" secondItem="e2j-bW-cYq" secondAttribute="leading" constant="24" id="QFC-df-byb"/>
+                        <constraint firstItem="141-UT-JMf" firstAttribute="leading" secondItem="e2j-bW-cYq" secondAttribute="leading" id="V0j-JW-iUA"/>
+                        <constraint firstAttribute="bottom" secondItem="Wej-9Q-Oh1" secondAttribute="bottom" constant="40" id="Wz7-nP-9N0"/>
+                        <constraint firstAttribute="trailing" secondItem="Wej-9Q-Oh1" secondAttribute="trailing" constant="24" id="bYd-JN-Y02"/>
+                        <constraint firstItem="141-UT-JMf" firstAttribute="top" secondItem="e2j-bW-cYq" secondAttribute="top" id="jLY-sV-ou4"/>
+                        <constraint firstAttribute="bottom" secondItem="141-UT-JMf" secondAttribute="bottom" id="sYj-qE-l1s"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="e2j-bW-cYq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UdM-Wn-JTM"/>
+                <constraint firstItem="e2j-bW-cYq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="eIY-ei-Bvd"/>
+                <constraint firstItem="e2j-bW-cYq" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="iS8-4h-olX"/>
+                <constraint firstItem="e2j-bW-cYq" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="s6A-Ds-Yqt"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="89.599999999999994" y="101.64917541229386"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cart" width="33" height="31"/>
+        <image name="cm" width="20" height="20"/>
+        <image name="sp" width="1080" height="1920"/>
+        <image name="st" width="20" height="17"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

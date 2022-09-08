@@ -113,7 +113,7 @@ extension SetFilterViewController : UICollectionViewDelegate, UICollectionViewDa
 
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "HeaderCollectionReusableView", for: indexPath) as! HeaderCollectionReusableView
             
-        header.jobLbl.text = "Job Type"
+            header.jobLbl.text = "Job Type".localized()
         return header
         }else{
         let footer = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterCollectionReusableView", for: indexPath) as! FooterCollectionReusableView

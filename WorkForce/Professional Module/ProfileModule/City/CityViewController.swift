@@ -84,7 +84,7 @@ class CityViewController: UIViewController,UITextFieldDelegate,CLLocationManager
 //    MARK: HIT PROFESSIONAL SIGN UP
     func hitProfessionalSignUpApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "Loading", view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token": authToken]
@@ -154,7 +154,7 @@ class CityViewController: UIViewController,UITextFieldDelegate,CLLocationManager
     //   MARK: VALIDATION
     func validation(){
         if (cityTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter city." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please select city first.".localized() , okButton: "Ok", controller: self) {
             }
         } else if (stateTF.text?.trimWhiteSpace.isEmpty)! {
             showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter state." , okButton: "Ok", controller: self) {
