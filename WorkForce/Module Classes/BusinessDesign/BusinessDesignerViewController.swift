@@ -128,7 +128,7 @@ class BusinessDesignerViewController: UIViewController {
                         if let date = dateFormatter.date(from: workerDetailUserDate?.date_of_birth ?? "") {
                             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
                             print(age)
-                            self.ageLbl.text =  "\(Int(age)) Years"
+                            self.ageLbl.text =  "\(Int(age)) \("Years".localized())"
                         }
                         var sPhotoStr = workerDetailUserDate?.photo ?? ""
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

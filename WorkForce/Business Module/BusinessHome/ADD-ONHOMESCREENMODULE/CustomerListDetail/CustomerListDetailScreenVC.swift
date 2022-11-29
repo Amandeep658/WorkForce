@@ -25,6 +25,7 @@ class CustomerListDetailScreenVC: UIViewController {
     
     var customerJObID = ""
     var cat_id = ""
+    var specificnavigate = "navigateFromCoustomerList"
     var CustomerjobDetail:JobDetailByJobIdModel?
     var specificnav:Bool = false
     
@@ -39,7 +40,11 @@ class CustomerListDetailScreenVC: UIViewController {
     }
 
     @IBAction func backBtn(_ sender: UIButton) {
-        self.popVC()
+        if specificnavigate == "navigateFromCoustomerList"{
+            self.popVC()
+        }else{
+            print("its new on")
+        }
     }
     
     @IBAction func connectJobBtn(_ sender: UIButton) {
@@ -47,7 +52,11 @@ class CustomerListDetailScreenVC: UIViewController {
     }
     
     @IBAction func notConnectJobBtn(_ sender: UIButton) {
-        self.popVC()
+        if specificnavigate == "navigateFromCoustomerList"{
+            self.popVC()
+        }else{
+            print("its new on")
+        }
     }
     
     //    MARK: CUSTOMER JOB DETAIL

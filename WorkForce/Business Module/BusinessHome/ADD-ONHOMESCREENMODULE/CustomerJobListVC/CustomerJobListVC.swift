@@ -30,39 +30,43 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
     var page = 100
     var pageCount = 1
     var currentlocation = ""
+    var navigateFrom = "navigateFromCoustomerList"
     var categoryArr = [CategoryData]()
     let locationManager = CLLocationManager()
-
+    var customerJobListArr : Pagination?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         uiConfigure()
-        print("Here is current location",currentlocation)
         NotificationCenter.default.addObserver(self, selector: #selector(self.customerListHomePressed(_:)), name: Notification.Name(rawValue: "homeTabPressed"), object: nil)
     }
     
     @objc func customerListHomePressed(_ notification : Notification){
+        self.customerJobListArr = Pagination()
         self.categoryId = ""
-        getCurntLocation()
+        self.getCurntLocation()
         self.homeCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBarController?.tabBar.isHidden = false
+        self.customerJobListArr = Pagination()
         self.categoryId = ""
-        self.hitCategoryListing()
-        self.getCurntLocation()
+        self.jobNearMeArr.removeAll()
         self.homeCollectionView.reloadData()
+        self.getCurntLocation()
+        self.hitCategoryListing()
     }
     
     func uiConfigure(){
         self.homeTableView.backgroundColor = .clear
         self.homeTableView.delegate = self
         self.homeTableView.dataSource = self
-        self.homeTableView.register(UINib(nibName: "customerConnectListCell", bundle: nil), forCellReuseIdentifier: "customerConnectListCell")
         self.homeCollectionView.delegate = self
         self.homeCollectionView.dataSource = self
+        self.homeTableView.register(UINib(nibName: "customerConnectListCell", bundle: nil), forCellReuseIdentifier: "customerConnectListCell")
         self.homeCollectionView.register(UINib(nibName:"HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
         if let flowLayout = homeCollectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
@@ -89,6 +93,8 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
                     self.homeCollectionView.reloadData()
                 }
                 else{
+                    self.categoryArr.removeAll()
+                    self.homeCollectionView.reloadData()
                     alert(AppAlertTitle.appName.rawValue, message: message, view: self)
                 }
             }
@@ -116,51 +122,65 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
     }
     
     //    MARK: HIT COUSTOMER JOB LISTING API
-        func hitCoustomerListingApi(){
-            DispatchQueue.main.async {
-                AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
-            }
-            let authToken  = AppDefaults.token ?? ""
-            let headers: HTTPHeaders = ["Token":authToken]
-            print(headers)
-            AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearCustomerByJobs, params: hitCustomerJobListingParameters(), headers: headers) { [self] response in
-                AFWrapperClass.svprogressHudDismiss(view: self)
-                print(response)
-                do{
-                    let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-                    let reqJSONStr = String(data: jsonData, encoding: .utf8)
-                    let data = reqJSONStr?.data(using: .utf8)
-                    let jsonDecoder = JSONDecoder()
-                    let aContact = try jsonDecoder.decode(ProfessionalmoduleHome.self, from: data!)
-                    print(aContact)
-                    let status = aContact.status ?? 0
-                    let message =  aContact.message ?? ""
-                    if status == 401 {
-                        UserDefaults.standard.removeObject(forKey: "authToken")
-                        appDel.navigation()
-                    }else if status == 1 {
-                        self.jobNearMeArr = aContact.data!
+    func hitCoustomerListingApi(){
+        guard (!(self.customerJobListArr?.isLoading ?? false) && self.customerJobListArr?.canLoadMore ?? true) else {return}
+        self.customerJobListArr?.isLoading = true
+        
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearCustomerByJobs, params: hitCustomerJobListingParameters(), headers: headers) { [self] response in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            do{
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(ProfessionalmoduleHome.self, from: data!)
+                print(aContact)
+                let status = aContact.status ?? 0
+                let message =  aContact.message ?? ""
+                if status == 401 {
+                    UserDefaults.standard.removeObject(forKey: "authToken")
+                    appDel.navigation()
+                }else if status == 1 {
+                        if self.customerJobListArr?.pageNum == 1{
+                            self.jobNearMeArr = aContact.data!
+                        }else{
+                            self.jobNearMeArr.append(contentsOf: aContact.data!)
+                        }
+                        if aContact.data!.count > 0{
+                            let canLoadMore = aContact.data!.count > 0
+                            self.customerJobListArr?.canLoadMore = canLoadMore
+                            self.customerJobListArr?.pageNum += 1
+                            self.customerJobListArr?.isLoading = false
+                        }
                         self.homeTableView.setBackgroundView(message: "")
                         self.homeTableView.reloadData()
-                    }else{
-                        self.jobNearMeArr.removeAll()
+                }else{
+                    if self.jobNearMeArr.count == 0{
                         self.homeTableView.setBackgroundView(message: message)
-                        self.homeTableView.reloadData()
                     }
                 }
-                catch let parseError {
-                    print("JSON Error \(parseError.localizedDescription)")
-                }
-                
-            } failure: { error in
-                AFWrapperClass.svprogressHudDismiss(view: self)
             }
+            catch let parseError {
+                self.customerJobListArr?.isLoading = false
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+            
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
         }
+    }
     
-//    MARK: GET CUSTOMER JOB LIST PARAMETERS
+    //    MARK: GET CUSTOMER JOB LIST PARAMETERS
     func hitCustomerJobListingParameters() -> [String:Any] {
         var parameters : [String:Any] = [:]
-        parameters["page_no"] = "1" as AnyObject
+        parameters["page_no"] = self.customerJobListArr?.pageNum ?? 1 as AnyObject
         parameters["per_page"] = "100" as AnyObject
         parameters["location"] = currentlocation
         if categoryId != ""{
@@ -170,6 +190,57 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
             parameters["category_id"] = ""
         }
         parameters["search"] = searchbar.text!
+        parameters["deviceType"] = "1"  as AnyObject
+        parameters["deviceToken"] = AppDefaults.deviceToken
+        print(parameters)
+        return parameters
+    }
+    
+    //    MARK: CATEGORY FILTER API
+    func hitCategoryFilterApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearCustomerByJobs, params: hitCategoryFilterParam(), headers: headers) { [self] response in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            do{
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(ProfessionalmoduleHome.self, from: data!)
+                print(aContact)
+                let status = aContact.status ?? 0
+                let message = aContact.message ?? ""
+                if status == 1{
+                    self.jobNearMeArr.removeAll()
+                    self.jobNearMeArr = aContact.data!
+                    self.homeTableView.reloadData()
+                }else{
+                    self.jobNearMeArr.removeAll()
+                    self.homeTableView.reloadData()
+                    showAlert(message: message, title: AppAlertTitle.appName.rawValue)
+                }
+            }
+            catch let parseError {
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+            
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
+    func hitCategoryFilterParam() -> [String:Any] {
+        var parameters : [String:Any] = [:]
+        parameters["page_no"] = "1" as AnyObject
+        parameters["per_page"] = "100" as AnyObject
+        parameters["category_id"] = categoryId as AnyObject
+        parameters["location"] = currentlocation as AnyObject
         parameters["deviceType"] = "1"  as AnyObject
         parameters["deviceToken"] = AppDefaults.deviceToken
         print(parameters)
@@ -196,13 +267,9 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
             }
             let location = locations.last! as CLLocation
             let lat = location.coordinate.latitude
-            print("here is lat ====>>>>",lat)
             let long = location.coordinate.longitude
-            print("here is long =====>>>>",long)
             let currentlocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
-            print("search result",currentlocation)
             self.getPlaceAddressFrom(location: currentlocation) { address in
-                print("here is resultttt",address)
                 self.currentlocation = address ?? ""
                 print(currentlocation)
                 self.hitCoustomerListingApi()
@@ -241,56 +308,7 @@ class CustomerJobListVC: UIViewController,CLLocationManagerDelegate {
         }
     }
     
-//    MARK: CATEGORY FILTER API
-    func hitCategoryFilterApi(){
-        DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
-        }
-        let authToken  = AppDefaults.token ?? ""
-        let headers: HTTPHeaders = ["Token":authToken]
-        print(headers)
-        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearCustomerByJobs, params: hitCategoryFilterParam(), headers: headers) { [self] response in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            print(response)
-            do{
-                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
-                let reqJSONStr = String(data: jsonData, encoding: .utf8)
-                let data = reqJSONStr?.data(using: .utf8)
-                let jsonDecoder = JSONDecoder()
-                let aContact = try jsonDecoder.decode(ProfessionalmoduleHome.self, from: data!)
-                print(aContact)
-                let status = aContact.status ?? 0
-                let message = aContact.message ?? ""
-                if status == 1{
-                    self.jobNearMeArr =  aContact.data!
-                    self.homeTableView.reloadData()
-                }else{
-                    self.jobNearMeArr.removeAll()
-                    self.homeTableView.reloadData()
-                    showAlert(message: message, title: AppAlertTitle.appName.rawValue)
-                }
-            }
-            catch let parseError {
-                print("JSON Error \(parseError.localizedDescription)")
-            }
-            
-        } failure: { error in
-            AFWrapperClass.svprogressHudDismiss(view: self)
-            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
-        }
-    }
-    func hitCategoryFilterParam() -> [String:Any] {
-        var parameters : [String:Any] = [:]
-        parameters["page_no"] = "1" as AnyObject
-        parameters["per_page"] = "100" as AnyObject
-        parameters["category_id"] = categoryId as AnyObject
-        parameters["location"] = "" as AnyObject
-        parameters["deviceType"] = "1"  as AnyObject
-        parameters["deviceToken"] = AppDefaults.deviceToken
-        print(parameters)
-        return parameters
-    }
-    
+
     @IBAction func searchBtn(_ sender: UIButton) {
         let vc = CustomerJobListSearchVC()
         self.pushViewController(vc, true)
@@ -358,6 +376,7 @@ extension CustomerJobListVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if self.jobNearMeArr.count > 0{
         let cell = tableView.dequeueReusableCell(withIdentifier: "customerConnectListCell", for: indexPath) as! customerConnectListCell
         var sPhotoStr = jobNearMeArr[indexPath.row].job_image ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
@@ -371,6 +390,11 @@ extension CustomerJobListVC : UITableViewDelegate, UITableViewDataSource{
         cell.companyName.text = jobNearMeArr[indexPath.row].username ?? ""
         return cell
     }
+        else{
+            return UITableViewCell()
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
@@ -378,6 +402,7 @@ extension CustomerJobListVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = CustomerListDetailScreenVC()
         vc.specificnav = false
+        vc.specificnavigate = "navigateFromCoustomerList"
         vc.customerJObID = jobNearMeArr[indexPath.row].customer_job_id ?? ""
         vc.cat_id =  jobNearMeArr[indexPath.row].catagory_details?.first?.cat_id ?? ""
         self.pushViewController(vc, true)

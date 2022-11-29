@@ -43,8 +43,8 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="106"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vamos encontrar o seu Trabalho" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qiM-ux-9zL">
-                            <rect key="frame" x="25" y="20" width="268" height="83"/>
-                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="28"/>
+                            <rect key="frame" x="25" y="20" width="231.5" height="83"/>
+                            <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                             <size key="shadowOffset" width="0.0" height="0.0"/>
@@ -178,7 +178,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Slg-qf-sKc">
-                    <rect key="frame" x="0.0" y="394" width="414" height="502"/>
+                    <rect key="frame" x="0.0" y="358" width="414" height="538"/>
                     <color key="backgroundColor" red="0.96071392300000003" green="0.96082550290000002" blue="0.96066254380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </tableView>
             </subviews>
@@ -193,7 +193,7 @@
                 <constraint firstItem="tfa-NA-O4w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="StZ-8a-1Hk"/>
                 <constraint firstItem="Rr0-4C-9bP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Wot-mU-2YN"/>
                 <constraint firstItem="tfa-NA-O4w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="iio-ow-IE5"/>
-                <constraint firstItem="Slg-qf-sKc" firstAttribute="top" secondItem="ZSf-tK-hbr" secondAttribute="bottom" constant="46" id="p4p-Z7-2mG"/>
+                <constraint firstItem="Slg-qf-sKc" firstAttribute="top" secondItem="ZSf-tK-hbr" secondAttribute="bottom" constant="10" id="p4p-Z7-2mG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZSf-tK-hbr" secondAttribute="trailing" constant="2" id="qat-V3-tzg"/>
                 <constraint firstItem="Slg-qf-sKc" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="t13-9T-Cg6"/>
                 <constraint firstItem="Slg-qf-sKc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xqE-Ap-sLp"/>

@@ -65,7 +65,6 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
         self.popVC()
     }
     
-    
     @IBAction func continueBtn(_ sender: UIButton) {
         validation()
     }
@@ -101,6 +100,13 @@ class EnterEmailVC: UIViewController,UITextFieldDelegate {
     func getRecoverEmailAccountgeneratingParameters() -> [String:AnyObject] {
         var parameters : [String:AnyObject] = [:]
         parameters["email"] = emailTF.text  as AnyObject
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else if Locale.current.languageCode == "en"{
+            parameters["is_language"] = "0"  as AnyObject
+        }
         if UserType.userTypeInstance.userLogin == .Bussiness{
             parameters["type"] = "1" as AnyObject
         }else if UserType.userTypeInstance.userLogin == .Professional{

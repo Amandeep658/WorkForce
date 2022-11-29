@@ -9,9 +9,17 @@
 
 "Verify Your Number" = "revisa tu numero";
 "ENTER_PHONE_NUMBER" = "Por favor, insira o número de telefone.";
-"AUTH_TEXT" = "An authentication code has been sent to ";
+"AUTH_TEXT" = "Um código de autenticação foi enviado para";
 "LOADING" = "CARREGANDO..";
+"Upload 1 photo" = "Carregar 1 foto";
+"$50.00/Six Month" = "$50,00/seis meses";
+"$20.00/Six Month" = "$20,00/seis meses";
 
+"Cancel anytime" = "Cancele a qualquer momento, após seis meses";
+"per month" = "por mês";
+
+"CANCEl_SIX_20$_MONTH_SUBSCRIPTION" = "Cancele a qualquer momento, após seis meses $ 20,00 por mês.";
+"CANCEl_SIX_50$_MONTH_SUBSCRIPTION" = "Cancele a qualquer momento, após seis meses $ 50,00 por mês.";
 "INVALID_OTP_PLEASE_ENTER" = "OTP inválido, digite novamente.";
 "ENTER_FIRST_NAME" = "Por favor, insira o primeiro nome.";
 "ENTER_LAST_NAME" = "Por favor, insira o sobrenome.";
@@ -54,6 +62,7 @@
 "Per Hour" = "Por hora";
 "0 Year" = "0 ano";
 "catagory_details" = "categoria_detalhes";
+"Customers Opportunity" = "Oportunidade de clientes";
 "Years" = "Anos";
 "Year" = "ano";
 "Done" = "Feita";
@@ -105,3 +114,6 @@
 "Contract" = "Contrato";
 "Freelance" = "Freelance";
 "Remote" = "Controlo remoto";
+
+"Take photo" = "Tirar fotos";
+"Photo library" = "biblioteca de fotos";

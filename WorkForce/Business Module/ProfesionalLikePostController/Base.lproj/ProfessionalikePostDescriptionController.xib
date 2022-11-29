@@ -87,7 +87,7 @@
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sRE-Oe-Ttc">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="618"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="apple" translatesAutoresizingMaskIntoConstraints="NO" id="jhw-Sa-mKQ">
                                     <rect key="frame" x="162" y="37" width="90" height="90"/>
@@ -109,13 +109,13 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUL-UJ-EZf">
-                                    <rect key="frame" x="132" y="225" width="150" height="33"/>
+                                    <rect key="frame" x="173.5" y="225" width="67" height="33"/>
                                     <color key="backgroundColor" red="0.23484150979999999" green="0.62361981759999996" blue="0.76972920980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="150" id="jgO-VY-BTb"/>
                                         <constraint firstAttribute="height" constant="33" id="rIk-hN-mUU"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                    <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                     <state key="normal" title="$60/h">
                                         <color key="titleColor" red="0.96071392300000003" green="0.96082550290000002" blue="0.96066254380000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
@@ -228,7 +228,7 @@
                                     </variation>
                                 </stackView>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8Sn-HG-l0h">
-                                    <rect key="frame" x="10" y="538" width="394" height="50"/>
+                                    <rect key="frame" x="10" y="578" width="394" height="50"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8Q-0I-7k7">
                                             <rect key="frame" x="0.0" y="0.0" width="194.5" height="50"/>
@@ -301,11 +301,11 @@
                                 <constraint firstItem="zUL-UJ-EZf" firstAttribute="top" secondItem="bft-b6-ala" secondAttribute="bottom" constant="10" id="BIi-ao-oZr"/>
                                 <constraint firstAttribute="trailing" secondItem="8Sn-HG-l0h" secondAttribute="trailing" constant="10" id="GN5-M9-Fun"/>
                                 <constraint firstItem="RNa-eZ-Nul" firstAttribute="top" secondItem="zUL-UJ-EZf" secondAttribute="bottom" constant="40" id="Jvk-fK-C1E"/>
-                                <constraint firstAttribute="bottom" secondItem="8Sn-HG-l0h" secondAttribute="bottom" constant="30" id="KLz-LD-xJE"/>
+                                <constraint firstAttribute="bottom" secondItem="8Sn-HG-l0h" secondAttribute="bottom" constant="50" id="KLz-LD-xJE"/>
                                 <constraint firstAttribute="trailing" secondItem="rhl-Q3-ePW" secondAttribute="trailing" constant="20" id="Sto-mV-h2O"/>
                                 <constraint firstItem="rhl-Q3-ePW" firstAttribute="centerX" secondItem="jhw-Sa-mKQ" secondAttribute="centerX" id="T98-1s-BUm"/>
                                 <constraint firstItem="jhw-Sa-mKQ" firstAttribute="top" secondItem="sRE-Oe-Ttc" secondAttribute="top" constant="37" id="U2I-01-9uX"/>
-                                <constraint firstItem="8Sn-HG-l0h" firstAttribute="top" secondItem="RNa-eZ-Nul" secondAttribute="bottom" constant="100" id="Yqj-oh-lfL"/>
+                                <constraint firstItem="8Sn-HG-l0h" firstAttribute="top" secondItem="RNa-eZ-Nul" secondAttribute="bottom" constant="140" id="Yqj-oh-lfL"/>
                                 <constraint firstItem="bft-b6-ala" firstAttribute="top" secondItem="rhl-Q3-ePW" secondAttribute="bottom" constant="10" id="cS0-Hx-LV1"/>
                                 <constraint firstItem="rhl-Q3-ePW" firstAttribute="leading" secondItem="sRE-Oe-Ttc" secondAttribute="leading" constant="20" id="gq1-Y1-O9q"/>
                                 <constraint firstAttribute="trailing" secondItem="RNa-eZ-Nul" secondAttribute="trailing" constant="20" id="pbD-Vg-g8v"/>

@@ -26,6 +26,7 @@
                 <outlet property="jobImg" destination="wkc-xE-L57" id="ZJd-67-Nlz"/>
                 <outlet property="jobImgView" destination="xJo-d6-cea" id="s7k-oH-JRZ"/>
                 <outlet property="photoBtn" destination="88L-pD-Ukj" id="XLQ-W6-Jv9"/>
+                <outlet property="uploadPhotlbl" destination="M5j-Rl-jrL" id="NIy-mb-pya"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -132,7 +133,13 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJo-d6-cea">
                                             <rect key="frame" x="10" y="44" width="354" height="96"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plcordr" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-xE-L57">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload 1 photo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M5j-Rl-jrL">
+                                                    <rect key="frame" x="134" y="59" width="86" height="11.5"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="8"/>
+                                                    <color key="textColor" systemColor="systemGrayColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plcordrrrr" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-xE-L57">
                                                     <rect key="frame" x="134" y="5" width="86" height="86"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="86" id="y1N-E9-220"/>
@@ -146,9 +153,13 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
+                                                <constraint firstItem="M5j-Rl-jrL" firstAttribute="trailing" secondItem="wkc-xE-L57" secondAttribute="trailing" id="82V-Gc-1Lz"/>
                                                 <constraint firstItem="wkc-xE-L57" firstAttribute="centerX" secondItem="xJo-d6-cea" secondAttribute="centerX" id="EIf-gb-hVr"/>
+                                                <constraint firstItem="M5j-Rl-jrL" firstAttribute="centerX" secondItem="wkc-xE-L57" secondAttribute="centerX" id="Ovg-6e-59q"/>
+                                                <constraint firstItem="M5j-Rl-jrL" firstAttribute="top" secondItem="wkc-xE-L57" secondAttribute="bottom" constant="-32" id="Psp-Bd-jZd"/>
                                                 <constraint firstAttribute="bottom" secondItem="wkc-xE-L57" secondAttribute="bottom" constant="5" id="SoT-mg-1Hh"/>
                                                 <constraint firstItem="wkc-xE-L57" firstAttribute="top" secondItem="xJo-d6-cea" secondAttribute="top" constant="5" id="dyX-gb-e9P"/>
+                                                <constraint firstItem="M5j-Rl-jrL" firstAttribute="leading" secondItem="wkc-xE-L57" secondAttribute="leading" id="mdi-Gs-5q7"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -250,12 +261,15 @@
     </designables>
     <resources>
         <image name="back" width="25" height="24"/>
-        <image name="plcordr" width="391" height="173"/>
+        <image name="plcordrrrr" width="391" height="173"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

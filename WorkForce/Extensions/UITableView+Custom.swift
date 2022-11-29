@@ -116,3 +116,48 @@ extension UITableViewCell {
         return self.tableView?.indexPath(for: self)
     }
 }
+
+// MARK: extension String
+extension String {
+    func isVideoType() -> Bool {
+        let values = ["mov", "mp4"]
+        return values.contains(NSString(string: self).pathExtension.lowercased())
+    }
+    
+    func convertTimeStampToString(timeStamp: String, format: String) -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(timeStamp) ?? 0.0)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
+    
+    
+    func convertTimeStampToStringDate(format: String) -> String {
+//        let date = Date(timeIntervalSince1970: timeStamp as? Double ?? 0.0)
+        let date = Date(timeIntervalSince1970: TimeInterval(self) ?? 0.0)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date) // dateFormatter.string(from: date)
+        return localDate
+    }
+    
+//    func convertTimeStampToDate(timeResult: String) -> Date {
+//        let date = Date(timeIntervalSince1970: TimeInterval(timeResult) ?? 0.0)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.timeStyle = DateFormatter.Style.medium //Set time style
+//        dateFormatter.dateStyle = DateFormatter.Style.medium //Set date style
+//        dateFormatter.timeZone = .current
+//        let localDate = dateFormatter.string(from: date)
+//        return localDate
+//    }
+    
+    
+    func numberOfDaysBetween(_ from: Date, and to: Date) -> Int {
+        let numberOfDays = Calendar.current.dateComponents([.day], from: from, to: to) // <3>
+            return numberOfDays.day!
+        }
+    
+}

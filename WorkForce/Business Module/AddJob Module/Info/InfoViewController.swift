@@ -84,7 +84,7 @@ class InfoViewController: UIViewController {
                             }else{
                                 self.amountBtn.setTitle("$\(jobDetailByJobId?.data?.rate_from ?? "")/h - $\(jobDetailByJobId?.data?.rate_to ?? "")/h", for: .normal)}
                         }else{
-                            self.amountBtn.setTitle("No rate selected.", for: .normal)
+                            self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if jobDetailByJobId?.data?.catagory_details == nil{
                             self.experiencelbl.text = "0 Year"

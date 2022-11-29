@@ -103,18 +103,18 @@ class ProfessionalikePostDescriptionController: UIViewController {
                         }
                         if workerDetailUser?.rate_type == "Per Day"{
                             if workerDetailUser?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/d", for: .normal)
                             }
                         }else if workerDetailUser?.rate_type == "Per Hour"{
                             if workerDetailUser?.rate_to == ""{
-                                self.amountBtn.setTitle("No rate selected", for: .normal)
+                                self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                             }else{
                                 self.amountBtn.setTitle("$\(workerDetailUser?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            self.amountBtn.setTitle("No rate selected".localized(), for: .normal)
+                            self.amountBtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if workerDetailUser?.catagory_details?.count ?? 0 > 1{
                             self.categoryLbl.text = "\(workerDetailUser?.catagory_details?.first?.category_name ?? "") , \(workerDetailUser?.catagory_details?.last?.category_name ?? "") "
@@ -141,7 +141,7 @@ class ProfessionalikePostDescriptionController: UIViewController {
                         if let date = dateFormatter.date(from: workerDetailUser?.date_of_birth ?? "") {
                             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
                             print(age)
-                            self.locationLbl.text =  "\(Int(age)) Years".localized()
+                            self.locationLbl.text =  "\(Int(age)) \("Years".localized())"
                         }
                         var sPhotoStr = workerDetailUser?.photo ?? ""
                         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

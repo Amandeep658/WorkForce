@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import AVFoundation
+import Kingfisher
 
 
 internal extension UIView {
@@ -578,6 +580,37 @@ extension UINib {
         return UINib(nibName: name, bundle: nil
         ).instantiateView
     }
-    
-    
+}
+
+extension UIImageView {
+    func thumbnailForVideoAt(urlString: String?) {
+        if let image = KingfisherManager.shared.cache.retrieveImageInMemoryCache(forKey: urlString ?? "") {
+            self.image = image
+        } else {
+            if urlString?.count ?? 0 > 0, let url = URL(string: urlString ?? "") {
+                let asset = AVAsset(url: url)
+                let assetImageGenerator = AVAssetImageGenerator(asset: asset)
+                var time = asset.duration
+                time.value = min(time.value, 2)
+                self.restorationIdentifier = urlString
+                DispatchQueue.global().async {
+                    do {
+                        let imageRef = try assetImageGenerator.copyCGImage(at: time, actualTime: nil)
+                        DispatchQueue.main.async {
+                            if self.restorationIdentifier == urlString {
+                                self.image = UIImage(cgImage: imageRef)
+                                KingfisherManager.shared.cache.store(self.image!, forKey: urlString ?? "")
+                            }
+                        }
+                    } catch {
+                        print("error")
+                        self.image = UIImage(named: "placeHolder")
+                    }
+                }
+            } else {
+                self.image = UIImage(named: "placeHolder")
+            }
+        }
+    }
+
 }

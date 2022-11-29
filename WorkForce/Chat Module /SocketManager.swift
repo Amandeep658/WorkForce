@@ -9,10 +9,10 @@ import Foundation
 import SocketIO
 
 class SocketManger {
-    static let shared = SocketManger()
-
+static let shared = SocketManger()
+//http://161.97.132.85:3020/
 //http://jaohar-uk.herokuapp.com:80
-    let manager = SocketManager(socketURL: URL(string: "http://161.97.132.85:3020/")!, config: [.log(true), .compress])
+    let manager = SocketManager(socketURL: URL(string: "http://jaohar-uk.herokuapp.com:80")!, config: [.log(true), .compress])
     var socket:SocketIOClient!
     init() {
         socket = manager.defaultSocket

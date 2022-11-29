@@ -10,6 +10,15 @@
 "ENTER_PHONE_NUMBER" = "Por favor, introduzca el número de teléfono.";
 "AUTH_TEXT" = "Se ha enviado un código de autenticación a";
 "LOADING" = "CARGANDO..";
+"Upload 1 photo" = "Subir 1 foto";
+
+"Cancel anytime" = "Cancelar en cualquier momento, después de seis meses";
+"per month" = "por mes";
+
+"$50.00/Six Month" = "$50.00/Seis Meses";
+"$20.00/Six Month" = "$20.00/Seis Meses";
+"CANCEl_SIX_20$_MONTH_SUBSCRIPTION" = "Cancele en cualquier momento, después de seis meses $20.00 por mes.";
+"CANCEl_SIX_50$_MONTH_SUBSCRIPTION" = "Cancele en cualquier momento, después de seis meses $50.00 por mes.";
 "INVALID_OTP_PLEASE_ENTER" = "OTP inválido por favor ingrese de nuevo.";
 "ENTER_FIRST_NAME" = "Por favor ingrese el primer nombre.";
 "ENTER_LAST_NAME" = "Por favor, introduzca el apellido.";
@@ -33,6 +42,7 @@
 "Please select job type." = "Seleccione el tipo de trabajo.";
 "Done" = "Hecho";
 "Company Detail" = "Detalle de la empresa";
+"Customers Opportunity" = "Clientes Oportunidad";
 "ENTER_VALID_CODE" = "Por favor, introduzca un código válido";
 "ENTER_CODE" = "Por favor ingrese el código";
 "PROFILE_UPDATE" = "Perfil actualizado con éxito.";
@@ -100,3 +110,6 @@
 "Contract" = "Contrato";
 "Freelance" = "Lanza libre";
 "Remote" = "Remota";
+
+"Take photo" = "Tomar foto";
+"Photo library" = "librería fotográfica";

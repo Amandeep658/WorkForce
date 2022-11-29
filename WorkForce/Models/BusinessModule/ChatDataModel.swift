@@ -47,6 +47,7 @@ struct ChatReceiver_detail : Codable {
     var mobile_no : String?
     var first_name : String?
     var last_name : String?
+    let email : String?
     var date_of_birth : String?
     var city : String?
     var state : String?
@@ -67,6 +68,12 @@ struct ChatReceiver_detail : Codable {
     var rate_to : String?
     var rate_type : String?
     var job_type : String?
+    let is_delete : String?
+    let verified : String?
+    let email_verificate_code : String?
+    let disabled : String?
+    let is_language : String?
+    
 
     enum CodingKeys: String, CodingKey {
 
@@ -78,6 +85,7 @@ struct ChatReceiver_detail : Codable {
         case mobile_no = "mobile_no"
         case first_name = "first_name"
         case last_name = "last_name"
+        case email = "email"
         case date_of_birth = "date_of_birth"
         case city = "city"
         case state = "state"
@@ -98,6 +106,11 @@ struct ChatReceiver_detail : Codable {
         case rate_to = "rate_to"
         case rate_type = "rate_type"
         case job_type = "job_type"
+        case is_delete = "is_delete"
+        case verified = "verified"
+        case email_verificate_code = "email_verificate_code"
+        case disabled = "disabled"
+        case is_language = "is_language"
     }
 
 }
@@ -110,6 +123,9 @@ struct ChatAllMessages : Decodable {
     var post_id : String?
     var creation_date : String?
     var other_id : String?
+    var chat_image : String?
+    var chat_video : String?
+    var message_type : String?
     var created : String?
     var photo : String?
     var username : String?
@@ -124,6 +140,9 @@ struct ChatAllMessages : Decodable {
         self.post_id = dict["post_id"] as? String ?? ""
         self.creation_date = dict["creation_date"] as? String ?? ""
         self.other_id = dict["other_id"] as? String ?? ""
+        self.chat_image = dict["chat_image"] as? String ?? ""
+        self.chat_video = dict["chat_video"] as? String ?? ""
+        self.message_type = dict["message_type"] as? String ?? ""
         self.created = dict["created"] as? String ?? ""
         self.photo = dict["photo"] as? String ?? ""
         self.username = dict["username"] as? String ?? ""

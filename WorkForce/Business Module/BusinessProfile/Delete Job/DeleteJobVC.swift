@@ -20,7 +20,6 @@ class DeleteJobVC: UIViewController {
     @IBOutlet weak var noBtn: UIButton!
     @IBOutlet weak var jobExpiredView: UIView!
     
-    
     var jobID = ""
     var isDelete = ""
     var crossDelegate : DidBackDelegate?

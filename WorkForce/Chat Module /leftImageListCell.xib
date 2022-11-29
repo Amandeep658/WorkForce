@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="KGk-i7-Jjw" customClass="leftImageListCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="450" height="206"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eS4-2f-i09">
+                        <rect key="frame" x="67" y="16" width="190" height="174"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="QWA-n2-mil">
+                                <rect key="frame" x="4" y="4" width="182" height="144"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt4-ia-tLB">
+                                <rect key="frame" x="4" y="156" width="47" height="14"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.22745098039215686" green="0.58431372549019611" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="QWA-n2-mil" firstAttribute="top" secondItem="eS4-2f-i09" secondAttribute="top" constant="4" id="2xp-2E-CIJ"/>
+                            <constraint firstItem="QWA-n2-mil" firstAttribute="leading" secondItem="eS4-2f-i09" secondAttribute="leading" constant="4" id="3LE-Wl-pXe"/>
+                            <constraint firstItem="tt4-ia-tLB" firstAttribute="leading" secondItem="QWA-n2-mil" secondAttribute="leading" id="EfV-Je-ajO"/>
+                            <constraint firstAttribute="width" constant="190" id="PDc-19-ajK"/>
+                            <constraint firstAttribute="bottom" secondItem="QWA-n2-mil" secondAttribute="bottom" constant="26" id="Pdw-kw-iHG"/>
+                            <constraint firstItem="tt4-ia-tLB" firstAttribute="top" secondItem="QWA-n2-mil" secondAttribute="bottom" constant="8" symbolic="YES" id="ggA-EJ-N4A"/>
+                            <constraint firstAttribute="trailing" secondItem="QWA-n2-mil" secondAttribute="trailing" constant="4" id="hxB-YO-khu"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="OaZ-6q-NL0">
+                        <rect key="frame" x="17" y="16" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="3y9-eS-0hK"/>
+                            <constraint firstAttribute="width" constant="40" id="AGu-2C-Fj0"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="OaZ-6q-NL0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="54q-bC-kVa"/>
+                    <constraint firstAttribute="bottom" secondItem="eS4-2f-i09" secondAttribute="bottom" constant="16" id="9eL-jY-btu"/>
+                    <constraint firstItem="OaZ-6q-NL0" firstAttribute="top" secondItem="eS4-2f-i09" secondAttribute="top" id="ENX-uC-g48"/>
+                    <constraint firstItem="eS4-2f-i09" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="KRy-Rx-Prj"/>
+                    <constraint firstItem="eS4-2f-i09" firstAttribute="leading" secondItem="OaZ-6q-NL0" secondAttribute="trailing" constant="10" id="uO2-KT-a7Q"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="leftImgCell" destination="QWA-n2-mil" id="cjj-ec-FGT"/>
+                <outlet property="leftUserimgCell" destination="OaZ-6q-NL0" id="BZo-pp-dcv"/>
+                <outlet property="timeLbl" destination="tt4-ia-tLB" id="lFw-MN-cGU"/>
+            </connections>
+            <point key="canvasLocation" x="-39.130434782608695" y="96.428571428571431"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="placeholder" width="1192" height="1194"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

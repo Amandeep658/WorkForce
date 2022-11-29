@@ -27,5 +27,6 @@ class ChatTableViewCell: UITableViewCell {
     }
     func setImage(){
             chatImg.layer.cornerRadius = chatImg.frame.height/2
+        timelbl.layer.cornerRadius = timelbl.frame.height/2
     }
 }

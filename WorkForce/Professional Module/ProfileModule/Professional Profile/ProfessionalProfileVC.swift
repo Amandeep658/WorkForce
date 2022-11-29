@@ -25,7 +25,7 @@ class ProfessionalProfileVC: UIViewController {
         super.viewDidLoad()
         self.setTable()
         self.hitCompanyListing()
-        professionalDataUpdate = {
+        professionDataUpdate = {
             self.hitCompanyListing()
         }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false

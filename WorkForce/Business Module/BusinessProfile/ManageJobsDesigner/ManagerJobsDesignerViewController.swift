@@ -105,7 +105,7 @@ class ManagerJobsDesignerViewController: UIViewController,DidBackDelegate {
                                 self.hourbtn.setTitle("$\(jobDetailByJobIdArr?.data?.rate_from ?? "")/h - $\(jobDetailByJobIdArr?.data?.rate_to ?? "")/h", for: .normal)
                             }
                         }else{
-                            print("its job edit")
+                            self.hourbtn.setTitle("No rate selected.".localized(), for: .normal)
                         }
                         if jobDetailByJobIdArr?.data?.catagory_details == nil{
                             self.experiencelbl.text = "0 Year"

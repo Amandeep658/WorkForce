@@ -92,7 +92,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="140" id="avs-SP-qbt"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
@@ -107,7 +107,7 @@
                                     <constraints>
                                         <constraint firstAttribute="width" constant="140" id="btd-tA-9JJ"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                     <userDefinedRuntimeAttributes>
@@ -210,6 +210,11 @@
             <point key="canvasLocation" x="105.79710144927537" y="97.767857142857139"/>
         </view>
     </objects>
+    <designables>
+        <designable name="cmm-Oa-Sck">
+            <size key="intrinsicContentSize" width="101" height="40"/>
+        </designable>
+    </designables>
     <resources>
         <image name="back" width="25" height="24"/>
         <image name="chevron.down" catalog="system" width="128" height="72"/>

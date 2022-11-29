@@ -9,7 +9,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import Alamofire
 
-class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
+class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate, UITextPasteDelegate  {
     
     //    MARK: OUTLETS
     @IBOutlet weak var backBtn: UIButton!
@@ -38,6 +38,7 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         uiConfigure()
+        print("its my otp")
     }
     
     //    MARK: UI_CONFIGURE
@@ -48,11 +49,42 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
         self.fourthTF.delegate = self
         self.fifthTF.delegate = self
         self.sixthTF.delegate = self
+        self.firstTF.textContentType = .oneTimeCode
+        self.secondTF.textContentType = .oneTimeCode
+        self.thirdTF.textContentType = .oneTimeCode
+        self.fourthTF.textContentType = .oneTimeCode
+        self.fifthTF.textContentType = .oneTimeCode
+        self.sixthTF.textContentType = .oneTimeCode
+        self.firstTF.pasteDelegate = self
+        self.secondTF.pasteDelegate = self
+        self.thirdTF.pasteDelegate = self
+        self.fourthTF.pasteDelegate = self
+        self.fifthTF.pasteDelegate = self
+        self.sixthTF.pasteDelegate = self
     }
     
     //    MARK: TEXTFIELD_DELEGATES
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.count > 0 {
+        let chracters = string.map({ String($0)})
+        print("MyString***********>>>>>>>",string)
+        self.verifyOTP = string
+        if chracters.count == 6{
+            textField.text = (string as NSString).substring(to: 1)
+            self.firstTF.text = chracters[0]
+            print("firstTF.text",firstTF.text ?? "")
+            self.secondTF.text = chracters[1]
+            print("secondTF.text",secondTF.text ?? "")
+            self.thirdTF.text = chracters[2]
+            print("thirdTF.text",thirdTF.text ?? "")
+            self.fourthTF.text = chracters[3]
+            print("fourthTF.text",fourthTF.text ?? "")
+            self.fifthTF.text = chracters[4]
+            print("fifthTF.text",fifthTF.text ?? "")
+            self.sixthTF.text = chracters[5]
+            print("sixthTF.text",sixthTF.text ?? "")
+            return false
+        }
+        else if string.count > 0 {
             textField.text = (string as NSString).substring(to: 1)
             if textField == firstTF {
                 secondTF.becomeFirstResponder()
@@ -65,10 +97,16 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
             }else if textField == fifthTF {
                 sixthTF.becomeFirstResponder()
             }else if textField == sixthTF {
-                self.dismisKeyboard()
+                dismisKeyboard()
             }
+            return true
         }
-        return true
+        else if string == ""{
+            return true
+        }
+        else{
+            return false
+        }
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text == ""{
@@ -107,6 +145,7 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
             }
         }
     }
+  
     
     func dismisKeyboard(){
         self.verifyOTP = "\(self.firstTF.text ?? "")\(self.secondTF.text ?? "")\(self.thirdTF.text ?? "")\(self.fourthTF.text ?? "")\(self.fifthTF.text ?? "")\(self.sixthTF.text ?? "")"
@@ -176,6 +215,13 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate  {
         var parameters : [String:AnyObject] = [:]
         parameters["email"] = enterEmail as AnyObject
         parameters["code"] = verifyOTP as AnyObject
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else if Locale.current.languageCode == "en"{
+            parameters["is_language"] = "0"  as AnyObject
+        }
         if UserType.userTypeInstance.userLogin == .Bussiness{
             parameters["type"] = "1" as AnyObject
         }else if UserType.userTypeInstance.userLogin == .Professional{

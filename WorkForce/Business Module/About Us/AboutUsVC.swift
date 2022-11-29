@@ -12,7 +12,6 @@ class AboutUsVC: UIViewController,WKUIDelegate {
 
     var aboutUrl = "https://u2connect.com/about/"
     
-    
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var aboutView: WKWebView!
     

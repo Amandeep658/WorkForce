@@ -27,7 +27,7 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
         self.customerShowTableView.dataSource = self
         self.customerShowTableView.register(UINib(nibName: "companiesTableViewCell", bundle: nil), forCellReuseIdentifier: "companiesTableViewCell")
         self.customersearchBar.delegate = self
-        self.countLbl.text  = "0 Customers Opportunity"
+        self.countLbl.text  = "0 \("Customers Opportunity".localized())"
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +59,7 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
             self.page = 100
             self.pageCount = 1
             self.jobNearMeArr.removeAll()
-            self.countLbl.text  = "0 Customers Opportunity"
+            self.countLbl.text  = "0 \("Customers Opportunity".localized())"
             self.customerShowTableView.reloadData()
         }
         else{
@@ -97,9 +97,9 @@ class CustomerJobListSearchVC: UIViewController,UISearchBarDelegate  {
                         self.jobNearMeArr = aContact.data!
                         if jobNearMeArr.count > 0 {
                             self.customerShowTableView.backgroundView =  nil
-                            self.countLbl.text = "\(jobNearMeArr.count) Customers Opportunity"
+                            self.countLbl.text = "\(jobNearMeArr.count) \("Customers Opportunity".localized())"
                         }else{
-                            self.countLbl.text = "0 Customers Opportunity"
+                            self.countLbl.text = "0 \("Customers Opportunity".localized())"
                             self.customerShowTableView.setBackgroundView(message: message)
                         }
                         self.customerShowTableView.reloadData()

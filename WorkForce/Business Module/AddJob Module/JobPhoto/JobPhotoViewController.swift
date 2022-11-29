@@ -133,7 +133,7 @@ class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDel
         print("URL************>>>>>>>",strURL)
     }
     
-    func requestWith(endUrl: String, parameters: [AnyHashable : Any]){
+    func requestWith(endUrl: String,  parameters: [AnyHashable : Any]){
         let url = endUrl /* your API url */
         let AToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token": AToken]

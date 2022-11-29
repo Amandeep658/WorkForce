@@ -198,7 +198,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate, UI
     
     //    MARK: SET UPDATE FUNCTIONS
     func updateUI(){
-        firstTF.delegate = self
+        self.firstTF.delegate = self
         self.secondTF.delegate = self
         self.thirdTf.delegate = self
         self.fourthTF.delegate = self

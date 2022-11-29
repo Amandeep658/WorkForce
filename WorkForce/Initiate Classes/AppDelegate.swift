@@ -235,7 +235,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }else{
             completionHandler([.alert, .badge, .sound])
         }
-        completionHandler([.alert, .badge ,.sound])
+            completionHandler([.alert, .badge ,.sound])
     }
     
     

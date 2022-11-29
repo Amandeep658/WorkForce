@@ -21,6 +21,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
             nearByWorkerArr.removeAll()
             businessFilter = "Nav from home filter"
             nearByWorkerArr = Data
+            print("nearByWorkerCount", nearByWorkerArr.count)
             self.businessHomeTableView.reloadData()
         }
     }
@@ -32,7 +33,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     @IBOutlet weak var businessHomeTableView: UITableView!
     @IBOutlet weak var googleMap: GMSMapView!
     
-    private var workerPagination : Pagination?
+     var workerPagination : Pagination?
     var tapGesture = UITapGestureRecognizer()
     var nearByWorkerDict:BusinessHomemodule?
     var nearByWorkerArr = [BusinessHomeData]()
@@ -55,19 +56,21 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
         tapGesture.numberOfTouchesRequired = 1
         searchView.addGestureRecognizer(tapGesture)
         searchView.isUserInteractionEnabled = true
+        googleMap.delegate = self
         setTable()
-        self.workerPagination = Pagination()
+        self.getLocation()
         NotificationCenter.default.addObserver(self, selector: #selector(self.homeTabPressed(_:)), name: Notification.Name(rawValue: "homeTabPressed"), object: nil)
     }
     
     @objc func homeTabPressed(_ notification : Notification){
-        getLocation()
+        self.workerPagination = Pagination()
+        self.getLocation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
-        getLocation()
+        self.workerPagination = Pagination()
     }
     
     func setTable(){
@@ -78,15 +81,15 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     
     //    MARK: GET CURRENT LOCATION
     func getLocation(){
-        googleMap.delegate = self
+        
         locationManager.delegate = self
-        locationManager.startUpdatingLocation()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
             locationManager.startUpdatingLocation()
         }
     }
+    
     func showMarker(position: CLLocationCoordinate2D){
         let marker = GMSMarker()
         marker.position = position
@@ -123,9 +126,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
             self.currentlong = "\(Double(long))"
             let currentlocation = CLLocationCoordinate2D(latitude: lat, longitude: long)
             self.getPlaceAddressFrom(location: currentlocation) { [self] address in
-                print("here is resultttt", address)
                 self.nearByLocation = address
-                print("Get current Location address ======>>>>",nearByLocation)
                 self.addMarkers(lat: lat, long: long)
                 self.nearByWorkerList()
             }
@@ -177,7 +178,6 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
         if let containsPlacemark = placemark {
             locationManager.stopUpdatingLocation()
             print(containsPlacemark)
-            
         }
     }
     
@@ -234,18 +234,15 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     
     //    MARK: HIT NEAR BY WORKER
     func nearByWorkerList(){
-        
         guard (!(self.workerPagination?.isLoading ?? false) && self.workerPagination?.canLoadMore ?? true) else {return}
         self.workerPagination?.isLoading = true
-
-
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        let param = ["location": nearByLocation ,"page_no" : self.workerPagination?.pageNum ?? 1,"per_page" : "10","search":""] as [String : Any]
+        let param = ["location": nearByLocation ,"page_no": self.workerPagination?.pageNum ?? 1,"per_page" : "100","search":""] as [String : Any]
         print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.nearByWorker, params: param, headers: headers) { [self] response in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -275,27 +272,22 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
                         self.workerPagination?.pageNum += 1
                         self.workerPagination?.isLoading = false
                     }
-                    
                     self.addMarkers(lat: locationss?.latitude ?? 0.0, long: locationss?.longitude ?? 0.0)
                     let fltr = self.nearByWorkerArr.filter({$0.latitude != "0"})
-                    
                     print("count is ****** \(fltr.count)")
                     fltr.forEach { data in
                         print("count is ****** \(data.latitude ?? "") ** \(data.longitude ?? "") ** \(data.username ?? "")")
                         self.addMarkers(lat: Double(data.latitude ?? "0") ?? 0.0, long: Double(data.longitude ?? "0") ?? 0.0, object: data)
                     }
-                    
-                   
-
-                    
                     self.businessHomeTableView.setBackgroundView(message: "")
                     self.businessHomeTableView.reloadData()
                 }else{
-                    self.businessHomeTableView.setBackgroundView(message: message)
-                    self.nearByWorkerArr.removeAll()
-                    self.businessHomeTableView.reloadData()
+                    if self.nearByWorkerArr.count == 0{
+                        self.businessHomeTableView.setBackgroundView(message: message)
+                    }
+                    //self.nearByWorkerArr.removeAll()
+                    //self.businessHomeTableView.reloadData()
                 }
-                
             }
             catch let parseError {
                 self.workerPagination?.isLoading = false

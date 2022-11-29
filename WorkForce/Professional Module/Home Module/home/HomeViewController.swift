@@ -44,6 +44,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     var currentlocation = ""
     var filterData = ""
     let locationManager = CLLocationManager()
+    private var jobListArr : Pagination?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,17 +54,20 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
         searchView.addGestureRecognizer(tapGesture)
         searchView.isUserInteractionEnabled = true
         setCell()
+        getCurntLocation()
         NotificationCenter.default.addObserver(self, selector: #selector(self.professionalhomeTabPressed(_:)), name: Notification.Name(rawValue: "professionalhomeTabPressed"), object: nil)
     }
     @objc func professionalhomeTabPressed(_ notification : Notification){
         self.categoryId = ""
-        getCurntLocation()
-        hitCategoryListing()
+        self.jobListArr = Pagination()
+        self.getCurntLocation()
+        self.hitCategoryListing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
+        self.jobListArr = Pagination()
         self.categoryId = ""
         getCurntLocation()
         hitCategoryListing()
@@ -87,11 +91,9 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
             flowLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         }
         self.searchbar.delegate = self
-        
     }
     
     //    MARK: GET CURRENT LOCATION
-
     func getCurntLocation(){
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
@@ -270,6 +272,8 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     
     //    MARK: HIT JOB LISTNING API
     func homeJobListing(){
+        guard (!(self.jobListArr?.isLoading ?? false) && self.jobListArr?.canLoadMore ?? true) else {return}
+        self.jobListArr?.isLoading = true
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
@@ -294,14 +298,26 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
                 }
                 else if status == 1{
                     self.filterData = ""
-                    self.jobNearMeArr =  aContact.data!
+                    if self.jobListArr?.pageNum == 1{
+                        self.jobNearMeArr = aContact.data!
+                    }else{
+                        self.jobNearMeArr.append(contentsOf: aContact.data!)
+                    }
+                    if aContact.data!.count > 0{
+                        let canLoadMore = aContact.data!.count > 0
+                        self.jobListArr?.canLoadMore = canLoadMore
+                        self.jobListArr?.pageNum += 1
+                        self.jobListArr?.isLoading = false
+                    }
                     self.homeTableView.reloadData()
                 }else{
-                    self.jobNearMeArr.removeAll()
-                    self.homeTableView.reloadData()
+                    if self.jobNearMeArr.count == 0{
+                        self.homeTableView.setBackgroundView(message: message)
+                    }
                 }
             }
             catch let parseError {
+                self.jobListArr?.isLoading = false
                 print("JSON Error \(parseError.localizedDescription)")
             }
             
@@ -312,7 +328,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     }
     func hitJobListingParameters() -> [String:Any] {
         var parameters : [String:Any] = [:]
-        parameters["page_no"] = "1" as AnyObject
+        parameters["page_no"] = self.jobListArr?.pageNum ?? 1 as AnyObject
         parameters["per_page"] = "100" as AnyObject
         parameters["location"] = currentlocation
         if categoryId != ""{
@@ -345,7 +361,7 @@ extension HomeViewController:UICollectionViewDelegate,UICollectionViewDataSource
             cell!.categoryLbl.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         }else{
             if myIndex == indexPath.row{
-                cell!.categoryView.layer.backgroundColor = #colorLiteral(red: 0.2280597985, green: 0.5824585557, blue: 0.7204178572, alpha: 1)
+                cell!.categoryView.layer.backgroundColor = #colorLiteral(red: 0.1169760153, green: 0.4974487424, blue: 0.6748260856, alpha: 1)
                 cell!.categoryLbl.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 cell!.categoryView.layer.borderColor = UIColor.white.cgColor
                 cell!.categoryView.layer.borderWidth = 0.5

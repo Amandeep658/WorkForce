@@ -9,8 +9,7 @@ import UIKit
 import Alamofire
 import IQKeyboardManagerSwift
 
-class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
-
+class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate, UITextPasteDelegate {
 //    MARK: OUTLETS
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var firstView: UIView!
@@ -46,11 +45,24 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
         self.fourthTF.delegate = self
         self.fifthTF.delegate = self
         self.sixthTF.delegate = self
+        self.firstTF.textContentType = .oneTimeCode
+        self.secondTF.textContentType = .oneTimeCode
+        self.thirdTF.textContentType = .oneTimeCode
+        self.fourthTF.textContentType = .oneTimeCode
+        self.fifthTF.textContentType = .oneTimeCode
+        self.sixthTF.textContentType = .oneTimeCode
+        self.firstTF.pasteDelegate = self
+        self.secondTF.pasteDelegate = self
+        self.thirdTF.pasteDelegate = self
+        self.fourthTF.pasteDelegate = self
+        self.fifthTF.pasteDelegate = self
+        self.sixthTF.pasteDelegate = self
     }
     
 //    MARK: TEXTFIELD_DELEGATES
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let chracters = string.map({ String($0)})
+        self.verifyOTP = string
         if chracters.count == 6{
             textField.text = (string as NSString).substring(to: 1)
             self.firstTF.text = chracters[0]
@@ -76,6 +88,8 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
             }else if textField == sixthTF {
                 dismisKeyboard()
             }
+            return true
+        }else if string == ""{
             return true
         }
         else{
@@ -181,23 +195,5 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate {
         }
         
     }
-    
-
 }
-//if string.count > 0 {
-//    textField.text = (string as NSString).substring(to: 1)
-//    if textField == firstTF {
-//        secondTF.becomeFirstResponder()
-//    } else if textField == secondTF {
-//        thirdTF.becomeFirstResponder()
-//    }else if textField == thirdTF {
-//        fourthTF.becomeFirstResponder()
-//    }else if textField == fourthTF {
-//        fifthTF.becomeFirstResponder()
-//    }else if textField == fifthTF {
-//        sixthTF.becomeFirstResponder()
-//    }else if textField == sixthTF {
-//        self.dismisKeyboard()
-//    }
-//}
-//return true
+

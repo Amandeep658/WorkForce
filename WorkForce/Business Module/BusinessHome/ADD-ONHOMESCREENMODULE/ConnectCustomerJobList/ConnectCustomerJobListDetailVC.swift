@@ -130,11 +130,13 @@ class ConnectCustomerJobListDetailVC: UIViewController {
                 let status = aContact.status
                 let message = aContact.message ?? ""
                 if status == 1{
-                    self.createRoomData = aContact
+                        self.createRoomData = aContact
+                        print("createRoomdata********>>>>>>>",self.createRoomData)
                         let vc = SingleChatController()
                         vc.chatRoomId = createRoomData?.room_id ?? ""
                         vc.user_ID =  createRoomData?.user_detail?.user_id ?? ""
-                        vc.userName = detailArr?.company_name ?? ""
+                        vc.userName = createRoomData?.user_detail?.username ?? ""
+                        vc.isNavFromCustomer = "CustomerJobList"
                         vc.userProfileImage = createRoomData?.user_detail?.photo ?? ""
                         self.pushViewController(vc, true)
                 }else{

@@ -24,7 +24,7 @@ let DeviceSize = UIScreen.main.bounds.size
 @available(iOS 13.0, *)
 let appDel = (UIApplication.shared.delegate as! AppDelegate)
 @available(iOS 13.0, *)
-let appScene = (UIApplication.shared.delegate as! SceneDelegate)
+let appScene = (UIApplication.shared.delegate  as! SceneDelegate)
 
 //let kBASEURL = "http://161.97.132.85/work-force/webservice/"
 let kBASEURL = "http://161.97.132.85/work-forcev2/webservice/"
@@ -68,6 +68,7 @@ struct WSMethods {
     static let professionalLikePost = "professionalLikePost.php"
     static let createRoom = "createRoom.php"
     static let sendMessage = "sendMessage.php"
+    static let sendMessagev2 = "sendMessagev2.php"
     static let messageSeenUpdated = "UpdateMessageSeen.php"
     static let addJob = "addJob.php"
     static let getAllChatUser = "getAllChatUser.php"

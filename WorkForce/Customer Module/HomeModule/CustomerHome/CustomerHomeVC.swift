@@ -21,6 +21,7 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var notificationBtn: UIButton!
     @IBOutlet weak var companiesListTableView: UITableView!
     
+    private var customerHomePagination : Pagination?
     var nearByComapniessDict:BusinessHomemodule?
     var nearByComapniessArr = [BusinessHomeData]()
     let locationManager = CLLocationManager()
@@ -29,12 +30,13 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
     var currentlong = ""
     var locationss: CLLocationCoordinate2D?
     var iconImg = UIImage()
+    
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     }
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -42,6 +44,7 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
         companiesListTableView.dataSource = self
         companiesListTableView.register(UINib(nibName: "customerConnectListCell", bundle: nil), forCellReuseIdentifier: "customerConnectListCell")
         self.tabBarController?.tabBar.isHidden = false
+        self.customerHomePagination = Pagination()
         self.getLocation()
     }
 
@@ -179,13 +182,16 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
 
 //    MARK: HIT COUSTOMER LISTING API
     func hitCoustomerListingApi(){
+        guard (!(self.customerHomePagination?.isLoading ?? false) && self.customerHomePagination?.canLoadMore ?? true) else {return}
+        self.customerHomePagination?.isLoading = true
+        
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        let param = ["location": nearByLocation ,"page_no" : "1","per_page" : "40","search":""] as [String : Any]
+        let param = ["location": nearByLocation ,"page_no" : self.customerHomePagination?.pageNum ?? 1 ,"per_page" : "100","search":""] as [String : Any]
         print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.getNearByCompanyListing, params: param, headers: headers) { [self] response in
             AFWrapperClass.svprogressHudDismiss(view: self)
@@ -204,7 +210,18 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
                     UserDefaults.standard.removeObject(forKey: "authToken")
                     appDel.navigation()
                 }else if status == 1 {
-                    self.nearByComapniessArr = aContact.data!
+                    if self.customerHomePagination?.pageNum == 1{
+                        self.nearByComapniessArr = aContact.data!
+                    }else{
+                        self.nearByComapniessArr.append(contentsOf: aContact.data!)
+                    }
+                    if aContact.data!.count > 0{
+                        let canLoadMore = aContact.data!.count > 0
+                        self.customerHomePagination?.canLoadMore = canLoadMore
+                        self.customerHomePagination?.pageNum += 1
+                        self.customerHomePagination?.isLoading = false
+                    }
+//                    self.nearByComapniessArr = aContact.data!
                     self.companiesListTableView.setBackgroundView(message: "")
                     self.addMarkers(lat: locationss?.latitude ?? 0.0, long: locationss?.longitude ?? 0.0)
                     let fltr = self.nearByComapniessArr.filter({$0.latitude != "0"})
@@ -224,6 +241,7 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
                 }
             }
             catch let parseError {
+                self.customerHomePagination?.isLoading = false
                 print("JSON Error \(parseError.localizedDescription)")
             }
             

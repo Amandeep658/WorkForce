@@ -30,12 +30,10 @@ class LeftTableViewCell: UITableViewCell {
     
     func setMessageData(_ data: ChatAllMessages?) {
         self.messageLabel.text = data?.message
-        self.imgViewUser.sd_setImage(with: URL(string: data?.photo ?? ""), placeholderImage: UIImage(named: "placeholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
+        self.imgViewUser.sd_setImage(with: URL(string: data?.photo ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
         self.timeLbl.text =  data?.created ?? ""
         self.imgViewUser.layer.cornerRadius = imgViewUser.frame.height/2
         self.imgViewUser.clipsToBounds = true
-        
-        
     }
     func chatConvertTimeStampTodate(dateVal : String) -> String{
         let timeinterval = TimeInterval(dateVal)

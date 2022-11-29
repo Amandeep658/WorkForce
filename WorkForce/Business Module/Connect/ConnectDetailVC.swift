@@ -98,16 +98,12 @@ class ConnectDetailVC: UIViewController {
     
     //    MARK: CHAT ROOM CREATED API
     func hitRoomCreateApi(){
-        DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
-        }
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
         let param = ["other_id": user_iD ] as [String : Any]
         print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.createRoom, params: param, headers: headers) { [self] response in
-            AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             do{
                 let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)

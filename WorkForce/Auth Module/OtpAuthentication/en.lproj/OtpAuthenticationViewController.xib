@@ -74,19 +74,19 @@
                     <rect key="frame" x="0.0" y="94" width="414" height="802"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OTP Authentication" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qaj-uA-wMj">
-                            <rect key="frame" x="85" y="90" width="244" height="33"/>
+                            <rect key="frame" x="67" y="90" width="280" height="39.5"/>
                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="28"/>
                             <color key="textColor" red="0.24313725490196078" green="0.58431372549019611" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="An authentication code has been sent to (+91)9814678954" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AYU-3d-k3H">
-                            <rect key="frame" x="35" y="133" width="344" height="45.5"/>
+                            <rect key="frame" x="35" y="139.5" width="344" height="45.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="19"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="pal-MX-YY5">
-                            <rect key="frame" x="30" y="218.5" width="354" height="50"/>
+                            <rect key="frame" x="30" y="225" width="354" height="50"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b6a-Yh-Zd6">
                                     <rect key="frame" x="0.0" y="0.0" width="50.5" height="50"/>
@@ -278,26 +278,26 @@
                             </subviews>
                         </stackView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RESEND OTP" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Icw-V1-WUj">
-                            <rect key="frame" x="227" y="312" width="94" height="30"/>
+                            <rect key="frame" x="227" y="318.5" width="89.5" height="30"/>
                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
                             <color key="textColor" red="0.58712881800000005" green="0.099395088849999993" blue="0.078647457059999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-lM-Gdk">
-                            <rect key="frame" x="227" y="312" width="94" height="30"/>
+                            <rect key="frame" x="227" y="318.5" width="89.5" height="30"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <connections>
                                 <action selector="resendOTPBtn:" destination="-1" eventType="touchUpInside" id="Lzg-30-CLb"/>
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't receive the OTP?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cyb-2u-9YZ">
-                            <rect key="frame" x="70" y="318.5" width="155" height="16.5"/>
+                            <rect key="frame" x="70" y="325" width="155" height="16.5"/>
                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rVE-Cz-fCQ">
-                            <rect key="frame" x="20" y="366.5" width="374" height="45"/>
+                            <rect key="frame" x="20" y="373" width="374" height="45"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buttonImage" translatesAutoresizingMaskIntoConstraints="NO" id="fn1-Wd-JGz">
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="45"/>
@@ -318,7 +318,7 @@
                             </userDefinedRuntimeAttributes>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fm0-EU-Rbm" customClass="ActualGradientButton" customModule="WorkForce" customModuleProvider="target">
-                            <rect key="frame" x="20" y="366.5" width="374" height="45"/>
+                            <rect key="frame" x="20" y="373" width="374" height="45"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="18"/>
                             <state key="normal" title="VERIFY">
@@ -380,7 +380,7 @@
     </objects>
     <designables>
         <designable name="Fm0-EU-Rbm">
-            <size key="intrinsicContentSize" width="61" height="33"/>
+            <size key="intrinsicContentSize" width="61" height="38"/>
         </designable>
     </designables>
     <resources>

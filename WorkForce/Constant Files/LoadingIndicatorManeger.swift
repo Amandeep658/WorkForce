@@ -11,7 +11,7 @@ class LoadingButton: UIButton {
 
 var activityIndicator: UIActivityIndicatorView!
 
-    let activityIndicatorColor: UIColor = colorsApp.appColor.bordercolor
+    let activityIndicatorColor: UIColor = UIColor.black
 
 func loadIndicator(_ shouldShow: Bool) {
     if shouldShow {

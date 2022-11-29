@@ -28,7 +28,7 @@ open class ImagePicker: NSObject {
         
         self.pickerController.delegate = self
         self.pickerController.allowsEditing = true
-        self.pickerController.mediaTypes = ["public.image"]
+        self.pickerController.mediaTypes = ["public.image","public.movie"]
     }
     
     private func action(for type: UIImagePickerController.SourceType, title: String) -> UIAlertAction? {
@@ -46,10 +46,10 @@ open class ImagePicker: NSObject {
         
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
-        if let action = self.action(for: .camera, title: "Take photo") {
+        if let action = self.action(for: .camera, title: "Take photo".localized()) {
             alertController.addAction(action)
         }
-        if let action = self.action(for: .photoLibrary, title: "Photo library") {
+        if let action = self.action(for: .photoLibrary, title: "Photo library".localized()) {
             alertController.addAction(action)
         }
         
@@ -67,7 +67,6 @@ open class ImagePicker: NSObject {
     private func pickerController(_ controller: UIImagePickerController, didSelect image: UIImage?) {
         controller.dismiss(animated: true) {
             self.delegate?.didSelect(image: image)
-            
         }
     }
 }

@@ -13,7 +13,7 @@ var businessDataUpdate: (()->())?
 var professionalDataUpdate: (()->())?
 var customerDataUpdate: (()->())?
 
-class EmailOtpVC: UIViewController,UITextFieldDelegate {
+class EmailOtpVC: UIViewController,UITextFieldDelegate, UITextPasteDelegate {
 
 //    MARK: OUTLETS
     @IBOutlet weak var backBtn: UIButton!
@@ -45,16 +45,40 @@ class EmailOtpVC: UIViewController,UITextFieldDelegate {
     
     
     func updateUI(){
-        firstTF.delegate = self
-        secondTF.delegate = self
-        thirdTF.delegate = self
-        fourthTF.delegate = self
-        fifthTF.delegate = self
-        sixthTF.delegate = self
+        self.firstTF.delegate = self
+        self.secondTF.delegate = self
+        self.thirdTF.delegate = self
+        self.fourthTF.delegate = self
+        self.fifthTF.delegate = self
+        self.sixthTF.delegate = self
+        self.firstTF.textContentType = .oneTimeCode
+        self.secondTF.textContentType = .oneTimeCode
+        self.thirdTF.textContentType = .oneTimeCode
+        self.fourthTF.textContentType = .oneTimeCode
+        self.fifthTF.textContentType = .oneTimeCode
+        self.sixthTF.textContentType = .oneTimeCode
+        self.firstTF.pasteDelegate = self
+        self.secondTF.pasteDelegate = self
+        self.thirdTF.pasteDelegate = self
+        self.fourthTF.pasteDelegate = self
+        self.fifthTF.pasteDelegate = self
+        self.sixthTF.pasteDelegate = self
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if string.count > 0 {
+        let chracters = string.map({ String($0)})
+        self.verifyOTP = string
+        if chracters.count == 6{
+            textField.text = (string as NSString).substring(to: 1)
+            self.firstTF.text = chracters[0]
+            self.secondTF.text = chracters[1]
+            self.thirdTF.text = chracters[2]
+            self.fourthTF.text = chracters[3]
+            self.fifthTF.text = chracters[4]
+            self.sixthTF.text = chracters[5]
+            return false
+        }
+        else if string.count > 0 {
             textField.text = (string as NSString).substring(to: 1)
             if textField == firstTF {
                 secondTF.becomeFirstResponder()
@@ -69,8 +93,14 @@ class EmailOtpVC: UIViewController,UITextFieldDelegate {
             }else if textField == sixthTF {
                 dismisKeyboard()
             }
+            return true
         }
-        return true
+        else if string == ""{
+            return true
+        }
+        else{
+            return false
+        }
     }
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if textField.text == ""{

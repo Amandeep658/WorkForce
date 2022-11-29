@@ -15,7 +15,6 @@ class NotificationViewController: UIViewController {
     @IBOutlet weak var bachBtn: UIButton!
     @IBOutlet weak var notificationTableView: UITableView!
     
-    
     var notificationListData = [ProfessionalNotificationData]()
     var pageCount = Int()
     var page = 1

@@ -12,6 +12,8 @@ import IQKeyboardManagerSwift
 import GoogleMaps
 import GooglePlaces
 
+var professionDataUpdate: (()->())?
+
 class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate,UIPickerViewDelegate, UIPickerViewDataSource,CLLocationManagerDelegate  {
     
     func didSelect(image: UIImage?) {
@@ -30,12 +32,12 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
     var isRateType = "Per Hour"
     var yearListArr = UIPickerView()
     var doneTool = UIToolbar()
-    let yearArr = ["0 Year","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years","4.5 Years","5 Years","5.5 Years","6 Years","6.5 Years","7 Years","7.5 Years","8 Years","8.5 Years","9 Years","1.5 Years","10 Years","10.5 Years","11 Years","11.5 Years","12 Years","12.5 Years","13 Years","13.5 Years","14 Years","14.5 Years","15 Years","15.5 Years","16 Years","16.5 Years","17 Years","17.5 Years","18 Years","18.5 Years","19 Years","19.5 Years","20 Years"]
+    let yearArr = ["0 Year".localized(),"1 \("Year".localized())","1.5 \("Years".localized())","2 \("Years".localized())","2.5 \("Years".localized())","3 \("Years".localized())","3.5 \("Years".localized())","4 \("Years".localized())","4.5 \("Years".localized())","5 \("Years".localized())","5.5 \("Years".localized())","6 \("Years".localized())","6.5 \("Years".localized())","7 \("Years".localized())","7.5 \("Years".localized())","8 \("Years".localized())","8.5 \("Years".localized())","9 \("Years".localized())","1.5 \("Years".localized())","10 \("Years".localized())","10.5 \("Years".localized())","11 \("Years".localized())","11.5 \("Years".localized())","12 \("Years".localized())","12.5 \("Years".localized())","13 \("Years".localized())","13.5 \("Years".localized())","14 \("Years".localized())","14.5 \("Years".localized())","15 \("Years".localized())","15.5 \("Years".localized())","16 \("Years".localized())","16.5 \("Years".localized())","17 \("Years".localized())","17.5 \("Years".localized())","18 \("Years".localized())","18.5 \("Years".localized())","19 \("Years".localized())","19.5 \("Years".localized())","20 \("Years".localized())"]
     let onlyYearValues = ["0","1","1.5","2","2.5","3","3.5","4","4.5","5","5.5","6","6.5","7","7.5","8","8.5","9","9.5","10","10.5","11","11.5","12","12.5","13","13.5","14","14.5","15","15.5","16","16.5","17","17.5","18","18.5","19","19.5","20"]
     var imgArray = [Data]()
     var imageData = Data()
     let datePicker = UIDatePicker()
-    var jobType = ["Full Time", "Part Time", "Contract", "Freelance","Remote"]
+    var jobType = ["Full Time".localized(), "Part Time".localized(), "Contract".localized(), "Freelance".localized(),"Remote".localized()]
     var jobTypePicker = UIPickerView()
     var jobDone = UIToolbar()
     var selectData : [CategoryData] = []
@@ -214,7 +216,11 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
         self.firstNameTF.text = professionalUserDate?.first_name ?? ""
         self.lastNameTF.text = professionalUserDate?.last_name ?? ""
         self.dobTF.text = professionalUserDate?.date_of_birth ?? ""
-        self.JobTF.text = professionalUserDate?.job_type ?? ""
+        if self.JobTF.text == ""{
+            self.JobTF.text = jobType.first ?? ""
+        }else{
+            self.JobTF.text = professionalUserDate?.job_type ?? ""
+        }
         self.rateTF.text = professionalUserDate?.rate_to ?? ""
         self.category1.text =  professionalUserDate?.catagory_details?.first?.category_name ?? ""
         if professionalUserDate?.catagory_details?.count ?? 0 > 1 {
@@ -424,11 +430,11 @@ class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, 
                 print(status)
                 if status == 1{
                     showAlertMessage(title: AppAlertTitle.appName.rawValue, message:"Profile update successfully.".localized(), okButton: "OK", controller: self) {
+                        professionDataUpdate?()
                         if let tabBar = self.tabBarController as? TabBarVC {
                             print("tab bar is \(tabBar)")
                             tabBar.updateProfileImage()
                         }
-                        
                         self.navigationController?.popViewController(animated: true)
                     }
                 }else{

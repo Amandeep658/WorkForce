@@ -7,8 +7,17 @@
 
 "ENTER_PHONE_NUMBER" = "Please enter phone number";
 "LOADING" = "Loading..";
-"AUTH_TEXT" = "An authentication code has been sent to ";
+"$50.00/Six Month" = "$50.00/Six Month";
+"$20.00/Six Month" = "$20.00/Six Month";
+
+"Cancel anytime" = "Cancel anytime, after six months";
+"per month" = "per month";
+
+"Upload 1 photo" = "Upload 1 photo";
+"AUTH_TEXT" = "An authentication code has been sent to";
 "INVALID_OTP_PLEASE_ENTER" = "Invalid OTP please enter again.";
+"CANCEl_SIX_20$_MONTH_SUBSCRIPTION" = "Cancel anytime, after six month $20.00 per month.";
+"CANCEl_SIX_50$_MONTH_SUBSCRIPTION" = "Cancel anytime, after six month $50.00 per month.";
 "ENTER_FIRST_NAME" = "Please enter firstname.";
 "ENTER_LAST_NAME" = "Please enter lastname.";
 "Companies Opportunity" = "Companies Opportunity";
@@ -83,6 +92,7 @@
 "No Job found." = "No Job found.";
 "Please enter job type." = "Please enter job type.";
 "Please enter city." = "Please enter city.";
+"Customers Opportunity" = "Customers Opportunity";
 
 //TabBar
 "Home" = "Home";
@@ -97,4 +107,7 @@
 "Contract" = "Contract";
 "Freelance" = "Freelance";
 "Remote" = "Remote";
+
+"Take photo" = "Take photo";
+"Photo library" = "Photo library";
 

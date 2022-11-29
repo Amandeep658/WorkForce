@@ -90,7 +90,7 @@ class GetImageFromPicker: NSObject {
     }
 
     enum PickerResult {
-        case success(PickerData?)
+        case success(PickData?)
         case error(String)
     }
     
@@ -339,7 +339,7 @@ extension GetImageFromPicker : UIImagePickerControllerDelegate, UINavigationCont
         picker.dismiss(animated: false) {
             DispatchQueue.main.async {
                 if self.imageCallBack != nil {
-                    let data = PickerData(fileName, imageUrl, image, self.index)
+                    let data = PickData(fileName: fileName, imageUrl: imageUrl, image: image, index: self.index)
                     data.data = image.jpegData(compressionQuality: 1.0)
                     data.fileSize = data.data?.count
                     self.imageCallBack!(.success(data))

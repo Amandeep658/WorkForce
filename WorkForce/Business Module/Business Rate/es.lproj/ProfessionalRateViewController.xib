@@ -267,7 +267,7 @@
                                 <constraint firstAttribute="height" constant="45" id="rbu-nl-bJ0"/>
                             </constraints>
                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="19"/>
-                            <state key="normal" title="CONTINUE">
+                            <state key="normal" title="continúa">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -333,7 +333,7 @@
     </objects>
     <designables>
         <designable name="htr-aK-R71">
-            <size key="intrinsicContentSize" width="96" height="39"/>
+            <size key="intrinsicContentSize" width="86" height="39"/>
         </designable>
     </designables>
     <resources>

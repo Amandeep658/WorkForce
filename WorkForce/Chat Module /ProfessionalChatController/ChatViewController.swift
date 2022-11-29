@@ -16,6 +16,8 @@ class ChatViewController: UIViewController {
     var getChatListData:UserChatListModel?
     var getMessagesListArr: UserChatList_data?
     var getUserListAllUser = [ChatUSerListAll_users]()
+    var selectedIndex = Int()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()

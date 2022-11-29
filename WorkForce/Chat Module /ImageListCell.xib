@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="206" id="KGk-i7-Jjw" customClass="ImageListCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="478" height="206"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="478" height="206"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKp-kr-ozl">
+                        <rect key="frame" x="282" y="16" width="180" height="174"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jobSeekerPlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="Imk-3k-1Ii">
+                                <rect key="frame" x="4" y="4" width="172" height="150"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00 AM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xIs-fc-sJx">
+                                <rect key="frame" x="129" y="157" width="47" height="14"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.22745098039215686" green="0.58431372549019611" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Imk-3k-1Ii" secondAttribute="bottom" constant="20" id="8Ff-X9-uWS"/>
+                            <constraint firstItem="Imk-3k-1Ii" firstAttribute="top" secondItem="KKp-kr-ozl" secondAttribute="top" constant="4" id="aHo-97-GNH"/>
+                            <constraint firstAttribute="trailing" secondItem="Imk-3k-1Ii" secondAttribute="trailing" constant="4" id="fvy-nX-u5S"/>
+                            <constraint firstAttribute="width" constant="180" id="mPc-8O-Axk"/>
+                            <constraint firstItem="Imk-3k-1Ii" firstAttribute="leading" secondItem="KKp-kr-ozl" secondAttribute="leading" constant="4" id="sd7-c0-1OZ"/>
+                            <constraint firstItem="xIs-fc-sJx" firstAttribute="trailing" secondItem="Imk-3k-1Ii" secondAttribute="trailing" id="t6S-UF-6Er"/>
+                            <constraint firstItem="xIs-fc-sJx" firstAttribute="top" secondItem="Imk-3k-1Ii" secondAttribute="bottom" constant="3" id="wZc-AF-MxS"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="KKp-kr-ozl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="16" id="EUn-KJ-43W"/>
+                    <constraint firstAttribute="trailing" secondItem="KKp-kr-ozl" secondAttribute="trailing" constant="16" id="Yuj-y7-Eeq"/>
+                    <constraint firstAttribute="bottom" secondItem="KKp-kr-ozl" secondAttribute="bottom" constant="16" id="msJ-CQ-Kie"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgCell" destination="Imk-3k-1Ii" id="mIs-hc-bEk"/>
+                <outlet property="timeLbl" destination="xIs-fc-sJx" id="XmS-UQ-7fn"/>
+            </connections>
+            <point key="canvasLocation" x="253.62318840579712" y="149.33035714285714"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="jobSeekerPlaceholder" width="1024" height="1024"/>
+    </resources>
+</document>

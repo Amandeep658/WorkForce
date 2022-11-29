@@ -20,6 +20,7 @@ class SubscribePlanViewController: UIViewController{
     @IBOutlet weak var subscribeBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var termsAndCondition: UIButton!
+    @IBOutlet weak var amountTextLabel: UILabel!
     
     var navType = ""
     var jobLtData = [AddJobData]()
@@ -35,7 +36,6 @@ class SubscribePlanViewController: UIViewController{
     var fromEdit = false
     var isLogEnabled: Bool = true
     private var hasAddObserver = false
-    
     var planString = ""
     var fromSettings = false
     var expire_date = ""
@@ -45,18 +45,20 @@ class SubscribePlanViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Aa reha nav type ===>>>>",navType)
+        reteriveProductPlans()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = true
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            self.subscribeBtn.setTitle("$50.00/Six Month", for: .normal)
             validate(product: IAPProduct.FiftyDollarsixMonth.rawValue)
+//            self.amountTextLabel.text = "\("$50.00/Six Month".localized()),\("Cancel anytime, after six month".localized())"
+
         }
         else{
-            self.subscribeBtn.setTitle("$20.00/Six Month", for: .normal)
             validate(product: IAPProduct.TwentyDollarsixMonth.rawValue)
+//            self.amountTextLabel.text = "\("$20.00/Six Month".localized()),\("Cancel anytime, after six month".localized())"
         }
     }
     
@@ -162,6 +164,40 @@ class SubscribePlanViewController: UIViewController{
         }
     }
     
+//    MARK: RETERIVE PRODUCT PLANS
+    func reteriveProductPlans(){
+        if UserType.userTypeInstance.userLogin == .Bussiness{
+            SwiftyStoreKit.retrieveProductsInfo(["U2CONNECT_HANDLER"]) { result in
+                if let product = result.retrievedProducts.first {
+                    let priceString = product.localizedPrice!
+                    print("Product: \(product.localizedDescription), price: \(priceString)")
+                    self.amountTextLabel.text = "\("Cancel anytime".localized()), \("\(priceString) per month".localized())"
+                }
+                else if let invalidProductId = result.invalidProductIDs.first {
+                    print("Invalid product identifier: \(invalidProductId)")
+                }
+                else {
+                    print("Error: \(result.error)")
+                }
+            }
+        }else{
+            SwiftyStoreKit.retrieveProductsInfo(["U2CONNECTIOS_HANDLER"]) { result in
+                if let product = result.retrievedProducts.first {
+                    let priceString = product.localizedPrice!
+                    print("Product: \(product.localizedDescription), price: \(priceString)")
+                    self.amountTextLabel.text = "\("Cancel anytime".localized()),\("\(priceString) per month".localized()),"
+                }
+                else if let invalidProductId = result.invalidProductIDs.first {
+                    print("Invalid product identifier: \(invalidProductId)")
+                }
+                else {
+                    print("Error: \(result.error)")
+                }
+            }
+        }
+    
+        
+    }
     
     
     //    MARK: PURCHASE PRODUCT
@@ -223,7 +259,6 @@ class SubscribePlanViewController: UIViewController{
         let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: sharedSecret)
         SwiftyStoreKit.verifyReceipt(using: appleValidator) { [self] result in
             switch result {
-                
             case .success(let receipt):
                 let productId = product
                 print(result)
@@ -232,19 +267,15 @@ class SubscribePlanViewController: UIViewController{
                     productId: productId,
                     inReceipt: receipt)
                 switch purchaseResult {
-                    
                 case .purchased(let expiryDate, let items):
                     print("expiryDate====>>>",expiryDate)
                     self.expire_date = "\(expiryDate)"
                     print("\(productId) is valid until \(expiryDate)\n\(items)\n")
-                    
                 case .expired(let expiryDate, let items):
                     print("\(productId) is expired since \(expiryDate)\n\(items)\n")
-                    
                 case .notPurchased:
                     print("The user has never purchased \(productId)")
                 }
-                
             case .error(let error):
                 print("Receipt verification failed: \(error)")
             }

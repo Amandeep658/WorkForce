@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,6 +22,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscribePlanViewController" customModule="WorkForce" customModuleProvider="target">
             <connections>
+                <outlet property="amountTextLabel" destination="TlM-Hs-0xk" id="X4F-XS-Yl4"/>
                 <outlet property="backBtn" destination="G8T-d3-MFb" id="CYE-dK-YZq"/>
                 <outlet property="subscribeBtn" destination="COf-rM-crh" id="yKO-5b-Nzf"/>
                 <outlet property="termsAndCondition" destination="1kS-aF-W90" id="OC9-QD-x5G"/>
@@ -41,7 +42,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUu-To-qJ2">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8T-d3-MFb">
                             <rect key="frame" x="20" y="12" width="30" height="30"/>
@@ -65,10 +66,10 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TdK-Cz-iIq">
-                    <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a2h-Br-ErL">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="787"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="803.5"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="u2" translatesAutoresizingMaskIntoConstraints="NO" id="VYE-id-0Yk">
                                     <rect key="frame" x="142" y="21" width="130" height="100"/>
@@ -117,7 +118,7 @@
                                         <constraint firstAttribute="height" constant="44" id="Gke-DH-Tj1"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
-                                    <state key="normal" title="$20.00/seis meses">
+                                    <state key="normal" title="Prueba seis meses gratis">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <userDefinedRuntimeAttributes>
@@ -129,7 +130,7 @@
                                         <action selector="subcribeAction:" destination="-1" eventType="touchUpInside" id="aKu-4X-ziP"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Pruebe seis meses gratis, cancele en cualquier momento." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlM-Hs-0xk">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cancele en cualquier momento, después de seis meses $20.00 por mes." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TlM-Hs-0xk">
                                     <rect key="frame" x="20" y="412" width="374" height="39.5"/>
                                     <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="14"/>
                                     <nil key="textColor"/>
@@ -145,11 +146,16 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FhO-Ma-JMl">
-                                    <rect key="frame" x="41.5" y="501.5" width="331" height="168.5"/>
+                                    <rect key="frame" x="41.5" y="501.5" width="331" height="185"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k45-Mu-LJe">
-                                            <rect key="frame" x="0.0" y="0.0" width="331" height="168.5"/>
-                                            <string key="text">El pago se cargará a la cuenta de iTunes en confirmación de compra. La suscripción se renueva automáticamente a menos que La renovación se apaga al menos 24 horas antes de la plazo final. La cuenta cobrará renovación dentro de las 24 horas antes de la finalización del período actual, e identificar el costo de mismo. Las suscripciones pueden ser administrado por el usuario bot y auto-renovarse se puede desactivar accediendo a la cuenta de usuario Ajustes después de la compra.</string>
+                                            <rect key="frame" x="0.0" y="0.0" width="331" height="185"/>
+                                            <mutableString key="text">El pago se cargará a la cuenta de iTunes en
+confirmación de compra.
+La suscripción se renueva automáticamente a menos que la renovación automática se desactive al menos 24 horas antes del final del período actual. Se cobrará a la cuenta la renovación dentro de las 24 horas anteriores al final del período actual y se identificará el costo de la renovación. Las suscripciones pueden
+ser gestionado por el usuario y auto-renovación
+puede desactivarse yendo a la cuenta de los usuarios
+Ajustes después de la compra.</mutableString>
                                             <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -164,7 +170,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1kS-aF-W90">
-                                    <rect key="frame" x="41.5" y="698" width="151" height="29"/>
+                                    <rect key="frame" x="41.5" y="714.5" width="151" height="29"/>
                                     <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="12"/>
                                     <state key="normal" title="TÉRMINOS Y CONDICIONES">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -174,7 +180,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Cg-Hg-zvx">
-                                    <rect key="frame" x="230.5" y="698" width="142" height="29"/>
+                                    <rect key="frame" x="230.5" y="714.5" width="142" height="29"/>
                                     <fontDescription key="fontDescription" name="Poppins-Light" family="Poppins" pointSize="12"/>
                                     <state key="normal" title="POLÍTICA DE PRIVACIDAD">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

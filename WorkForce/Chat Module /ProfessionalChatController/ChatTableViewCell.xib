@@ -43,8 +43,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj1-VX-bxu">
-                                <rect key="frame" x="84" y="35" width="15" height="22.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Hi" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oj1-VX-bxu">
+                                <rect key="frame" x="84" y="35" width="202" height="22.5"/>
                                 <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="16"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -66,11 +66,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0vq-Pz-FTQ">
-                                <rect key="frame" x="290" y="37" width="18" height="14"/>
+                                <rect key="frame" x="290" y="37" width="18" height="18"/>
                                 <color key="backgroundColor" red="0.2274509804" green="0.58431372550000005" blue="0.72156862749999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="18" id="gqf-eH-0aQ"/>
-                                    <constraint firstAttribute="height" constant="14" id="ueU-FP-aMN"/>
+                                    <constraint firstAttribute="height" constant="18" id="ueU-FP-aMN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -98,6 +98,7 @@
                             <constraint firstItem="job-eX-m59" firstAttribute="centerY" secondItem="A1C-uh-cz8" secondAttribute="centerY" id="rVC-zV-U31"/>
                             <constraint firstItem="SIx-3S-4Fc" firstAttribute="centerY" secondItem="TvK-zU-ltc" secondAttribute="centerY" id="s1U-dC-pdF"/>
                             <constraint firstItem="Oj1-VX-bxu" firstAttribute="top" secondItem="TvK-zU-ltc" secondAttribute="bottom" constant="1" id="x8p-eV-V7Y"/>
+                            <constraint firstItem="0vq-Pz-FTQ" firstAttribute="leading" secondItem="Oj1-VX-bxu" secondAttribute="trailing" constant="4" id="y7W-pL-DUv"/>
                         </constraints>
                     </view>
                 </subviews>

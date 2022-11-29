@@ -141,6 +141,13 @@ class PhoneNumberVC: UIViewController,UITextFieldDelegate {
         var parameters : [String:AnyObject] = [:]
         parameters["email"] = emailUpdated as AnyObject
         parameters["code"] = OTPNumber as AnyObject
+        if Locale.current.languageCode == "es"{
+            parameters["is_language"] = "1"  as AnyObject
+        }else if Locale.current.languageCode == "pt"{
+            parameters["is_language"] = "2"  as AnyObject
+        }else if Locale.current.languageCode == "en"{
+            parameters["is_language"] = "0"  as AnyObject
+        }
         parameters["mobile_no"] = "\(postCodeLbl.text ?? "")\(mobileNumberTF.text ?? "")" as AnyObject
         if UserType.userTypeInstance.userLogin == .Bussiness{
             parameters["type"] = "1" as AnyObject

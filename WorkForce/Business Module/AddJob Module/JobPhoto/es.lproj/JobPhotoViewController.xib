@@ -132,7 +132,15 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xJo-d6-cea">
                                             <rect key="frame" x="10" y="44" width="354" height="96"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plcordr" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-xE-L57">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ud8-BK-GNc">
+                                                    <rect key="frame" x="134" y="52" width="86" height="14"/>
+                                                    <string key="text">Subir 1 foto
+</string>
+                                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="10"/>
+                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plcordrrrr" translatesAutoresizingMaskIntoConstraints="NO" id="wkc-xE-L57">
                                                     <rect key="frame" x="134" y="5" width="86" height="86"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="86" id="y1N-E9-220"/>
@@ -146,9 +154,13 @@
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="ud8-BK-GNc" secondAttribute="bottom" constant="30" id="18W-AB-b0p"/>
+                                                <constraint firstItem="ud8-BK-GNc" firstAttribute="leading" secondItem="wkc-xE-L57" secondAttribute="leading" id="BhH-kL-quC"/>
                                                 <constraint firstItem="wkc-xE-L57" firstAttribute="centerX" secondItem="xJo-d6-cea" secondAttribute="centerX" id="EIf-gb-hVr"/>
                                                 <constraint firstAttribute="bottom" secondItem="wkc-xE-L57" secondAttribute="bottom" constant="5" id="SoT-mg-1Hh"/>
+                                                <constraint firstItem="ud8-BK-GNc" firstAttribute="centerX" secondItem="wkc-xE-L57" secondAttribute="centerX" id="YoE-yb-fAx"/>
                                                 <constraint firstItem="wkc-xE-L57" firstAttribute="top" secondItem="xJo-d6-cea" secondAttribute="top" constant="5" id="dyX-gb-e9P"/>
+                                                <constraint firstItem="ud8-BK-GNc" firstAttribute="trailing" secondItem="wkc-xE-L57" secondAttribute="trailing" id="mS5-H3-lAz"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -250,7 +262,7 @@
     </designables>
     <resources>
         <image name="back" width="25" height="24"/>
-        <image name="plcordr" width="391" height="173"/>
+        <image name="plcordrrrr" width="391" height="173"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

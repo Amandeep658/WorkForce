@@ -12,16 +12,39 @@ import IQKeyboardManagerSwift
 import Alamofire
 import SDWebImage
 import SocketIO
+import Photos
+import Kingfisher
+
+enum sendMessageType {
+    case chat, picture, clips, doc
+}
 
 let SCREEN_SIZE = UIScreen.main.bounds
-class SingleChatController: UIViewController{
+
+class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePickerDelegate{
     
+    func didSelect(image: UIImage?) {
+        if image == nil{
+            self.selectedImage = UIImage(named: "placeholder")
+        }else{
+            self.selectedImage = image
+            imgArray.append((image?.pngData())!)
+            let textView = messageTextView.text.trimWhiteSpace
+            let url = kBASEURL + WSMethods.sendMessagev2
+            var params = [String:Any]()
+            params = ["message":textView,"room_id": chatRoomId,"message_type" : "image"]
+            print(params)
+            self.requestWith(endUrl: url , parameters: params)
+            imgss.append(image ?? UIImage())
+        }
+    }
     
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var messageTextView: GrowingTextView!
     @IBOutlet weak var sendButton: LoadingButton!
     @IBOutlet weak var chatTable: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var attachBtn: UIButton!
     
     var firstTimeLoadCell: Bool = true
     var isAllReadMessage:Bool = false
@@ -43,11 +66,31 @@ class SingleChatController: UIViewController{
     var companyname = ""
     var page_size: Int = 50
     var page_no: Int = 0
+    var isNavFromCustomer = ""
+    var imagePicker = UIImagePickerController()
+    var imgArray = [Data]()
+    var imgss = [UIImage]()
+    var imgPicker : ImagePicker?
+    var messageType: sendMessageType?
+    
+    var selectedImage: UIImage? {
+        didSet {
+            let tableView = UITableView()
+            if tableView == chatTable{
+                
+            }
+           
+        }
+    }
+
+
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setSocket()
         self.setGrowingTextView()
+        self.imgPicker = ImagePicker(presentationController: self, delegate: self)
     }
     
     
@@ -85,7 +128,54 @@ class SingleChatController: UIViewController{
             self.popVC()
         }
     }
+    
+    @IBAction func attachBtn(_ sender: UIButton) {
+        let alert = UIAlertController(title: AppAlertTitle.appName.rawValue, message: "Please Select an Option", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Gallery", style: .default , handler:{ (UIAlertAction)in
+//            let vc = UIImagePickerController()
+//            vc.sourceType = .camera
+//            vc.allowsEditing = true
+//            vc.delegate = self
+//            self.present(vc, animated: true)
+            self.imgPicker?.present(from: sender)
+        }))
+        
+//        alert.addAction(UIAlertAction(title: "Images", style: .default , handler:{ [self] (UIAlertAction)in
+//            let controller = GalleryVC()
+//            controller.delegate = self
+//            controller.pickerType = .image
+//            controller.maxSelection = 1
+//            controller.modalPresentationStyle = .fullScreen
+//            self.navigationController?.present(controller, animated: true, completion: nil)
+//
+//        }))
+        
+//        alert.addAction(UIAlertAction(title: "Video", style: .default , handler:{ (UIAlertAction)in
+//            print("User click Edit button")
+//            let controller = GalleryVC()
+//            controller.delegate = self
+//            controller.pickerType = .video
+//            controller.maxSelection = 1
+//            controller.modalPresentationStyle = .fullScreen
+//            self.navigationController?.present(controller, animated: true, completion: nil)
+//        }))
 
+        alert.addAction(UIAlertAction(title: "Document", style: .destructive , handler:{ (UIAlertAction)in
+            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "com.apple.iwork.pages.pages", "public.data"], in: .import)
+            documentPicker.delegate = self
+            self.present(documentPicker, animated: true, completion: nil)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
+            print("User click Dismiss button")
+        }))
+
+        self.present(alert, animated: true, completion: {
+            print("completion block")
+        })
+
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         IQKeyboardManager.shared.enable = true
@@ -153,16 +243,24 @@ class SingleChatController: UIViewController{
         self.chatTable.showsVerticalScrollIndicator = false
         self.chatTable.register(UINib(nibName: "LeftTableViewCell", bundle: nil), forCellReuseIdentifier: "LeftTableViewCell")
         self.chatTable.register(UINib(nibName: "RightTableViewCell", bundle: nil), forCellReuseIdentifier: "RightTableViewCell")
+        self.chatTable.register(UINib(nibName: "MediaListCell", bundle: nibBundle), forCellReuseIdentifier: "MediaListCell")
+        self.chatTable.register(UINib(nibName: "ImageListCell", bundle: nibBundle), forCellReuseIdentifier: "ImageListCell")
+        self.chatTable.register(UINib(nibName: "leftImageListCell", bundle: nibBundle), forCellReuseIdentifier: "leftImageListCell")
+        
     }
     
     func setControllerData() {
         if UserType.userTypeInstance.userLogin == .Bussiness{
             self.pushNav = true
-            print("push nav =====>>>>>>",pushNav)
             self.nameLabel.text = userName
+            if isNavFromCustomer == "CustomerJobList"{
+                self.nameLabel.text = userName
+            }
         }else if UserType.userTypeInstance.userLogin == .Professional{
             self.nameLabel.text = companyname
         }else if UserType.userTypeInstance.userLogin == .Coustomer{
+            self.nameLabel.text = userName
+        }else{
             self.nameLabel.text = userName
         }
         print("push navnavv =====>>>>>>",pushNav)
@@ -376,7 +474,59 @@ extension SingleChatController: GrowingTextViewDelegate {
     }
     
     
+//    MARK: UIIMAGE SEND IN CHAT
+    func requestWith(endUrl: String, parameters: [AnyHashable : Any]){
+        let url = endUrl /* your API url */
+        let AToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token": AToken]
+        print(headers)
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
+        }
+        AF.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as! String)
+            }
+            for i in 0..<self.imgArray.count{
+                let imageData1 = self.imgArray[i]
+                debugPrint("mime type is\(imageData1.mimeType)")
+                let ranStr = String(7)
+                if imageData1.mimeType == "application/pdf" ||
+                    imageData1.mimeType == "application/vnd" ||
+                    imageData1.mimeType == "text/plain"{
+                    multipartFormData.append(imageData1, withName: "chat_images[\(i + 1)]" , fileName: ranStr + String(i + 1) + ".pdf", mimeType: imageData1.mimeType)
+                }else{
+                    multipartFormData.append(imageData1, withName: "chat_images[]" , fileName: ranStr + String(i + 1) + ".jpg", mimeType: imageData1.mimeType)
+                }
+            }
+        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers, interceptor: nil, fileManager: .default)
+        
+        .uploadProgress(closure: { (progress) in
+            print("Upload Progress: \(progress.fractionCompleted)")
+            
+        })
+        .responseJSON { [self] (response) in
+            DispatchQueue.main.async {
+                AFWrapperClass.svprogressHudDismiss(view: self)
+            }
+            print("Image succesfully uploaded\(response)")
+            let respDict =  response.value as? [String : AnyObject] ?? [:]
+            if respDict.count != 0{
+                let status = respDict["status"] as? Int ?? 0
+                let data = respDict["data"] as? [String:Any] ?? [:]
+                print(status)
+                if status == 1{
+                    self.setSocket()
+                    self.sendNewMessage(data: data as NSDictionary)
+                    print("checkData of message",data)
+                }else{
+                    self.sendNewMessage(data: data as NSDictionary)
+                }
+            }
+        }
+    }
 }
+
 extension UITableView {
     
     func indexPathExists(indexPath:IndexPath) -> Bool {
@@ -390,9 +540,7 @@ extension UITableView {
     }
     
     func tableViewScrollToBottom(animated: Bool) {
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(100)) {
-            
             let numberOfSections = self.numberOfSections
             let numberOfRows = self.numberOfRows(inSection: numberOfSections-1)
             if numberOfRows > 0 {
@@ -411,13 +559,25 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatModel = chatHistory[indexPath.row]
         if chatModel.user_id ?? "" == companyProfileDataArr?.data?.user_id ?? "" {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as! RightTableViewCell
-            cell.setMessageData(chatModel)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "LeftTableViewCell", for: indexPath) as! LeftTableViewCell
-            cell.setMessageData(chatModel)
-            return cell
+            if chatModel.message_type == "chat" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as! RightTableViewCell
+                cell.setMessageData(chatModel)
+                return cell
+            } else {
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "ImageListCell", for: indexPath) as! ImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }
+        }else {
+            if chatModel.message_type == "chat" {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "LeftTableViewCell", for: indexPath) as! LeftTableViewCell
+                cell.setMessageData(chatModel)
+                return cell
+            } else {
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "leftImageListCell", for: indexPath) as! leftImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }
         }
     }
     
@@ -441,7 +601,23 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let chatModel = chatHistory[indexPath.row]
+        if chatModel.message_type != "chat" {
+            return 200
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        let chatModel = chatHistory[indexPath.row]
+        if chatModel.message_type != "chat" {
+            return 200
+        } else {
+            return UITableView.automaticDimension
+        }
+    }
 }
 
 extension SingleChatController {
@@ -495,11 +671,11 @@ extension SingleChatController {
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        let url = kBASEURL + WSMethods.sendMessage
+        let url = kBASEURL + WSMethods.sendMessagev2
         var params = [String:Any]()
-        params = ["message":textCount,"room_id": chatRoomId]
+        params = ["message":textCount,"room_id": chatRoomId,"message_type" : "chat"]
         print(params)
-        AFWrapperClass.requestPOSTURL(url, params: params, headers: headers, success: { [self](dict) in
+        AFWrapperClass.requestPostWithMultiFormData(url, params: params, headers: headers, success: { [self](dict) in
             let result = dict as AnyObject
             print("addMessage=======>>>>>",result)
             let msg = result["message"] as? String ?? ""
@@ -510,10 +686,10 @@ extension SingleChatController {
                 self.chatTable.beginUpdates()
                 self.chatTable.endUpdates()
 //                self.chatTable.reloadData()
-                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-                    self.scrollToBottom()
-                    self.messageTextView.becomeFirstResponder()
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+//                    self.scrollToBottom()
+//                    self.messageTextView.becomeFirstResponder()
+//                }
                 SocketManger.shared.socket.emit("newMessage", chatRoomId, data)
                 
             }
@@ -549,3 +725,36 @@ extension UINavigationController {
     }
 }
 
+extension SingleChatController: UIDocumentPickerDelegate{
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
+        
+        let cico = url as URL
+//        self.docattactLbl.text = url.lastPathComponent
+        print(cico.description)
+        print(url)
+        print(url.lastPathComponent)
+        print(url.pathExtension)
+        if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+            print()
+            //This gives you the URL of the path
+        }
+        
+    }
+}
+
+extension UIImage {
+    func setCacheAt(url: String) {
+        KingfisherManager.shared.cache.store(self, forKey: url)
+    }
+}
+
+
+
+
+//        if (chatModel.chat_image!= nil){
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaListCell", for: indexPath) as? MediaListCell else{return UITableViewCell()}
+//            cell.timeLabel.text =  chatModel.created?.convertTimeStampToStringDate(format: "hh:mm a")
+//            cell.setData(media: [""], role: "", previousDate: "", timeStamp: chatModel.created)
+//            return cell
+
+//        }else{

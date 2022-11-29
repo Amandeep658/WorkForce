@@ -7,7 +7,81 @@
 //
 
 import UIKit
+import Kingfisher
 
+public enum ImageViewerTheme {
+    case light
+    case dark
+    case blur
+    
+    var color: UIColor {
+        switch self {
+        case .light:
+            return .white
+        case .dark:
+            return .black
+        case .blur:
+            return .clear // UIColor.black.withAlphaComponent(0.8)
+        }
+    }
+    
+    var tintColor: UIColor {
+        switch self {
+        case .light:
+            return .black
+        case .dark:
+            return .white
+        case .blur:
+            return .clear //UIColor.black.withAlphaComponent(0.8)
+        }
+    }
+    
+    var closeButtonForgourndColor: UIColor {
+        switch self {
+        case .light:
+            return .black
+        case .dark:
+            return .white
+        case .blur:
+            return .white //UIColor.black.withAlphaComponent(0.8)
+        }
+    }
+}
+
+public enum ImageItem {
+    case image(UIImage?)
+    case url(URL, placeholder: UIImage?)
+}
+
+public enum ImageViewerOption {
+    case theme(ImageViewerTheme)
+    case closeIcon(UIImage)
+    case rightNavItemTitle(String, onTap: ((Int) -> Void)?)
+    case rightNavItemIcon(UIImage, onTap: ((Int) -> Void)?)
+}
+
+public protocol ImageDataSource: class {
+    func numberOfImages() -> Int
+    func imageItem(at index:Int) -> ImageItem
+}
+
+
+class SimpleImageDatasource: ImageDataSource {
+    
+    private(set) var imageItems:[ImageItem]
+    
+    init(imageItems: [ImageItem]) {
+        self.imageItems = imageItems
+    }
+    
+    func numberOfImages() -> Int {
+        return imageItems.count
+    }
+    
+    func imageItem(at index: Int) -> ImageItem {
+        return imageItems[index]
+    }
+}
 
 extension UIImage {
     var renderTemplateMode: UIImage {
@@ -33,7 +107,6 @@ extension UIImage {
          context.drawPath(using: CGPathDrawingMode.fill)
          let coloredImage = UIGraphicsGetImageFromCurrentImageContext()
          UIGraphicsEndImageContext()
-
          return coloredImage!
     }
     
@@ -79,7 +152,37 @@ extension UIImageView {
             self.image = image
         }
     }
+    public func setupImageViewer(urls: [URL], initialIndex:Int = 0, options:[ImageViewerOption] = [], placeholder: UIImage? = nil, from:UIViewController? = nil) {
+        let datasource = SimpleImageDatasource(
+            imageItems: urls.compactMap {
+                ImageItem.url($0, placeholder: placeholder)
+        })
+//        setup(datasource: datasource, initialIndex: initialIndex, options: options, from: from)
+    }
+}
+extension UIImageView {
     
-    
+    public func setImageView(urls urlStrings: [String], placeholder image: UIImage? = nil, item: Int = 0, controller: UIViewController? = nil) {
+        print("urls count is *******  \(urlStrings)")
+        guard urlStrings.filter({$0.count > 0}).count > 0 else { return }
+        
+        let urls = urlStrings.map { str -> URL in
+            let val = str.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            return URL(string: val)!
+        }
+        guard urls.count > 0 else { return }
+        let types: [ImageViewerOption] = [.theme(.blur)]
+        self.setupImageViewer(urls: urls, initialIndex: item, options: types, from: controller)
+        
+        //        let url = URL(string: urlStrings[item].addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!)
+        //        if isSkeleton {
+        //            self.image = UIImage.gifImageWithName(name: "skeleton-loading")
+        //        } else {
+        //            self.setProgressView()
+        //        }
+        
+//        self.setImage(image: urlStrings.first, placeholder: image)
+        self.setImage(image: urlStrings[item], placeholder: image)
+    }
     
 }

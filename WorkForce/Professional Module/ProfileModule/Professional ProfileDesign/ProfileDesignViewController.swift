@@ -39,18 +39,18 @@ class ProfileDesignViewController: UIViewController {
         self.professionalTitleView.text = professionalUserDate?.username ?? ""
         if professionalUserDate?.rate_type == "Per Day"{
             if professionalUserDate?.rate_to == ""{
-                self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
+                self.btnAmount.setTitle("No rate selected.".localized(), for: .normal)
             }else{
                 self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/d", for: .normal)
             }
         }else if professionalUserDate?.rate_type == "Per Hour"{
             if professionalUserDate?.rate_to == ""{
-                self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
+                self.btnAmount.setTitle("No rate selected.".localized(), for: .normal)
             }else{
                 self.btnAmount.setTitle("$\(professionalUserDate?.rate_to ?? "")/h", for: .normal)
             }
         }else{
-            self.btnAmount.setTitle("Nor rate selected.".localized(), for: .normal)
+            self.btnAmount.setTitle("No rate selected.".localized(), for: .normal)
         }
         if professionalUserDate?.catagory_details?.count ?? 0 > 1{
             self.jobTypeTF.text = "\(professionalUserDate?.catagory_details?.first?.category_name ?? "") , \(professionalUserDate?.catagory_details?.last?.category_name ?? "") "
@@ -78,7 +78,7 @@ class ProfileDesignViewController: UIViewController {
         if let date = dateFormatter.date(from: professionalUserDate?.date_of_birth ?? "") {
             let age = Calendar.current.dateComponents([.year], from: date, to: Date()).year!
             print(age)
-            self.AgeLbl.text =  "\(Int(age)) Years".localized()
+            self.AgeLbl.text =  "\(Int(age)) \("Years".localized())"
         }
         var sPhotoStr = professionalUserDate?.photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

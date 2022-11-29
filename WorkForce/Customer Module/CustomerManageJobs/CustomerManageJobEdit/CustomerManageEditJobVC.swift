@@ -46,7 +46,7 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     var isselect:Bool = Bool()
     var jobTypePicker = UIPickerView()
     var jobDone = UIToolbar()
-    var jobType = ["Full Time", "Part Time", "Contract", "Freelance","Remote"]
+    var jobType = ["Full Time".localized(), "Part Time".localized(), "Contract".localized(), "Freelance".localized(),"Remote".localized()]
     let yearArr = ["0 Year","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years"]
     let onlyYearValues = ["0","1","1.5","2","2.5","3","3.5"]
     var currentIndex = Int()
@@ -62,13 +62,11 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
         }
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateEditManageUI()
         self.uiUpdate()
-
-    }
+  }
 
     @IBAction func backBtn(_ sender: UIButton) {
         self.popVC()
