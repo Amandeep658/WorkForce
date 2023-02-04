@@ -37,6 +37,7 @@ class RecoverVerifyScreenVC: UIViewController,UITextFieldDelegate, UITextPasteDe
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         uiConfigure()
         print("its my otp")
     }

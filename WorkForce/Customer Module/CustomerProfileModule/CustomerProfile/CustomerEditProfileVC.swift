@@ -13,8 +13,11 @@ import GooglePlaces
 
 var customDataUpdate: (()->())?
 class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDelegate,CLLocationManagerDelegate {
+    func videoSelect(thumbnail: UIImage?, videoData: Data?) {
+        
+    }
     
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage?,videoData: Data?) {
         if image == nil{
             self.selectedImage = UIImage(named: "placeholder")
         }else{

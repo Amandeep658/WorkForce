@@ -23,7 +23,15 @@ class leftImageListCell: UITableViewCell {
     }
     
     func setMessageData(_ data: ChatAllMessages?) {
-        self.leftImgCell.sd_setImage(with: URL(string: data?.chat_image ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
+        if data!.chat_image!.contains(".jpg"){
+            self.leftImgCell.sd_setImage(with: URL(string: data?.chat_image ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
+        }else if data!.chat_image!.contains(".png") {
+            self.leftImgCell.sd_setImage(with: URL(string: data?.chat_image ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
+        }else if data!.chat_video!.contains(".mp4"){
+            self.leftImgCell.sd_setImage(with: URL(string: data?.chat_image ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
+        }else{
+            self.leftImgCell.image = UIImage(named: "ic_ph_document")
+        }
         self.leftUserimgCell.sd_setImage(with: URL(string: data?.photo ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
         self.timeLbl.text =  data?.created
         self.leftUserimgCell.layer.cornerRadius = leftUserimgCell.frame.height/2

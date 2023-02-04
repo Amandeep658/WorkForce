@@ -14,7 +14,11 @@ import GooglePlaces
 import GoogleMaps
 
 class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate,UIPickerViewDelegate, UIPickerViewDataSource {
-    func didSelect(image: UIImage?) {
+    func videoSelect(thumbnail: UIImage?,videoData: Data?) {
+        
+    }
+    
+    func didSelect(image: UIImage?,videoData: Data?) {
         self.selectedImage = image
     }
 

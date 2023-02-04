@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -39,12 +39,33 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T22-Hv-F96">
+                                <rect key="frame" x="0.0" y="0.0" width="180" height="174"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playBtn" translatesAutoresizingMaskIntoConstraints="NO" id="O6q-3p-jYm">
+                                        <rect key="frame" x="60" y="57" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="3In-HJ-Vz2"/>
+                                            <constraint firstAttribute="height" constant="60" id="qp1-nl-CK6"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.33976614238410596" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="O6q-3p-jYm" firstAttribute="centerY" secondItem="T22-Hv-F96" secondAttribute="centerY" id="2oN-Cn-fCk"/>
+                                    <constraint firstItem="O6q-3p-jYm" firstAttribute="centerX" secondItem="T22-Hv-F96" secondAttribute="centerX" id="TMW-Nw-xEx"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.22745098039215686" green="0.58431372549019611" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="Imk-3k-1Ii" secondAttribute="bottom" constant="20" id="8Ff-X9-uWS"/>
+                            <constraint firstItem="T22-Hv-F96" firstAttribute="height" secondItem="KKp-kr-ozl" secondAttribute="height" id="EiL-Fs-JQ3"/>
+                            <constraint firstItem="T22-Hv-F96" firstAttribute="centerX" secondItem="KKp-kr-ozl" secondAttribute="centerX" id="LYZ-nW-Eu9"/>
+                            <constraint firstItem="T22-Hv-F96" firstAttribute="centerY" secondItem="KKp-kr-ozl" secondAttribute="centerY" id="PeX-Ty-pn0"/>
                             <constraint firstItem="Imk-3k-1Ii" firstAttribute="top" secondItem="KKp-kr-ozl" secondAttribute="top" constant="4" id="aHo-97-GNH"/>
                             <constraint firstAttribute="trailing" secondItem="Imk-3k-1Ii" secondAttribute="trailing" constant="4" id="fvy-nX-u5S"/>
+                            <constraint firstItem="T22-Hv-F96" firstAttribute="width" secondItem="KKp-kr-ozl" secondAttribute="width" id="j4H-eh-o6b"/>
                             <constraint firstAttribute="width" constant="180" id="mPc-8O-Axk"/>
                             <constraint firstItem="Imk-3k-1Ii" firstAttribute="leading" secondItem="KKp-kr-ozl" secondAttribute="leading" constant="4" id="sd7-c0-1OZ"/>
                             <constraint firstItem="xIs-fc-sJx" firstAttribute="trailing" secondItem="Imk-3k-1Ii" secondAttribute="trailing" id="t6S-UF-6Er"/>
@@ -68,6 +89,8 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="imgCell" destination="Imk-3k-1Ii" id="mIs-hc-bEk"/>
+                <outlet property="playImgView" destination="O6q-3p-jYm" id="0yi-9Q-no0"/>
+                <outlet property="playView" destination="T22-Hv-F96" id="QEg-iD-262"/>
                 <outlet property="timeLbl" destination="xIs-fc-sJx" id="XmS-UQ-7fn"/>
             </connections>
             <point key="canvasLocation" x="253.62318840579712" y="149.33035714285714"/>
@@ -75,5 +98,6 @@
     </objects>
     <resources>
         <image name="jobSeekerPlaceholder" width="1024" height="1024"/>
+        <image name="playBtn" width="1024" height="1024"/>
     </resources>
 </document>

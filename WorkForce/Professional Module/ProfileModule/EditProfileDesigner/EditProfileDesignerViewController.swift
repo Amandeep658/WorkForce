@@ -15,8 +15,11 @@ import GooglePlaces
 var professionDataUpdate: (()->())?
 
 class EditProfileDesignerViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate,UIPickerViewDelegate, UIPickerViewDataSource,CLLocationManagerDelegate  {
+    func videoSelect(thumbnail: UIImage?,videoData: Data?) {
+        
+    }
     
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage?,videoData: Data?) {
         if image == nil{
             self.selectedImage = UIImage(named: "placeholder")
         }else{

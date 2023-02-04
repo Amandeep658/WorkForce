@@ -33,6 +33,7 @@ class PhoneNumberVC: UIViewController,UITextFieldDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         uiConfigure()
     }
     

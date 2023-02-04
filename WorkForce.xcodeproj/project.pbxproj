@@ -97,6 +97,8 @@
 		183D06782824F08600CC9B07 /* ProfessionalsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183D06762824F08600CC9B07 /* ProfessionalsViewController.swift */; };
 		183E2F3C287EA5B500756823 /* connectListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183E2F3A287EA5B500756823 /* connectListViewCell.swift */; };
 		183E2F3D287EA5B500756823 /* connectListViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 183E2F3B287EA5B500756823 /* connectListViewCell.xib */; };
+		18454E03297FB9AB00DDF079 /* showImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18454E01297FB9AB00DDF079 /* showImageView.swift */; };
+		18454E04297FB9AB00DDF079 /* showImageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18454E02297FB9AB00DDF079 /* showImageView.xib */; };
 		1848ACD428263ADA0040E069 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848ACD228263ADA0040E069 /* NotificationViewController.swift */; };
 		1848ACDB282640710040E069 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1848ACD9282640710040E069 /* NotificationTableViewCell.swift */; };
 		1848ACDC282640710040E069 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1848ACDA282640710040E069 /* NotificationTableViewCell.xib */; };
@@ -576,6 +578,8 @@
 		183D06762824F08600CC9B07 /* ProfessionalsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalsViewController.swift; sourceTree = "<group>"; };
 		183E2F3A287EA5B500756823 /* connectListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = connectListViewCell.swift; sourceTree = "<group>"; };
 		183E2F3B287EA5B500756823 /* connectListViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = connectListViewCell.xib; sourceTree = "<group>"; };
+		18454E01297FB9AB00DDF079 /* showImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = showImageView.swift; path = showImg/showImageView.swift; sourceTree = "<group>"; };
+		18454E02297FB9AB00DDF079 /* showImageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = showImageView.xib; path = showImg/showImageView.xib; sourceTree = "<group>"; };
 		1848ACD228263ADA0040E069 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
 		1848ACD9282640710040E069 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		1848ACDA282640710040E069 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
@@ -1915,6 +1919,8 @@
 				18D6B7FE28FEBC6D0026D496 /* ImageListCell.xib */,
 				18D6B80128FEC4B10026D496 /* leftImageListCell.swift */,
 				18D6B80228FEC4B10026D496 /* leftImageListCell.xib */,
+				18454E01297FB9AB00DDF079 /* showImageView.swift */,
+				18454E02297FB9AB00DDF079 /* showImageView.xib */,
 			);
 			path = "Chat Module ";
 			sourceTree = "<group>";
@@ -2599,6 +2605,7 @@
 				18DBBDDF2825278C0047A42D /* ConnectTableViewCell.xib in Resources */,
 				1826212A28F81E29008922A1 /* GalleryVC.xib in Resources */,
 				7C45F9B2285310B400941CD2 /* ExperienceTableViewCell.xib in Resources */,
+				18454E04297FB9AB00DDF079 /* showImageView.xib in Resources */,
 				18A0FF0128C3579200FE41BF /* ProfileDesignViewController.xib in Resources */,
 				18A8EB4C2844EE80005F0DE4 /* TabBarVC.xib in Resources */,
 				1848ACDC282640710040E069 /* NotificationTableViewCell.xib in Resources */,
@@ -2957,6 +2964,7 @@
 				7C45F9B1285310B400941CD2 /* ExperienceTableViewCell.swift in Sources */,
 				18906ACD28C728FF00BF13ED /* OTPFieldView.swift in Sources */,
 				1826213B28F836FA008922A1 /* HTTPManager.swift in Sources */,
+				18454E03297FB9AB00DDF079 /* showImageView.swift in Sources */,
 				185574C12823B24800AFB18E /* UIStoryboard+Custom.swift in Sources */,
 				185574B92823B24800AFB18E /* String+Custom.swift in Sources */,
 				188D0D5A28774D39007C7295 /* EditManageprofileView.swift in Sources */,
@@ -4173,7 +4181,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
@@ -4200,7 +4208,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

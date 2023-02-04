@@ -14,28 +14,72 @@ import SDWebImage
 import SocketIO
 import Photos
 import Kingfisher
+import AVKit
+import AVFoundation
+import MobileCoreServices
 
 enum sendMessageType {
     case chat, picture, clips, doc
 }
+var UpdateImageInTableView: (()->())?
+var UpdatedocumentInTableView: (()->())?
+var UpdateVideoInTableView: (()->())?
 
 let SCREEN_SIZE = UIScreen.main.bounds
 
 class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ImagePickerDelegate{
+    func videoSelect(thumbnail: UIImage?, videoData: Data?) {
+        if videoData != nil{
+            self.ifSelectedVideo = "yes"
+            self.ifSelectedImage = ""
+            self.ifSelectedDocument = ""
+            self.videoArray.append((videoData)!)
+            self.showImgView.image = thumbnail
+            thumbnailimgArray.append((thumbnail?.pngData())!)
+            UIView.animate(withDuration: 0.2){
+                self.showSelectPreviewView.isHidden = false
+                self.showImageHeightConstant.constant = 120
+                self.showImgView.isHidden = false
+                self.playBtnImgVw.isHidden = false
+                self.messageTextView.isUserInteractionEnabled = false
+                self.view.layoutIfNeeded()
+            }
+            UpdateVideoInTableView = { [self] in
+                let textView = messageTextView.text.trimWhiteSpace
+                let url = kBASEURL + WSMethods.sendMessagev2
+                var params = [String:Any]()
+                params = ["message":textView,"room_id": chatRoomId,"message_type" : "video"]
+                print(params)
+                self.videoRequestWith(endUrl: url , parameters: params)
+            }        }
+    }
     
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage?,videoData: Data?) {
         if image == nil{
             self.selectedImage = UIImage(named: "placeholder")
-        }else{
-            self.selectedImage = image
+        }else if image != nil{
+            self.ifSelectedVideo = ""
+            self.ifSelectedImage = "yes"
+            self.ifSelectedDocument = ""
+            self.showImgView.image = image
             imgArray.append((image?.pngData())!)
-            let textView = messageTextView.text.trimWhiteSpace
-            let url = kBASEURL + WSMethods.sendMessagev2
-            var params = [String:Any]()
-            params = ["message":textView,"room_id": chatRoomId,"message_type" : "image"]
-            print(params)
-            self.requestWith(endUrl: url , parameters: params)
-            imgss.append(image ?? UIImage())
+            UIView.animate(withDuration: 0.2){
+                self.showSelectPreviewView.isHidden = false
+                self.showImageHeightConstant.constant = 120
+                self.showImgView.isHidden = false
+                self.playBtnImgVw.isHidden = true
+                self.messageTextView.isUserInteractionEnabled = false
+                self.view.layoutIfNeeded()
+            }
+            UpdateImageInTableView = { [self] in
+                let textView = messageTextView.text.trimWhiteSpace
+                let url = kBASEURL + WSMethods.sendMessagev2
+                var params = [String:Any]()
+                params = ["message":textView,"room_id": chatRoomId,"message_type" : "image"]
+                print(params)
+                self.requestWith(endUrl: url , parameters: params)
+                imgss.append(image ?? UIImage())
+            }
         }
     }
     
@@ -45,8 +89,13 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var chatTable: UITableView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var attachBtn: UIButton!
+    @IBOutlet weak var showSelectPreviewView: UIView!
+    @IBOutlet weak var showImgView: UIImageView!
+    @IBOutlet weak var showImageHeightConstant: NSLayoutConstraint!
+    @IBOutlet weak var cancelBtn: UIButton!
+    @IBOutlet weak var playBtnImgVw: UIImageView!
     
-    var firstTimeLoadCell: Bool = true
+    var firstTimeLoadCell:Bool = true
     var isAllReadMessage:Bool = false
     var typingTimer:Timer?
     var pageCompleted:Bool = false
@@ -72,24 +121,33 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
     var imgss = [UIImage]()
     var imgPicker : ImagePicker?
     var messageType: sendMessageType?
+    var docArray = [Data]()
+    var videoArray = [Data]()
+    var thumbnailimgArray = [Data]()
+    var setfileExtension = ""
+    var ifSelectedImage = ""
+    var ifSelectedDocument = ""
+    var ifSelectedVideo = ""
+    var thumbnailImage :UIImage?
+
+    
     
     var selectedImage: UIImage? {
         didSet {
-            let tableView = UITableView()
-            if tableView == chatTable{
-                
-            }
-           
         }
     }
-
-
-
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setSocket()
+        self.setTableView()
         self.setGrowingTextView()
+        self.setControllerData()
+        self.messageTextView.isUserInteractionEnabled = true
+        self.playBtnImgVw.isHidden = true
         self.imgPicker = ImagePicker(presentationController: self, delegate: self)
     }
     
@@ -100,8 +158,7 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.setTableView()
-        self.setControllerData()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         IQKeyboardManager.shared.enable = false
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -129,40 +186,30 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
     }
     
+    @IBAction func cancelBtn(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.2){
+            self.ifSelectedImage = ""
+            self.ifSelectedDocument = ""
+            self.ifSelectedVideo = ""
+            self.docArray.removeAll()
+            self.videoArray.removeAll()
+            self.thumbnailimgArray.removeAll()
+            self.showImgView.image = nil
+            self.showImageHeightConstant.constant = 0
+            self.showSelectPreviewView.isHidden = true
+            self.messageTextView.isUserInteractionEnabled = true
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    
     @IBAction func attachBtn(_ sender: UIButton) {
         let alert = UIAlertController(title: AppAlertTitle.appName.rawValue, message: "Please Select an Option", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title: "Gallery", style: .default , handler:{ (UIAlertAction)in
-//            let vc = UIImagePickerController()
-//            vc.sourceType = .camera
-//            vc.allowsEditing = true
-//            vc.delegate = self
-//            self.present(vc, animated: true)
+        alert.addAction(UIAlertAction(title: "Media", style: .default , handler:{ (UIAlertAction)in
             self.imgPicker?.present(from: sender)
         }))
-        
-//        alert.addAction(UIAlertAction(title: "Images", style: .default , handler:{ [self] (UIAlertAction)in
-//            let controller = GalleryVC()
-//            controller.delegate = self
-//            controller.pickerType = .image
-//            controller.maxSelection = 1
-//            controller.modalPresentationStyle = .fullScreen
-//            self.navigationController?.present(controller, animated: true, completion: nil)
-//
-//        }))
-        
-//        alert.addAction(UIAlertAction(title: "Video", style: .default , handler:{ (UIAlertAction)in
-//            print("User click Edit button")
-//            let controller = GalleryVC()
-//            controller.delegate = self
-//            controller.pickerType = .video
-//            controller.maxSelection = 1
-//            controller.modalPresentationStyle = .fullScreen
-//            self.navigationController?.present(controller, animated: true, completion: nil)
-//        }))
-
         alert.addAction(UIAlertAction(title: "Document", style: .destructive , handler:{ (UIAlertAction)in
-            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.text", "com.apple.iwork.pages.pages", "public.data"], in: .import)
+            let documentPicker = UIDocumentPickerViewController(documentTypes: [ kUTTypePDF  as String], in: .import)
             documentPicker.delegate = self
             self.present(documentPicker, animated: true, completion: nil)
         }))
@@ -170,11 +217,46 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler:{ (UIAlertAction)in
             print("User click Dismiss button")
         }))
-
+        
         self.present(alert, animated: true, completion: {
             print("completion block")
         })
-
+    }
+    
+    @IBAction func sendAction(_ sender: UIButton) {
+        if IJReachability.isConnectedToNetwork() == true {
+            let trimmedString = messageTextView.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+            if trimmedString != ""{
+                self.addMessageApi()
+                messageTextView.text = ""
+            }else if ifSelectedImage == "yes"{
+                UIView.animate(withDuration: 0.2){
+                    self.showSelectPreviewView.isHidden = true
+                    self.showImgView.isHidden = true
+                    self.showImageHeightConstant.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+                UpdateImageInTableView?()
+            }else if ifSelectedDocument == "yes"{
+                UIView.animate(withDuration: 0.2){
+                    self.showSelectPreviewView.isHidden = true
+                    self.showImgView.isHidden = true
+                    self.showImageHeightConstant.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+                UpdatedocumentInTableView?()
+            }else if ifSelectedVideo == "yes"{
+                UIView.animate(withDuration: 0.2){
+                    self.showSelectPreviewView.isHidden = true
+                    self.showImgView.isHidden = true
+                    self.showImageHeightConstant.constant = 0
+                    self.view.layoutIfNeeded()
+                }
+                UpdateVideoInTableView?()
+            }
+        }else{
+            alert(AppAlertTitle.appName.rawValue, message: "Check internet connection", view: self)
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -235,7 +317,7 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
             }
         }
     }
-        
+    
     func setTableView(){
         self.chatTable.delegate = self
         self.chatTable.dataSource = self
@@ -246,6 +328,12 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.chatTable.register(UINib(nibName: "MediaListCell", bundle: nibBundle), forCellReuseIdentifier: "MediaListCell")
         self.chatTable.register(UINib(nibName: "ImageListCell", bundle: nibBundle), forCellReuseIdentifier: "ImageListCell")
         self.chatTable.register(UINib(nibName: "leftImageListCell", bundle: nibBundle), forCellReuseIdentifier: "leftImageListCell")
+        UIView.animate(withDuration: 0.2){
+            self.showSelectPreviewView.isHidden = true
+            self.showImgView.isHidden = true
+            self.showImageHeightConstant.constant = 0
+            self.view.layoutIfNeeded()
+        }
         
     }
     
@@ -297,8 +385,6 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.chatTable.insertRows(at: [indexPath], with: .bottom)
         self.chatTable.endUpdates()
         self.scrollToBottom()
-        self.sendButton.isSelected = false
-        self.sendButton.isEnabled = false
     }
     
     func tableHeaderView() {
@@ -309,22 +395,6 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.headerView.addSubview(activityIndigator)
     }
     
-    
-    
-    @IBAction func sendAction(_ sender: UIButton) {
-        guard IJReachability.isConnectedToNetwork() == true else {
-            return
-        }
-        let message = messageTextView.text.trimWhiteSpace
-        guard message.count > 0 else {
-            return
-        }
-        self.addMessageApi()
-        self.messageTextView.text = nil
-        self.sendButton.isSelected = false
-        self.sendButton.isEnabled = false
-    }
-    
 }
 
 extension SingleChatController: GrowingTextViewDelegate {
@@ -332,17 +402,6 @@ extension SingleChatController: GrowingTextViewDelegate {
         UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
-    }
-    
-    func textViewDidChange(_ textView: UITextView) {
-        if textView.hasText == true && textView.text.trimWhiteSpace != "" {
-            self.sendButton.isSelected = true
-            self.sendButton.isEnabled = true
-        } else {
-            self.sendButton.isSelected = false
-            self.sendButton.isEnabled = false
-        }
-        self.editingChanged(textView)
     }
     
     func editingChanged(_ textView: UITextView) {
@@ -468,13 +527,13 @@ extension SingleChatController: GrowingTextViewDelegate {
         var parameters :Parameters = [:]
         parameters["room_id"] = chatRoomId
         parameters["per_page"] = page_size
-        parameters["page_no"]  = page_no + 1
+        parameters["page_no"] = page_no + 1
         print(parameters)
         return parameters
     }
     
     
-//    MARK: UIIMAGE SEND IN CHAT
+    //    MARK: UIIMAGE SEND IN CHAT
     func requestWith(endUrl: String, parameters: [AnyHashable : Any]){
         let url = endUrl /* your API url */
         let AToken  = AppDefaults.token ?? ""
@@ -518,7 +577,94 @@ extension SingleChatController: GrowingTextViewDelegate {
                 if status == 1{
                     self.setSocket()
                     self.sendNewMessage(data: data as NSDictionary)
+                    SocketManger.shared.socket.emit("newMessage", chatRoomId, data)
                     print("checkData of message",data)
+                }else{
+                    self.sendNewMessage(data: data as NSDictionary)
+                }
+            }
+        }
+    }
+    
+    //    MARK: VIDEO SEND IN CHAT
+    func videoRequestWith(endUrl: String, parameters: [AnyHashable : Any]){
+        let url = endUrl /* your API url */
+        print("url is here >>> ",url)
+        let AToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token": AToken]
+        print(headers)
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
+        }
+        AF.upload(multipartFormData: { (multipartFormData) in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as! String)
+            }
+            multipartFormData.append(self.videoArray.first ?? Data(), withName: "chat_video" , fileName: UUID().uuidString + ".mp4", mimeType: "")
+            multipartFormData.append(self.thumbnailimgArray.first!, withName: "chat_images[]", fileName: UUID().uuidString + "thumbnail.jpeg", mimeType: "")
+            
+        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers, interceptor: nil, fileManager: .default)
+        
+        .uploadProgress(closure: { (progress) in
+            print("Upload Progress: \(progress.fractionCompleted)")
+            
+        })
+        .responseJSON { [self] (response) in
+            DispatchQueue.main.async {
+                AFWrapperClass.svprogressHudDismiss(view: self)
+            }
+            print("video Upload successfully\(response)")
+            let respDict =  response.value as? [String : AnyObject] ?? [:]
+            if respDict.count != 0{
+                let status = respDict["status"] as? Int ?? 0
+                let data = respDict["data"] as? [String:Any] ?? [:]
+                print(status)
+                if status == 1{
+                    self.setSocket()
+                    self.sendNewMessage(data: data as NSDictionary)
+                    SocketManger.shared.socket.emit("newMessage", chatRoomId, data)
+                    print("checkData of message",data)
+                }else{
+                    self.sendNewMessage(data: data as NSDictionary)
+                }
+            }
+        }
+    }
+    
+    
+    //    MARK: SEND DOC FILE IN CHAT
+    func reqstWith(endUrl: String, parameters: [AnyHashable : Any]){
+        let url = endUrl
+        let AToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token": AToken]
+        print(headers)
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view:self)
+        }
+        AF.upload(multipartFormData: { [self] (multipartFormData) in
+            for (key, value) in parameters {
+                multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as! String)
+            }
+            if setfileExtension == "pdf"{
+                multipartFormData.append(self.docArray.first ?? Data(), withName: "chat_images[]" , fileName: UUID().uuidString + ".pdf", mimeType: self.docArray.first?.mimeType)
+            }
+        }, to: url, usingThreshold: UInt64.init(), method: .post, headers: headers, interceptor: nil, fileManager: .default)
+        .uploadProgress(closure: { (progress) in
+            print("Upload Progress: \(progress.fractionCompleted)")
+        }).responseJSON { [self] (response) in
+            DispatchQueue.main.async {
+                AFWrapperClass.svprogressHudDismiss(view: self)
+            }
+            print("Succesfully uploaded\(response)")
+            let respDict =  response.value as? [String : AnyObject] ?? [:]
+            if respDict.count != 0{
+                let status = respDict["status"] as? Int ?? 0
+                let data = respDict["data"] as? [String:Any] ?? [:]
+                print(status)
+                if status == 1{
+                    self.setSocket()
+                    self.sendNewMessage(data: data as NSDictionary)
+                    SocketManger.shared.socket.emit("newMessage", chatRoomId, data)
                 }else{
                     self.sendNewMessage(data: data as NSDictionary)
                 }
@@ -558,25 +704,69 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatModel = chatHistory[indexPath.row]
-        if chatModel.user_id ?? "" == companyProfileDataArr?.data?.user_id ?? "" {
-            if chatModel.message_type == "chat" {
+        let userLoginid  = UserDefaults.standard.string(forKey: "uID")
+        //        companyProfileDataArr?.data?.user_id ?? ""
+        if chatModel.user_id ?? "" == userLoginid {
+            if chatModel.message_type == "chat"{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as! RightTableViewCell
                 cell.setMessageData(chatModel)
                 return cell
-            } else {
+            }else if chatModel.message_type == "document"{
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "ImageListCell", for: indexPath) as! ImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }else  if chatModel.message_type == "image"{
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "ImageListCell", for: indexPath) as! ImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }else  if chatModel.message_type == "video"{
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "ImageListCell", for: indexPath) as! ImageListCell
                 cell2.setMessageData(chatModel)
                 return cell2
             }
         }else {
-            if chatModel.message_type == "chat" {
+            if chatModel.message_type == "chat"{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LeftTableViewCell", for: indexPath) as! LeftTableViewCell
                 cell.setMessageData(chatModel)
                 return cell
-            } else {
+            }else if chatModel.message_type == "document"{
                 let cell2 = tableView.dequeueReusableCell(withIdentifier: "leftImageListCell", for: indexPath) as! leftImageListCell
                 cell2.setMessageData(chatModel)
                 return cell2
+            }else if chatModel.message_type == "image"{
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "leftImageListCell", for: indexPath) as! leftImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }else if chatModel.message_type == "video"{
+                let cell2 = tableView.dequeueReusableCell(withIdentifier: "leftImageListCell", for: indexPath) as! leftImageListCell
+                cell2.setMessageData(chatModel)
+                return cell2
+            }
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let chatModel = chatHistory[indexPath.row]
+        if chatModel.chat_image!.contains(".jpg"){
+            let vc = showImageView()
+            vc.setImage = chatModel.chat_image ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if chatModel.chat_image!.contains(".png"){
+            let vc = showImageView()
+            vc.setImage = chatModel.chat_image ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if chatModel.chat_image!.contains(".pdf"){
+            if let url = URL(string: chatModel.chat_image ?? "".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!), UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url)
+            }
+        }else if chatModel.chat_video!.contains(".mp4"){
+            let videoURL = URL(string: "\(chatModel.chat_video ?? "")")
+            let player = AVPlayer(url: videoURL!)
+            let playerViewController = AVPlayerViewController()
+            playerViewController.player = player
+            self.present(playerViewController, animated: true) {
+                playerViewController.player!.play()
             }
         }
     }
@@ -605,7 +795,7 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
         let chatModel = chatHistory[indexPath.row]
         if chatModel.message_type != "chat" {
             return 200
-        } else {
+        }else {
             return UITableView.automaticDimension
         }
     }
@@ -614,7 +804,7 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
         let chatModel = chatHistory[indexPath.row]
         if chatModel.message_type != "chat" {
             return 200
-        } else {
+        }else {
             return UITableView.automaticDimension
         }
     }
@@ -664,36 +854,27 @@ extension SingleChatController {
 }
 
 extension SingleChatController {
-    func addMessageApi()  {
-        self.sendButton.isSelected = false
-        self.sendButton.isEnabled = false
+    func addMessageApi(){
         let textCount = messageTextView.text.trimWhiteSpace
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
         let url = kBASEURL + WSMethods.sendMessagev2
         var params = [String:Any]()
-        params = ["message":textCount,"room_id": chatRoomId,"message_type" : "chat"]
+        params = ["message":textCount,"room_id": chatRoomId,"message_type":"chat"]
         print(params)
         AFWrapperClass.requestPostWithMultiFormData(url, params: params, headers: headers, success: { [self](dict) in
             let result = dict as AnyObject
             print("addMessage=======>>>>>",result)
             let msg = result["message"] as? String ?? ""
             let status = result["status"] as? Int ?? 0
-            if status == 1 {
+            if status == 1{
                 let data = result["data"] as? NSDictionary ?? NSDictionary()
                 self.sendNewMessage(data: data)
                 self.chatTable.beginUpdates()
                 self.chatTable.endUpdates()
-//                self.chatTable.reloadData()
-//                DispatchQueue.main.asyncAfter(deadline: .now()+1) {
-//                    self.scrollToBottom()
-//                    self.messageTextView.becomeFirstResponder()
-//                }
                 SocketManger.shared.socket.emit("newMessage", chatRoomId, data)
-                
-            }
-            else{
+            }else{
                 self.Alert(message: msg)
             }
         }){ (error) in
@@ -727,18 +908,35 @@ extension UINavigationController {
 
 extension SingleChatController: UIDocumentPickerDelegate{
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentAt url: URL) {
-        
         let cico = url as URL
-//        self.docattactLbl.text = url.lastPathComponent
-        print(cico.description)
-        print(url)
-        print(url.lastPathComponent)
-        print(url.pathExtension)
-        if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
-            print()
-            //This gives you the URL of the path
+        let data = NSData(contentsOf: cico)
+        self.ifSelectedVideo = ""
+        self.ifSelectedImage = ""
+        self.ifSelectedDocument = "yes"
+        self.docArray.removeAll()
+        self.docArray.append((data as? Data)!)
+        UIView.animate(withDuration: 0.2){
+            self.showImgView.image = UIImage(named: "ic_ph_document")
+            self.showSelectPreviewView.isHidden = false
+            self.showImageHeightConstant.constant = 120
+            self.showImgView.isHidden = false
+            self.playBtnImgVw.isHidden = true
+            self.messageTextView.isUserInteractionEnabled = false
+            self.view.layoutIfNeeded()
         }
-        
+        UpdatedocumentInTableView = { [self] in
+            let baseUrl = kBASEURL + WSMethods.sendMessagev2
+            var params = [String:Any]()
+            let textView = messageTextView.text.trimWhiteSpace
+            params = ["message":textView,"room_id": chatRoomId,"message_type":"document"]
+            print("printHereis ",params)
+            
+            if let documentsPathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                print("documentsPathURL",documentsPathURL)
+                self.setfileExtension = url.pathExtension
+            }
+            self.reqstWith(endUrl: baseUrl , parameters: params)
+        }
     }
 }
 
@@ -747,14 +945,3 @@ extension UIImage {
         KingfisherManager.shared.cache.store(self, forKey: url)
     }
 }
-
-
-
-
-//        if (chatModel.chat_image!= nil){
-//            guard let cell = tableView.dequeueReusableCell(withIdentifier: "MediaListCell", for: indexPath) as? MediaListCell else{return UITableViewCell()}
-//            cell.timeLabel.text =  chatModel.created?.convertTimeStampToStringDate(format: "hh:mm a")
-//            cell.setData(media: [""], role: "", previousDate: "", timeStamp: chatModel.created)
-//            return cell
-
-//        }else{

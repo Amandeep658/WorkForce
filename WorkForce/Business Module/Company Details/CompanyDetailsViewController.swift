@@ -13,8 +13,12 @@ import GoogleMaps
 import GooglePlaces
 
 class CompanyDetailsViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, ImagePickerDelegate,CLLocationManagerDelegate{
+    func videoSelect(thumbnail: UIImage?,videoData: Data?) {
+        
+    }
     
-    func didSelect(image: UIImage?) {
+    
+    func didSelect(image: UIImage?,videoData: Data?) {
         if image == nil{
             self.selectedImage = UIImage(named: "placeholder")
         }else{

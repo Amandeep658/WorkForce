@@ -66,6 +66,7 @@ class HomeViewController: UIViewController,CLLocationManagerDelegate,ProfessFilt
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = false
         self.jobListArr = Pagination()
         self.categoryId = ""

@@ -260,9 +260,6 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
         }
         let string = jobArray.joined(separator: ",")
         self.businessjobtype = string
-        print("sperator Arr************>>>>>>>>",businessjobtype)
-        print(businessjobtype)
-        print(self.jobArray)
         self.jobTypecollection.reloadData()
     }
     

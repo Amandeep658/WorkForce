@@ -12,8 +12,11 @@ import Alamofire
 
 
 class JobPhotoViewController: UIViewController,UITextViewDelegate,ImagePickerDelegate {
+    func videoSelect(thumbnail: UIImage?,videoData: Data?) {
+        
+    }
     
-    func didSelect(image: UIImage?) {
+    func didSelect(image: UIImage?,videoData: Data?) {
         if image == nil{
             self.selectedImage = UIImage(named: "plcordr")
         }else{

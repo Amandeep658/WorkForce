@@ -40,6 +40,7 @@ class CustomerHomeVC: UIViewController, CLLocationManagerDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         companiesListTableView.delegate = self
         companiesListTableView.dataSource = self
         companiesListTableView.register(UINib(nibName: "customerConnectListCell", bundle: nil), forCellReuseIdentifier: "customerConnectListCell")

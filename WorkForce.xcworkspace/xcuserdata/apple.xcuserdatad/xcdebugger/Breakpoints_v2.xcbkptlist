@@ -7,80 +7,143 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "49502975-264A-41EB-8791-F647524AD9F9"
+            uuid = "B1E8B2B1-80A8-4F47-9C0E-391BFEF52A71"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkForce/Chat Module /SingleChatController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "512"
-            endingLineNumber = "512"
-            landmarkName = "requestWith(endUrl:parameters:)"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
+            landmarkName = "sendAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E44408BD-6DE2-49CE-B441-7E932E76B421"
+            uuid = "BDFB6B48-381E-4414-9939-8AE7C9AC20B8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkForce/Chat Module /SingleChatController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
-            landmarkName = "requestWith(endUrl:parameters:)"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "videoSelect(thumbnail:videoData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "04C76A2B-5B5E-4D18-B07F-D74FD4AE1BCB"
+            uuid = "03ACCA7F-10E7-40D5-B3D5-B93805BE6039"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "WorkForce/Chat Module /SingleChatController.swift"
+            filePath = "WorkForce/Constant Files/ImagePickerDelegate.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "518"
-            endingLineNumber = "518"
-            landmarkName = "requestWith(endUrl:parameters:)"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "pickerController(_:didSelect:videoData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "718B5AC0-408D-41CB-9B41-92A89872BE2F"
+            uuid = "77864473-5C76-4955-9CEF-CE0CFCDCC618"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkForce/Chat Module /SingleChatController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "221"
-            endingLineNumber = "221"
-            landmarkName = "newMessageSocketOn()"
+            startingLineNumber = "248"
+            endingLineNumber = "248"
+            landmarkName = "sendAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0266EDC-6B35-4434-A1C2-EF53928B926B"
+            uuid = "723744E0-1307-414E-8D66-5162563EDE38"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "WorkForce/Chat Module /SingleChatController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "getAllMessagesApi(view:)"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "videoSelect(thumbnail:videoData:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "723744E0-1307-414E-8D66-5162563EDE38 - e77c9cc061943485"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WorkForce.SingleChatController.videoSelect(thumbnail: Swift.Optional&lt;__C.UIImage&gt;, videoData: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "WorkForce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Dharmani%20Apps/Workforce/WorkForce/Chat%20Module%20/SingleChatController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1456">
+               </Location>
+               <Location
+                  uuid = "723744E0-1307-414E-8D66-5162563EDE38 - e77c9cc061943485"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "WorkForce.SingleChatController.videoSelect(thumbnail: Swift.Optional&lt;__C.UIImage&gt;, videoData: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "WorkForce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Dharmani%20Apps/Workforce/WorkForce/Chat%20Module%20/SingleChatController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "1472">
+               </Location>
+               <Location
+                  uuid = "723744E0-1307-414E-8D66-5162563EDE38 - efc50482e4880a6d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; () in WorkForce.SingleChatController.videoSelect(thumbnail: Swift.Optional&lt;__C.UIImage&gt;, videoData: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "WorkForce"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/apple/Documents/Dharmani%20Apps/Workforce/WorkForce/Chat%20Module%20/SingleChatController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "132">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "402F8A2D-73AD-416E-87CD-9F673E7CE5C6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "WorkForce/Chat Module /SingleChatController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "videoSelect(thumbnail:videoData:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

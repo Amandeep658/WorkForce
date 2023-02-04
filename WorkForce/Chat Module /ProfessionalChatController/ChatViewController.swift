@@ -25,6 +25,7 @@ class ChatViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
         self.setTable()
@@ -141,7 +142,11 @@ class ChatViewController: UIViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath)as!
         ChatTableViewCell
         cell.nameLbl.text = getUserListAllUser[indexPath.row].company_name ?? ""
-        cell.messageLbl.text = getUserListAllUser[indexPath.row].message ?? ""
+        if getUserListAllUser[indexPath.row].message?.count ?? 0 > 0{
+            cell.messageLbl.text = getUserListAllUser[indexPath.row].message ?? ""
+        }else{
+            cell.messageLbl.text = "1 File attached"
+        }
         var sPhotoStr = getUserListAllUser[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.chatImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))

@@ -69,6 +69,7 @@ class BusinessHomeViewController: UIViewController,UITextFieldDelegate,CLLocatio
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = false
         self.workerPagination = Pagination()
     }

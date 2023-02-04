@@ -34,6 +34,7 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         tapGesture.cancelsTouchesInView = false
@@ -71,7 +72,6 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate, UI
             let userID = response["user_id"] as? String ?? ""
             UserDefaults.standard.set(userID, forKey: "uID")
             UserDefaults.standard.synchronize()
-            let userUdid = UserDefaults.standard.value(forKey: "uID")
             self.professionalUserDict.userId = userID
             let authToekn = response["auth_token"] as? String ?? ""
             AppDefaults.token = authToekn

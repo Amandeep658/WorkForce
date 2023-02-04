@@ -315,7 +315,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 
 
 
-enum Language: String {
+enum LanguageSet: String {
     
     case none = ""
     case en = "English"
@@ -332,8 +332,7 @@ extension Locale {
         return Locale(identifier: "en-EN")
     } // to use in **currentLanguage** to get the localizedString in English
     
-    static var currentLanguage: Language? {
-        
+    static var currentLanguage: LanguageSet? {
         guard let code = preferredLanguages.first?.components(separatedBy: "-").last else {
             
             print("could not detect language code")
@@ -348,15 +347,18 @@ extension Locale {
             return nil
         }
         
-        guard let language = Language(rawValue: rawValue) else {
-            
-            print("could not init language from raw value")
-            
-            return nil
+        if #available(iOS 16, *) {
+            guard let languageValid = LanguageSet(rawValue: rawValue) else {
+                print("could not init language from raw value")
+                
+                return nil
+            }
+        } else {
+            // Fallback on earlier versions
         }
         print("language: \(code)-\(rawValue)")
         
-        return language
+        return self.currentLanguage
     }
     static var preferredLanguageCode: String {
         let defaultLanguage = "en"

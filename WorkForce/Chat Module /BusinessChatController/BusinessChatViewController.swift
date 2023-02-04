@@ -28,6 +28,7 @@ class BusinessChatViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = false
         self.getAllChatList()
         setTable()
@@ -62,6 +63,7 @@ class BusinessChatViewController: UIViewController {
                 vc.chatRoomId = getUserListAllUser[selectedIndex].room_no ?? ""
                 vc.userName = getUserListAllUser[selectedIndex].username ?? ""
                 vc.userProfileImage = getUserListAllUser[selectedIndex].photo ?? ""
+                self.navigationController?.pushViewController(vc, animated: true)
                 self.pushViewController(vc, true)
             }else if status == 0{
                 let vc = SubcribeViewController()
@@ -147,7 +149,11 @@ extension BusinessChatViewController : UITableViewDelegate , UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath)as!
         ChatTableViewCell
         cell.nameLbl.text = getUserListAllUser[indexPath.row].username ?? ""
-        cell.messageLbl.text = getUserListAllUser[indexPath.row].message ?? ""
+        if getUserListAllUser[indexPath.row].message?.count ?? 0 > 0{
+            cell.messageLbl.text = getUserListAllUser[indexPath.row].message ?? ""
+        }else{
+            cell.messageLbl.text = "1 File attached"
+        }
         var sPhotoStr = getUserListAllUser[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.chatImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))
@@ -159,8 +165,7 @@ extension BusinessChatViewController : UITableViewDelegate , UITableViewDataSour
         }else{
             cell.badgecount.isHidden = true
         }
-        let timestamp = getUserListAllUser[indexPath.row].message_time ?? ""
-        cell.timelbl.text  = chatConvertTimeStampTodate(dateVal:timestamp) == "" ? "00:00":chatConvertTimeStampTodate(dateVal:timestamp)
+              
         cell.setImage()
         return cell
     }

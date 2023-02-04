@@ -50,6 +50,7 @@ class SubscribePlanViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         self.tabBarController?.tabBar.isHidden = true
         if UserType.userTypeInstance.userLogin == .Bussiness{
             validate(product: IAPProduct.FiftyDollarsixMonth.rawValue)

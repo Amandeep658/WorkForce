@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,10 +20,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SingleChatController" customModule="WorkForce" customModuleProvider="target">
             <connections>
                 <outlet property="bottomConstraint" destination="ll7-YU-TZf" id="dhY-ts-HTA"/>
+                <outlet property="cancelBtn" destination="cSJ-9x-Kzf" id="7jg-ha-44R"/>
                 <outlet property="chatTable" destination="MZJ-Oc-tab" id="e3m-74-pzJ"/>
                 <outlet property="messageTextView" destination="4OA-7j-FaQ" id="8Js-z5-JLj"/>
                 <outlet property="nameLabel" destination="4JI-Zb-DQC" id="j1e-lD-1pp"/>
+                <outlet property="playBtnImgVw" destination="uV2-yn-bNK" id="onO-gn-krO"/>
                 <outlet property="sendButton" destination="ERd-5s-77n" id="xiM-Hk-4qO"/>
+                <outlet property="showImageHeightConstant" destination="eYS-2u-GMs" id="EsD-fg-cMw"/>
+                <outlet property="showImgView" destination="oEo-CM-c7A" id="KId-Yy-gfD"/>
+                <outlet property="showSelectPreviewView" destination="UmE-CU-uiE" id="Sbd-ST-FJm"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -36,11 +41,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 </imageView>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bz4-5K-ICA">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UN5-5k-nVI">
-                    <rect key="frame" x="0.0" y="44" width="414" height="48"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="48"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jef-YW-J4I">
                             <rect key="frame" x="15" y="13" width="30" height="30"/>
@@ -86,14 +91,65 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="63d-xZ-43h">
-                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <rect key="frame" x="0.0" y="99" width="414" height="763"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MZJ-Oc-tab">
-                            <rect key="frame" x="0.0" y="5" width="414" height="686"/>
+                            <rect key="frame" x="0.0" y="5" width="414" height="682"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UmE-CU-uiE">
+                            <rect key="frame" x="20" y="560" width="374" height="120"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="oEo-CM-c7A">
+                                    <rect key="frame" x="20" y="12" width="96" height="96"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="96" id="6EB-4l-x9E"/>
+                                        <constraint firstAttribute="width" constant="96" id="sba-ha-bZd"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="playBtn" translatesAutoresizingMaskIntoConstraints="NO" id="uV2-yn-bNK">
+                                    <rect key="frame" x="54" y="46" width="28" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="28" id="0R9-j8-fIt"/>
+                                        <constraint firstAttribute="width" constant="28" id="WLm-bj-hGe"/>
+                                    </constraints>
+                                </imageView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSJ-9x-Kzf">
+                                    <rect key="frame" x="92" y="12" width="24" height="24"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="24" id="7wr-iI-ZoA"/>
+                                        <constraint firstAttribute="height" constant="24" id="Isc-GX-qLA"/>
+                                    </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" image="crossBtn"/>
+                                    <connections>
+                                        <action selector="cancelBtn:" destination="-1" eventType="touchUpInside" id="vCJ-HW-d0d"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="cSJ-9x-Kzf" firstAttribute="trailing" secondItem="oEo-CM-c7A" secondAttribute="trailing" id="Bom-ML-UWS"/>
+                                <constraint firstItem="oEo-CM-c7A" firstAttribute="centerY" secondItem="UmE-CU-uiE" secondAttribute="centerY" id="Rhi-3s-Ssu"/>
+                                <constraint firstItem="uV2-yn-bNK" firstAttribute="centerY" secondItem="oEo-CM-c7A" secondAttribute="centerY" id="cNX-6j-aid"/>
+                                <constraint firstAttribute="height" constant="120" id="eYS-2u-GMs"/>
+                                <constraint firstItem="uV2-yn-bNK" firstAttribute="centerX" secondItem="oEo-CM-c7A" secondAttribute="centerX" id="oN9-hx-mCj"/>
+                                <constraint firstItem="cSJ-9x-Kzf" firstAttribute="top" secondItem="oEo-CM-c7A" secondAttribute="top" id="oQc-IE-v2j"/>
+                                <constraint firstItem="oEo-CM-c7A" firstAttribute="leading" secondItem="UmE-CU-uiE" secondAttribute="leading" constant="20" id="qNv-dw-HQF"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwu-k7-dLq">
-                            <rect key="frame" x="0.0" y="694" width="414" height="65"/>
+                            <rect key="frame" x="0.0" y="690" width="414" height="65"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s6r-VA-N6c">
                                     <rect key="frame" x="20" y="15" width="286" height="35"/>
@@ -196,12 +252,15 @@
                     <constraints>
                         <constraint firstItem="wwu-k7-dLq" firstAttribute="top" secondItem="MZJ-Oc-tab" secondAttribute="bottom" constant="3" id="0NU-Vt-UDp"/>
                         <constraint firstAttribute="trailing" secondItem="wwu-k7-dLq" secondAttribute="trailing" id="6Nc-Gj-slq"/>
+                        <constraint firstItem="wwu-k7-dLq" firstAttribute="top" secondItem="UmE-CU-uiE" secondAttribute="bottom" constant="10" id="AtH-R7-fCl"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="wwu-k7-dLq" secondAttribute="bottom" id="DmI-wE-aGQ"/>
                         <constraint firstItem="MZJ-Oc-tab" firstAttribute="leading" secondItem="63d-xZ-43h" secondAttribute="leading" id="KjJ-SW-lSl"/>
+                        <constraint firstAttribute="trailing" secondItem="UmE-CU-uiE" secondAttribute="trailing" constant="20" id="WiK-9l-26h"/>
                         <constraint firstItem="wwu-k7-dLq" firstAttribute="leading" secondItem="63d-xZ-43h" secondAttribute="leading" id="ZT2-vQ-HlI"/>
                         <constraint firstItem="MZJ-Oc-tab" firstAttribute="top" secondItem="63d-xZ-43h" secondAttribute="top" constant="5" id="qrZ-Kb-1rS"/>
                         <constraint firstAttribute="bottomMargin" secondItem="wwu-k7-dLq" secondAttribute="bottom" id="sbz-hk-0de"/>
                         <constraint firstAttribute="trailing" secondItem="MZJ-Oc-tab" secondAttribute="trailing" id="w3f-ms-OPR"/>
+                        <constraint firstItem="UmE-CU-uiE" firstAttribute="leading" secondItem="63d-xZ-43h" secondAttribute="leading" constant="20" id="yEG-9M-OfL"/>
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="topCornerRadius">
@@ -254,9 +313,12 @@
         <image name="Attach" width="44" height="47"/>
         <image name="back" width="25" height="24"/>
         <image name="bg" width="640" height="1138"/>
+        <image name="crossBtn" width="57" height="50"/>
+        <image name="placeholder" width="1192" height="1194"/>
+        <image name="playBtn" width="1024" height="1024"/>
         <image name="sendmessage" width="32" height="32"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

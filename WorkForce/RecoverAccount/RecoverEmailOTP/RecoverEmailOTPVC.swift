@@ -34,6 +34,7 @@ class RecoverEmailOTPVC: UIViewController,UITextFieldDelegate, UITextPasteDelega
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         uiConfigure()
     }
     
