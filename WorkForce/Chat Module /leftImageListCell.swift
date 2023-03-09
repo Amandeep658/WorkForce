@@ -12,6 +12,8 @@ class leftImageListCell: UITableViewCell {
     @IBOutlet weak var leftImgCell: UIImageView!
     @IBOutlet weak var leftUserimgCell: UIImageView!
     @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var playpauseView: UIView!
+    @IBOutlet weak var playViewImgVw: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +33,13 @@ class leftImageListCell: UITableViewCell {
             self.leftImgCell.sd_setImage(with: URL(string: data?.chat_image ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
         }else{
             self.leftImgCell.image = UIImage(named: "ic_ph_document")
+        }
+        if data!.message_type == "video"{
+            self.playViewImgVw.isHidden = false
+            self.playpauseView.isHidden = false
+        }else{
+            self.playViewImgVw.isHidden = true
+            self.playpauseView.isHidden = true
         }
         self.leftUserimgCell.sd_setImage(with: URL(string: data?.photo ?? ""), placeholderImage: UIImage(named: "jobSeekerPlaceholder"), options: .allowInvalidSSLCertificates, progress: nil, completed: nil)
         self.timeLbl.text =  data?.created

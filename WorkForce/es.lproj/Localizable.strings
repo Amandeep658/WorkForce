@@ -58,8 +58,13 @@
 "0 Year" = "0 año";
 "Years" = "Años";
 "Year" = "año";
+"Media" = "Medios de comunicación";
+"Document" = "Documento";
+"Cancel" = "Cancelar";
+"Please Select an Option" = "Por favor seleccione una opción";
 "Job Type" = "Tipo de trabajo";
 "catagory_details" = "detalles_de_la_categoría";
+"Check internet connection" = "Comprobar la conexión a Internet";
 "experience" = "experiencia";
 "job_image" = "imagen_trabajo";
 "Please enter company name." = "Introduzca el nombre de la empresa.";

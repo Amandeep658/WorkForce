@@ -102,11 +102,24 @@ extension CoustomerChatVC : UITableViewDelegate , UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChatTableViewCell", for: indexPath)as!
         ChatTableViewCell
         cell.nameLbl.text = getUserListAllUser[indexPath.row].company_name ?? ""
-        if getUserListAllUser[indexPath.row].message?.count ?? 0 > 0{
+        if getUserListAllUser[indexPath.row].message != ""{
             cell.messageLbl.text = getUserListAllUser[indexPath.row].message ?? ""
-        }else{
-            cell.messageLbl.text = "1 File attached"
+            cell.lastselectNwImgVW.image = UIImage(named: "")
+            cell.lastselectNwImgVW.isHidden = true
+        }else if ((getUserListAllUser[indexPath.row].chat_image!.contains(".jpg") || getUserListAllUser[indexPath.row].chat_image!.contains(".png")) && getUserListAllUser[indexPath.row].chat_video == ""){
+            cell.lastselectNwImgVW.isHidden = false
+            cell.lastselectNwImgVW.image = UIImage(named: "ic_photo_img")
+            cell.messageLbl.text = "image"
+        }else if getUserListAllUser[indexPath.row].chat_video != "" && getUserListAllUser[indexPath.row].chat_image!.contains(".png"){
+            cell.lastselectNwImgVW.isHidden = false
+            cell.lastselectNwImgVW.image = UIImage(named: "ic_video_img")
+            cell.messageLbl.text = "video"
+        }else if (getUserListAllUser[indexPath.row].chat_image!.contains(".pdf") || getUserListAllUser[indexPath.row].chat_image!.contains(".doc")){
+            cell.lastselectNwImgVW.isHidden = false
+            cell.lastselectNwImgVW.image = UIImage(named: "ic_doc_img")
+            cell.messageLbl.text = "pdf"
         }
+        
         var sPhotoStr = getUserListAllUser[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""
         cell.chatImg.sd_setImage(with: URL(string: sPhotoStr ), placeholderImage:UIImage(named:"placeholder"))

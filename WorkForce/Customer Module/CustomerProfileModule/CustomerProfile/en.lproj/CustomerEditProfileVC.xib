@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,6 +18,7 @@
             <connections>
                 <outlet property="backBtn" destination="fDJ-Yy-x1Q" id="rnL-zb-vA7"/>
                 <outlet property="btnSave" destination="U9m-bx-9UL" id="Nrl-hA-Pf5"/>
+                <outlet property="currentLocationBtn" destination="ZqY-7f-iUD" id="tOg-86-GEz"/>
                 <outlet property="customerUploadBtn" destination="gIu-0h-604" id="5Nd-PD-a38"/>
                 <outlet property="dateOfBirthView" destination="1pc-HG-930" id="3JR-6C-r3p"/>
                 <outlet property="dobTF" destination="ulz-7s-OPY" id="j8Q-Gs-CwT"/>
@@ -41,7 +42,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g4i-lS-qm0">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDJ-Yy-x1Q">
                             <rect key="frame" x="20" y="13" width="24" height="24"/>
@@ -99,7 +100,7 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnf-zB-WoB">
-                    <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="764"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bba-P8-Kka">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="678"/>
@@ -394,6 +395,9 @@
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZqY-7f-iUD">
                                                             <rect key="frame" x="0.0" y="0.0" width="367" height="40"/>
                                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                            <connections>
+                                                                <action selector="currentLocationBtn:" destination="-1" eventType="touchUpInside" id="wMK-kp-yUd"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

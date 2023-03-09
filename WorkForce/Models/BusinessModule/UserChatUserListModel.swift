@@ -133,6 +133,8 @@ struct UserChatList_data : Codable {
 
 struct ChatUSerListAll_users : Codable {
     let room_id : String?
+    let chat_image : String?
+    let chat_video : String?
     let room_no : String?
     let sender_id : String?
     let receiver_id : String?
@@ -149,6 +151,8 @@ struct ChatUSerListAll_users : Codable {
     enum CodingKeys: String, CodingKey {
 
         case room_id = "room_id"
+        case chat_image = "chat_image"
+        case chat_video = "chat_video"
         case room_no = "room_no"
         case sender_id = "sender_id"
         case receiver_id = "receiver_id"
@@ -166,6 +170,8 @@ struct ChatUSerListAll_users : Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         room_id = try values.decodeIfPresent(String.self, forKey: .room_id)
+        chat_image = try values.decodeIfPresent(String.self, forKey: .chat_image)
+        chat_video = try values.decodeIfPresent(String.self, forKey: .chat_video)
         room_no = try values.decodeIfPresent(String.self, forKey: .room_no)
         sender_id = try values.decodeIfPresent(String.self, forKey: .sender_id)
         receiver_id = try values.decodeIfPresent(String.self, forKey: .receiver_id)

@@ -248,6 +248,7 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.jobTypes.count
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JobTypeCollectionViewCell", for: indexPath) as! JobTypeCollectionViewCell
         cell.fullTimeLbl.backgroundColor = .aquaBlue
@@ -262,7 +263,6 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
         self.businessjobtype = string
         self.jobTypecollection.reloadData()
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "JobTypeCollectionViewCell", for: indexPath) as! JobTypeCollectionViewCell
@@ -281,6 +281,7 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.height/2.5)
     }
+    
 }
 extension SetFilterVC : GMSAutocompleteViewControllerDelegate{
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {

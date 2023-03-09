@@ -66,10 +66,15 @@
 "Years" = "Anos";
 "Year" = "ano";
 "Done" = "Feita";
+"Media" = "meios de comunicação";
+"Document" = "Documento";
+"Cancel" = "Cancelar";
+"Please Select an Option" = "Por favor selecione uma opção";
 "Job Type" = "Tipo de emprego";
 "experience" = "experiência";
 "job_image" = "imagen_trabajo";
 "Please enter company name." = "Insira o nome da empresa.";
+"Check internet connection" = "Verifique a conexão com a Internet";
 
 //PROFILE TABS
 "Recovery Email" = "Email de recuperação";

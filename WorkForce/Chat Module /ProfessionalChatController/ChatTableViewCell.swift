@@ -14,6 +14,7 @@ class ChatTableViewCell: UITableViewCell {
     @IBOutlet weak var timelbl: UILabel!
     @IBOutlet weak var messageLbl: UILabel!
     @IBOutlet weak var badgecount: UILabel!
+    @IBOutlet weak var lastselectNwImgVW: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,7 +27,7 @@ class ChatTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     func setImage(){
-            chatImg.layer.cornerRadius = chatImg.frame.height/2
+        chatImg.layer.cornerRadius = chatImg.frame.height/2
         timelbl.layer.cornerRadius = timelbl.frame.height/2
     }
 }

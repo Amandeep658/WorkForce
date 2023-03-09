@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import AVKit
 import AVFoundation
+import MobileCoreServices
+import Photos
 
 
 public protocol ImagePickerDelegate: class {
@@ -24,12 +26,9 @@ open class ImagePicker: NSObject {
     
     public init(presentationController: UIViewController, delegate: ImagePickerDelegate) {
         self.pickerController = UIImagePickerController()
-        
         super.init()
-        
         self.presentationController = presentationController
         self.delegate = delegate
-        
         self.pickerController.delegate = self
         self.pickerController.allowsEditing = true
         self.pickerController.mediaTypes = ["public.image","public.movie"]
@@ -84,6 +83,8 @@ extension ImagePicker: UIImagePickerControllerDelegate {
     
     public func imagePickerController(_ picker: UIImagePickerController,
                                       didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        let mediaType:AnyObject? = info[UIImagePickerController.InfoKey(rawValue: UIImagePickerController.InfoKey.mediaType.rawValue)] as AnyObject?
+
         if let image =  info[.editedImage] as? UIImage{
             self.pickerController(picker, didSelect: image,videoData: nil)
             return
@@ -95,10 +96,13 @@ extension ImagePicker: UIImagePickerControllerDelegate {
             let thumbnailData = thumbnail!.jpegData(compressionQuality: 0.3)!
             let data = NSData(contentsOf: video as URL)! as Data
             self.pickerController(picker, didSelect: thumbnail,videoData: data)
-        }else{
+        }
+        else{
             self.pickerController(picker, didSelect: nil,videoData: nil)
         }
     }
+    
+
     
     func createThumbnailOfVideoFromUrl(url: URL) -> UIImage? {
         do {

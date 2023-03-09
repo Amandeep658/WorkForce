@@ -42,6 +42,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     @IBOutlet weak var orLbl: UILabel!
     @IBOutlet weak var customerUploadBtn: UIButton!
     @IBOutlet weak var editImgView: UIImageView!
+    @IBOutlet weak var currentLocationBtn: UIButton!
     
     let datePicker = UIDatePicker()
     var imagePicker : ImagePicker?
@@ -55,7 +56,8 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
         }
     }
     var customerPDate:CompanyListingModel?
-    
+    let locationManager = CLLocationManager()
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -68,31 +70,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
         self.tabBarController?.tabBar.isHidden = true
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
-    
-    //    func createDatePicker(){
-    //        let toolbar = UIToolbar()
-    //        toolbar.sizeToFit()
-    //        let doneBtn = UIBarButtonItem(barButtonSystemItem: .done, target: nil, action: #selector(donePressed))
-    //        toolbar.setItems([doneBtn], animated: true)
-    //        dobTF.inputAccessoryView = toolbar
-    //        datePicker.datePickerMode = .date
-    //        self.datePicker.maximumDate = Calendar.current.date(byAdding: .year, value: -18, to: Date())
-    //        dobTF.inputView = datePicker
-    //        if #available(iOS 13.4, *) {
-    //            datePicker.preferredDatePickerStyle = .wheels
-    //        } else {
-    //        }
-    //    }
-    //    @objc func donePressed() {
-    //        if dobTF.isFirstResponder {
-    //            let formatter = DateFormatter()
-    //            formatter.dateStyle = .full
-    //            formatter.timeStyle = .none
-    //            formatter.dateFormat = "yyyy-MM-dd"
-    //            dobTF.text = formatter.string(from: datePicker.date)
-    //        }
-    //        self.view.endEditing(true)
-    //    }
+
     
     func uiConfigureUpdate(){
         firstNameTF.delegate = self
@@ -142,6 +120,14 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     @IBAction func editBtn(_ sender: UIButton) {
         editUnHideUiUpdate()
     }
+    
+    @IBAction func currentLocationBtn(_ sender: UIButton) {
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+    }
+    
     
     //    MARK: HIT CUSTOMER EDIT PROFILE API
     func hitCustomerEditProfileAPI() {
@@ -198,7 +184,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
                 UserDefaults.standard.set(photo, forKey: "CoustomerProfileImage")
                 print(status)
                 if status == 1{
-                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message: respDict["message"] as? String ?? "" , okButton: "OK", controller: self) {
+                    showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Profile updated successfully." , okButton: "OK", controller: self) {
                         customDataUpdate?()
                         if let tabBar = self.tabBarController as? TabBarVC {
                             print("tab bar is \(tabBar)")
@@ -346,4 +332,40 @@ extension CustomerEditProfileVC : GMSAutocompleteViewControllerDelegate{
             }
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("l';l;l")
+        CLGeocoder().reverseGeocodeLocation(manager.location!, completionHandler: {(placemarks, error)->Void in
+            if (error != nil) {
+                print("Reverse geocoder failed with error" + error!.localizedDescription)
+                    return
+                }
+
+
+            if placemarks!.count > 0 {
+                let pm = placemarks![0] as CLPlacemark
+                let location = locations.last! as CLLocation
+                let latStr = location.coordinate.latitude
+                print("here is lat ====>>>>",latStr)
+                let longStr = location.coordinate.longitude
+                print("here is long =====>>>>",longStr)
+                let currentlocation = CLLocationCoordinate2D(latitude: latStr, longitude: longStr)
+                print("search result",currentlocation)
+                self.getPlaceAddressFrom(location: currentlocation) { address,line  in
+                    print("here is resultttt",address)
+                    print("here is address",line)
+                    if address != ""{
+                        self.locationTF.text =  address
+                    }else{
+                        let ArrayOfString =  line.first ?? ""
+                        self.locationTF.text = ArrayOfString
+                        }
+                    }
+                } else {
+                    print("Problem with the data received from geocoder")
+                }
+            })
+        locationManager.stopUpdatingLocation()
+    }
+    
 }

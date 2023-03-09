@@ -52,7 +52,6 @@ class ConnectViewController: UIViewController {
             self.jobLbl.backgroundColor = #colorLiteral(red: 0.2634587288, green: 0.6802290082, blue: 0.8391065001, alpha: 1)
             self.getConnectHitList()
             self.connectTableView.reloadData()
-
         }
     }
     @IBAction func companyAction(_ sender: UIButton) {
