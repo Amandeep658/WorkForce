@@ -722,7 +722,6 @@ extension SingleChatController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let chatModel = chatHistory[indexPath.row]
         let userLoginid  = UserDefaults.standard.string(forKey: "uID")
-        //        companyProfileDataArr?.data?.user_id ?? ""
         if chatModel.user_id ?? "" == userLoginid {
             if chatModel.message_type == "chat"{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "RightTableViewCell", for: indexPath) as! RightTableViewCell
