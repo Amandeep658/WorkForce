@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GRo-hJ-zs2">
-                    <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="50"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s5e-hO-905">
                             <rect key="frame" x="20" y="12" width="30" height="30"/>
@@ -63,7 +63,7 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VjF-bh-ffW">
-                    <rect key="frame" x="0.0" y="94" width="414" height="802"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="fqc-wx-R4h">
                             <rect key="frame" x="20" y="15" width="374" height="230"/>
@@ -72,7 +72,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="374" height="115"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Localização" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bz1-Op-o4y">
-                                            <rect key="frame" x="5" y="15" width="95.5" height="23"/>
+                                            <rect key="frame" x="5" y="10" width="95.5" height="28"/>
                                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -110,7 +110,7 @@
                                         <constraint firstItem="NYJ-hF-nBu" firstAttribute="leading" secondItem="2Qp-mb-xzk" secondAttribute="leading" constant="5" id="1nx-Bx-Fjq"/>
                                         <constraint firstItem="bz1-Op-o4y" firstAttribute="leading" secondItem="2Qp-mb-xzk" secondAttribute="leading" constant="5" id="Q63-7A-d3N"/>
                                         <constraint firstAttribute="height" constant="115" id="U2f-0J-dA7"/>
-                                        <constraint firstItem="bz1-Op-o4y" firstAttribute="top" secondItem="2Qp-mb-xzk" secondAttribute="top" constant="15" id="eDI-au-lyn"/>
+                                        <constraint firstItem="bz1-Op-o4y" firstAttribute="top" secondItem="2Qp-mb-xzk" secondAttribute="top" constant="10" id="eDI-au-lyn"/>
                                         <constraint firstAttribute="trailing" secondItem="NYJ-hF-nBu" secondAttribute="trailing" constant="15" id="sPY-xk-1Mj"/>
                                         <constraint firstItem="NYJ-hF-nBu" firstAttribute="top" secondItem="bz1-Op-o4y" secondAttribute="bottom" constant="10" id="wRa-w3-UzY"/>
                                     </constraints>

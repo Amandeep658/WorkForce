@@ -172,7 +172,6 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == jobTypePicker{
             self.jobTypeTF.text = self.jobType[row]
-//            self.professionalEditUserDict.job_type = jobTypeTF.text
         }else {
             selectedID = onlyYearValues[row]
         }

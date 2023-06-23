@@ -149,15 +149,15 @@ class ChatViewController: UIViewController {
         }else if ((getUserListAllUser[indexPath.row].chat_image!.contains(".jpg") || getUserListAllUser[indexPath.row].chat_image!.contains(".png")) && getUserListAllUser[indexPath.row].chat_video == ""){
             cell.lastselectNwImgVW.isHidden = false
             cell.lastselectNwImgVW.image = UIImage(named: "ic_photo_img")
-            cell.messageLbl.text = "image"
+            cell.messageLbl.text = "Photo"
         }else if getUserListAllUser[indexPath.row].chat_video != "" && getUserListAllUser[indexPath.row].chat_image!.contains(".png"){
             cell.lastselectNwImgVW.isHidden = false
             cell.lastselectNwImgVW.image = UIImage(named: "ic_video_img")
-            cell.messageLbl.text = "video"
+            cell.messageLbl.text = "Video"
         }else if (getUserListAllUser[indexPath.row].chat_image!.contains(".pdf") || getUserListAllUser[indexPath.row].chat_image!.contains(".doc")){
             cell.lastselectNwImgVW.isHidden = false
             cell.lastselectNwImgVW.image = UIImage(named: "ic_doc_img")
-            cell.messageLbl.text = "pdf"
+            cell.messageLbl.text = "Doc"
         }
         var sPhotoStr = getUserListAllUser[indexPath.row].photo ?? ""
         sPhotoStr = sPhotoStr.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) ?? ""

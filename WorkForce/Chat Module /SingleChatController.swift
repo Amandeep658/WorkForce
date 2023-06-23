@@ -209,7 +209,11 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
         self.videoArray.removeAll()
         self.thumbnailimgArray.removeAll()
         self.docArray.removeAll()
-        let alert = UIAlertController(title: AppAlertTitle.appName.rawValue, message: "Please Select an Option".localized(), preferredStyle: .actionSheet)
+        var alertStyle = UIAlertController.Style.actionSheet
+        if (UIDevice.current.userInterfaceIdiom == .pad) {
+          alertStyle = UIAlertController.Style.alert
+        }
+        let alert = UIAlertController(title: AppAlertTitle.appName.rawValue, message: "Please Select an Option".localized(), preferredStyle: alertStyle)
         alert.addAction(UIAlertAction(title: "Media".localized(), style: .default , handler:{ (UIAlertAction)in
             self.imgPicker?.present(from: sender)
         }))
@@ -239,7 +243,7 @@ class SingleChatController: UIViewController,UIImagePickerControllerDelegate,UIN
                     self.showSelectPreviewView.isHidden = true
                     self.showImgView.isHidden = true
                     self.showImageHeightConstant.constant = 0
-                    self.view.layoutIfNeeded()
+                    self.view.layoutIfNeeded() 
                 }
                 UpdateImageInTableView?()
             }else if ifSelectedDocument == "yes" && self.docArray.count != 0{

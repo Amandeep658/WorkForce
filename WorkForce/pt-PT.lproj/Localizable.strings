@@ -15,7 +15,7 @@
 "$50.00/Six Month" = "$50,00/seis meses";
 "$20.00/Six Month" = "$20,00/seis meses";
 
-"Cancel anytime" = "Cancele a qualquer momento, após seis meses";
+"Cancel anytime" = "Cancele a qualquer momento, após um ano";
 "per month" = "por mês";
 
 "CANCEl_SIX_20$_MONTH_SUBSCRIPTION" = "Cancele a qualquer momento, após seis meses $ 20,00 por mês.";
@@ -92,6 +92,7 @@
 "Logout" = "sair";
 
 "Are you sure you want to delete your account?" = "Tem certeza de que deseja excluir sua conta?";
+"Are you sure you want to logout ?" = "Tem certeza que deseja sair ?";
 "Yes" = "Sim";
 "No" = "não";
 "Email already registered" = "E-mail já registrado";
@@ -105,6 +106,10 @@
 "No Job found." = "Nenhum trabalho encontrado.";
 "Please enter job type." = "Insira o tipo de trabalho.";
 "Please enter city." = "Por favor, insira a cidade.";
+"Edit Profile" = "Editar Perfil";
+"Profile" = "Perfil";
+"What skills are you looking for?" = "Quais habilidades você pode oferecer?";
+"What professional Skills can you offer?" = "Quais habilidades profissionais você pode oferecer?";
 
 //TabBar
 "Home" = "Home";

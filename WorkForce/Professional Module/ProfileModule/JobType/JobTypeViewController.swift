@@ -15,7 +15,7 @@ class JobTypeViewController: UIViewController,UITextFieldDelegate,UIPickerViewDe
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var dropDownBtn: UIButton!
     
-    var jobType = ["Full Time".localized(), "Part Time".localized(), "Contract".localized(), "Freelance".localized(),"Remote".localized()]
+    var jobType = ["Full Time".localized(), "Part Time".localized(),"Freelance".localized(),"Contract".localized(),"Remote".localized()]
     var countdown = UIPickerView()
     var doneToolBar = UIToolbar()
     var professionalJobDict = [String:Any]()

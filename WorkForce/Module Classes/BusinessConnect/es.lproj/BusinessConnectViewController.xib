@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessConnectViewController" customModule="WorkForce" customModuleProvider="target">
             <connections>
-                <outlet property="connectSegmentControl" destination="gpz-G0-AyL" id="u2I-9Z-MWc"/>
+                <outlet property="connectSegmentControl" destination="DaE-VQ-Mhd" id="QIu-Gg-4wo"/>
                 <outlet property="connectTableView" destination="1FL-mp-RSi" id="atB-L3-t3Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,25 +27,23 @@
                         <constraint firstAttribute="height" constant="30" id="bli-Wx-zfT"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
                     <rect key="frame" x="0.0" y="30" width="414" height="60"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" springLoaded="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gpz-G0-AyL">
-                            <rect key="frame" x="2" y="14.5" width="410" height="32"/>
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="DaE-VQ-Mhd">
+                            <rect key="frame" x="-11.5" y="14.5" width="437" height="32"/>
                             <segments>
                                 <segment title="Profesionales gustadas"/>
                                 <segment title="Trabajos que le gustan al cliente"/>
                             </segments>
-                            <color key="selectedSegmentTintColor" red="0.22805979849999999" green="0.58245855570000005" blue="0.72041785719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="selectedSegmentTintColor" red="0.3058823645" green="0.56078433989999998" blue="0.69803923369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="06T-YT-yKr"/>
-                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerY" secondItem="IMi-af-ZdI" secondAttribute="centerY" id="310-Wc-DCH"/>
-                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerX" secondItem="IMi-af-ZdI" secondAttribute="centerX" id="ImU-nj-SYo"/>
-                        <constraint firstItem="gpz-G0-AyL" firstAttribute="leading" secondItem="IMi-af-ZdI" secondAttribute="leading" constant="2" id="mDk-be-5zk"/>
-                        <constraint firstAttribute="trailing" secondItem="gpz-G0-AyL" secondAttribute="trailing" constant="2" id="zta-iv-yuV"/>
+                        <constraint firstItem="DaE-VQ-Mhd" firstAttribute="centerY" secondItem="IMi-af-ZdI" secondAttribute="centerY" id="NgR-sc-Iyd"/>
+                        <constraint firstItem="DaE-VQ-Mhd" firstAttribute="centerX" secondItem="IMi-af-ZdI" secondAttribute="centerX" id="p8E-lQ-M5Y"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-mp-RSi">

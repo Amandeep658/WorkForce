@@ -50,12 +50,14 @@ class SkillsViewController: UIViewController, UITextFieldDelegate {
     
     func setView(){
         if UserType.userTypeInstance.userLogin == .Bussiness{
-            self.headerTextLabel.text = "What professional Skills are you looking for?".localized()
+            self.headerTextLabel.text = "What skills are you looking for?".localized()
         }else{
             self.headerTextLabel.text = "What professional Skills can you offer?".localized()
         }
         categoryView.layer.borderWidth = 1
         categoryView.layer.borderColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
+        self.categoryTF2.isHidden = true
+        self.categoryTF.isHidden = true
     }
     
     //   MARK: VALIDATION
@@ -124,12 +126,16 @@ class SkillsViewController: UIViewController, UITextFieldDelegate {
 
 extension SkillsViewController : ListSelectionDelegate{
     func UserDidSelectList(data: [CategoryData]) {
+        self.categoryTF.isHidden = false
         self.categoryTF.text = data.first?.category_name ?? ""
+        
         if data.count > 1{
             self.categoryTF2.text = data.last?.category_name ?? ""
+            self.categoryTF2.isHidden = false
         }
         else{
             self.categoryTF2.text = ""
+            self.categoryTF2.isHidden = true
         }
         self.professionalUserDict.catagory_details = data
     }

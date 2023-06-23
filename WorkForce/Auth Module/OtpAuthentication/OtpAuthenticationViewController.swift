@@ -302,7 +302,6 @@ class OtpAuthenticationViewController: UIViewController, UITextFieldDelegate, UI
                 let credential = PhoneAuthProvider.provider().credential(
                     withVerificationID: verificationID ?? "0",
                     verificationCode: verifyOTP)
-                print(verifyOTP)
                 Auth.auth().signIn(with: credential) { (success, error) in
                     if error == nil{
                         print(success ?? "")

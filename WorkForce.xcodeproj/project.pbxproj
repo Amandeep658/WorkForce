@@ -302,6 +302,9 @@
 		18CE1B7B2892670700498AF5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CE1B7A2892670700498AF5 /* StoreKit.framework */; };
 		18CE1B7E28926EF400498AF5 /* IAPHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE1B7D28926EF400498AF5 /* IAPHelper.swift */; };
 		18CE1B80289275ED00498AF5 /* WorkforceProducts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CE1B7F289275ED00498AF5 /* WorkforceProducts.swift */; };
+		18CF41F42A4310DF00944BA9 /* invoicelistCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CF41F22A4310DF00944BA9 /* invoicelistCells.swift */; };
+		18CF41F52A4310DF00944BA9 /* invoicelistCells.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF41F32A4310DF00944BA9 /* invoicelistCells.xib */; };
+		18CF41F62A4319E400944BA9 /* NewEstimateAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18CF41F82A4319E400944BA9 /* NewEstimateAddressVC.xib */; };
 		18D6B7FF28FEBC6D0026D496 /* ImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6B7FD28FEBC6D0026D496 /* ImageListCell.swift */; };
 		18D6B80028FEBC6E0026D496 /* ImageListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D6B7FE28FEBC6D0026D496 /* ImageListCell.xib */; };
 		18D6B80328FEC4B10026D496 /* leftImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D6B80128FEC4B10026D496 /* leftImageListCell.swift */; };
@@ -322,6 +325,11 @@
 		18ECB70C2829431A00F7BD52 /* SetFilterCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18ECB70A2829431A00F7BD52 /* SetFilterCollectionViewCell.xib */; };
 		18F02A0C2885711600EFE138 /* BusinessHomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F02A0B2885711600EFE138 /* BusinessHomeModule.swift */; };
 		18F02A0F288580FB00EFE138 /* ProfessionalhomeModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F02A0E288580FB00EFE138 /* ProfessionalhomeModule.swift */; };
+		18F1B4882A41B9D0004B6979 /* InvoiceSearchVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F1B48A2A41B9D0004B6979 /* InvoiceSearchVC.xib */; };
+		18F1B4972A41BE96004B6979 /* NewEstimateAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1B4952A41BE96004B6979 /* NewEstimateAddressVC.swift */; };
+		18F1C2332A3C32F60005762E /* InvoiceListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1C2312A3C32F60005762E /* InvoiceListVC.swift */; };
+		18F1C2472A3C39D30005762E /* InvoiceListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18F1C2452A3C39D30005762E /* InvoiceListVC.xib */; };
+		18F1C2512A3C47A30005762E /* InvoiceSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F1C24F2A3C47A30005762E /* InvoiceSearchVC.swift */; };
 		18FB209128C5D80F00EE4ADD /* ConnectListDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FB209328C5D80F00EE4ADD /* ConnectListDetailVC.xib */; };
 		18FB209A28C5D89B00EE4ADD /* CoustomerConnectVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FB209C28C5D89B00EE4ADD /* CoustomerConnectVC.xib */; };
 		18FB20A328C5D8EB00EE4ADD /* CustomerSearchDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18FB20A528C5D8EB00EE4ADD /* CustomerSearchDetailVC.xib */; };
@@ -893,6 +901,12 @@
 		18CE1B7A2892670700498AF5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		18CE1B7D28926EF400498AF5 /* IAPHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPHelper.swift; sourceTree = "<group>"; };
 		18CE1B7F289275ED00498AF5 /* WorkforceProducts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkforceProducts.swift; sourceTree = "<group>"; };
+		18CF41F22A4310DF00944BA9 /* invoicelistCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = invoicelistCells.swift; sourceTree = "<group>"; };
+		18CF41F32A4310DF00944BA9 /* invoicelistCells.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = invoicelistCells.xib; sourceTree = "<group>"; };
+		18CF41F72A4319E400944BA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/NewEstimateAddressVC.xib; sourceTree = "<group>"; };
+		18CF41FB2A4319F000944BA9 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/NewEstimateAddressVC.xib; sourceTree = "<group>"; };
+		18CF41FE2A4319F600944BA9 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/NewEstimateAddressVC.xib"; sourceTree = "<group>"; };
+		18CF42012A4319FC00944BA9 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/NewEstimateAddressVC.xib; sourceTree = "<group>"; };
 		18D6B7FD28FEBC6D0026D496 /* ImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageListCell.swift; sourceTree = "<group>"; };
 		18D6B7FE28FEBC6D0026D496 /* ImageListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageListCell.xib; sourceTree = "<group>"; };
 		18D6B80128FEC4B10026D496 /* leftImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leftImageListCell.swift; sourceTree = "<group>"; };
@@ -952,6 +966,18 @@
 		18ECB70A2829431A00F7BD52 /* SetFilterCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFilterCollectionViewCell.xib; sourceTree = "<group>"; };
 		18F02A0B2885711600EFE138 /* BusinessHomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessHomeModule.swift; sourceTree = "<group>"; };
 		18F02A0E288580FB00EFE138 /* ProfessionalhomeModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionalhomeModule.swift; sourceTree = "<group>"; };
+		18F1B4892A41B9D0004B6979 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InvoiceSearchVC.xib; sourceTree = "<group>"; };
+		18F1B48D2A41B9DC004B6979 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InvoiceSearchVC.xib; sourceTree = "<group>"; };
+		18F1B4902A41B9E3004B6979 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/InvoiceSearchVC.xib"; sourceTree = "<group>"; };
+		18F1B4932A41B9EA004B6979 /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/InvoiceSearchVC.xib; sourceTree = "<group>"; };
+		18F1B4952A41BE96004B6979 /* NewEstimateAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEstimateAddressVC.swift; sourceTree = "<group>"; };
+		18F1C2312A3C32F60005762E /* InvoiceListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListVC.swift; sourceTree = "<group>"; };
+		18F1C2462A3C39D30005762E /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/InvoiceListVC.xib"; sourceTree = "<group>"; };
+		18F1C2482A3C3A2D0005762E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/InvoiceListVC.xib; sourceTree = "<group>"; };
+		18F1C24A2A3C3A410005762E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/InvoiceListVC.xib; sourceTree = "<group>"; };
+		18F1C24C2A3C3A490005762E /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/InvoiceListVC.xib; sourceTree = "<group>"; };
+		18F1C24F2A3C47A30005762E /* InvoiceSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceSearchVC.swift; sourceTree = "<group>"; };
+		18F8C44929DEA9A9000F33E8 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BusinessChatViewController.xib"; sourceTree = "<group>"; };
 		18FB209228C5D80F00EE4ADD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ConnectListDetailVC.xib; sourceTree = "<group>"; };
 		18FB209628C5D82500EE4ADD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ConnectListDetailVC.xib; sourceTree = "<group>"; };
 		18FB209928C5D83700EE4ADD /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/ConnectListDetailVC.xib; sourceTree = "<group>"; };
@@ -1280,6 +1306,7 @@
 			children = (
 				188F15372865C98D000D96D1 /* WorkForce.entitlements */,
 				188F151B2865927C000D96D1 /* Initiate Classes */,
+				18F1C22D2A3C26620005762E /* InvoiceFeature */,
 				188F14F028658A58000D96D1 /* Constant Files */,
 				1809E54A2869B08400AE294B /* Models */,
 				1896FBC928AE59D800DC8A07 /* Chat Module  */,
@@ -2162,6 +2189,25 @@
 			path = "In-App Purchase";
 			sourceTree = "<group>";
 		};
+		18CF41F02A43107C00944BA9 /* BusinessInvoiceCells */ = {
+			isa = PBXGroup;
+			children = (
+				18CF41F22A4310DF00944BA9 /* invoicelistCells.swift */,
+				18CF41F32A4310DF00944BA9 /* invoicelistCells.xib */,
+			);
+			path = BusinessInvoiceCells;
+			sourceTree = "<group>";
+		};
+		18CF41F12A43108A00944BA9 /* InvoiceView */ = {
+			isa = PBXGroup;
+			children = (
+				18F1B4942A41BE5B004B6979 /* NewEstimateAddressView */,
+				18F1C24E2A3C476F0005762E /* InvoiceSearchView */,
+				18F1C2302A3C32C70005762E /* InvoiceListView */,
+			);
+			path = InvoiceView;
+			sourceTree = "<group>";
+		};
 		18DBBD7F282509440047A42D /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2279,6 +2325,66 @@
 				188D0785288D6147000861A5 /* NotificationModel.swift */,
 			);
 			path = ProfessionalModule;
+			sourceTree = "<group>";
+		};
+		18F1B4942A41BE5B004B6979 /* NewEstimateAddressView */ = {
+			isa = PBXGroup;
+			children = (
+				18F1B4952A41BE96004B6979 /* NewEstimateAddressVC.swift */,
+				18CF41F82A4319E400944BA9 /* NewEstimateAddressVC.xib */,
+			);
+			path = NewEstimateAddressView;
+			sourceTree = "<group>";
+		};
+		18F1C22D2A3C26620005762E /* InvoiceFeature */ = {
+			isa = PBXGroup;
+			children = (
+				18F1C22F2A3C26970005762E /* ProfessionalInvoice */,
+				18F1C22E2A3C26760005762E /* BusinessInvoice */,
+			);
+			path = InvoiceFeature;
+			sourceTree = "<group>";
+		};
+		18F1C22E2A3C26760005762E /* BusinessInvoice */ = {
+			isa = PBXGroup;
+			children = (
+				18CF41F12A43108A00944BA9 /* InvoiceView */,
+				18CF41F02A43107C00944BA9 /* BusinessInvoiceCells */,
+			);
+			path = BusinessInvoice;
+			sourceTree = "<group>";
+		};
+		18F1C22F2A3C26970005762E /* ProfessionalInvoice */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ProfessionalInvoice;
+			sourceTree = "<group>";
+		};
+		18F1C2302A3C32C70005762E /* InvoiceListView */ = {
+			isa = PBXGroup;
+			children = (
+				18F1C24D2A3C47680005762E /* New Group */,
+				18F1C2312A3C32F60005762E /* InvoiceListVC.swift */,
+				18F1C2452A3C39D30005762E /* InvoiceListVC.xib */,
+			);
+			path = InvoiceListView;
+			sourceTree = "<group>";
+		};
+		18F1C24D2A3C47680005762E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		18F1C24E2A3C476F0005762E /* InvoiceSearchView */ = {
+			isa = PBXGroup;
+			children = (
+				18F1C24F2A3C47A30005762E /* InvoiceSearchVC.swift */,
+				18F1B48A2A41B9D0004B6979 /* InvoiceSearchVC.xib */,
+			);
+			path = InvoiceSearchView;
 			sourceTree = "<group>";
 		};
 		7C1277012836031700044746 /* Skill Table */ = {
@@ -2637,6 +2743,7 @@
 				1819BEA628C5D6D70020A5C5 /* RecoveryEmailVC.xib in Resources */,
 				1816215A28A124E200743DE4 /* customerConnectListCell.xib in Resources */,
 				18589164282CE2C800655F79 /* EditProfileTableViewCell.xib in Resources */,
+				18CF41F52A4310DF00944BA9 /* invoicelistCells.xib in Resources */,
 				18851F0B28C21AFC001BF3C0 /* BusinessesViewController.xib in Resources */,
 				182C485528C73AAE002ED54D /* OtpAuthenticationViewController.xib in Resources */,
 				18A0FEE628C34EDE00FE41BF /* CityViewController.xib in Resources */,
@@ -2670,6 +2777,7 @@
 				18A0FF1E28C3601C00FE41BF /* ChatViewController.xib in Resources */,
 				1819BDF628C5CA460020A5C5 /* BusinessHmVC.xib in Resources */,
 				7C127706283604A400044746 /* SkillTableTableViewCell.xib in Resources */,
+				18F1B4882A41B9D0004B6979 /* InvoiceSearchVC.xib in Resources */,
 				7C4257392847D8AD003FE968 /* YearOfExpTableViewCell.xib in Resources */,
 				18FB20C728C5DBDE00EE4ADD /* CoustomerFullNameVC.xib in Resources */,
 				18FB210628C5DE4400EE4ADD /* ITServicesViewController.xib in Resources */,
@@ -2679,6 +2787,7 @@
 				18ECB70C2829431A00F7BD52 /* SetFilterCollectionViewCell.xib in Resources */,
 				18A89F3828893B77004B2F93 /* LeftTableViewCell.xib in Resources */,
 				18A0FE8128C337DC00FE41BF /* SearchDetailVC.xib in Resources */,
+				18F1C2472A3C39D30005762E /* InvoiceListVC.xib in Resources */,
 				7C976650282CFEA300336F43 /* EditProfileFooterView.xib in Resources */,
 				18FB20B528C5DA5200EE4ADD /* CustomerHomeVC.xib in Resources */,
 				18A0FF4B28C36D9A00FE41BF /* JobPhotoViewController.xib in Resources */,
@@ -2701,6 +2810,7 @@
 				18906ABC28C60EA800BF13ED /* Localizable.strings in Resources */,
 				1838C8BB2822837F004A6FE7 /* Main.storyboard in Resources */,
 				1819BDDB28C5C8640020A5C5 /* ConnectJobListNotificationVC.xib in Resources */,
+				18CF41F62A4319E400944BA9 /* NewEstimateAddressVC.xib in Resources */,
 				1819BE7628C5D15F0020A5C5 /* CustomerSkillVC.xib in Resources */,
 				1819BE8828C5D3840020A5C5 /* VerifyEmailVC.xib in Resources */,
 				180F173A28C7727D0062C3EE /* CoustomerChatVC.xib in Resources */,
@@ -2858,6 +2968,7 @@
 				7C4912022834D9BB00F931A0 /* CityViewController.swift in Sources */,
 				18B31D192845D5A8002B79F1 /* ESTabBarItemBadgeView.swift in Sources */,
 				18B31D1A2845D5A8002B79F1 /* ESTabBar.swift in Sources */,
+				18F1B4972A41BE96004B6979 /* NewEstimateAddressVC.swift in Sources */,
 				185574C22823B24800AFB18E /* UITextField+Custom.swift in Sources */,
 				18B31D1B2845D5A8002B79F1 /* ESTabBarItemContainer.swift in Sources */,
 				18D6B7FF28FEBC6D0026D496 /* ImageListCell.swift in Sources */,
@@ -2865,6 +2976,7 @@
 				18A7DDD3288F267400AE9729 /* CustomerHomeVC.swift in Sources */,
 				181B6CB6282A568B008B2D0A /* FooterCollectionReusableView.swift in Sources */,
 				7C1276FE2836030400044746 /* SkillTableViewController.swift in Sources */,
+				18CF41F42A4310DF00944BA9 /* invoicelistCells.swift in Sources */,
 				185574B72823B24800AFB18E /* Array+Custom.swift in Sources */,
 				188F14F928659213000D96D1 /* CustomDatePicker.swift in Sources */,
 				18A8EB5B2844EEEA005F0DE4 /* ChatModel.swift in Sources */,
@@ -2930,6 +3042,7 @@
 				18B31D0E2845D5A8002B79F1 /* ExampleBouncesContentView.swift in Sources */,
 				7C43EEA5283676D600095170 /* BusinessEditProfileViewController.swift in Sources */,
 				188F14F228658A70000D96D1 /* AppIBDesignableUI.swift in Sources */,
+				18F1C2512A3C47A30005762E /* InvoiceSearchVC.swift in Sources */,
 				188F711B2897C147005250DC /* RequestManager.swift in Sources */,
 				7C4257382847D8AD003FE968 /* YearOfExpTableViewCell.swift in Sources */,
 				185574C32823B24800AFB18E /* UIViewController+Custom.swift in Sources */,
@@ -2980,6 +3093,7 @@
 				7C48B445283395D000E4C5B1 /* BusinessConnectViewController.swift in Sources */,
 				1899D88F28817DFB009D80DB /* ITServicesModel.swift in Sources */,
 				188F150C2865921E000D96D1 /* GoogleManager.swift in Sources */,
+				18F1C2332A3C32F60005762E /* InvoiceListVC.swift in Sources */,
 				1826212E28F81E29008922A1 /* GalleryVC.swift in Sources */,
 				18BBFF57286BA193007CBD39 /* ProfessionalProfileVC.swift in Sources */,
 				1826213F28F83DA7008922A1 /* PickerViewData.swift in Sources */,
@@ -3674,6 +3788,7 @@
 				18A0FF1628C35F1800FE41BF /* Base */,
 				18A0FF1A28C35F2800FE41BF /* en */,
 				18A0FF1D28C35F3200FE41BF /* es */,
+				18F8C44929DEA9A9000F33E8 /* pt-PT */,
 			);
 			name = BusinessChatViewController.xib;
 			sourceTree = "<group>";
@@ -3863,6 +3978,39 @@
 				18B4386C28C73D9C00B20166 /* pt-PT */,
 			);
 			name = LogInViewController.xib;
+			sourceTree = "<group>";
+		};
+		18CF41F82A4319E400944BA9 /* NewEstimateAddressVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18CF41F72A4319E400944BA9 /* Base */,
+				18CF41FB2A4319F000944BA9 /* en */,
+				18CF41FE2A4319F600944BA9 /* pt-PT */,
+				18CF42012A4319FC00944BA9 /* es */,
+			);
+			name = NewEstimateAddressVC.xib;
+			sourceTree = "<group>";
+		};
+		18F1B48A2A41B9D0004B6979 /* InvoiceSearchVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F1B4892A41B9D0004B6979 /* Base */,
+				18F1B48D2A41B9DC004B6979 /* en */,
+				18F1B4902A41B9E3004B6979 /* pt-PT */,
+				18F1B4932A41B9EA004B6979 /* es */,
+			);
+			name = InvoiceSearchVC.xib;
+			sourceTree = "<group>";
+		};
+		18F1C2452A3C39D30005762E /* InvoiceListVC.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				18F1C2462A3C39D30005762E /* pt-PT */,
+				18F1C2482A3C3A2D0005762E /* Base */,
+				18F1C24A2A3C3A410005762E /* en */,
+				18F1C24C2A3C3A490005762E /* es */,
+			);
+			name = InvoiceListVC.xib;
 			sourceTree = "<group>";
 		};
 		18FB209328C5D80F00EE4ADD /* ConnectListDetailVC.xib */ = {
@@ -4106,7 +4254,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -4162,7 +4310,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -4181,7 +4329,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 12;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
@@ -4211,7 +4359,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

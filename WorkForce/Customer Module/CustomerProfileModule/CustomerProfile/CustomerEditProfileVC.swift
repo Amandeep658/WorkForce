@@ -43,6 +43,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     @IBOutlet weak var customerUploadBtn: UIButton!
     @IBOutlet weak var editImgView: UIImageView!
     @IBOutlet weak var currentLocationBtn: UIButton!
+    @IBOutlet weak var headerlbl: UILabel!
     
     let datePicker = UIDatePicker()
     var imagePicker : ImagePicker?
@@ -60,6 +61,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.headerlbl.text = "Profile".localized()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -217,6 +219,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     
     //    MARK: UN HIDE UIUPDATE
     func editUnHideUiUpdate(){
+        self.headerlbl.text = "Edit Profile".localized()
         self.customerUploadBtn.isHidden = false
         self.btnSave.isHidden = false
         self.orLbl.isHidden = false

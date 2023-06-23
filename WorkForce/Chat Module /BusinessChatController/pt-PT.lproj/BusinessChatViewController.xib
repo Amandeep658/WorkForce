@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessChatViewController" customModule="WorkForce" customModuleProvider="target">
+            <connections>
+                <outlet property="chatTableView" destination="TvM-vr-tvL" id="mLW-4I-h9L"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEL-km-a4X">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="8O8-BF-0cZ"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7i-gl-RLU">
+                    <rect key="frame" x="0.0" y="48" width="414" height="60"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgl-fo-FRi">
+                            <rect key="frame" x="182" y="10" width="50" height="28"/>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D89-gn-jAF">
+                            <rect key="frame" x="0.0" y="46" width="414" height="2"/>
+                            <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="pWn-HR-2SR"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="vgl-fo-FRi" firstAttribute="centerX" secondItem="B7i-gl-RLU" secondAttribute="centerX" id="4nM-Eg-W3q"/>
+                        <constraint firstAttribute="trailing" secondItem="D89-gn-jAF" secondAttribute="trailing" id="7OJ-i6-EVx"/>
+                        <constraint firstAttribute="height" constant="60" id="FQb-RC-p10"/>
+                        <constraint firstItem="D89-gn-jAF" firstAttribute="leading" secondItem="B7i-gl-RLU" secondAttribute="leading" id="S9U-1c-5e9"/>
+                        <constraint firstItem="D89-gn-jAF" firstAttribute="top" secondItem="vgl-fo-FRi" secondAttribute="bottom" constant="8" id="cg7-O6-Au0"/>
+                        <constraint firstItem="vgl-fo-FRi" firstAttribute="top" secondItem="B7i-gl-RLU" secondAttribute="top" constant="10" id="wJb-2G-TrK"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TvM-vr-tvL">
+                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="TvM-vr-tvL" firstAttribute="top" secondItem="B7i-gl-RLU" secondAttribute="bottom" id="B4b-zv-isO"/>
+                <constraint firstItem="AEL-km-a4X" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="CKd-WM-B3X"/>
+                <constraint firstAttribute="bottom" secondItem="TvM-vr-tvL" secondAttribute="bottom" id="Gc4-jM-1Po"/>
+                <constraint firstItem="B7i-gl-RLU" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="Mcg-Fg-4Ar"/>
+                <constraint firstItem="TvM-vr-tvL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Piw-pc-DPh"/>
+                <constraint firstItem="TvM-vr-tvL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="cYF-YR-PqQ"/>
+                <constraint firstItem="AEL-km-a4X" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j6a-db-Wdu"/>
+                <constraint firstItem="AEL-km-a4X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="q64-Kg-ce3"/>
+                <constraint firstItem="B7i-gl-RLU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="tbC-Yn-Y4z"/>
+                <constraint firstItem="B7i-gl-RLU" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="yir-BQ-B0M"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140.57971014492756" y="64.955357142857139"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
-        } else {
+        }else{
             let settings: UIUserNotificationSettings =
             UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
@@ -45,16 +45,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         self.setupIAP()
         let sddssdsd = getLenguage()
         print(sddssdsd)
-        
-//        if let currentLanguage = Locale.currentLanguage {
-//            print(currentLanguage.rawValue)
-//            // Your code here.
-//        }
-       checkLen()
+        checkLen()
         return true
     }
-    
-    
     
     func checkLen() {
         let lan = NSLocale.preferredLanguages.first
@@ -190,10 +183,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        let deviceTokenString = deviceToken.map { String(format: "%02x", $0) }.joined()
-        print("device token is \(deviceTokenString)")
+        let deviceTokenString = deviceToken.map {String(format: "%02x", $0)}.joined()
         AppDefaults.deviceToken = deviceToken.hexString
-        Auth.auth().setAPNSToken(deviceToken, type: .prod)
+        Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
     }
     
     
@@ -334,28 +326,23 @@ extension Locale {
     
     static var currentLanguage: LanguageSet? {
         guard let code = preferredLanguages.first?.components(separatedBy: "-").last else {
-            
             print("could not detect language code")
-            
             return nil
         }
         
         guard let rawValue = enLocale.localizedString(forLanguageCode: code) else {
-            
             print("could not localize language code")
-            
             return nil
         }
         
-        if #available(iOS 16, *) {
+//        if #available(iOS 16, *) {
             guard let languageValid = LanguageSet(rawValue: rawValue) else {
                 print("could not init language from raw value")
-                
                 return nil
             }
-        } else {
-            // Fallback on earlier versions
-        }
+//        } else {
+//            // Fallback on earlier versions
+//        }
         print("language: \(code)-\(rawValue)")
         
         return self.currentLanguage

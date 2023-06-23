@@ -216,7 +216,7 @@ class SetFilterVC: UIViewController,UITextFieldDelegate,UIPickerViewDelegate, UI
                 let message = aContact.message ?? ""
                 if status == 1{
                     self.categoryArr = aContact.data!
-                    self.categoryTF.text =  self.categoryArr.first?.category_name ?? ""
+//                    self.categoryTF.text =  self.categoryArr.first?.category_name ?? ""
                 }
                 else{
                     alert(AppAlertTitle.appName.rawValue, message: message, view: self)
@@ -279,6 +279,7 @@ extension SetFilterVC : UICollectionViewDelegate,UICollectionViewDataSource,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        return CGSize(width: viewModel.jobTypes[indexPath.item].title!.size(withAttributes: [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17)]).width + 10, height: collectionView.frame.height/2.5)
         return CGSize(width: collectionView.frame.width/3, height: collectionView.frame.height/2.5)
     }
     

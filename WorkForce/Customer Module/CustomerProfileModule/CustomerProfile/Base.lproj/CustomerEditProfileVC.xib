@@ -26,6 +26,7 @@
                 <outlet property="editImgView" destination="4Dh-BA-9Ep" id="z7f-1Q-AvO"/>
                 <outlet property="firstNameTF" destination="hcF-F2-yZy" id="fae-MJ-PuO"/>
                 <outlet property="firstNameView" destination="TPw-yZ-lZy" id="Gsr-3C-WaW"/>
+                <outlet property="headerlbl" destination="6PW-Jl-5it" id="S0n-gU-fpz"/>
                 <outlet property="lastNameTF" destination="7xw-cM-yaZ" id="lPV-yJ-rdi"/>
                 <outlet property="lastNameView" destination="g59-n4-XIU" id="iLh-1Z-dPz"/>
                 <outlet property="locationTF" destination="9UR-F3-88z" id="3iB-Gb-RES"/>

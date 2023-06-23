@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -33,10 +33,10 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B7i-gl-RLU">
-                    <rect key="frame" x="0.0" y="44" width="414" height="60"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="60"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chat" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vgl-fo-FRi">
-                            <rect key="frame" x="170" y="10" width="46" height="28"/>
+                            <rect key="frame" x="184" y="10" width="46" height="28"/>
                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -54,16 +54,16 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="vgl-fo-FRi" firstAttribute="leading" secondItem="B7i-gl-RLU" secondAttribute="leading" constant="170" id="6Xd-ru-5uP"/>
                         <constraint firstAttribute="trailing" secondItem="D89-gn-jAF" secondAttribute="trailing" id="7OJ-i6-EVx"/>
                         <constraint firstAttribute="height" constant="60" id="FQb-RC-p10"/>
                         <constraint firstItem="D89-gn-jAF" firstAttribute="leading" secondItem="B7i-gl-RLU" secondAttribute="leading" id="S9U-1c-5e9"/>
                         <constraint firstItem="D89-gn-jAF" firstAttribute="top" secondItem="vgl-fo-FRi" secondAttribute="bottom" constant="8" id="cg7-O6-Au0"/>
+                        <constraint firstItem="vgl-fo-FRi" firstAttribute="centerX" secondItem="B7i-gl-RLU" secondAttribute="centerX" id="dAY-eA-BJK"/>
                         <constraint firstItem="vgl-fo-FRi" firstAttribute="top" secondItem="B7i-gl-RLU" secondAttribute="top" constant="10" id="wJb-2G-TrK"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="TvM-vr-tvL">
-                    <rect key="frame" x="0.0" y="104" width="414" height="792"/>
+                    <rect key="frame" x="0.0" y="108" width="414" height="788"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </tableView>
             </subviews>

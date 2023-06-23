@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BusinessConnectViewController" customModule="WorkForce" customModuleProvider="target">
             <connections>
-                <outlet property="connectSegmentControl" destination="gpz-G0-AyL" id="u2I-9Z-MWc"/>
+                <outlet property="connectSegmentControl" destination="Yb2-T9-dzt" id="Q8P-S2-h3R"/>
                 <outlet property="connectTableView" destination="1FL-mp-RSi" id="atB-L3-t3Z"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,23 +27,23 @@
                         <constraint firstAttribute="height" constant="30" id="bli-Wx-zfT"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IMi-af-ZdI">
                     <rect key="frame" x="0.0" y="30" width="414" height="60"/>
                     <subviews>
-                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gpz-G0-AyL">
+                        <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Yb2-T9-dzt">
                             <rect key="frame" x="57.5" y="14.5" width="299" height="32"/>
                             <segments>
                                 <segment title="Liked Professionals"/>
-                                <segment title="Customer Liked Jobs"/>
+                                <segment title="Liked Customer Jobs"/>
                             </segments>
-                            <color key="selectedSegmentTintColor" red="0.22805979849999999" green="0.58245855570000005" blue="0.72041785719999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="selectedSegmentTintColor" red="0.3058823645" green="0.56078433989999998" blue="0.69803923369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </segmentedControl>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="06T-YT-yKr"/>
-                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerY" secondItem="IMi-af-ZdI" secondAttribute="centerY" id="310-Wc-DCH"/>
-                        <constraint firstItem="gpz-G0-AyL" firstAttribute="centerX" secondItem="IMi-af-ZdI" secondAttribute="centerX" id="ImU-nj-SYo"/>
+                        <constraint firstItem="Yb2-T9-dzt" firstAttribute="centerY" secondItem="IMi-af-ZdI" secondAttribute="centerY" id="54h-Cc-zTf"/>
+                        <constraint firstItem="Yb2-T9-dzt" firstAttribute="centerX" secondItem="IMi-af-ZdI" secondAttribute="centerX" id="VbP-Ki-SY2"/>
+                        <constraint firstAttribute="height" constant="60" id="fm6-dN-bai"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1FL-mp-RSi">
@@ -56,13 +56,13 @@
             <constraints>
                 <constraint firstItem="1FL-mp-RSi" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="1Y7-TC-LxR"/>
                 <constraint firstAttribute="bottom" secondItem="1FL-mp-RSi" secondAttribute="bottom" id="DRp-UC-C9t"/>
-                <constraint firstItem="IMi-af-ZdI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="MwD-YW-TpF"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="SIP-ed-agj"/>
                 <constraint firstItem="lpn-3i-Kcs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Wmx-Pt-JG5"/>
                 <constraint firstItem="lpn-3i-Kcs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wxj-UN-cBq"/>
-                <constraint firstItem="IMi-af-ZdI" firstAttribute="top" secondItem="lpn-3i-Kcs" secondAttribute="bottom" id="eWi-5T-gsd"/>
-                <constraint firstItem="IMi-af-ZdI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="g5D-yl-YWb"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="top" secondItem="lpn-3i-Kcs" secondAttribute="bottom" id="YeJ-bA-9dh"/>
+                <constraint firstItem="1FL-mp-RSi" firstAttribute="top" secondItem="IMi-af-ZdI" secondAttribute="bottom" id="jnp-Bv-mZ3"/>
+                <constraint firstItem="IMi-af-ZdI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="mEX-V0-90s"/>
                 <constraint firstItem="1FL-mp-RSi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="mcJ-vP-Z3M"/>
-                <constraint firstItem="1FL-mp-RSi" firstAttribute="top" secondItem="IMi-af-ZdI" secondAttribute="bottom" id="q61-Po-KWV"/>
                 <constraint firstItem="lpn-3i-Kcs" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="yvk-G8-pIF"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

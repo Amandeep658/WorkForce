@@ -10,7 +10,7 @@
 "$50.00/Six Month" = "$50.00/Six Month";
 "$20.00/Six Month" = "$20.00/Six Month";
 
-"Cancel anytime" = "Cancel anytime, after six months";
+"Cancel anytime" = "Cancel anytime, after one Year";
 "per month" = "per month";
 
 "Upload 1 photo" = "Upload 1 photo";
@@ -56,6 +56,7 @@
 "Per Day" = "Per Day";
 "Per Hour" = "Per Hour";
 "Check internet connection" = "Check internet connection";
+"What skills are you looking for?" = "What skills are you looking for?";
 "0 Year" = "0 Year";
 "Media" = "Media";
 "Document" = "Document";
@@ -83,6 +84,7 @@
 "Delete Account" = "Delete Account";
 "Logout" = "Logout";
 "Are you sure you want to delete your account?" = "Are you sure you want to delete you account?";
+"Are you sure you want to logout ?" = "Are you sure you want to logout ?";
 "Yes" = "Yes";
 "No" = "No";
 "Done" = "Done";
@@ -98,6 +100,9 @@
 "Please enter job type." = "Please enter job type.";
 "Please enter city." = "Please enter city.";
 "Customers Opportunity" = "Customers Opportunity";
+"Edit Profile" = "Edit Profile";
+"Profile" = "Profile";
+"What professional Skills can you offer?" = "What professional Skills can you offer?";
 
 //TabBar
 "Home" = "Home";

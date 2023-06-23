@@ -28,7 +28,6 @@ class BusinessConnectViewController: UIViewController {
         super.viewWillAppear(true)
         self.tabBarController?.tabBar.isHidden = false
         self.connectSegmentControl.selectedSegmentIndex = self.currentIndex
-        print("currentIndex **********>>>>>>>",currentIndex)
         if connectSegmentControl.selectedSegmentIndex == 0{
             self.getConnectHitList()
             self.connectTableView.reloadData()

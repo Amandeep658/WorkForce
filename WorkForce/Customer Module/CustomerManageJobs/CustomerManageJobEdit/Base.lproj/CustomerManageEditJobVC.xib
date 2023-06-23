@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -43,11 +43,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Laf-UR-0CZ">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bqJ-Up-CvA">
-                    <rect key="frame" x="0.0" y="44" width="414" height="40"/>
+                    <rect key="frame" x="0.0" y="48" width="414" height="40"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VnB-79-ciP">
                             <rect key="frame" x="15" y="4" width="32" height="32"/>
@@ -93,10 +93,10 @@
                     </constraints>
                 </view>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo1-bU-OdP">
-                    <rect key="frame" x="0.0" y="84" width="414" height="812"/>
+                    <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Iq-3x-XKb">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="1012"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="1008"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZI2-pd-0as">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
@@ -405,7 +405,7 @@
                                                     <rect key="frame" x="5" y="42" width="369" height="120"/>
                                                     <subviews>
                                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mAQ-cu-TYU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="369" height="120"/>
+                                                            <rect key="frame" x="10" y="0.0" width="349" height="120"/>
                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                             <color key="textColor" systemColor="labelColor"/>
@@ -415,10 +415,10 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="mAQ-cu-TYU" secondAttribute="trailing" id="4pa-Mn-MvC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="mAQ-cu-TYU" secondAttribute="trailing" constant="10" id="4pa-Mn-MvC"/>
                                                         <constraint firstItem="mAQ-cu-TYU" firstAttribute="top" secondItem="shD-oo-SDE" secondAttribute="top" id="AA6-Re-Ysb"/>
                                                         <constraint firstAttribute="bottom" secondItem="mAQ-cu-TYU" secondAttribute="bottom" id="Tuq-ls-HI1"/>
-                                                        <constraint firstItem="mAQ-cu-TYU" firstAttribute="leading" secondItem="shD-oo-SDE" secondAttribute="leading" id="Ubw-qr-csX"/>
+                                                        <constraint firstItem="mAQ-cu-TYU" firstAttribute="leading" secondItem="shD-oo-SDE" secondAttribute="leading" constant="10" id="Ubw-qr-csX"/>
                                                         <constraint firstAttribute="height" constant="120" id="gie-R8-4re"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -519,7 +519,7 @@
         <image name="cm-1" width="59" height="59"/>
         <image name="nike" width="132" height="130"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

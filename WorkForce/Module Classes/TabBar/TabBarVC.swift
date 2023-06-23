@@ -29,7 +29,7 @@ class TabBarVC: ESTabBarController {
         getCurrentlangugaeUpdate()
         self.tabBarController?.tabBar.isHidden = false
     }
-    
+   
     
     @objc func editPostAction(_ notification: Notification) {
         DispatchQueue.main.asyncAfter(deadline: .now()+0.2) {
@@ -68,6 +68,18 @@ class TabBarVC: ESTabBarController {
         self.tabBar.backgroundColor = .white
         self.tabBar.borderColor = .black
         self.tabBar.borderWidth = 1.0
+        if let tabBar = self.tabBar as? ESTabBar {
+            switch UIDevice.current.userInterfaceIdiom{
+            case .pad:
+                tabBar.itemCustomPositioning = .fillExcludeSeparator
+            case .phone:
+                tabBar.itemCustomPositioning = .fill
+            default:
+                tabBar.itemCustomPositioning = .fillIncludeSeparator
+                break
+            }
+        }
+
         if  UserType.userTypeInstance.userLogin == .Bussiness{
             let v1 =  UINavigationController(rootViewController: BusinessHmVC())
             v1.navigationBar.isHidden = true
@@ -155,6 +167,7 @@ class TabBarVC: ESTabBarController {
                     tabItem.contentView?.image = img
                     tabItem.contentView?.selectedImage = img
                     tabItem.contentView?.imageView.restorationIdentifier = urlString
+                    tabItem.contentView?.imageView.contentMode = .scaleAspectFill
                     tabItem.contentView?.clipsToBounds = true
                 }
                 
