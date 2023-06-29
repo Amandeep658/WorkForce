@@ -27,6 +27,7 @@ class ShippingAddressVC: UIViewController {
     var iconClick = true
     var iconSameBillingAddress = true
     var selectedAddressitems:[[String:String]] = []
+    var is_shipping_address = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,12 @@ class ShippingAddressVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationAct(_:)), name: NSNotification.Name(rawValue: "dataTransferToEstimateScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationAct(_:)), name: NSNotification.Name(rawValue: "dataTransferToShippingScreen"), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(rawValue: "dataTransferToEstimateScreen"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(rawValue: "dataTransferToShippingScreen"), object: nil)
     }
 
     
@@ -51,6 +52,12 @@ class ShippingAddressVC: UIViewController {
                 self.selectedAddressitems = userName
                 let selectedAddress = userName.map{ ($0["name"]! as String)}
                 self.addressTF.text = selectedAddress.joined(separator: ",")
+                let shipping_city = userName.map{ ($0["shipping_city"]! as String)}
+                self.cityTF.text = shipping_city.joined(separator: ",")
+                let shipping_state = userName.map{ ($0["shipping_state"]! as String)}
+                self.stateTF.text = shipping_state.joined(separator: ",")
+                let shipping_country = userName.map{ ($0["shipping_country"]! as String)}
+                self.countryTF.text = shipping_country.joined(separator: ",")
             }
        }
    }
@@ -85,7 +92,7 @@ class ShippingAddressVC: UIViewController {
     }
     
     @IBAction func addressSelectBtn(_ sender: UIButton) {
-        let vc = SelectSavedAddressVC()
+        let vc = ShippingBillingSavedAddressVC()
         vc.selectedAddress = selectedAddressitems
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -95,9 +102,11 @@ class ShippingAddressVC: UIViewController {
         if(iconClick == true) {
             saveListImgVww.image = UIImage(named: "circleTick")
             saveListImgVww.contentMode = .scaleAspectFill
+            self.is_shipping_address = "1"
         } else {
             saveListImgVww.image = UIImage(named: "circle")
             saveListImgVww.contentMode = .scaleAspectFill
+            self.is_shipping_address = "2"
         }
         iconClick = !iconClick
     }
@@ -117,10 +126,11 @@ class ShippingAddressVC: UIViewController {
             showAlertMessage(title: "U2 CONNECT", message: "Please enter country." , okButton: "Ok", controller: self) {
             }
         }else{
-            UserInvoiceAddressDict.customer_address = self.addressTF.text ?? ""
-            UserInvoiceAddressDict.customer_city = self.cityTF.text ?? ""
-            UserInvoiceAddressDict.customer_state = self.stateTF.text ?? ""
-            UserInvoiceAddressDict.customer_country = self.countryTF.text ?? ""
+            UserInvoiceAddressDict.shipping_address = self.addressTF.text ?? ""
+            UserInvoiceAddressDict.shipping_city = self.cityTF.text ?? ""
+            UserInvoiceAddressDict.shipping_state = self.stateTF.text ?? ""
+            UserInvoiceAddressDict.shipping_country = self.countryTF.text ?? ""
+            UserInvoiceAddressDict.is_shipping_address = self.is_shipping_address
             let vc = AddProductServiceVC()
             vc.UserInvoiceAddressDict = UserInvoiceAddressDict
             self.navigationController?.pushViewController(vc, animated: false)

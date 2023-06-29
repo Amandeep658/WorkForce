@@ -35,6 +35,7 @@ class NewEstimateAddressVC: UIViewController {
     var selectedAddressitems:[[String:String]] = []
     var UserInvoiceAddressDict = InvoiceCreateModel()
     let datePicker = UIDatePicker()
+    var is_business_address = ""
 
 
 
@@ -115,9 +116,11 @@ class NewEstimateAddressVC: UIViewController {
         if(iconClick == true) {
             selectImgVw.image = UIImage(named: "circleTick")
             selectImgVw.contentMode = .scaleAspectFill
+            self.is_business_address = "1"
         } else {
             selectImgVw.image = UIImage(named: "circle")
             selectImgVw.contentMode = .scaleAspectFill
+            self.is_business_address = "2"
         }
         iconClick = !iconClick
     }
@@ -147,7 +150,7 @@ class NewEstimateAddressVC: UIViewController {
     //    MARK: VALIDATIONS
     func firstValidation(){
         if (invoiceNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: "U2 CONNECT" , message: "Please enter invoice name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT" , message: "Please enter business name." , okButton: "Ok", controller: self) {
             }
         }else if (businessAddressTF.text?.trimWhiteSpace.isEmpty)! {
             showAlertMessage(title: "U2 CONNECT" , message: "Please enter business address." , okButton: "Ok", controller: self) {
@@ -171,6 +174,7 @@ class NewEstimateAddressVC: UIViewController {
             UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
             UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
             UserInvoiceAddressDict.estimate_no =  self.dateTF.text ?? ""
+            UserInvoiceAddressDict.is_business_address =  self.is_business_address
             let vc = CustomerBillingAddressVC()
             vc.UserInvoiceAddressDict = UserInvoiceAddressDict
             self.navigationController?.pushViewController(vc, animated: false)

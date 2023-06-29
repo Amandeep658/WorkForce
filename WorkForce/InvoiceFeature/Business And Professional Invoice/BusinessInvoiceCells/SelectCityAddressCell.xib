@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="78" id="KGk-i7-Jjw" customClass="SelectCityAddressCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="347" height="78"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="347" height="78"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QLi-9F-bra">
+                        <rect key="frame" x="6" y="6" width="335" height="66"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYe-Ml-lpg">
+                                <rect key="frame" x="35" y="10.666666666666668" width="290" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wgr-LN-N8W">
+                                <rect key="frame" x="35" y="37.666666666666664" width="290" height="17"/>
+                                <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaY-2g-kWG">
+                                <rect key="frame" x="7" y="10" width="18" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="KOV-ey-e1P"/>
+                                    <constraint firstAttribute="width" constant="18" id="gdV-Ms-v24"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="circle"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="KYe-Ml-lpg" firstAttribute="leading" secondItem="xaY-2g-kWG" secondAttribute="trailing" constant="10" id="76Z-GR-K6q"/>
+                            <constraint firstItem="wgr-LN-N8W" firstAttribute="trailing" secondItem="KYe-Ml-lpg" secondAttribute="trailing" id="Bc7-YE-K7t"/>
+                            <constraint firstAttribute="bottom" secondItem="wgr-LN-N8W" secondAttribute="bottom" constant="11.333333333333336" id="FOI-jm-liD"/>
+                            <constraint firstItem="xaY-2g-kWG" firstAttribute="leading" secondItem="QLi-9F-bra" secondAttribute="leading" constant="7" id="V8g-KT-duu"/>
+                            <constraint firstItem="xaY-2g-kWG" firstAttribute="top" secondItem="QLi-9F-bra" secondAttribute="top" constant="10" id="aK9-Cj-UgW"/>
+                            <constraint firstItem="KYe-Ml-lpg" firstAttribute="centerY" secondItem="xaY-2g-kWG" secondAttribute="centerY" id="akr-Sv-19f"/>
+                            <constraint firstAttribute="trailing" secondItem="KYe-Ml-lpg" secondAttribute="trailing" constant="10" id="hUM-TO-gjd"/>
+                            <constraint firstItem="wgr-LN-N8W" firstAttribute="leading" secondItem="KYe-Ml-lpg" secondAttribute="leading" id="sDA-7u-dcA"/>
+                            <constraint firstItem="wgr-LN-N8W" firstAttribute="top" secondItem="KYe-Ml-lpg" secondAttribute="bottom" constant="10" id="uco-a4-ZGO"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QLi-9F-bra" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="6" id="4US-eT-RTp"/>
+                    <constraint firstItem="QLi-9F-bra" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="LHg-gs-tOK"/>
+                    <constraint firstAttribute="trailing" secondItem="QLi-9F-bra" secondAttribute="trailing" constant="6" id="XVm-rh-jgg"/>
+                    <constraint firstAttribute="bottom" secondItem="QLi-9F-bra" secondAttribute="bottom" constant="6" id="sit-S7-a5F"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addressLbl" destination="KYe-Ml-lpg" id="xPU-KI-B4A"/>
+                <outlet property="addressLbl2" destination="wgr-LN-N8W" id="YKz-DL-KTO"/>
+                <outlet property="contantVw" destination="QLi-9F-bra" id="403-zX-e3R"/>
+                <outlet property="selectBtn" destination="xaY-2g-kWG" id="3vN-ie-ecY"/>
+            </connections>
+            <point key="canvasLocation" x="159.54198473282443" y="28.169014084507044"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="circle" width="20.333333969116211" height="20.666666030883789"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

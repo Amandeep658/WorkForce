@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProductListItemCell: UITableViewCell {
+class ProductListItemCell: UITableViewCell,UITextFieldDelegate {
     
     var productItem = AddProductItemModel()
 
@@ -23,15 +23,24 @@ class ProductListItemCell: UITableViewCell {
         quantityTF.delegate = self
         rateTF.delegate = self
         amountTF.delegate = self
+//        amountTF.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+
     }
+    
+//    @objc func textFieldDidChange(_ textField: UITextField) {
+//        let quantity = quantityTF.text ?? ""
+//        let rate = rateTF.text ?? ""
+//        let calculatedValue = (Int(quantity) ?? 0) * (Int(rate) ?? 0)
+//        self.amountTF.text = "\(calculatedValue)"
+//    }
+
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
     }
-}
 
-extension ProductListItemCell:UITextFieldDelegate{
+
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case self.itemTF:

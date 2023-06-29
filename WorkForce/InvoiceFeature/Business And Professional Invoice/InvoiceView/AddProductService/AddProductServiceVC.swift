@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class AddProductServiceVC: UIViewController {
     
@@ -19,8 +20,8 @@ class AddProductServiceVC: UIViewController {
     @IBOutlet weak var submitBtn: UIButton!
     
     var productItemModel = [AddProductItemModel()]
-    
     var UserInvoiceAddressDict = InvoiceCreateModel()
+    var invoiceAddressList:InvoiceAddAddressData?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,24 +44,65 @@ class AddProductServiceVC: UIViewController {
         UserInvoiceAddressDict.product = productItemModel
         UserInvoiceAddressDict.product?[0].shipping = ShippingTF.text ?? ""
         UserInvoiceAddressDict.product?[0].total = totalTF.text ?? ""
-        let vc = InvoiceBillViewVC()
-        self.navigationController?.pushViewController(vc, animated: false)
+        if ShippingTF.text == "" && totalTF.text == "" {
+            showAlert(message: "Please fill all detail", title: AppAlertTitle.appName.rawValue)
+        }else{
+            hitInvoceSaveAddressApi()
+        }
     }
     
     
 //    MARK: OUTLETS
-    func invoiceListing(){
+    func hitInvoceSaveAddressApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        let param = ["page_no" : "1","per_page" : "40"] as [String : Any]
+        print(param)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.addinvoiceList, params: UserInvoiceAddressDict.convertModelToDict() as! Parameters , headers: headers) { [self] (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(InvoiceAddAddressModel.self, from: data!)
+                print(aContact)
+                let status = aContact.status
+                let message = aContact.message
+                if status == 1{
+                    showAlert(message: message ?? "", title: AppAlertTitle.appName.rawValue) {
+                        let vc = InvoiceBillViewVC()
+                        self.navigationController?.pushViewController(vc, animated: false)
+                    }
+                }else{
+                    showAlert(message: message ?? "", title: AppAlertTitle.appName.rawValue)
+                }
+            }
+            catch let parseError {
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+            
+        } failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
         
     }
 
 }
 
-extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource{
+extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productItemModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListItemCell", for: indexPath) as! ProductListItemCell
         cell.itemTF.text = self.productItemModel[indexPath.row].item
         cell.quantityTF.text = self.productItemModel[indexPath.row].quantity
@@ -102,11 +144,11 @@ extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource{
             
         }
         self.productTableView.reloadData()
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
         DispatchQueue.main.async {
             self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
         }
     }
+    
 }
 
 

@@ -104,6 +104,10 @@ struct WSMethods {
 //    MARK: INVOICE MODULE BUSINESS AND PROFESSIONAL
     static let invoiceEstimateList = "invoices_estimatelisting.php"
     static let invoiceEstimateAddressList = "businessaddressinvoice.php"
+    static let invoiceCustomerAddressList = "customeraddressinvoice.php"
+    static let invoiceShippingAddressList = "shippingaddressinvoice.php"
+    static let addinvoiceList = "addinvoice.php"
+    static let getinvoice = "getinvoice.php"
 }
 
 

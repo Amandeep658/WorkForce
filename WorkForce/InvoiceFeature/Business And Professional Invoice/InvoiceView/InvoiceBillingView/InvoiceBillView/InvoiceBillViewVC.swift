@@ -32,6 +32,10 @@ class InvoiceBillViewVC: UIViewController {
         super.viewDidLoad()
         setTable()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
 //    InvoiceBillViewCell
     func setTable(){
@@ -41,7 +45,7 @@ class InvoiceBillViewVC: UIViewController {
     }
 
     @IBAction func savePDFBtn(_ sender: UIButton) {
-        self.tabBarController?.selectedIndex = 4
+        self.navigationController?.popViewController(animated: true)
     }
     
 }

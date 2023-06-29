@@ -75,7 +75,7 @@ class SelectSavedAddressVC: UIViewController {
         print(headers)
         let param = ["page_no" : "1","per_page" : "40"] as [String : Any]
         print(param)
-        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.invoiceEstimateAddressList, params: param, headers: headers) { [self] (response) in
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.invoiceEstimateAddressList, params: [:], headers: headers) { [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             do {
@@ -88,7 +88,9 @@ class SelectSavedAddressVC: UIViewController {
                 let status = aContact.status
                 let message = aContact.message
                 if status == 1{
+                    InvoiceSavedListArr.removeAll()
                     self.InvoiceSavedListArr = aContact.data!
+                    
                     self.savedAddressTableView.setBackgroundView(message: "")
                     self.savedAddressTableView.reloadData()
                     let selectedAddressID = selectedAddress.map{ ($0["id"]! as String)}

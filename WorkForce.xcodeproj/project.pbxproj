@@ -154,6 +154,10 @@
 		1871975B2A4D586000002F99 /* CustomerBillingSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */; };
 		187197652A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */; };
 		187197662A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197642A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib */; };
+		187197682A4D6EC900002F99 /* InvoiceAddAddressdetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197672A4D6EC900002F99 /* InvoiceAddAddressdetailModel.swift */; };
+		1871976A2A4D73AD00002F99 /* PDFDataShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197692A4D73AD00002F99 /* PDFDataShowModel.swift */; };
+		1871976D2A4D914100002F99 /* SelectCityAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1871976B2A4D914100002F99 /* SelectCityAddressCell.swift */; };
+		1871976E2A4D914100002F99 /* SelectCityAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1871976C2A4D914100002F99 /* SelectCityAddressCell.xib */; };
 		1876C4502828E10D00C6C9B2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876C44E2828E10D00C6C9B2 /* SearchViewController.swift */; };
 		1876C46F2828F1E300C6C9B2 /* SetFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */; };
 		1876C4702828F1E300C6C9B2 /* SetFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */; };
@@ -670,6 +674,10 @@
 		187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerBillingSavedAddressVC.xib; sourceTree = "<group>"; };
 		187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingBillingSavedAddressVC.swift; sourceTree = "<group>"; };
 		187197642A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShippingBillingSavedAddressVC.xib; sourceTree = "<group>"; };
+		187197672A4D6EC900002F99 /* InvoiceAddAddressdetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceAddAddressdetailModel.swift; sourceTree = "<group>"; };
+		187197692A4D73AD00002F99 /* PDFDataShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFDataShowModel.swift; sourceTree = "<group>"; };
+		1871976B2A4D914100002F99 /* SelectCityAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityAddressCell.swift; sourceTree = "<group>"; };
+		1871976C2A4D914100002F99 /* SelectCityAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCityAddressCell.xib; sourceTree = "<group>"; };
 		1876C44E2828E10D00C6C9B2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFilterViewController.swift; sourceTree = "<group>"; };
 		1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFilterViewController.xib; sourceTree = "<group>"; };
@@ -1328,6 +1336,8 @@
 			children = (
 				18210EF22A4C3B2700B80BE3 /* InvoiceListModel.swift */,
 				18210EF42A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift */,
+				187197672A4D6EC900002F99 /* InvoiceAddAddressdetailModel.swift */,
+				187197692A4D73AD00002F99 /* PDFDataShowModel.swift */,
 			);
 			path = InvoiceModels;
 			sourceTree = "<group>";
@@ -2377,6 +2387,8 @@
 				18CF41F32A4310DF00944BA9 /* invoicelistCells.xib */,
 				18A426EE2A4574F700BAF11D /* SelectSavedAddressCell.swift */,
 				18A426EF2A4574F700BAF11D /* SelectSavedAddressCell.xib */,
+				1871976B2A4D914100002F99 /* SelectCityAddressCell.swift */,
+				1871976C2A4D914100002F99 /* SelectCityAddressCell.xib */,
 			);
 			path = BusinessInvoiceCells;
 			sourceTree = "<group>";
@@ -2989,6 +3001,7 @@
 				18FB209128C5D80F00EE4ADD /* ConnectListDetailVC.xib in Resources */,
 				18A0FE5428C32A2F00FE41BF /* RecoverVerifyScreenVC.xib in Resources */,
 				18E6BC2D282BA4AD00650D95 /* ProfileTableViewCell.xib in Resources */,
+				1871976E2A4D914100002F99 /* SelectCityAddressCell.xib in Resources */,
 				18A8A9D8282B8658003253C5 /* Poppins-Regular.ttf in Resources */,
 				18A0FE6628C3327500FE41BF /* PhoneNumberVC.xib in Resources */,
 				18A0FEEF28C3512300FE41BF /* ProfessionalProfileVC.xib in Resources */,
@@ -3287,6 +3300,7 @@
 				185574812823988600AFB18E /* OtpAuthenticationViewController.swift in Sources */,
 				185574BD2823B24800AFB18E /* UIButton+Custom.swift in Sources */,
 				7C4911FD2834B97200F931A0 /* BusinessConnectTableViewCell.swift in Sources */,
+				1871976D2A4D914100002F99 /* SelectCityAddressCell.swift in Sources */,
 				188F150A2865921E000D96D1 /* RepeatTimer.swift in Sources */,
 				7C4912102834F69600F931A0 /* JobPhotoViewController.swift in Sources */,
 				1848ACD428263ADA0040E069 /* NotificationViewController.swift in Sources */,
@@ -3335,6 +3349,7 @@
 				7C48B44B2833960A00E4C5B1 /* BusinessChatViewController.swift in Sources */,
 				18145EBD287C3856007F8B46 /* RoughWork.swift in Sources */,
 				18CE1B7E28926EF400498AF5 /* IAPHelper.swift in Sources */,
+				187197682A4D6EC900002F99 /* InvoiceAddAddressdetailModel.swift in Sources */,
 				18ECB70B2829431A00F7BD52 /* SetFilterCollectionViewCell.swift in Sources */,
 				18162144289E503300743DE4 /* CoustomerConnectVC.swift in Sources */,
 				188F15112865921E000D96D1 /* GetImageFromPicker.swift in Sources */,
@@ -3345,6 +3360,7 @@
 				7C48B43E283394C500E4C5B1 /* BusinessHomeViewController.swift in Sources */,
 				1826212B28F81E29008922A1 /* FeedGalleryCollectionView.swift in Sources */,
 				1890C1E928B34EB500DAEAB3 /* CustomerManageJobListDetailVC.swift in Sources */,
+				1871976A2A4D73AD00002F99 /* PDFDataShowModel.swift in Sources */,
 				1876C4502828E10D00C6C9B2 /* SearchViewController.swift in Sources */,
 				1848ACE0282659810040E069 /* HomeCollectionViewCell.swift in Sources */,
 				7C42425C2844D5ED0016163F /* Singleton.swift in Sources */,

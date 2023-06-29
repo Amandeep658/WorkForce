@@ -33,6 +33,15 @@ struct InvoiceSavedAddressData : Codable {
     let selected:Int?
     let business_phone_number : String?
     let website : String?
+    let customer_address: String?
+    let customer_city:String?
+    let customer_country: String?
+    let customer_state: String?
+    let shipping_address: String?
+    let shipping_city: String?
+    let shipping_country: String?
+    let shipping_state: String?
+    
 
     enum CodingKeys: String, CodingKey {
 
@@ -41,6 +50,17 @@ struct InvoiceSavedAddressData : Codable {
         case selected = "selected"
         case business_phone_number = "business_phone_number"
         case website = "website"
+        case customer_address = "customer_address"
+        case customer_city = "customer_city"
+        case customer_country = "customer_country"
+        case customer_state = "customer_state"
+        case shipping_address = "shipping_address"
+        case shipping_city = "shipping_city"
+        case shipping_country = "shipping_country"
+        case shipping_state = "shipping_state"
+
+
+
     }
 
     init(from decoder: Decoder) throws {
@@ -50,7 +70,14 @@ struct InvoiceSavedAddressData : Codable {
         business_phone_number = try values.decodeIfPresent(String.self, forKey: .business_phone_number)
         website = try values.decodeIfPresent(String.self, forKey: .website)
         selected = try values.decodeIfPresent(Int.self, forKey: .selected)
-
+        customer_address = try values.decodeIfPresent(String.self, forKey: .customer_address)
+        customer_city = try values.decodeIfPresent(String.self, forKey: .customer_city)
+        customer_country = try values.decodeIfPresent(String.self, forKey: .customer_country)
+        customer_state = try values.decodeIfPresent(String.self, forKey: .customer_state)
+        shipping_address = try values.decodeIfPresent(String.self, forKey: .shipping_address)
+        shipping_city = try values.decodeIfPresent(String.self, forKey: .shipping_city)
+        shipping_country = try values.decodeIfPresent(String.self, forKey: .shipping_country)
+        shipping_state = try values.decodeIfPresent(String.self, forKey: .shipping_state)
     }
 
 }

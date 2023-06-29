@@ -26,6 +26,7 @@ class CustomerBillingAddressVC: UIViewController {
     var UserInvoiceAddressDict = InvoiceCreateModel()
     var iconClick = true
     var selectedAddressitems:[[String:String]] = []
+    var is_customer_address = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,12 @@ class CustomerBillingAddressVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationAct(_:)), name: NSNotification.Name(rawValue: "dataTransferToEstimateScreen"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationAct(_:)), name: NSNotification.Name(rawValue: "dataTransferToCustomerScreen"), object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(rawValue: "dataTransferToEstimateScreen"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(rawValue: "dataTransferToCustomerScreen"), object: nil)
     }
 
     
@@ -51,6 +52,12 @@ class CustomerBillingAddressVC: UIViewController {
                 self.selectedAddressitems = userName
                 let selectedAddress = userName.map{ ($0["name"]! as String)}
                 self.addressTF.text = selectedAddress.joined(separator: ",")
+                let customer_city = userName.map{ ($0["customer_city"]! as String)}
+                self.cityTF.text = customer_city.joined(separator: ",")
+                let customer_state = userName.map{ ($0["customer_state"]! as String)}
+                self.stateTF.text = customer_city.joined(separator: ",")
+                let customer_country = userName.map{ ($0["customer_country"]! as String)}
+                self.countryTF.text = customer_city.joined(separator: ",")
             }
        }
    }
@@ -59,7 +66,7 @@ class CustomerBillingAddressVC: UIViewController {
     }
     
     @IBAction func addressSelectBtn(_ sender: UIButton) {
-        let vc = SelectSavedAddressVC()
+        let vc = CustomerBillingSavedAddressVC()
         vc.selectedAddress = selectedAddressitems
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -68,9 +75,11 @@ class CustomerBillingAddressVC: UIViewController {
         if(iconClick == true) {
             selectImgVw.image = UIImage(named: "circleTick")
             selectImgVw.contentMode = .scaleAspectFill
+            self.is_customer_address = "1"
         } else {
             selectImgVw.image = UIImage(named: "circle")
             selectImgVw.contentMode = .scaleAspectFill
+            self.is_customer_address = "2"
         }
         iconClick = !iconClick
     }
@@ -99,6 +108,7 @@ class CustomerBillingAddressVC: UIViewController {
             UserInvoiceAddressDict.customer_city = cityTF.text ?? ""
             UserInvoiceAddressDict.customer_state = stateTF.text ?? ""
             UserInvoiceAddressDict.customer_country = countryTF.text ?? ""
+            UserInvoiceAddressDict.is_customer_address = self.is_customer_address
             let vc = ShippingAddressVC()
             vc.UserInvoiceAddressDict = UserInvoiceAddressDict
             self.navigationController?.pushViewController(vc, animated: false)

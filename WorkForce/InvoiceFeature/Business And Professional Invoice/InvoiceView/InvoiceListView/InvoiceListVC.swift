@@ -101,5 +101,8 @@ extension InvoiceListVC : UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let invoice = InvoiceBillViewVC()
+        self.navigationController?.pushViewController(invoice, animated: true)
+    }
 }
