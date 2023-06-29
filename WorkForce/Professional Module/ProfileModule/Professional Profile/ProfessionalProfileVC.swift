@@ -17,8 +17,8 @@ class ProfessionalProfileVC: UIViewController {
     @IBOutlet weak var editProfile: UIButton!
     @IBOutlet weak var professionalTableView: UITableView!
     
-    let imageArr = ["re","sb","ic","abb","pp","deleteUser","log"]
-    let Label = ["Recovery Email".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
+    let imageArr = ["re","sb","ic","InvoiceIcon","abb","pp","deleteUser","log"]
+    let Label = ["Recovery Email".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"Invoice","About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
     
     var professionalUserDate:ProfessionalProfileData?
     override func viewDidLoad() {
@@ -196,6 +196,10 @@ extension ProfessionalProfileVC : UITableViewDelegate , UITableViewDataSource{
         case "Terms of Use".localized():
             let terms =  TermsConditionVC()
             self.pushViewController(terms, true)
+            break
+        case "Invoice":
+            let invoice = InvoiceListVC()
+            self.pushViewController(invoice, true)
             break
         case "About Us".localized():
             let about =  AboutUsVC()

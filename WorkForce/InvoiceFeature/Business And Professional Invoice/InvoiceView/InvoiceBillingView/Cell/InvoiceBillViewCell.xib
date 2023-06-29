@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+        <array key="Poppins-Regular.ttf">
+            <string>Poppins-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="78" id="KGk-i7-Jjw" customClass="InvoiceBillViewCell" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="631" height="78"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="631" height="78"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVx-pA-LVy">
+                        <rect key="frame" x="10" y="10" width="611" height="58"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ua4-1p-lmW">
+                                <rect key="frame" x="0.0" y="0.0" width="611" height="58"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqM-HI-aHE">
+                                        <rect key="frame" x="0.0" y="0.0" width="425" height="58"/>
+                                        <string key="text">Material only:Pavers Flagstone Herritage in white/tan/charcoal
+</string>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="900" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHh-eN-8UE">
+                                        <rect key="frame" x="435" y="0.0" width="52" height="58"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="6.50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNP-aV-9KQ">
+                                        <rect key="frame" x="497" y="0.0" width="52" height="58"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5,850.00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fH8-56-7zU">
+                                        <rect key="frame" x="559" y="0.0" width="52" height="58"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="52" id="oJf-ls-128"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="qHh-eN-8UE" firstAttribute="width" secondItem="fH8-56-7zU" secondAttribute="width" id="HW0-aj-mxd"/>
+                                    <constraint firstItem="jNP-aV-9KQ" firstAttribute="width" secondItem="fH8-56-7zU" secondAttribute="width" id="lq8-FK-15i"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Ua4-1p-lmW" firstAttribute="top" secondItem="KVx-pA-LVy" secondAttribute="top" id="Byb-0s-s6M"/>
+                            <constraint firstAttribute="trailing" secondItem="Ua4-1p-lmW" secondAttribute="trailing" id="P2n-lS-Zp7"/>
+                            <constraint firstItem="Ua4-1p-lmW" firstAttribute="leading" secondItem="KVx-pA-LVy" secondAttribute="leading" id="WFt-K1-V5d"/>
+                            <constraint firstAttribute="bottom" secondItem="Ua4-1p-lmW" secondAttribute="bottom" id="gdq-vP-Lan"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KVx-pA-LVy" secondAttribute="bottom" constant="10" id="Aky-Wh-fYk"/>
+                    <constraint firstItem="KVx-pA-LVy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="EWi-Be-ajy"/>
+                    <constraint firstAttribute="trailing" secondItem="KVx-pA-LVy" secondAttribute="trailing" constant="10" id="Z08-oO-pTM"/>
+                    <constraint firstItem="KVx-pA-LVy" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="lB0-uU-joP"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountLbl" destination="fH8-56-7zU" id="eML-8k-GWz"/>
+                <outlet property="itemLbl" destination="cqM-HI-aHE" id="zjg-ok-Uc6"/>
+                <outlet property="quantityLbl" destination="qHh-eN-8UE" id="nbm-bg-sQD"/>
+                <outlet property="ratelbl" destination="jNP-aV-9KQ" id="ba0-6D-3XJ"/>
+            </connections>
+            <point key="canvasLocation" x="231.29770992366412" y="31.690140845070424"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

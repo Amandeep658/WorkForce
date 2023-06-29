@@ -100,6 +100,10 @@ struct WSMethods {
     static let customerLikeAndUnlike = "customerLikeAndUnlike.php"
     static let getAllcustomerJobLike = "getAllcustomerJobLike.php"
     static let companyLikeAndUnlikeBycustomer = "companyLikeAndUnlikeBycustomer.php"
+    
+//    MARK: INVOICE MODULE BUSINESS AND PROFESSIONAL
+    static let invoiceEstimateList = "invoices_estimatelisting.php"
+    static let invoiceEstimateAddressList = "businessaddressinvoice.php"
 }
 
 

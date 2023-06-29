@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AlertView" customModule="WorkForce" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bU0-do-5ea">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ad" translatesAutoresizingMaskIntoConstraints="NO" id="nFW-Uz-C2o">
+                            <rect key="frame" x="14" y="18.5" width="28" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="28" id="Sda-LM-8NI"/>
+                                <constraint firstAttribute="width" constant="28" id="VDW-nJ-UA6"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add more products" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DH7-Hb-Fy3">
+                            <rect key="frame" x="52" y="17.5" width="148" height="30"/>
+                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                            <color key="textColor" red="0.34117650989999998" green="0.54509806630000002" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cfc-Kx-oAf">
+                            <rect key="frame" x="14" y="17.5" width="186" height="30"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <connections>
+                                <action selector="addItemBtn:" destination="iN0-l3-epB" eventType="touchUpInside" id="Nhh-cS-c4i"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Cfc-Kx-oAf" firstAttribute="centerY" secondItem="nFW-Uz-C2o" secondAttribute="centerY" id="5yl-ks-zqp"/>
+                        <constraint firstItem="DH7-Hb-Fy3" firstAttribute="leading" secondItem="nFW-Uz-C2o" secondAttribute="trailing" constant="10" id="QWu-tf-f6R"/>
+                        <constraint firstItem="nFW-Uz-C2o" firstAttribute="leading" secondItem="bU0-do-5ea" secondAttribute="leading" constant="14" id="ckE-5P-TS0"/>
+                        <constraint firstItem="DH7-Hb-Fy3" firstAttribute="centerY" secondItem="nFW-Uz-C2o" secondAttribute="centerY" id="coC-4w-F3Q"/>
+                        <constraint firstItem="Cfc-Kx-oAf" firstAttribute="height" secondItem="DH7-Hb-Fy3" secondAttribute="height" id="ghm-cw-0S0"/>
+                        <constraint firstItem="nFW-Uz-C2o" firstAttribute="centerY" secondItem="bU0-do-5ea" secondAttribute="centerY" id="oAS-7Z-hSF"/>
+                        <constraint firstItem="Cfc-Kx-oAf" firstAttribute="leading" secondItem="nFW-Uz-C2o" secondAttribute="leading" id="p2W-JW-ydi"/>
+                        <constraint firstItem="Cfc-Kx-oAf" firstAttribute="trailing" secondItem="DH7-Hb-Fy3" secondAttribute="trailing" id="vmR-Tr-yJw"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="bU0-do-5ea" secondAttribute="trailing" id="0x5-iS-bq7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="bU0-do-5ea" secondAttribute="bottom" id="XLu-lF-mP1"/>
+                <constraint firstItem="bU0-do-5ea" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gVJ-tp-tmX"/>
+                <constraint firstItem="bU0-do-5ea" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="god-2D-dy0"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="addItemBtn" destination="Cfc-Kx-oAf" id="FY6-oO-HVe"/>
+            </connections>
+            <point key="canvasLocation" x="21.600000000000001" y="-237.03148425787109"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ad" width="124" height="124"/>
+    </resources>
+</document>

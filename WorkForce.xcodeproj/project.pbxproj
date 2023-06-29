@@ -64,6 +64,16 @@
 		181FA916287583110049D8D6 /* CountryViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 181FA915287583110049D8D6 /* CountryViewCell.xib */; };
 		181FA918287583240049D8D6 /* CountryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FA917287583240049D8D6 /* CountryViewCell.swift */; };
 		181FA91A2875C1400049D8D6 /* JobListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181FA9192875C1400049D8D6 /* JobListModel.swift */; };
+		18210EC82A49950200B80BE3 /* InvoiceBillViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EC62A49950200B80BE3 /* InvoiceBillViewCell.swift */; };
+		18210EC92A49950200B80BE3 /* InvoiceBillViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18210EC72A49950200B80BE3 /* InvoiceBillViewCell.xib */; };
+		18210ED82A49C07900B80BE3 /* ProductListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210ED62A49C07900B80BE3 /* ProductListItemCell.swift */; };
+		18210ED92A49C07900B80BE3 /* ProductListItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18210ED72A49C07900B80BE3 /* ProductListItemCell.xib */; };
+		18210EDC2A4B086A00B80BE3 /* AddProductItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EDB2A4B086A00B80BE3 /* AddProductItemModel.swift */; };
+		18210EEF2A4B3FAE00B80BE3 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18210EED2A4B3FAE00B80BE3 /* AlertView.xib */; };
+		18210EF02A4B3FAE00B80BE3 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EEE2A4B3FAE00B80BE3 /* AlertView.swift */; };
+		18210EF32A4C3B2700B80BE3 /* InvoiceListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EF22A4C3B2700B80BE3 /* InvoiceListModel.swift */; };
+		18210EF52A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EF42A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift */; };
+		18210EF92A4C666A00B80BE3 /* SingletonInvoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18210EF82A4C666A00B80BE3 /* SingletonInvoice.swift */; };
 		182560832886E16800AFB618 /* PlaceMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182560822886E16800AFB618 /* PlaceMarker.swift */; };
 		182560852886EC9200AFB618 /* BusinessConnectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182560842886EC9200AFB618 /* BusinessConnectModel.swift */; };
 		1826212128F81E0C008922A1 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1826212028F81E0C008922A1 /* GalleryModel.swift */; };
@@ -136,6 +146,14 @@
 		1858915D282CDC1500655F79 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1858915B282CDC1500655F79 /* EditProfileViewController.xib */; };
 		18589163282CE2C800655F79 /* EditProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18589161282CE2C800655F79 /* EditProfileTableViewCell.swift */; };
 		18589164282CE2C800655F79 /* EditProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18589162282CE2C800655F79 /* EditProfileTableViewCell.xib */; };
+		1863D7C82A45AE7100DB7E8D /* AddProductServiceVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863D7C72A45AE7100DB7E8D /* AddProductServiceVC.swift */; };
+		1863D7CA2A45AE7A00DB7E8D /* AddProductServiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863D7C92A45AE7A00DB7E8D /* AddProductServiceVC.xib */; };
+		1863D7CE2A45B84600DB7E8D /* InvoiceBillViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863D7CC2A45B84600DB7E8D /* InvoiceBillViewVC.swift */; };
+		1863D7CF2A45B84600DB7E8D /* InvoiceBillViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863D7CD2A45B84600DB7E8D /* InvoiceBillViewVC.xib */; };
+		1871975A2A4D586000002F99 /* CustomerBillingSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197582A4D586000002F99 /* CustomerBillingSavedAddressVC.swift */; };
+		1871975B2A4D586000002F99 /* CustomerBillingSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */; };
+		187197652A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */; };
+		187197662A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197642A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib */; };
 		1876C4502828E10D00C6C9B2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876C44E2828E10D00C6C9B2 /* SearchViewController.swift */; };
 		1876C46F2828F1E300C6C9B2 /* SetFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */; };
 		1876C4702828F1E300C6C9B2 /* SetFilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */; };
@@ -253,6 +271,14 @@
 		18A0FF8C28C5C2FA00FE41BF /* BusinessProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A0FF8E28C5C2FA00FE41BF /* BusinessProfileViewController.xib */; };
 		18A0FF9528C5C3FD00FE41BF /* SearchListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A0FF9728C5C3FD00FE41BF /* SearchListVC.xib */; };
 		18A0FF9E28C5C41D00FE41BF /* BusinessHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A0FFA028C5C41D00FE41BF /* BusinessHomeViewController.xib */; };
+		18A426EC2A4565CE00BAF11D /* SelectSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A426EA2A4565CE00BAF11D /* SelectSavedAddressVC.swift */; };
+		18A426ED2A4565CE00BAF11D /* SelectSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A426EB2A4565CE00BAF11D /* SelectSavedAddressVC.xib */; };
+		18A426F02A4574F700BAF11D /* SelectSavedAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A426EE2A4574F700BAF11D /* SelectSavedAddressCell.swift */; };
+		18A426F12A4574F700BAF11D /* SelectSavedAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A426EF2A4574F700BAF11D /* SelectSavedAddressCell.xib */; };
+		18A426F52A458CB600BAF11D /* CustomerBillingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A426F32A458CB600BAF11D /* CustomerBillingAddressVC.swift */; };
+		18A426F62A458CB600BAF11D /* CustomerBillingAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A426F42A458CB600BAF11D /* CustomerBillingAddressVC.xib */; };
+		18A426FA2A45A08B00BAF11D /* ShippingAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A426F82A45A08B00BAF11D /* ShippingAddressVC.swift */; };
+		18A426FB2A45A08B00BAF11D /* ShippingAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18A426F92A45A08B00BAF11D /* ShippingAddressVC.xib */; };
 		18A43ABC28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A43ABA28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift */; };
 		18A43AC128C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A43ABF28C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift */; };
 		18A6976E28742F9A009ED604 /* AppDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A6976D28742F9A009ED604 /* AppDefault.swift */; };
@@ -539,6 +565,16 @@
 		181FA915287583110049D8D6 /* CountryViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CountryViewCell.xib; sourceTree = "<group>"; };
 		181FA917287583240049D8D6 /* CountryViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryViewCell.swift; sourceTree = "<group>"; };
 		181FA9192875C1400049D8D6 /* JobListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobListModel.swift; sourceTree = "<group>"; };
+		18210EC62A49950200B80BE3 /* InvoiceBillViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceBillViewCell.swift; sourceTree = "<group>"; };
+		18210EC72A49950200B80BE3 /* InvoiceBillViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceBillViewCell.xib; sourceTree = "<group>"; };
+		18210ED62A49C07900B80BE3 /* ProductListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListItemCell.swift; sourceTree = "<group>"; };
+		18210ED72A49C07900B80BE3 /* ProductListItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListItemCell.xib; sourceTree = "<group>"; };
+		18210EDB2A4B086A00B80BE3 /* AddProductItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductItemModel.swift; sourceTree = "<group>"; };
+		18210EED2A4B3FAE00B80BE3 /* AlertView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
+		18210EEE2A4B3FAE00B80BE3 /* AlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		18210EF22A4C3B2700B80BE3 /* InvoiceListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceListModel.swift; sourceTree = "<group>"; };
+		18210EF42A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceSavedAddressModel.swift; sourceTree = "<group>"; };
+		18210EF82A4C666A00B80BE3 /* SingletonInvoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingletonInvoice.swift; sourceTree = "<group>"; };
 		182560822886E16800AFB618 /* PlaceMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMarker.swift; sourceTree = "<group>"; };
 		182560842886EC9200AFB618 /* BusinessConnectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessConnectModel.swift; sourceTree = "<group>"; };
 		1826212028F81E0C008922A1 /* GalleryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
@@ -625,7 +661,15 @@
 		1858915B282CDC1500655F79 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		18589161282CE2C800655F79 /* EditProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewCell.swift; sourceTree = "<group>"; };
 		18589162282CE2C800655F79 /* EditProfileTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileTableViewCell.xib; sourceTree = "<group>"; };
+		1863D7C72A45AE7100DB7E8D /* AddProductServiceVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductServiceVC.swift; sourceTree = "<group>"; };
+		1863D7C92A45AE7A00DB7E8D /* AddProductServiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProductServiceVC.xib; sourceTree = "<group>"; };
+		1863D7CC2A45B84600DB7E8D /* InvoiceBillViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceBillViewVC.swift; sourceTree = "<group>"; };
+		1863D7CD2A45B84600DB7E8D /* InvoiceBillViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceBillViewVC.xib; sourceTree = "<group>"; };
 		1867D5CC28C86976009B3B60 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BusinessesViewController.xib"; sourceTree = "<group>"; };
+		187197582A4D586000002F99 /* CustomerBillingSavedAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerBillingSavedAddressVC.swift; sourceTree = "<group>"; };
+		187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerBillingSavedAddressVC.xib; sourceTree = "<group>"; };
+		187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingBillingSavedAddressVC.swift; sourceTree = "<group>"; };
+		187197642A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShippingBillingSavedAddressVC.xib; sourceTree = "<group>"; };
 		1876C44E2828E10D00C6C9B2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		1876C46D2828F1E300C6C9B2 /* SetFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetFilterViewController.swift; sourceTree = "<group>"; };
 		1876C46E2828F1E300C6C9B2 /* SetFilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SetFilterViewController.xib; sourceTree = "<group>"; };
@@ -831,6 +875,14 @@
 		18A0FF9F28C5C41D00FE41BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/BusinessHomeViewController.xib; sourceTree = "<group>"; };
 		18A0FFA328C5C42900FE41BF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/BusinessHomeViewController.xib; sourceTree = "<group>"; };
 		18A0FFA628C5C43400FE41BF /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = es.lproj/BusinessHomeViewController.xib; sourceTree = "<group>"; };
+		18A426EA2A4565CE00BAF11D /* SelectSavedAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSavedAddressVC.swift; sourceTree = "<group>"; };
+		18A426EB2A4565CE00BAF11D /* SelectSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectSavedAddressVC.xib; sourceTree = "<group>"; };
+		18A426EE2A4574F700BAF11D /* SelectSavedAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectSavedAddressCell.swift; sourceTree = "<group>"; };
+		18A426EF2A4574F700BAF11D /* SelectSavedAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectSavedAddressCell.xib; sourceTree = "<group>"; };
+		18A426F32A458CB600BAF11D /* CustomerBillingAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerBillingAddressVC.swift; sourceTree = "<group>"; };
+		18A426F42A458CB600BAF11D /* CustomerBillingAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerBillingAddressVC.xib; sourceTree = "<group>"; };
+		18A426F82A45A08B00BAF11D /* ShippingAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingAddressVC.swift; sourceTree = "<group>"; };
+		18A426F92A45A08B00BAF11D /* ShippingAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShippingAddressVC.xib; sourceTree = "<group>"; };
 		18A43ABA28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerJobSearchListDetailVC.swift; sourceTree = "<group>"; };
 		18A43ABF28C0A1D3006B8BA7 /* CustomerLikeBusinessDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerLikeBusinessDetailVC.swift; sourceTree = "<group>"; };
 		18A6976D28742F9A009ED604 /* AppDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDefault.swift; sourceTree = "<group>"; };
@@ -1226,6 +1278,60 @@
 			path = CountryCell;
 			sourceTree = "<group>";
 		};
+		18210EC52A4994A200B80BE3 /* InvoiceBillingView */ = {
+			isa = PBXGroup;
+			children = (
+				18210ECA2A49950C00B80BE3 /* Cell */,
+				1863D7CB2A45B82F00DB7E8D /* InvoiceBillView */,
+			);
+			path = InvoiceBillingView;
+			sourceTree = "<group>";
+		};
+		18210ECA2A49950C00B80BE3 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18210EC62A49950200B80BE3 /* InvoiceBillViewCell.swift */,
+				18210EC72A49950200B80BE3 /* InvoiceBillViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18210ECB2A49B7A100B80BE3 /* ProductHeader */ = {
+			isa = PBXGroup;
+			children = (
+				18210EEE2A4B3FAE00B80BE3 /* AlertView.swift */,
+				18210EED2A4B3FAE00B80BE3 /* AlertView.xib */,
+			);
+			path = ProductHeader;
+			sourceTree = "<group>";
+		};
+		18210ED52A49C04700B80BE3 /* ProductItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				18210ED62A49C07900B80BE3 /* ProductListItemCell.swift */,
+				18210ED72A49C07900B80BE3 /* ProductListItemCell.xib */,
+			);
+			path = ProductItemCell;
+			sourceTree = "<group>";
+		};
+		18210EDA2A4B083200B80BE3 /* InvoiceBusinessProfessionalModel */ = {
+			isa = PBXGroup;
+			children = (
+				18210EDB2A4B086A00B80BE3 /* AddProductItemModel.swift */,
+				18210EF82A4C666A00B80BE3 /* SingletonInvoice.swift */,
+			);
+			path = InvoiceBusinessProfessionalModel;
+			sourceTree = "<group>";
+		};
+		18210EF12A4C3AEF00B80BE3 /* InvoiceModels */ = {
+			isa = PBXGroup;
+			children = (
+				18210EF22A4C3B2700B80BE3 /* InvoiceListModel.swift */,
+				18210EF42A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift */,
+			);
+			path = InvoiceModels;
+			sourceTree = "<group>";
+		};
 		1826211D28F81DDA008922A1 /* GalleryController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1558,6 +1664,42 @@
 				7C45F9B528531A2E00941CD2 /* ExpTableViewCell.xib */,
 			);
 			path = editProfile;
+			sourceTree = "<group>";
+		};
+		1863D7CB2A45B82F00DB7E8D /* InvoiceBillView */ = {
+			isa = PBXGroup;
+			children = (
+				1863D7CC2A45B84600DB7E8D /* InvoiceBillViewVC.swift */,
+				1863D7CD2A45B84600DB7E8D /* InvoiceBillViewVC.xib */,
+			);
+			path = InvoiceBillView;
+			sourceTree = "<group>";
+		};
+		187197602A4D588200002F99 /* BusinessSavedAddress */ = {
+			isa = PBXGroup;
+			children = (
+				18A426EA2A4565CE00BAF11D /* SelectSavedAddressVC.swift */,
+				18A426EB2A4565CE00BAF11D /* SelectSavedAddressVC.xib */,
+			);
+			path = BusinessSavedAddress;
+			sourceTree = "<group>";
+		};
+		187197612A4D588D00002F99 /* CustomerSavedAddress */ = {
+			isa = PBXGroup;
+			children = (
+				187197582A4D586000002F99 /* CustomerBillingSavedAddressVC.swift */,
+				187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */,
+			);
+			path = CustomerSavedAddress;
+			sourceTree = "<group>";
+		};
+		187197622A4D589800002F99 /* ShippingSavedAddress */ = {
+			isa = PBXGroup;
+			children = (
+				187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */,
+				187197642A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib */,
+			);
+			path = ShippingSavedAddress;
 			sourceTree = "<group>";
 		};
 		1876C4562828E11E00C6C9B2 /* search */ = {
@@ -2041,6 +2183,45 @@
 			path = "AddJob Module";
 			sourceTree = "<group>";
 		};
+		18A426E92A45659500BAF11D /* SelectSavedView */ = {
+			isa = PBXGroup;
+			children = (
+				187197602A4D588200002F99 /* BusinessSavedAddress */,
+				187197612A4D588D00002F99 /* CustomerSavedAddress */,
+				187197622A4D589800002F99 /* ShippingSavedAddress */,
+			);
+			path = SelectSavedView;
+			sourceTree = "<group>";
+		};
+		18A426F22A458C9600BAF11D /* CustomerBillingAddress */ = {
+			isa = PBXGroup;
+			children = (
+				18A426F32A458CB600BAF11D /* CustomerBillingAddressVC.swift */,
+				18A426F42A458CB600BAF11D /* CustomerBillingAddressVC.xib */,
+			);
+			path = CustomerBillingAddress;
+			sourceTree = "<group>";
+		};
+		18A426F72A45A06700BAF11D /* ShippingAddress */ = {
+			isa = PBXGroup;
+			children = (
+				18A426F82A45A08B00BAF11D /* ShippingAddressVC.swift */,
+				18A426F92A45A08B00BAF11D /* ShippingAddressVC.xib */,
+			);
+			path = ShippingAddress;
+			sourceTree = "<group>";
+		};
+		18A426FC2A45ADEA00BAF11D /* AddProductService */ = {
+			isa = PBXGroup;
+			children = (
+				18210ED52A49C04700B80BE3 /* ProductItemCell */,
+				18210ECB2A49B7A100B80BE3 /* ProductHeader */,
+				1863D7C72A45AE7100DB7E8D /* AddProductServiceVC.swift */,
+				1863D7C92A45AE7A00DB7E8D /* AddProductServiceVC.xib */,
+			);
+			path = AddProductService;
+			sourceTree = "<group>";
+		};
 		18A43ABE28C0A1AB006B8BA7 /* CustomerLikeBusinessDetail */ = {
 			isa = PBXGroup;
 			children = (
@@ -2194,6 +2375,8 @@
 			children = (
 				18CF41F22A4310DF00944BA9 /* invoicelistCells.swift */,
 				18CF41F32A4310DF00944BA9 /* invoicelistCells.xib */,
+				18A426EE2A4574F700BAF11D /* SelectSavedAddressCell.swift */,
+				18A426EF2A4574F700BAF11D /* SelectSavedAddressCell.xib */,
 			);
 			path = BusinessInvoiceCells;
 			sourceTree = "<group>";
@@ -2201,6 +2384,11 @@
 		18CF41F12A43108A00944BA9 /* InvoiceView */ = {
 			isa = PBXGroup;
 			children = (
+				18210EC52A4994A200B80BE3 /* InvoiceBillingView */,
+				18A426E92A45659500BAF11D /* SelectSavedView */,
+				18A426FC2A45ADEA00BAF11D /* AddProductService */,
+				18A426F72A45A06700BAF11D /* ShippingAddress */,
+				18A426F22A458C9600BAF11D /* CustomerBillingAddress */,
 				18F1B4942A41BE5B004B6979 /* NewEstimateAddressView */,
 				18F1C24E2A3C476F0005762E /* InvoiceSearchView */,
 				18F1C2302A3C32C70005762E /* InvoiceListView */,
@@ -2339,26 +2527,20 @@
 		18F1C22D2A3C26620005762E /* InvoiceFeature */ = {
 			isa = PBXGroup;
 			children = (
-				18F1C22F2A3C26970005762E /* ProfessionalInvoice */,
-				18F1C22E2A3C26760005762E /* BusinessInvoice */,
+				18210EDA2A4B083200B80BE3 /* InvoiceBusinessProfessionalModel */,
+				18F1C22E2A3C26760005762E /* Business And Professional Invoice */,
 			);
 			path = InvoiceFeature;
 			sourceTree = "<group>";
 		};
-		18F1C22E2A3C26760005762E /* BusinessInvoice */ = {
+		18F1C22E2A3C26760005762E /* Business And Professional Invoice */ = {
 			isa = PBXGroup;
 			children = (
+				18210EF12A4C3AEF00B80BE3 /* InvoiceModels */,
 				18CF41F12A43108A00944BA9 /* InvoiceView */,
 				18CF41F02A43107C00944BA9 /* BusinessInvoiceCells */,
 			);
-			path = BusinessInvoice;
-			sourceTree = "<group>";
-		};
-		18F1C22F2A3C26970005762E /* ProfessionalInvoice */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ProfessionalInvoice;
+			path = "Business And Professional Invoice";
 			sourceTree = "<group>";
 		};
 		18F1C2302A3C32C70005762E /* InvoiceListView */ = {
@@ -2708,6 +2890,7 @@
 				1819BDC928C5C6FD0020A5C5 /* CustomerJobListSearchVC.xib in Resources */,
 				18FB20D028C5DBFC00EE4ADD /* CustomerDOBVC.xib in Resources */,
 				18A0FF2728C3618F00FE41BF /* SingleChatController.xib in Resources */,
+				1863D7CA2A45AE7A00DB7E8D /* AddProductServiceVC.xib in Resources */,
 				18DBBDDF2825278C0047A42D /* ConnectTableViewCell.xib in Resources */,
 				1826212A28F81E29008922A1 /* GalleryVC.xib in Resources */,
 				7C45F9B2285310B400941CD2 /* ExperienceTableViewCell.xib in Resources */,
@@ -2717,6 +2900,7 @@
 				1848ACDC282640710040E069 /* NotificationTableViewCell.xib in Resources */,
 				1819BE1C28C5CC350020A5C5 /* BusinessEditProfileViewController.xib in Resources */,
 				1819BDFF28C5CAD10020A5C5 /* CustomerListDetailScreenVC.xib in Resources */,
+				18A426F62A458CB600BAF11D /* CustomerBillingAddressVC.xib in Resources */,
 				1819BDED28C5C9880020A5C5 /* CustomerJobListVC.xib in Resources */,
 				18851F0C28C21AFF001BF3C0 /* LogInViewController.xib in Resources */,
 				18A0FEDD28C34D4800FE41BF /* JobTypeViewController.xib in Resources */,
@@ -2772,6 +2956,7 @@
 				18FB20E228C5DD3600EE4ADD /* ProfessionalLikePostViewController.xib in Resources */,
 				18D6B80028FEBC6E0026D496 /* ImageListCell.xib in Resources */,
 				7C45F9B728531A2E00941CD2 /* ExpTableViewCell.xib in Resources */,
+				18210ED92A49C07900B80BE3 /* ProductListItemCell.xib in Resources */,
 				18A0FE8A28C33A7000FE41BF /* ProfessionalFilterVC.xib in Resources */,
 				7C97664A282CFC0200336F43 /* EditProfileHeaderView.xib in Resources */,
 				18A0FF1E28C3601C00FE41BF /* ChatViewController.xib in Resources */,
@@ -2781,12 +2966,14 @@
 				7C4257392847D8AD003FE968 /* YearOfExpTableViewCell.xib in Resources */,
 				18FB20C728C5DBDE00EE4ADD /* CoustomerFullNameVC.xib in Resources */,
 				18FB210628C5DE4400EE4ADD /* ITServicesViewController.xib in Resources */,
+				18A426ED2A4565CE00BAF11D /* SelectSavedAddressVC.xib in Resources */,
 				1876C4702828F1E300C6C9B2 /* SetFilterViewController.xib in Resources */,
 				18A0FF3028C363BB00FE41BF /* SetFilterVC.xib in Resources */,
 				18FB209A28C5D89B00EE4ADD /* CoustomerConnectVC.xib in Resources */,
 				18ECB70C2829431A00F7BD52 /* SetFilterCollectionViewCell.xib in Resources */,
 				18A89F3828893B77004B2F93 /* LeftTableViewCell.xib in Resources */,
 				18A0FE8128C337DC00FE41BF /* SearchDetailVC.xib in Resources */,
+				18A426FB2A45A08B00BAF11D /* ShippingAddressVC.xib in Resources */,
 				18F1C2472A3C39D30005762E /* InvoiceListVC.xib in Resources */,
 				7C976650282CFEA300336F43 /* EditProfileFooterView.xib in Resources */,
 				18FB20B528C5DA5200EE4ADD /* CustomerHomeVC.xib in Resources */,
@@ -2808,9 +2995,11 @@
 				18A0FE5D28C32B4800FE41BF /* RecoverEmailOTPVC.xib in Resources */,
 				181B6CB7282A568B008B2D0A /* FooterCollectionReusableView.xib in Resources */,
 				18906ABC28C60EA800BF13ED /* Localizable.strings in Resources */,
+				18210EEF2A4B3FAE00B80BE3 /* AlertView.xib in Resources */,
 				1838C8BB2822837F004A6FE7 /* Main.storyboard in Resources */,
 				1819BDDB28C5C8640020A5C5 /* ConnectJobListNotificationVC.xib in Resources */,
 				18CF41F62A4319E400944BA9 /* NewEstimateAddressVC.xib in Resources */,
+				1871975B2A4D586000002F99 /* CustomerBillingSavedAddressVC.xib in Resources */,
 				1819BE7628C5D15F0020A5C5 /* CustomerSkillVC.xib in Resources */,
 				1819BE8828C5D3840020A5C5 /* VerifyEmailVC.xib in Resources */,
 				180F173A28C7727D0062C3EE /* CoustomerChatVC.xib in Resources */,
@@ -2824,6 +3013,7 @@
 				1819BE6428C5D1180020A5C5 /* CustomerLikeBusinessDetailVC.xib in Resources */,
 				18A0FF1528C35F1800FE41BF /* BusinessChatViewController.xib in Resources */,
 				7C12771228362BAE00044746 /* YearListTableViewCell.xib in Resources */,
+				187197662A4D58E400002F99 /* ShippingBillingSavedAddressVC.xib in Resources */,
 				18851F1928C21F1C001BF3C0 /* VerifyNumberViewController.xib in Resources */,
 				181FA90C28757E410049D8D6 /* JobsDesignerTableViewCell.xib in Resources */,
 				18A0FF8C28C5C2FA00FE41BF /* BusinessProfileViewController.xib in Resources */,
@@ -2835,10 +3025,13 @@
 				18FB20AC28C5D90F00EE4ADD /* CustomerSearchVC.xib in Resources */,
 				181FA916287583110049D8D6 /* CountryViewCell.xib in Resources */,
 				18A0FEA728C33EE000FE41BF /* FullNameViewController.xib in Resources */,
+				18A426F12A4574F700BAF11D /* SelectSavedAddressCell.xib in Resources */,
 				18A0FF5F28C372EA00FE41BF /* CompanyDetailsViewController.xib in Resources */,
 				1819BE2E28C5CDC30020A5C5 /* TermsConditionVC.xib in Resources */,
+				1863D7CF2A45B84600DB7E8D /* InvoiceBillViewVC.xib in Resources */,
 				18A8A9D9282B8658003253C5 /* Poppins-Light.ttf in Resources */,
 				18FB20D928C5DCB400EE4ADD /* BusinessDesignerViewController.xib in Resources */,
+				18210EC92A49950200B80BE3 /* InvoiceBillViewCell.xib in Resources */,
 				1879802728B89B34006A6C64 /* companiesTableViewCell.xib in Resources */,
 				18FB20BE28C5DB0300EE4ADD /* CustomerDetailVC.xib in Resources */,
 				18A0FE7828C3354A00FE41BF /* ProfessionalikePostDescriptionController.xib in Resources */,
@@ -2939,6 +3132,7 @@
 				1826213028F81E29008922A1 /* GridViewCell.swift in Sources */,
 				18E6BC2C282BA4AD00650D95 /* ProfileTableViewCell.swift in Sources */,
 				185574B62823B24800AFB18E /* Double+Custom.swift in Sources */,
+				18A426FA2A45A08B00BAF11D /* ShippingAddressVC.swift in Sources */,
 				185574C02823B24800AFB18E /* UIImageView+Custom.swift in Sources */,
 				185574BC2823B24800AFB18E /* Date+Custom.swift in Sources */,
 				1890C20928B65B6C00DAEAB3 /* PhoneNumberVC.swift in Sources */,
@@ -2963,6 +3157,7 @@
 				7C48B4652833CB7200E4C5B1 /* BusinessSearchViewController.swift in Sources */,
 				188BE6BF288838290088CBBA /* BusinessCreateRoomModel.swift in Sources */,
 				18162148289E504B00743DE4 /* CoustomerChatVC.swift in Sources */,
+				1871975A2A4D586000002F99 /* CustomerBillingSavedAddressVC.swift in Sources */,
 				18F02A0C2885711600EFE138 /* BusinessHomeModule.swift in Sources */,
 				1826213D28F8375E008922A1 /* API.swift in Sources */,
 				7C4912022834D9BB00F931A0 /* CityViewController.swift in Sources */,
@@ -2971,6 +3166,7 @@
 				18F1B4972A41BE96004B6979 /* NewEstimateAddressVC.swift in Sources */,
 				185574C22823B24800AFB18E /* UITextField+Custom.swift in Sources */,
 				18B31D1B2845D5A8002B79F1 /* ESTabBarItemContainer.swift in Sources */,
+				18210ED82A49C07900B80BE3 /* ProductListItemCell.swift in Sources */,
 				18D6B7FF28FEBC6D0026D496 /* ImageListCell.swift in Sources */,
 				1890C1FE28B62FBE00DAEAB3 /* EnterEmailVC.swift in Sources */,
 				18A7DDD3288F267400AE9729 /* CustomerHomeVC.swift in Sources */,
@@ -2983,8 +3179,10 @@
 				185574B22823B24800AFB18E /* UIColor+Custom.swift in Sources */,
 				180C3C99287FF527000A8B9F /* UIColorView.swift in Sources */,
 				188F14F52865920C000D96D1 /* ActivityIndicator.swift in Sources */,
+				18A426F02A4574F700BAF11D /* SelectSavedAddressCell.swift in Sources */,
 				188F150F2865921E000D96D1 /* UserDefaultsCustom.swift in Sources */,
 				18A8EB662844F018005F0DE4 /* TabBarVC.swift in Sources */,
+				18A426EC2A4565CE00BAF11D /* SelectSavedAddressVC.swift in Sources */,
 				1896FBB628ABB6EB00DC8A07 /* VerifyEmailVC.swift in Sources */,
 				185574D52823E4F500AFB18E /* DobViewController.swift in Sources */,
 				188F248C287DADC10076C518 /* SearchVC.swift in Sources */,
@@ -3004,6 +3202,7 @@
 				7CB34F76283B9175001FD67E /* ManagerJobsDesignerViewController.swift in Sources */,
 				7C47928D283CBB7A000C13C9 /* InfoViewController.swift in Sources */,
 				18EB27702823F43C001A0799 /* SkillsViewController.swift in Sources */,
+				1863D7CE2A45B84600DB7E8D /* InvoiceBillViewVC.swift in Sources */,
 				18A89F3B28893B77004B2F93 /* RightTableViewCell.swift in Sources */,
 				185574BF2823B24800AFB18E /* UIFont+Custom.swift in Sources */,
 				7C12770A283629DF00044746 /* YearListViewController.swift in Sources */,
@@ -3049,10 +3248,12 @@
 				185574B42823B24800AFB18E /* FloatingTextField.swift in Sources */,
 				18A89F3928893B77004B2F93 /* LeftTableViewCell.swift in Sources */,
 				188F152F2865AF9D000D96D1 /* PrivacyPolicyVC.swift in Sources */,
+				18A426F52A458CB600BAF11D /* CustomerBillingAddressVC.swift in Sources */,
 				181B6CF0282A8DBF008B2D0A /* ChatTableViewCell.swift in Sources */,
 				182560852886EC9200AFB618 /* BusinessConnectModel.swift in Sources */,
 				1826212C28F81E29008922A1 /* GridCameraViewCell.swift in Sources */,
 				1816215928A124E200743DE4 /* customerConnectListCell.swift in Sources */,
+				18210EF92A4C666A00B80BE3 /* SingletonInvoice.swift in Sources */,
 				185574B32823B24800AFB18E /* UILabel+Custom.swift in Sources */,
 				185574BA2823B24800AFB18E /* UITableView+Custom.swift in Sources */,
 				18B31D172845D5A8002B79F1 /* ExampleNavigationController.swift in Sources */,
@@ -3089,7 +3290,9 @@
 				188F150A2865921E000D96D1 /* RepeatTimer.swift in Sources */,
 				7C4912102834F69600F931A0 /* JobPhotoViewController.swift in Sources */,
 				1848ACD428263ADA0040E069 /* NotificationViewController.swift in Sources */,
+				18210EF32A4C3B2700B80BE3 /* InvoiceListModel.swift in Sources */,
 				188F15232865A5CB000D96D1 /* AppAlert.swift in Sources */,
+				18210EC82A49950200B80BE3 /* InvoiceBillViewCell.swift in Sources */,
 				7C48B445283395D000E4C5B1 /* BusinessConnectViewController.swift in Sources */,
 				1899D88F28817DFB009D80DB /* ITServicesModel.swift in Sources */,
 				188F150C2865921E000D96D1 /* GoogleManager.swift in Sources */,
@@ -3112,6 +3315,7 @@
 				18A89F312889273B004B2F93 /* SocketManager.swift in Sources */,
 				7C127717283633ED00044746 /* ProfileDesignViewController.swift in Sources */,
 				18A43ABC28C097CB006B8BA7 /* CustomerJobSearchListDetailVC.swift in Sources */,
+				18210EF52A4C4CAA00B80BE3 /* InvoiceSavedAddressModel.swift in Sources */,
 				18DBBD8828250AB70047A42D /* HomeViewController.swift in Sources */,
 				188D0783288D0FC4000861A5 /* ProfessionalikePostDescriptionController.swift in Sources */,
 				188CEE1A286C779500CD975C /* ProfessionalProfileModel.swift in Sources */,
@@ -3134,6 +3338,7 @@
 				18ECB70B2829431A00F7BD52 /* SetFilterCollectionViewCell.swift in Sources */,
 				18162144289E503300743DE4 /* CoustomerConnectVC.swift in Sources */,
 				188F15112865921E000D96D1 /* GetImageFromPicker.swift in Sources */,
+				18210EF02A4B3FAE00B80BE3 /* AlertView.swift in Sources */,
 				188D0D5E28784848007C7295 /* NearByWorkerModel.swift in Sources */,
 				1879802628B89B34006A6C64 /* companiesTableViewCell.swift in Sources */,
 				188D0D542876E53D007C7295 /* DeleteJobVC.swift in Sources */,
@@ -3145,6 +3350,7 @@
 				7C42425C2844D5ED0016163F /* Singleton.swift in Sources */,
 				185171F128BCC19D0085ED8E /* CustomerJobListVC.swift in Sources */,
 				188D0D6028786C0F007C7295 /* JobNearByModel.swift in Sources */,
+				18210EDC2A4B086A00B80BE3 /* AddProductItemModel.swift in Sources */,
 				7C97664D282CFE8A00336F43 /* EditProfileFooterView.swift in Sources */,
 				1890C20D28B7A8B000DAEAB3 /* RecoverVerifyScreenVC.swift in Sources */,
 				188F711F2897FFE8005250DC /* SubcriptionClass.swift in Sources */,
@@ -3168,8 +3374,10 @@
 				181FA918287583240049D8D6 /* CountryViewCell.swift in Sources */,
 				1851720028BE18340085ED8E /* ConnectCustomerJobListDetailVC.swift in Sources */,
 				18B31D152845D5A8002B79F1 /* ESTabBarController.swift in Sources */,
+				187197652A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift in Sources */,
 				18A8EB5F2844EEEA005F0DE4 /* SingleChatController.swift in Sources */,
 				18B31D102845D5A8002B79F1 /* ExampleBasicContentView.swift in Sources */,
+				1863D7C82A45AE7100DB7E8D /* AddProductServiceVC.swift in Sources */,
 				181B6CDE282A8760008B2D0A /* SetFilterVM.swift in Sources */,
 				188F15102865921E000D96D1 /* IJReachability.swift in Sources */,
 				7C488A2C28321BB600B5B328 /* ITServicesCollectionViewCell.swift in Sources */,

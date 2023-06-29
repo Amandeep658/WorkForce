@@ -19,7 +19,7 @@ class BusinessProfileViewController: UIViewController {
 //    let imageArr = ["re","job-1","sb","ic","abb","pp","deleteUser","log"]
 //    let label = ["Recovery Email".localized(),"Manage Jobs".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
     let label = ["Manage Jobs".localized(),"Update Subscription Plan".localized(),"Recovery Email".localized(),"Terms of Use".localized(),"Invoice","About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
-    let imageArr = ["job-1","sb","re","ic","","abb","pp","deleteUser","log"]
+    let imageArr = ["job-1","sb","re","ic","InvoiceIcon","abb","pp","deleteUser","log"]
 
     
     @IBOutlet weak var editBtn: UIButton!
