@@ -30,7 +30,6 @@ class InvoiceSearchVC: UIViewController,UISearchBarDelegate {
         searchTableView.dataSource = self
         searchTableView.register(UINib(nibName: "invoicelistCells", bundle: nil), forCellReuseIdentifier: "invoicelistCells")
         searchBar?.delegate = self
-        self.searchTableView.setBackgroundView(message: "No invoice list.")
 
     }
     
@@ -117,6 +116,11 @@ extension InvoiceSearchVC : UITableViewDelegate, UITableViewDataSource{
         cell.lblText.text = invoiceListData[indexPath.row].invoice_number
         return cell
 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let invoice = InvoiceBillViewVC()
+        self.navigationController?.pushViewController(invoice, animated: true)
     }
     
     

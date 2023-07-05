@@ -114,11 +114,11 @@ class NewEstimateAddressVC: UIViewController {
     
     @IBAction func selectBtn(_ sender: UIButton) {
         if(iconClick == true) {
-            selectImgVw.image = UIImage(named: "circleTick")
+            selectImgVw.image = UIImage(named: "clickblueTickcircle")
             selectImgVw.contentMode = .scaleAspectFill
             self.is_business_address = "1"
         } else {
-            selectImgVw.image = UIImage(named: "circle")
+            selectImgVw.image = UIImage(named: "clickbluecircle")
             selectImgVw.contentMode = .scaleAspectFill
             self.is_business_address = "2"
         }
@@ -173,7 +173,7 @@ class NewEstimateAddressVC: UIViewController {
             UserInvoiceAddressDict.business_phone_number = self.phonnumberTF.text ?? ""
             UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
             UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
-            UserInvoiceAddressDict.estimate_no =  self.dateTF.text ?? ""
+            UserInvoiceAddressDict.date =  self.dateTF.text ?? ""
             UserInvoiceAddressDict.is_business_address =  self.is_business_address
             let vc = CustomerBillingAddressVC()
             vc.UserInvoiceAddressDict = UserInvoiceAddressDict

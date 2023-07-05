@@ -18,11 +18,12 @@ class AddProductServiceVC: UIViewController {
     @IBOutlet weak var totalTF: UITextField!
     @IBOutlet weak var productTableViewHeightConstraints: NSLayoutConstraint!
     @IBOutlet weak var submitBtn: UIButton!
+    @IBOutlet weak var addMoreProductBtn: UIButton!
     
     var productItemModel = [AddProductItemModel()]
     var UserInvoiceAddressDict = InvoiceCreateModel()
     var invoiceAddressList:InvoiceAddAddressData?
-    
+    var imageArr:[String] = ["cross","cross","cross","cross","cross","cross","cross","cross","cross","cross"]
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
@@ -33,6 +34,8 @@ class AddProductServiceVC: UIViewController {
         self.productTableView.dataSource = self
         self.productTableView.register(UINib(nibName: "ProductListItemCell", bundle: nil), forCellReuseIdentifier: "ProductListItemCell")
         self.productTableView.register(HeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
+        self.productTableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "CustomHeader")
+
     }
     
 
@@ -50,6 +53,23 @@ class AddProductServiceVC: UIViewController {
             hitInvoceSaveAddressApi()
         }
     }
+    
+    @IBAction func addMoreProductBtn(_ sender: UIButton) {
+        let section = sender.tag
+        if self.productItemModel.count == 10{
+            self.productItemModel.remove(at: 1)
+        }
+        else{
+            self.productItemModel.append(AddProductItemModel())
+            
+        }
+        self.productTableView.reloadData()
+        DispatchQueue.main.async {
+            self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
+        }
+
+    }
+    
     
     
 //    MARK: OUTLETS
@@ -75,8 +95,9 @@ class AddProductServiceVC: UIViewController {
                 let status = aContact.status
                 let message = aContact.message
                 if status == 1{
-                    showAlert(message: message ?? "", title: AppAlertTitle.appName.rawValue) {
+                    showAlert(message: message ?? "", title: AppAlertTitle.appName.rawValue) { [self] in
                         let vc = InvoiceBillViewVC()
+                        vc.UserInvoiceAddressDict = UserInvoiceAddressDict
                         self.navigationController?.pushViewController(vc, animated: false)
                     }
                 }else{
@@ -97,6 +118,11 @@ class AddProductServiceVC: UIViewController {
 }
 
 extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productItemModel.count
     }
@@ -115,37 +141,27 @@ extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFi
         return UITableView.automaticDimension
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        guard let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "HeaderView") as? HeaderView else {
-            return nil
-        }
-        footerView.headerButton.addTarget(self, action: #selector(headerButtonTapped(_:)), for: .touchUpInside)
-        footerView.headerButton.tag = section
-        footerView.headerLabel.text = "Add more products"
-        return footerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 40
-    }
-    
-    
-    @objc func headerButtonTapped(_ sender: UIButton) {
-        let section = sender.tag
-        if self.productItemModel.count == 10{
-            self.productItemModel.remove(at: 1)
-        }
-        else{
-            self.productItemModel.append(AddProductItemModel())
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeaderView
+        header?.buttonAction = { [self] in
+                 if let cell = productTableView as? ProductListItemCell {
+                     if let indexPath = tableView.indexPath(for: cell) {
+                         // Remove the item from the data array
+                         productItemModel.remove(at: indexPath.row)
             
-        }
-        self.productTableView.reloadData()
-        DispatchQueue.main.async {
-            self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
+                         // Update the table view
+                         tableView.deleteRows(at: [indexPath], with: .automatic)
+                     }
+                 }
+             }
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0{
+            return 0
+        }else{
+            return 44
         }
     }
     

@@ -14,6 +14,7 @@ class InvoiceListVC: UIViewController {
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var invoiceListTableView: UITableView!
     @IBOutlet weak var addBtn: UIButton!
+    @IBOutlet weak var backbtn: UIButton!
     
     var invoiceListData = [InvoiceListData]()
     
@@ -25,7 +26,7 @@ class InvoiceListVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hitInvoiceListApi()
-        self.tabBarController?.tabBar.isHidden = false
+        self.tabBarController?.tabBar.isHidden = true
     }
     
 //    MARK: SET_TABLE_LIST
@@ -35,6 +36,10 @@ class InvoiceListVC: UIViewController {
         invoiceListTableView.register(UINib(nibName: "invoicelistCells", bundle: nil), forCellReuseIdentifier: "invoicelistCells")
     }
     
+    
+    @IBAction func backbtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func searchBtnAction(_ sender: UIButton) {
       let vc = InvoiceSearchVC()
@@ -103,6 +108,7 @@ extension InvoiceListVC : UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let invoice = InvoiceBillViewVC()
+        
         self.navigationController?.pushViewController(invoice, animated: true)
     }
 }

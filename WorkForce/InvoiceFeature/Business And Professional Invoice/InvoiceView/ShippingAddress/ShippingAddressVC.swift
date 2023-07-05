@@ -74,14 +74,14 @@ class ShippingAddressVC: UIViewController {
     
     @IBAction func sameSelectAddressBtn(_ sender: UIButton) {
         if(iconSameBillingAddress == true) {
-            sameSelectAddressImgVw.image = UIImage(named: "circleTick")
+            sameSelectAddressImgVw.image = UIImage(named: "blackTickCircle")
             sameSelectAddressImgVw.contentMode = .scaleAspectFill
             self.addressTF.text = UserInvoiceAddressDict.customer_address
             self.cityTF.text = UserInvoiceAddressDict.customer_city
             self.stateTF.text = UserInvoiceAddressDict.customer_state
             self.countryTF.text = UserInvoiceAddressDict.customer_country
         } else {
-            sameSelectAddressImgVw.image = UIImage(named: "circle")
+            sameSelectAddressImgVw.image = UIImage(named: "blackHitCircle")
             sameSelectAddressImgVw.contentMode = .scaleAspectFill
             self.addressTF.text = ""
             self.cityTF.text = ""
@@ -100,11 +100,11 @@ class ShippingAddressVC: UIViewController {
     
     @IBAction func saveAddressBtn(_ sender: UIButton) {
         if(iconClick == true) {
-            saveListImgVww.image = UIImage(named: "circleTick")
+            saveListImgVww.image = UIImage(named: "clickblueTickcircle")
             saveListImgVww.contentMode = .scaleAspectFill
             self.is_shipping_address = "1"
         } else {
-            saveListImgVww.image = UIImage(named: "circle")
+            saveListImgVww.image = UIImage(named: "clickbluecircle")
             saveListImgVww.contentMode = .scaleAspectFill
             self.is_shipping_address = "2"
         }

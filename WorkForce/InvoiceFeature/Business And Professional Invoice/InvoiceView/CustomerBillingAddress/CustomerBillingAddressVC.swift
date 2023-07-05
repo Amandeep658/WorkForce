@@ -73,11 +73,11 @@ class CustomerBillingAddressVC: UIViewController {
     
     @IBAction func saveListBtn(_ sender: UIButton) {
         if(iconClick == true) {
-            selectImgVw.image = UIImage(named: "circleTick")
+            selectImgVw.image = UIImage(named: "clickblueTickcircle")
             selectImgVw.contentMode = .scaleAspectFill
             self.is_customer_address = "1"
         } else {
-            selectImgVw.image = UIImage(named: "circle")
+            selectImgVw.image = UIImage(named: "clickbluecircle")
             selectImgVw.contentMode = .scaleAspectFill
             self.is_customer_address = "2"
         }

@@ -27,22 +27,44 @@ class InvoiceBillViewVC: UIViewController {
     
     @IBOutlet weak var savePDFBtn: UIButton!
     
+    @IBOutlet weak var backBtn: UIButton!
+    
+    
+    var UserInvoiceAddressDict = InvoiceCreateModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = true
+        updateData()
     }
     
-//    InvoiceBillViewCell
+    func updateData(){
+        self.nameLbl.text = UserInvoiceAddressDict.business_name
+        self.addressLbl.text = UserInvoiceAddressDict.business_phone_number
+        self.websiteLbl.text = UserInvoiceAddressDict.website
+        self.billingAddressLbl.text = UserInvoiceAddressDict.business_address
+        self.shippingAddressLbl.text = UserInvoiceAddressDict.shipping_address
+        self.estimateLbl.text =  "Estimate \(UserInvoiceAddressDict.estimate_no ?? "")"
+        self.dateLbl.text = "DATE \(UserInvoiceAddressDict.date ?? "")"
+        
+    }
+    
     func setTable(){
         itemTableView.delegate = self
         itemTableView.dataSource = self
         itemTableView.register(UINib(nibName: "InvoiceBillViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceBillViewCell")
     }
+    
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+
 
     @IBAction func savePDFBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
@@ -51,7 +73,7 @@ class InvoiceBillViewVC: UIViewController {
 }
 extension InvoiceBillViewVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -64,4 +86,12 @@ extension InvoiceBillViewVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     
+    
 }
+
+
+
+//@objc func removeCell(_ notification: Notification) {
+
+//}
+

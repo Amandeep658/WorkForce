@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="width" constant="18" id="gdV-Ms-v24"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="circle"/>
+                                <state key="normal" image="clickbluecircle"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -85,7 +85,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="circle" width="20.333333969116211" height="20.666666030883789"/>
+        <image name="clickbluecircle" width="512" height="512"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

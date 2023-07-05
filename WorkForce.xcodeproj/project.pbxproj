@@ -150,6 +150,7 @@
 		1863D7CA2A45AE7A00DB7E8D /* AddProductServiceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863D7C92A45AE7A00DB7E8D /* AddProductServiceVC.xib */; };
 		1863D7CE2A45B84600DB7E8D /* InvoiceBillViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1863D7CC2A45B84600DB7E8D /* InvoiceBillViewVC.swift */; };
 		1863D7CF2A45B84600DB7E8D /* InvoiceBillViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1863D7CD2A45B84600DB7E8D /* InvoiceBillViewVC.xib */; };
+		1865A0622A55847900A810C0 /* ProductCrossHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1865A0612A55847900A810C0 /* ProductCrossHeader.swift */; };
 		1871975A2A4D586000002F99 /* CustomerBillingSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197582A4D586000002F99 /* CustomerBillingSavedAddressVC.swift */; };
 		1871975B2A4D586000002F99 /* CustomerBillingSavedAddressVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */; };
 		187197652A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187197632A4D58E400002F99 /* ShippingBillingSavedAddressVC.swift */; };
@@ -669,6 +670,7 @@
 		1863D7C92A45AE7A00DB7E8D /* AddProductServiceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddProductServiceVC.xib; sourceTree = "<group>"; };
 		1863D7CC2A45B84600DB7E8D /* InvoiceBillViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceBillViewVC.swift; sourceTree = "<group>"; };
 		1863D7CD2A45B84600DB7E8D /* InvoiceBillViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvoiceBillViewVC.xib; sourceTree = "<group>"; };
+		1865A0612A55847900A810C0 /* ProductCrossHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCrossHeader.swift; sourceTree = "<group>"; };
 		1867D5CC28C86976009B3B60 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = "pt-PT"; path = "pt-PT.lproj/BusinessesViewController.xib"; sourceTree = "<group>"; };
 		187197582A4D586000002F99 /* CustomerBillingSavedAddressVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerBillingSavedAddressVC.swift; sourceTree = "<group>"; };
 		187197592A4D586000002F99 /* CustomerBillingSavedAddressVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomerBillingSavedAddressVC.xib; sourceTree = "<group>"; };
@@ -1309,6 +1311,7 @@
 			children = (
 				18210EEE2A4B3FAE00B80BE3 /* AlertView.swift */,
 				18210EED2A4B3FAE00B80BE3 /* AlertView.xib */,
+				1865A0612A55847900A810C0 /* ProductCrossHeader.swift */,
 			);
 			path = ProductHeader;
 			sourceTree = "<group>";
@@ -3385,6 +3388,7 @@
 				1876C46F2828F1E300C6C9B2 /* SetFilterViewController.swift in Sources */,
 				188BE6BB28881C2C0088CBBA /* JobDetailModel.swift in Sources */,
 				1838C8B62822837F004A6FE7 /* SceneDelegate.swift in Sources */,
+				1865A0622A55847900A810C0 /* ProductCrossHeader.swift in Sources */,
 				1816214C289E506000743DE4 /* CoustomerProfileVC.swift in Sources */,
 				188F2488287D5CA80076C518 /* ProfessionalFilterVC.swift in Sources */,
 				181FA918287583240049D8D6 /* CountryViewCell.swift in Sources */,

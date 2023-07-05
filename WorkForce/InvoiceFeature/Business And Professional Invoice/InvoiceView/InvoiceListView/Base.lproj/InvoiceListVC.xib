@@ -17,6 +17,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="InvoiceListVC" customModule="WorkForce" customModuleProvider="target">
             <connections>
                 <outlet property="addBtn" destination="qnR-8B-nph" id="hb9-vG-11A"/>
+                <outlet property="backbtn" destination="arh-QJ-HLy" id="wFM-x1-6m2"/>
                 <outlet property="invoiceListTableView" destination="2E0-9B-lkn" id="fhf-qn-acc"/>
                 <outlet property="searchBtn" destination="Lxg-OZ-Aab" id="DdZ-Jg-1EK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -31,7 +32,7 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoices" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nQa-EA-2v2">
-                            <rect key="frame" x="20" y="12.333333333333327" width="74.666666666666671" height="25.333333333333329"/>
+                            <rect key="frame" x="46.000000000000007" y="12.333333333333327" width="74.666666666666686" height="25.333333333333329"/>
                             <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="18"/>
                             <color key="textColor" red="0.34117650989999998" green="0.54509806630000002" blue="0.72156864399999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <nil key="highlightedColor"/>
@@ -48,12 +49,26 @@
                                 <action selector="searchBtnAction:" destination="-1" eventType="touchUpInside" id="KlL-8V-EjP"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arh-QJ-HLy">
+                            <rect key="frame" x="10" y="15" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="1dP-xo-5CF"/>
+                                <constraint firstAttribute="width" constant="20" id="9EA-hR-isV"/>
+                            </constraints>
+                            <inset key="imageEdgeInsets" minX="6" minY="4" maxX="6" maxY="4"/>
+                            <state key="normal" image="backSign"/>
+                            <connections>
+                                <action selector="backbtn:" destination="-1" eventType="touchUpInside" id="WZL-eL-dlK"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="arh-QJ-HLy" firstAttribute="leading" secondItem="RJG-zK-pRb" secondAttribute="leading" constant="10" id="3AV-zq-PRv"/>
                         <constraint firstItem="nQa-EA-2v2" firstAttribute="centerY" secondItem="RJG-zK-pRb" secondAttribute="centerY" id="4JJ-yG-E6O"/>
+                        <constraint firstItem="nQa-EA-2v2" firstAttribute="leading" secondItem="arh-QJ-HLy" secondAttribute="trailing" constant="16" id="4ia-oe-f65"/>
                         <constraint firstAttribute="trailing" secondItem="Lxg-OZ-Aab" secondAttribute="trailing" constant="20" id="5m3-Xo-vvU"/>
-                        <constraint firstItem="nQa-EA-2v2" firstAttribute="leading" secondItem="RJG-zK-pRb" secondAttribute="leading" constant="20" id="Amj-Zy-Bvs"/>
+                        <constraint firstItem="arh-QJ-HLy" firstAttribute="centerY" secondItem="RJG-zK-pRb" secondAttribute="centerY" id="DFf-vz-MDw"/>
                         <constraint firstItem="Lxg-OZ-Aab" firstAttribute="centerY" secondItem="RJG-zK-pRb" secondAttribute="centerY" id="ZT3-Po-HSl"/>
                         <constraint firstAttribute="height" constant="50" id="piD-aH-bAd"/>
                     </constraints>
@@ -93,6 +108,7 @@
         </view>
     </objects>
     <resources>
+        <image name="backSign" width="10.333333015441895" height="15.333333015441895"/>
         <image name="invoiceAddBtn" width="78" height="78"/>
         <image name="sear" width="39" height="39"/>
         <systemColor name="systemBackgroundColor">

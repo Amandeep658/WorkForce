@@ -18,7 +18,7 @@ class BusinessProfileViewController: UIViewController {
     var tapGesture = UITapGestureRecognizer()
 //    let imageArr = ["re","job-1","sb","ic","abb","pp","deleteUser","log"]
 //    let label = ["Recovery Email".localized(),"Manage Jobs".localized(),"Update Subscription Plan".localized(),"Terms of Use".localized(),"About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
-    let label = ["Manage Jobs".localized(),"Update Subscription Plan".localized(),"Recovery Email".localized(),"Terms of Use".localized(),"Invoice","About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
+    let label = ["Manage Jobs".localized(),"Update Subscription Plan".localized(),"Recovery Email".localized(),"Terms of Use".localized(),"Invoices","About Us".localized(),"Privacy Policy".localized(),"Delete Account".localized(),"Logout".localized()]
     let imageArr = ["job-1","sb","re","ic","InvoiceIcon","abb","pp","deleteUser","log"]
 
     
@@ -226,7 +226,7 @@ extension BusinessProfileViewController : UITableViewDelegate , UITableViewDataS
             let terms =  TermsConditionVC()
             self.pushViewController(terms, true)
             break
-        case "Invoice":
+        case "Invoices":
             let invoice =  InvoiceListVC()
             self.pushViewController(invoice, true)
             break
