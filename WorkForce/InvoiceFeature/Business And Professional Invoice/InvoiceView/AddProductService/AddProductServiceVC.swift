@@ -8,7 +8,25 @@
 import UIKit
 import Alamofire
 
-class AddProductServiceVC: UIViewController {
+
+protocol getProductItemDetail{
+    func detail(parentDict:AddProductItemModel?,index:Int)
+}
+
+var updateTotal: (() -> Void)?
+var updateItemTotal: (() -> Void)?
+
+
+
+class AddProductServiceVC: UIViewController, getProductItemDetail,UITextFieldDelegate{
+    func detail(parentDict: AddProductItemModel?, index: Int) {
+        productItemModel[index] = parentDict ?? AddProductItemModel()
+        self.productItemModel[index].item = parentDict?.item
+        self.productItemModel[index].amount = parentDict?.amount
+        self.productItemModel[index].quantity = parentDict?.quantity
+        self.productItemModel[index].rate = parentDict?.rate
+    }
+    
     
 //    MARK: OUTLETS
     @IBOutlet weak var lineProgressView: UIProgressView!
@@ -22,54 +40,113 @@ class AddProductServiceVC: UIViewController {
     
     var productItemModel = [AddProductItemModel()]
     var UserInvoiceAddressDict = InvoiceCreateModel()
-    var invoiceAddressList:InvoiceAddAddressData?
-    var imageArr:[String] = ["cross","cross","cross","cross","cross","cross","cross","cross","cross","cross"]
+    var invoiceAddressList:InvoiceAddressData?
+    var imageArr:[String] = ["cross"]
+    var item = "cross"
+    var index = 0
+    var totalValue = Int()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
+        updateTotal = { [self] in
+            calculateTotalAmount()
+        }
     }
     
     func setTable(){
         self.productTableView.delegate = self
         self.productTableView.dataSource = self
+        ShippingTF.delegate = self
+        totalTF.delegate = self
+        self.totalTF.isUserInteractionEnabled = false
         self.productTableView.register(UINib(nibName: "ProductListItemCell", bundle: nil), forCellReuseIdentifier: "ProductListItemCell")
-        self.productTableView.register(HeaderView.self, forHeaderFooterViewReuseIdentifier: "HeaderView")
         self.productTableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "CustomHeader")
+    }
 
+    func itemList() -> Bool {
+        for model in productItemModel {
+            if !(model.item?.count ?? 0 > 0) {
+                showAlert(message: "please_enter_item".localized(), title: AppAlertTitle.appName.rawValue)
+                return false
+            } else if !(model.quantity?.count ?? 0 > 0) {
+                showAlert(message: "please_enter_quantity".localized(), title: AppAlertTitle.appName.rawValue)
+                return false
+            } else if !(model.rate?.count ?? 0 > 0) {
+                showAlert(message: "please_enter_rate".localized(), title: AppAlertTitle.appName.rawValue)
+                return false
+            }
+        }
+        return true
     }
     
-
+    
     @IBAction func backBtn(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: false)
     }
 
     @IBAction func submitBtn(_ sender: UIButton) {
+        UserInvoiceAddressDict.shipping = ShippingTF.text
+        UserInvoiceAddressDict.total = totalTF.text
         UserInvoiceAddressDict.product = productItemModel
-        UserInvoiceAddressDict.product?[0].shipping = ShippingTF.text ?? ""
-        UserInvoiceAddressDict.product?[0].total = totalTF.text ?? ""
-        if ShippingTF.text == "" && totalTF.text == "" {
-            showAlert(message: "Please fill all detail", title: AppAlertTitle.appName.rawValue)
-        }else{
-            hitInvoceSaveAddressApi()
+        if itemList() == true {
+            if ShippingTF.text == "" && totalTF.text == ""  {
+                showAlert(message: "please_enter_shipping".localized(), title: AppAlertTitle.appName.rawValue)
+            }else{
+                hitInvoceSaveAddressApi()
+            }
         }
     }
+    
     
     @IBAction func addMoreProductBtn(_ sender: UIButton) {
-        let section = sender.tag
-        if self.productItemModel.count == 10{
-            self.productItemModel.remove(at: 1)
+        if itemList() == true{
+            if self.productItemModel.count == 10{
+                showAlert(message: "you_can_only_add_10_Products".localized(), title: AppAlertTitle.appName.rawValue) {
+                    self.dismiss(animated: true)
+                }
+            }else{
+                self.addMoreProductBtn.isUserInteractionEnabled = true
+                self.productItemModel.append(AddProductItemModel())
+            }
+            calculateTotalAmount()
+            self.productTableView.reloadData()
+            DispatchQueue.main.async {
+                self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
+            }
         }
-        else{
-            self.productItemModel.append(AddProductItemModel())
-            
-        }
-        self.productTableView.reloadData()
-        DispatchQueue.main.async {
-            self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
-        }
-
     }
     
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        switch textField {
+        case self.ShippingTF:
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.calculateTotalAmount()
+            }
+        default:break
+        }
+        return true
+    }
+    
+    func calculateTotalAmount() {
+        var val = 0
+        productItemModel.forEach { item in
+            let amountLabel = item.amount
+            val += Int(amountLabel ?? "") ?? 0
+        }
+        if let opop = Int(ShippingTF.text ?? ""),
+           opop > 0 {
+            val += opop
+            print("totalValue of table new sum is here >>>",val)
+            self.totalTF.text = "\(val)"
+            productItemModel[0].shipping = self.ShippingTF.text ?? ""
+            productItemModel[0].total = self.totalTF.text ?? ""
+        } else {
+            self.totalTF.text = ""
+
+        }
+    }
     
     
 //    MARK: OUTLETS
@@ -80,8 +157,6 @@ class AddProductServiceVC: UIViewController {
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        let param = ["page_no" : "1","per_page" : "40"] as [String : Any]
-        print(param)
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.addinvoiceList, params: UserInvoiceAddressDict.convertModelToDict() as! Parameters , headers: headers) { [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
@@ -90,7 +165,7 @@ class AddProductServiceVC: UIViewController {
                 let reqJSONStr = String(data: jsonData, encoding: .utf8)
                 let data = reqJSONStr?.data(using: .utf8)
                 let jsonDecoder = JSONDecoder()
-                let aContact = try jsonDecoder.decode(InvoiceAddAddressModel.self, from: data!)
+                let aContact = try jsonDecoder.decode(InvoiceAddProductSerModel.self, from: data!)
                 print(aContact)
                 let status = aContact.status
                 let message = aContact.message
@@ -117,11 +192,7 @@ class AddProductServiceVC: UIViewController {
 
 }
 
-extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate{
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return productItemModel.count
@@ -134,6 +205,25 @@ extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFi
         cell.quantityTF.text = self.productItemModel[indexPath.row].quantity
         cell.rateTF.text = self.productItemModel[indexPath.row].rate
         cell.amountTF.text = self.productItemModel[indexPath.row].amount
+        cell.getProductitemDelegate = self
+        cell.itemTF.tag = indexPath.row
+        cell.quantityTF.tag = indexPath.row
+        cell.rateTF.tag = indexPath.row
+        cell.amountTF.tag = indexPath.row
+        cell.amountTF.isUserInteractionEnabled = false
+
+        if indexPath.row == 0 {
+            cell.crossView.isHidden = true
+            cell.crossViewHeightConstraint.constant = 0
+        }else{
+            cell.crossView.isHidden = false
+            cell.crossViewHeightConstraint.constant =  30
+        }
+        cell.crossBtn.tag = indexPath.row
+        cell.crossBtn.addTarget(self, action: #selector(hitCrossBtn), for: .touchUpInside)
+        DispatchQueue.main.async {
+            self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
+        }
         return cell
     }
     
@@ -141,81 +231,27 @@ extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource,UITextFi
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeader") as? CustomHeaderView
-        header?.buttonAction = { [self] in
-                 if let cell = productTableView as? ProductListItemCell {
-                     if let indexPath = tableView.indexPath(for: cell) {
-                         // Remove the item from the data array
-                         productItemModel.remove(at: indexPath.row)
-            
-                         // Update the table view
-                         tableView.deleteRows(at: [indexPath], with: .automatic)
-                     }
-                 }
-             }
-        return header
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0{
-            return 0
-        }else{
-            return 44
+    @objc func hitCrossBtn(sender : UIButton) {
+        let buttonPosition = sender.convert(CGPoint.zero, to: productTableView)
+        if let indexPath = productTableView.indexPathForRow(at: buttonPosition) {
+            productItemModel.remove(at: indexPath.row)
+            productTableView.deleteRows(at: [indexPath], with: .automatic)
+            calculateTotalAmount()
+            productTableView.reloadData()
+            if self.productItemModel.count == 10{
+                self.addMoreProductBtn.isUserInteractionEnabled = false
+            }else{
+                self.addMoreProductBtn.isUserInteractionEnabled = true
+            }
+        }
+        DispatchQueue.main.async {
+            self.productTableViewHeightConstraints.constant = self.productTableView.contentSize.height
         }
     }
-    
 }
 
 
-
-class HeaderView: UITableViewHeaderFooterView {
-
-    var productItemModel = [AddProductItemModel()]
-
-    let headerButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        let image = UIImage(named: "AddItem")?.withRenderingMode(.alwaysTemplate)
-        button.setImage(image, for: .normal)
-        button.tintColor = UIColor(hex: "#578BB8")
-        
-        return button
-    }()
-    
-    let headerLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textAlignment = .left
-        label.font = label.font.bold()
-        label.textColor = UIColor(r: 87, g: 139, b: 184, a: 1)
-        label.textColor = UIColor(hex: "#578BB8")
-        return label
-    }()
-    
-    override init(reuseIdentifier: String?) {
-        super.init(reuseIdentifier: reuseIdentifier)
-        addSubview(headerButton)
-        addSubview(headerLabel)
-        
-        NSLayoutConstraint.activate([
-            headerButton.topAnchor.constraint(equalTo: topAnchor),
-            headerButton.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 10),
-            headerButton.widthAnchor.constraint(equalToConstant: 60),
-            headerButton.heightAnchor.constraint(equalToConstant: 60),
-            
-            headerLabel.centerYAnchor.constraint(equalTo: headerButton.centerYAnchor),
-            headerLabel.leadingAnchor.constraint(equalTo: headerButton.trailingAnchor, constant: 2),
-            headerLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-        ])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
 extension UIFont {
-
     func withTraits(traits:UIFontDescriptor.SymbolicTraits...) -> UIFont {
         let descriptor = self.fontDescriptor
             .withSymbolicTraits(UIFontDescriptor.SymbolicTraits(traits))
@@ -226,3 +262,4 @@ extension UIFont {
         return withTraits(traits: .traitBold)
     }
 }
+

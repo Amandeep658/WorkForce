@@ -577,11 +577,13 @@ extension EditProfileDesignerViewController : GMSAutocompleteViewControllerDeleg
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
                         completion("", [""])
                             return
                     }
                     print("addressssss",place)
+                    self.professionalEditUserDict.state = state
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

@@ -31,6 +31,8 @@ struct InvoiceSavedAddressData : Codable {
     let id : String?
     let business_address : String?
     let selected:Int?
+    let country_code:String?
+    let dial_code:String?
     let business_phone_number : String?
     let website : String?
     let customer_address: String?
@@ -48,6 +50,8 @@ struct InvoiceSavedAddressData : Codable {
         case id = "id"
         case business_address = "business_address"
         case selected = "selected"
+        case country_code = "country_code"
+        case dial_code = "dial_code"
         case business_phone_number = "business_phone_number"
         case website = "website"
         case customer_address = "customer_address"
@@ -67,6 +71,9 @@ struct InvoiceSavedAddressData : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         business_address = try values.decodeIfPresent(String.self, forKey: .business_address)
+        country_code = try values.decodeIfPresent(String.self, forKey: .country_code)
+
+        dial_code = try values.decodeIfPresent(String.self, forKey: .dial_code)
         business_phone_number = try values.decodeIfPresent(String.self, forKey: .business_phone_number)
         website = try values.decodeIfPresent(String.self, forKey: .website)
         selected = try values.decodeIfPresent(Int.self, forKey: .selected)

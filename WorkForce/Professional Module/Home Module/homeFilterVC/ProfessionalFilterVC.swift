@@ -346,11 +346,13 @@ extension ProfessionalFilterVC : GMSAutocompleteViewControllerDelegate{
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
                         completion("", [""])
                             return
                     }
-                    print("addressssss",place)
+                    print("place >>>>",place)
+                    print("state >>>>",state)
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

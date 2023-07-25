@@ -42,6 +42,8 @@ class BusinessEditProfileViewController: UIViewController , UITextFieldDelegate 
         }
     }
     
+    var state = ""
+    
     @IBOutlet weak var companyView: UIView!
     @IBOutlet weak var companyTF: UITextField!
     @IBOutlet weak var addressView: UIView!
@@ -152,7 +154,8 @@ class BusinessEditProfileViewController: UIViewController , UITextFieldDelegate 
         if compressedData.isEmpty == false{
             imgArray.append(compressedData)
         }
-        let params = ["company_name":companyTF.text ?? "" ,"address":addressTF.text ?? "","description":descriptionTV.text ?? ""] as [String : Any]
+        let params = ["company_name":companyTF.text ?? "" ,"address":addressTF.text ?? "","state":state,"description":descriptionTV.text ?? ""] as [String : Any]
+        print("params >>>>>",params)
         let strURL = kBASEURL + WSMethods.addCompany
         self.requestWith(endUrl: strURL , parameters: params)
     }
@@ -265,11 +268,14 @@ extension BusinessEditProfileViewController : GMSAutocompleteViewControllerDeleg
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                          let state = place.administrativeArea,
                         let lines = place.lines else {
                         completion("", [""])
                             return
                     }
                     print("addressssss",place)
+                    print("state >>>>",state)
+                    self.state = state
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

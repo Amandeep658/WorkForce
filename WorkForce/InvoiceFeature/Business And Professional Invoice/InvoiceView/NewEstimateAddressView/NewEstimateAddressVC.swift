@@ -36,20 +36,37 @@ class NewEstimateAddressVC: UIViewController {
     var UserInvoiceAddressDict = InvoiceCreateModel()
     let datePicker = UIDatePicker()
     var is_business_address = ""
-
-
+    let countryPicker = ADCountryPicker()
+    var countryFlagCode = "US"
+    var estimateNumber = ""
+    var invoiceListData = [InvoiceListData]()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tabBarController?.tabBar.isHidden = true
         createDatePicker()
+        countryPicker.delegate = self
+        
+        if invoiceListData.count != 0 {
+            let value = (Int(estimateNumber) ?? 0) + 1
+            print("value is here >>>>",value)
+            self.estimateNumberTF.text = "\(value)"
+        }else{
+            let date = Date()
+            let milliseconds = Int(date.timeIntervalSince1970 * 1000)
+            print(milliseconds)
+            self.estimateNumberTF.text = "\(milliseconds)"
+        }
+        
+        self.estimateNumberTF.isUserInteractionEnabled = false
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         phonnumberTF.delegate = self
         dateTF.delegate = self
+        estimateNumberTF.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.NotificationAct(_:)), name: NSNotification.Name(rawValue: "dataTransferToEstimateScreen"), object: nil)
     }
     
@@ -70,7 +87,18 @@ class NewEstimateAddressVC: UIViewController {
                 self.phonnumberTF.text = selectedCategoryID.joined(separator: ",")
                 let selectedWebsite = userName.map{ ($0["website"]! as String)}
                 self.websiteTF.text = selectedWebsite.joined(separator: ",")
-                self.countryCodeLbl.text = ""
+                let dial_code = userName.map{ ($0["dial_code"]! as String)}
+                print("countryCode is here",dial_code)
+                self.countryCodeLbl.text = "\(dial_code.first ?? "")"
+                
+                let countryCode = userName.map{ ($0["country_code"]! as String)}
+                print("countryCode is here",countryCode)
+                let flagImage =  countryPicker.getFlag(countryCode: "\(countryCode.first ?? "")")
+                print("flagImage",flagImage as Any)
+                self.countryImgView.image = flagImage
+                
+//
+//                let dialingCode =  countryPicker.getDialCode(countryCode: code)
             }
        }
    }
@@ -150,27 +178,33 @@ class NewEstimateAddressVC: UIViewController {
     //    MARK: VALIDATIONS
     func firstValidation(){
         if (invoiceNameTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: "U2 CONNECT" , message: "Please enter business name." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT" , message: "business_name".localized() , okButton: "Ok", controller: self) {
             }
         }else if (businessAddressTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: "U2 CONNECT" , message: "Please enter business address." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT" , message: "please_enter_business_address".localized() , okButton: "Ok", controller: self) {
             }
         }else if (phonnumberTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: "U2 CONNECT", message: "Please enter phone number." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT", message: "Please_enter_number".localized() , okButton: "Ok", controller: self) {
             }
         }else if (websiteTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: "U2 CONNECT", message: "Please enter website." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT", message: "please_enter_website".localized() , okButton: "Ok", controller: self) {
+            }
+        }else if validateWebsiteURL("\(websiteTF.text ?? "")") == false{
+            showAlertMessage(title: "U2 CONNECT", message: "please_enter_valid_website".localized() , okButton: "Ok", controller: self) {
             }
         }else if (estimateNumberTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: "U2 CONNECT", message: "Please enter estimate no." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT", message: "please_enter_estimate_no".localized() , okButton: "Ok", controller: self) {
             }
         }else if (dateTF.text?.trimWhiteSpace.isEmpty)! {
-            showAlertMessage(title: "U2 CONNECT", message: "Please enter date." , okButton: "Ok", controller: self) {
+            showAlertMessage(title: "U2 CONNECT", message: "please_enter_date".localized() , okButton: "Ok", controller: self) {
             }
         }else{
             UserInvoiceAddressDict.business_name = self.invoiceNameTF.text ?? ""
+            UserInvoiceAddressDict.invoice_number = self.invoiceNameTF.text ?? ""
             UserInvoiceAddressDict.business_address = self.businessAddressTF.text ?? ""
-            UserInvoiceAddressDict.business_phone_number = self.phonnumberTF.text ?? ""
+            UserInvoiceAddressDict.country_code = countryFlagCode
+            UserInvoiceAddressDict.dial_code = "\(self.countryCodeLbl.text ?? "")"
+            UserInvoiceAddressDict.business_phone_number = "\(self.phonnumberTF.text ?? "")"
             UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
             UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
             UserInvoiceAddressDict.date =  self.dateTF.text ?? ""
@@ -180,6 +214,12 @@ class NewEstimateAddressVC: UIViewController {
             self.navigationController?.pushViewController(vc, animated: false)
         }
     }
+    
+    func validateWebsiteURL(_ urlString: String) -> Bool {
+        let websiteURLRegEx = "^(([s]?))?(www\\.)?[a-zA-Z0-9]+\\.[a-zA-Z]{2,}(\\.[a-zA-Z]{2,})?$"
+        let websiteURLPredicate = NSPredicate(format: "SELF MATCHES %@", websiteURLRegEx)
+        return websiteURLPredicate.evaluate(with: urlString)
+    }
 }
 extension NewEstimateAddressVC: UITextFieldDelegate,ADCountryPickerDelegate{
     
@@ -188,6 +228,7 @@ extension NewEstimateAddressVC: UITextFieldDelegate,ADCountryPickerDelegate{
         _ = picker.navigationController?.popToRootViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
         print("her is code--->>>>",code)
+        self.countryFlagCode = code
         let image =  picker.getFlag(countryCode: code)
         countryImgView.image = image
         countryCodeLbl.text = dialCode
@@ -197,10 +238,12 @@ extension NewEstimateAddressVC: UITextFieldDelegate,ADCountryPickerDelegate{
 //    MARK: TEXTFIELD DELEGATE
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
+    
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
     }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

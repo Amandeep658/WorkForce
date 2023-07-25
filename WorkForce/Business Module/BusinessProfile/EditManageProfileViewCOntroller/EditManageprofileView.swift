@@ -65,6 +65,8 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
     var jobID = ""
     var jobDetailByJobdict:JobDetailByJobIdModel?
     var professionalEditUserDict = SingletonLocalModel()
+    
+    var setstate = ""
 
     var selectedImage: UIImage? {
         didSet {
@@ -239,7 +241,7 @@ class EditManageprofileView: UIViewController, UITextFieldDelegate, UITextViewDe
         self.professionalEditUserDict.rate_type =  isRateType
         self.professionalEditUserDict.job_type = jobTypeTF.text
         self.professionalEditUserDict.city = cityTF.text
-        self.professionalEditUserDict.state = localityTF.text
+        self.professionalEditUserDict.state = setstate
         self.professionalEditUserDict.description  = descriptionTxtView.text
         self.professionalEditUserDict.catagory_details = self.jobDetailByJobdict?.data?.catagory_details
     }
@@ -488,7 +490,7 @@ extension EditManageprofileView: GMSAutocompleteViewControllerDelegate {
         let geoCoder = CLGeocoder()
         let location = CLLocationCoordinate2D(latitude: place.coordinate.latitude, longitude:  place.coordinate.longitude)
         print("search result",location)
-        self.getPlaceAddressFrom(location: location) { [self] address ,line  in
+        self.getPlaceAddressFrom(location: location) { [self] address ,line in
             print("here is resultttt",address)
             if address != ""{
                 self.cityTF.text = address
@@ -522,17 +524,21 @@ extension EditManageprofileView: GMSAutocompleteViewControllerDelegate {
     
     func getPlaceAddressFrom(location: CLLocationCoordinate2D, completion: @escaping (_ address: String , _ line: [String]) -> Void) {
         let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(location) { response, error in
+        geocoder.reverseGeocodeCoordinate(location) { [self] response, error in
             if error != nil {
                 print("reverse geodcode fail: \(error!.localizedDescription)")
             } else {
                 guard let places = response?.results(),
                       let place = places.first,
-                      let lines = place.lines else {
+                      let lines = place.lines,
+                      let states = place.administrativeArea else {
                     completion("",[""])
                     return
                 }
-                print("addressssss",place)
+                print("place >>>>> ",place)
+                print("state >>>>> ",states)
+                self.setstate = place.administrativeArea ?? ""
+                self.professionalEditUserDict.state = setstate
                 completion(place.locality ?? "", place.lines ?? [])
             }
         }

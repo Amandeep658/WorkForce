@@ -22,8 +22,8 @@ struct SingletonLocalModel: Decodable{
     var job_image: String?
     var location: String?
     var city: String?
-    var description: String?
     var state: String?
+    var description: String?
     var job_type: String?
     var latitude: String?
     var job_id: String?
@@ -44,10 +44,10 @@ struct SingletonLocalModel: Decodable{
         dict.setValue(self.rate_type, forKey: "rate_type")
         dict.setValue(self.city, forKey: "city")
         dict.setValue(self.location, forKey: "location")
+        dict.setValue(self.state, forKey: "state")
         dict.setValue(self.description, forKey: "description")
         dict.setValue(self.photo, forKey: "photo")
         dict.setValue(self.job_image, forKey: "job_image")
-        dict.setValue(self.state, forKey: "state")
         dict.setValue(self.job_type, forKey: "job_type")
         dict.setValue(self.latitude, forKey: "latitude")
         dict.setValue(self.longitude, forKey: "longitude")

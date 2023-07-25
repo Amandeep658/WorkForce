@@ -215,11 +215,13 @@ extension CoustomerLocationVC: GMSAutocompleteViewControllerDelegate {
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
                             completion("",[""])
                             return
                     }
                     print("addressssss",place)
+                    self.professionalUserDict.state = state
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

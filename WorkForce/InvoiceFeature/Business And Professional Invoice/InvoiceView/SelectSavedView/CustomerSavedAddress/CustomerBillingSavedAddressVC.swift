@@ -25,6 +25,7 @@ class CustomerBillingSavedAddressVC: UIViewController, UITableViewDelegate,UITab
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
+        self.selectedAddress = []
     }
     
     //    MARK: SET_TABLE_LIST
@@ -139,7 +140,7 @@ class CustomerBillingSavedAddressVC: UIViewController, UITableViewDelegate,UITab
         let cell = tableView.cellForRow(at: indexPath) as!SelectCityAddressCell
         cell.selectBtn.setImage(UIImage(named: "circleTick"), for: .normal)
         if (selectedAddress.firstIndex(where: {$0["id"]! == invSavedListArr[indexPath.row].id ?? ""}) == nil){
-            let selectedDict = ["name":invSavedListArr[indexPath.row].customer_address ?? "","id":invSavedListArr[indexPath.row].id ?? "","customer_city":invSavedListArr[indexPath.row].customer_city ?? "","customer_state":invSavedListArr[indexPath.row].customer_state ?? "","customer_country":invSavedListArr[indexPath.row].customer_country ?? ""]
+            let selectedDict = ["name":invSavedListArr[indexPath.row].customer_address ?? "","id":invSavedListArr[indexPath.row].id ?? "","customer_city":invSavedListArr[indexPath.row].customer_city ?? "","country_code":invSavedListArr[indexPath.row].country_code ?? "","dial_code":invSavedListArr[indexPath.row].dial_code ?? "","customer_state":invSavedListArr[indexPath.row].customer_state ?? "","customer_country":invSavedListArr[indexPath.row].customer_country ?? ""]
             selectedAddress.append(selectedDict)
         }
         print(selectedAddress)

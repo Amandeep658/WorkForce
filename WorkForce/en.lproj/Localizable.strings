@@ -23,6 +23,7 @@
 "Companies Opportunity" = "Companies Opportunity";
 "ENTER_EMAIL" = "Please enter email.";
 "ENTER_VALID_EMAIL" = "Please enter vaild email.";
+"ENTER_STATE" = "Please enter state.";
 "ENTER_ADDRESS" = "Please enter Address.";
 "Please enter description." = "Please enter description.";
 "Please enter date of birth." = "Please enter date of birth.";
@@ -120,4 +121,35 @@
 
 "Take photo" = "Take photo";
 "Photo library" = "Photo library";
+
+//Invoice_English
+
+"please_enter_business_address" = "Please Enter Business Address";
+"please_enter_website" = "Please Enter Website";
+"please_enter_valid_website" = "Please enter valid website.";
+"please_enter_estimate_no" = "Please Enter Estimate No.";
+"please_enter_dob" = "Please Enter Date Of Birth";
+"Please_enter_number" = "Please enter phone number.";
+"please_enter_country" = "Please Enter Country";
+"please_enter_item" = "Please Enter Item";
+"please_enter_quantity" = "Please Enter Quantity";
+"please_enter_rate" = "";
+"please_enter_amount" = "Please Enter Amount";
+"please_enter_shipping" = "Please Enter Shipping";
+"please_enter_date" = "Please Enter Date";
+"business_name" = "Please enter Business Name";
+"please_enter_business_name" = "Please Enter Business Name";
+"please_enter_valid_website" = "Please Enter Valid Website";
+"you_can_only_add_10_Products" = "You can only add 10 Products";
+"please_select_one_address" = "Please Select Address";
+
+
+
+
+
+
+
+
+
+
 

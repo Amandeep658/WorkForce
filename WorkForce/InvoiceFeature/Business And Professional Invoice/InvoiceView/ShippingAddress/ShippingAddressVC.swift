@@ -42,9 +42,7 @@ class ShippingAddressVC: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(rawValue: "dataTransferToShippingScreen"), object: nil)
-    }
-
-    
+    }    
     
     @objc func NotificationAct(_ notification: NSNotification) {
         if let userInfo = notification.userInfo {

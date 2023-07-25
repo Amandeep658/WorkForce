@@ -6,11 +6,11 @@
 //
 
 import Foundation
-import Foundation
+
 struct InvoiceAddAddressModel : Codable {
     let status : Int?
     let message : String?
-    let data : InvoiceAddAddressData?
+    let data : [InvoiceAddAddressData]?
 
     enum CodingKeys: String, CodingKey {
 
@@ -23,14 +23,16 @@ struct InvoiceAddAddressModel : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         status = try values.decodeIfPresent(Int.self, forKey: .status)
         message = try values.decodeIfPresent(String.self, forKey: .message)
-        data = try values.decodeIfPresent(InvoiceAddAddressData.self, forKey: .data)
+        data = try values.decodeIfPresent([InvoiceAddAddressData].self, forKey: .data)
     }
 
 }
 struct InvoiceAddAddressData : Codable {
     let id : String?
     let user_id : String?
+    let business_name : String?
     let business_address : String?
+    let dial_code : String?
     let business_phone_number : String?
     let website : String?
     let estimate_no : String?
@@ -49,12 +51,15 @@ struct InvoiceAddAddressData : Codable {
     let is_business_address : String?
     let is_customer_address : String?
     let is_shipping_address : String?
-    let product_drtails : [InvoiceAddressProduct_drtails]?
+    let product_drtails : [Addproduct_drtails]?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
         case user_id = "user_id"
+        case invoice_number = "invoice_number"
+        case dial_code = "dial_code"
+        case business_name = "business_name"
         case business_address = "business_address"
         case business_phone_number = "business_phone_number"
         case website = "website"
@@ -70,7 +75,6 @@ struct InvoiceAddAddressData : Codable {
         case shipping_city = "shipping_city"
         case shipping_state = "shipping_state"
         case shipping_country = "shipping_country"
-        case invoice_number = "invoice_number"
         case is_business_address = "is_business_address"
         case is_customer_address = "is_customer_address"
         case is_shipping_address = "is_shipping_address"
@@ -81,6 +85,9 @@ struct InvoiceAddAddressData : Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
+        invoice_number = try values.decodeIfPresent(String.self, forKey: .invoice_number)
+        business_name = try values.decodeIfPresent(String.self, forKey: .business_name)
+        dial_code = try values.decodeIfPresent(String.self, forKey: .dial_code)
         business_address = try values.decodeIfPresent(String.self, forKey: .business_address)
         business_phone_number = try values.decodeIfPresent(String.self, forKey: .business_phone_number)
         website = try values.decodeIfPresent(String.self, forKey: .website)
@@ -96,15 +103,14 @@ struct InvoiceAddAddressData : Codable {
         shipping_city = try values.decodeIfPresent(String.self, forKey: .shipping_city)
         shipping_state = try values.decodeIfPresent(String.self, forKey: .shipping_state)
         shipping_country = try values.decodeIfPresent(String.self, forKey: .shipping_country)
-        invoice_number = try values.decodeIfPresent(String.self, forKey: .invoice_number)
         is_business_address = try values.decodeIfPresent(String.self, forKey: .is_business_address)
         is_customer_address = try values.decodeIfPresent(String.self, forKey: .is_customer_address)
         is_shipping_address = try values.decodeIfPresent(String.self, forKey: .is_shipping_address)
-        product_drtails = try values.decodeIfPresent([InvoiceAddressProduct_drtails].self, forKey: .product_drtails)
+        product_drtails = try values.decodeIfPresent([Addproduct_drtails].self, forKey: .product_drtails)
     }
 
 }
-struct InvoiceAddressProduct_drtails : Codable {
+struct Addproduct_drtails : Codable {
     let id : String?
     let estimate_id : String?
     let user_id : String?

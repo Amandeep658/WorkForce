@@ -115,7 +115,6 @@ PODS:
   - GrowingTextView (0.7.2)
   - GTMSessionFetcher/Core (2.1.0)
   - IQKeyboardManagerSwift (6.5.10)
-  - Kingfisher (7.3.2)
   - KRPullLoader (1.3.0)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
@@ -144,7 +143,6 @@ DEPENDENCIES:
   - GooglePlaces
   - GrowingTextView
   - IQKeyboardManagerSwift (~> 6.5.1)
-  - Kingfisher (~> 7.0)
   - KRPullLoader
   - pop
   - SDWebImage (~> 4.4.5)
@@ -172,7 +170,6 @@ SPEC REPOS:
     - GrowingTextView
     - GTMSessionFetcher
     - IQKeyboardManagerSwift
-    - Kingfisher
     - KRPullLoader
     - nanopb
     - pop
@@ -202,7 +199,6 @@ SPEC CHECKSUMS:
   GrowingTextView: 876bf42005b5e4a4fd740597db12caaf41f0fe6c
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
   IQKeyboardManagerSwift: 52962c76ab33532f15ad9f3ff4e5715eda5335bb
-  Kingfisher: 0086ad83719761ba9b2cdaf6ef4d5b4878cbae23
   KRPullLoader: c81594d578c90f46c1fe539b8d9a6a581ce3bdb0
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
   pop: d582054913807fd11fd50bfe6a539d91c7e1a55a
@@ -213,6 +209,6 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyStoreKit: 6b9c08810269f030586dac1fae8e75871a82e84a
 
-PODFILE CHECKSUM: b8b611fdf773e266f0cea72b8b74e8a71cce7e4e
+PODFILE CHECKSUM: 9f57a33bb312c69ade646d13024131e5bd5bba97
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.12.1

@@ -58,6 +58,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
     }
     var customerPDate:CompanyListingModel?
     let locationManager = CLLocationManager()
+    var editState = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,7 +138,7 @@ class CustomerEditProfileVC: UIViewController,UITextFieldDelegate, ImagePickerDe
         if compressedData.isEmpty == false{
             imgArray.append(compressedData)
         }
-        let params = ["first_name":firstNameTF.text ?? "" ,"last_name": lastNameTF.text ?? "","city":locationTF.text ?? ""] as [String : Any]
+        let params = ["first_name":firstNameTF.text ?? "" ,"last_name": lastNameTF.text ?? "","city":locationTF.text ?? "","state":editState] as [String : Any]
         let strURL = kBASEURL + WSMethods.editCustomer
         self.requestWith(endUrl: strURL , parameters: params)
     }
@@ -326,11 +327,13 @@ extension CustomerEditProfileVC : GMSAutocompleteViewControllerDelegate{
             } else {
                 guard let places = response?.results(),
                       let place = places.first,
+                      let state = place.administrativeArea,
                       let lines = place.lines else {
                     completion("", [""])
                     return
                 }
                 print("addressssss",place)
+                self.editState = state
                 completion(place.locality ?? "", place.lines ?? [])
             }
         }

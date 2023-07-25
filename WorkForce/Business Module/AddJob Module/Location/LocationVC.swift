@@ -31,6 +31,8 @@ class LocationVC: UIViewController,MKLocalSearchCompleterDelegate, UISearchBarDe
     var latitude = ""
     var professionalUserDict = SingletonLocalModel()
     let locationManager = CLLocationManager()
+    var state = ""
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -189,11 +191,14 @@ extension LocationVC: GMSAutocompleteViewControllerDelegate {
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
                         completion("", [""])
                             return
                     }
                     print("addressssss",place)
+                    print("state >>>>>>",state)
+                    self.professionalUserDict.state = state
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

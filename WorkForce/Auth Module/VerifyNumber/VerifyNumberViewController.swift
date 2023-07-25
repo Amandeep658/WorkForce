@@ -41,7 +41,7 @@ class VerifyNumberViewController: UIViewController,UITextFieldDelegate {
     
     func hitPhoneNumberVerificationApi(){
         DispatchQueue.main.async {
-            AFWrapperClass.svprogressHudShow(title: "LOADING".localized().localized(), view: self)
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
         AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.loginCheck, params: generatingParameters(), headers: nil){ [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)

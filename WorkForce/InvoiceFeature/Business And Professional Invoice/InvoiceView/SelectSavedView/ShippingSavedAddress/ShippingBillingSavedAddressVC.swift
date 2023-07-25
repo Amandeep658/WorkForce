@@ -24,6 +24,7 @@ class ShippingBillingSavedAddressVC: UIViewController,UITableViewDelegate,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
+        self.selectedAddress = []
     }
     //    MARK: SET_TABLE_LIST
     func setTable(){
@@ -137,7 +138,7 @@ class ShippingBillingSavedAddressVC: UIViewController,UITableViewDelegate,UITabl
         let cell = tableView.cellForRow(at: indexPath) as!SelectCityAddressCell
         cell.selectBtn.setImage(UIImage(named: "circleTick"), for: .normal)
         if (selectedAddress.firstIndex(where: {$0["id"]! == invSavedListArr[indexPath.row].id ?? ""}) == nil){
-            let selectedDict = ["name":invSavedListArr[indexPath.row].shipping_address ?? "","id":invSavedListArr[indexPath.row].id ?? "","shipping_city":invSavedListArr[indexPath.row].shipping_city ?? "","shipping_state":invSavedListArr[indexPath.row].shipping_state ?? "","shipping_country":invSavedListArr[indexPath.row].shipping_country ?? ""]
+            let selectedDict = ["name":invSavedListArr[indexPath.row].shipping_address ?? "","id":invSavedListArr[indexPath.row].id ?? "","shipping_city":invSavedListArr[indexPath.row].shipping_city ?? "","country_code":invSavedListArr[indexPath.row].country_code ?? "","dial_code":invSavedListArr[indexPath.row].dial_code ?? "","shipping_state":invSavedListArr[indexPath.row].shipping_state ?? "","shipping_country":invSavedListArr[indexPath.row].shipping_country ?? ""]
             selectedAddress.append(selectedDict)
         }
         print(selectedAddress)

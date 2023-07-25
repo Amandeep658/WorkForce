@@ -29,7 +29,6 @@ struct AddProductItemModel:Decodable{
         dict.setValue(self.amount, forKey: "amount")
         dict.setValue(self.shipping, forKey: "shipping")
         dict.setValue(self.total, forKey: "total")
-
         return dict
     }
 }

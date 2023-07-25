@@ -36,6 +36,8 @@ class CompanyDetailsViewController: UIViewController, UITextFieldDelegate, UITex
     @IBOutlet weak var companyView: UIView!
     @IBOutlet weak var nikeImg: UIImageView!
     @IBOutlet weak var imageUploadBtn: UIButton!
+    @IBOutlet weak var stateView: UIView!
+    @IBOutlet weak var stateTF: UITextField!
     
     var imagePicker : ImagePicker?
     var comapnyData:CompanyModel?
@@ -49,6 +51,7 @@ class CompanyDetailsViewController: UIViewController, UITextFieldDelegate, UITex
             nikeImg.image = selectedImage
         }
     }
+    var state = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -140,7 +143,10 @@ class CompanyDetailsViewController: UIViewController, UITextFieldDelegate, UITex
             showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_ADDRESS".localized() , okButton: "Ok", controller: self) {
             }
         }
-        
+//        else if (stateTF.text?.trimWhiteSpace.isEmpty)!{
+//            showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "ENTER_STATE".localized() , okButton: "Ok", controller: self) {
+//            }
+//        }
         else if (descriptionTV.text?.trimWhiteSpace.isEmpty)!{
             showAlertMessage(title: AppAlertTitle.appName.rawValue, message: "Please enter description.".localized() , okButton: "Ok", controller: self) {
             }
@@ -157,7 +163,7 @@ class CompanyDetailsViewController: UIViewController, UITextFieldDelegate, UITex
         if compressedData.isEmpty == false{
             imgArray.append(compressedData)
         }
-        let params = ["company_name":compantTF.text ?? "" ,"latitude":latitude,"longitude":longitute,"address":addressTF.text ?? "","description":descriptionTV.text ?? ""] as [String : Any]
+        let params = ["company_name":compantTF.text ?? "" ,"latitude":latitude,"longitude":longitute,"address":addressTF.text ?? "","state":state,"description":descriptionTV.text ?? ""] as [String : Any]
         let strURL = kBASEURL + WSMethods.addCompany
         self.requestWith(endUrl: strURL , parameters: params)
         print(params)
@@ -244,9 +250,10 @@ extension CompanyDetailsViewController : GMSAutocompleteViewControllerDelegate{
         self.longitute = "\(Double(place.coordinate.longitude))"
         print(longitute)
         print("search result",location)
-        self.getPlaceAddressFrom(location: location) { address,line   in
+        self.getPlaceAddressFrom(location: location) { address,line  in
             print("here is resultttt",address)
             print("here is address",line)
+            print("state >>>>>>>>>>>>>>>>")
             if address != ""{
                 self.addressTF.text =  address
             }else{
@@ -284,12 +291,15 @@ extension CompanyDetailsViewController : GMSAutocompleteViewControllerDelegate{
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
-                        completion("", [""])
+                        completion("", [""] )
                             return
                     }
                     print("addressssss",place)
-                    completion(place.locality ?? "", place.lines ?? [])
+                    print("state >>>>",state)
+                    self.state = state
+                    completion( place.locality ?? "", place.lines ?? [])
                 }
             }
         }

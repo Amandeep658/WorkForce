@@ -59,7 +59,7 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
     var jobID = ""
     var jobDetailByJobdict:JobDetailByJobIdModel?
     var professionalEditUserDict = SingletonLocalModel()
-    
+    var hereState = ""
     var selectedImage: UIImage? {
         didSet {
             jobeditImgView.image = selectedImage
@@ -190,7 +190,7 @@ class CustomerManageEditJobVC: UIViewController, UITextFieldDelegate, UITextView
         self.professionalEditUserDict.rate_type =  isRateType
         self.professionalEditUserDict.job_type = jobTypeTF.text
         self.professionalEditUserDict.location = cityTF.text
-        self.professionalEditUserDict.state = localityTF.text
+        self.professionalEditUserDict.state = hereState
         self.professionalEditUserDict.description  = descriptionTxtView.text
         self.professionalEditUserDict.catagory_details = self.jobDetailByJobdict?.data?.catagory_details
     }
@@ -430,17 +430,20 @@ extension CustomerManageEditJobVC: GMSAutocompleteViewControllerDelegate {
     
     func getPlaceAddressFrom(location: CLLocationCoordinate2D, completion: @escaping (_ address: String , _ line: [String]) -> Void) {
         let geocoder = GMSGeocoder()
-        geocoder.reverseGeocodeCoordinate(location) { response, error in
+        geocoder.reverseGeocodeCoordinate(location) { [self] response, error in
             if error != nil {
                 print("reverse geodcode fail: \(error!.localizedDescription)")
             } else {
                 guard let places = response?.results(),
                       let place = places.first,
+                      let state = place.administrativeArea,
                       let lines = place.lines else {
                     completion("",[""])
                     return
                 }
                 print("addressssss",place)
+                self.hereState = state
+                self.professionalEditUserDict.state = hereState
                 completion(place.locality ?? "", place.lines ?? [])
             }
         }

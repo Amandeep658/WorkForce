@@ -28,6 +28,8 @@ class CustomerSkillVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.categoryLbl2.isHidden = true
+        self.categoryLbl1.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,12 +74,17 @@ class CustomerSkillVC: UIViewController {
 }
 extension CustomerSkillVC : ListSelectionDelegate{
     func UserDidSelectList(data: [CategoryData]) {
+        self.categoryLbl1.isHidden = false
+
         self.categoryLbl1.text = data.first?.category_name ?? ""
         if data.count > 1{
             self.categoryLbl2.text = data.last?.category_name ?? ""
+            self.categoryLbl2.isHidden = false
         }
         else{
             self.categoryLbl2.text = ""
+            self.categoryLbl2.isHidden = true
+
         }
         self.professionalUserDict.catagory_details = data
     }

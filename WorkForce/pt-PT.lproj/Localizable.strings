@@ -26,7 +26,9 @@
 "Companies Opportunity" = "Oportunidade de empresas";
 "ENTER_VALID_EMAIL" = "Por favor, insira um e-mail válido.";
 "Please select category first." = "Por favor, selecione a categoria primeiro.";
-"ENTER_ADDRESS" = "Por favor, digite o endereço.";
+"ENTER_STATE" = "Por favor, digite o endereço.";
+
+"ENTER_ADDRESS" = "Insira o endereço.";
 "ENTER_EMAIL" = "Por favor, digite o e-mail.";
 "Please enter description." = "Por favor, insira a descrição.";
 "ENTER_COMPANY_NAME" = "Insira o nome da empresa.";
@@ -127,3 +129,24 @@
 
 "Take photo" = "Tirar fotos";
 "Photo library" = "biblioteca de fotos";
+
+//Invoice_Portuguese
+"please_enter_business_address" = "Insira o endereço comercial";
+"please_enter_website" = "Digite o site";
+"please_enter_valid_website" = "Insira um site válido";
+"please_enter_estimate_no" = "Por favor, insira o número da estimativa";
+"please_enter_dob" = "Por favor, insira a data de nascimento";
+"please_enter_country" = "Insira o país";
+"please_enter_item" = "Insira o item";
+"please_enter_rate" = "Insira a taxa.";
+"please_enter_quantity" = "Insira a quantidade";
+"please_enter_amount" = "Insira o valor";
+"please_enter_shipping" = "Por favor, insira o frete";
+"please_enter_total" = "Insira o total";
+"please_enter_date" = "Insira a data";
+"business_name" = "Nome da empresa";
+"please_enter_business_name" = "Insira o nome da empresa";
+"please_enter_valid_phone_number" = "Insira um número de telefone válido";
+"please_enter_valid_website" = "Insira um site válido";
+"you_can_only_add_10_Products" = "Você só pode adicionar 10 Produtos";
+"please_select_one_address" = "Selecione o endereço";

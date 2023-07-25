@@ -21,6 +21,6 @@ target 'WorkForce' do
      pod 'KRPullLoader'
      pod 'GooglePlaces'
      pod 'Socket.IO-Client-Swift', '~> 15.2.0'
-     pod 'Kingfisher', '~> 7.0'
+#     pod 'Kingfisher'
      pod 'SwiftyStoreKit'
 end

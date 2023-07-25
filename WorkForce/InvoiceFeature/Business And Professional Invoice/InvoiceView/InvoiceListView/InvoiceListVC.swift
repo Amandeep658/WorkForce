@@ -48,11 +48,13 @@ class InvoiceListVC: UIViewController {
     
     @IBAction func addBtn(_ sender: UIButton) {
         let vc = NewEstimateAddressVC()
+        vc.estimateNumber = invoiceListData.first?.estimate_no ?? ""
+        vc.invoiceListData = invoiceListData
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
     //    MARK: GET USER LIST FOR INVOICE LIST SCREEN
-    func hitInvoiceListApi(){
+    func hitInvoiceListApi() {
         DispatchQueue.main.async {
             AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
         }
@@ -74,6 +76,7 @@ class InvoiceListVC: UIViewController {
                 let status = aContact.status
                 let message = aContact.message
                 if status == 1{
+                    self.invoiceListData.removeAll()
                     self.invoiceListData = aContact.data!
                     self.invoiceListTableView.setBackgroundView(message: "")
                     self.invoiceListTableView.reloadData()
@@ -107,8 +110,8 @@ extension InvoiceListVC : UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let invoice = InvoiceBillViewVC()
-        
+        let invoice = InvoiceGetDetailView()
+        invoice.invoiceId = invoiceListData[indexPath.row].id ?? ""
         self.navigationController?.pushViewController(invoice, animated: true)
     }
 }

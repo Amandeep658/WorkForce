@@ -23,6 +23,7 @@
 "ENTER_FIRST_NAME" = "Por favor ingrese el primer nombre.";
 "ENTER_LAST_NAME" = "Por favor, introduzca el apellido.";
 "Companies Opportunity" = "Oportunidad Empresas";
+"ENTER_STATE" = "Ingrese la dirección.";
 "ENTER_ADDRESS" = "Por favor ingrese la dirección.";
 "ENTER_VALID_EMAIL" = "Por favor, introduzca un correo electrónico válido.";
 "ENTER_EMAIL" = "Por favor ingrese el correo electrónico.";
@@ -123,3 +124,24 @@
 
 "Take photo" = "Tomar foto";
 "Photo library" = "librería fotográfica";
+//Invoice_Spanish
+
+"please_enter_business_address" = "Ingrese la dirección comercial";
+"please_enter_website" = "Ingrese al sitio web";
+"please_enter_valid_website" = "Ingrese un sitio web válido";
+"please_enter_estimate_no" = "Ingrese el número de estimación";
+"please_enter_dob" = "Ingrese la fecha de nacimiento";
+"please_enter_country" = "Ingrese el país";
+"please_enter_item" = "Ingrese el artículo";
+"please_enter_quantity" = "Ingrese la cantidad";
+"please_entr_rate" = "Por favor ingrese la tarifa.";
+"please_enter_amount" = "Ingrese la cantidad";
+"please_enter_shipping" = "Ingrese el envío";
+"please_enter_total" = "Ingrese el total";
+"please_enter_date" = "Por favor ingrese la fecha";
+"business_name" = "Nombre del Negocio";
+"please_enter_business_name" = "Ingrese el nombre comercial";
+"please_enter_valid_phone_number" = "Ingrese un número de teléfono válido";
+"please_enter_valid_website" = "Ingrese un sitio web válido";
+"you_can_only_add_10_Products" = "Solo puedes agregar 10 Productos";
+"please_select_one_address" = "Seleccione la dirección";

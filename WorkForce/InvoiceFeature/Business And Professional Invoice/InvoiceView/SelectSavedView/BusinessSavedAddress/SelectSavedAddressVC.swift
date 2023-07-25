@@ -26,6 +26,7 @@ class SelectSavedAddressVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTable()
+        self.selectedAddress = []
      }
     
     //    MARK: SET_TABLE_LIST
@@ -131,7 +132,7 @@ extension SelectSavedAddressVC : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSavedAddressCell", for: indexPath) as! SelectSavedAddressCell
         cell.addressLbl.text = InvoiceSavedListArr[indexPath.row].business_address
-        cell.phoneNumberTF.text = InvoiceSavedListArr[indexPath.row].business_phone_number
+        cell.phoneNumberTF.text = "\(InvoiceSavedListArr[indexPath.row].dial_code ?? "") \(InvoiceSavedListArr[indexPath.row].business_phone_number ?? "")"
         cell.websiteLbl.text = InvoiceSavedListArr[indexPath.row].website
         cell.isSelected = false
         cell.selectBtn.setImage(UIImage(named: "circle"), for: .normal)
@@ -145,7 +146,7 @@ extension SelectSavedAddressVC : UITableViewDelegate, UITableViewDataSource{
         let cell = tableView.cellForRow(at: indexPath) as!SelectSavedAddressCell
         cell.selectBtn.setImage(UIImage(named: "circleTick"), for: .normal)
         if (selectedAddress.firstIndex(where: {$0["id"]! == InvoiceSavedListArr[indexPath.row].id ?? ""}) == nil){
-            let selectedDict = ["name":InvoiceSavedListArr[indexPath.row].business_address ?? "","id":InvoiceSavedListArr[indexPath.row].id ?? "","business_phone_number":InvoiceSavedListArr[indexPath.row].business_phone_number ?? "","website":InvoiceSavedListArr[indexPath.row].website ?? ""]
+            let selectedDict = ["name":InvoiceSavedListArr[indexPath.row].business_address ?? "","id":InvoiceSavedListArr[indexPath.row].id ?? "","business_phone_number":InvoiceSavedListArr[indexPath.row].business_phone_number ?? "","country_code":InvoiceSavedListArr[indexPath.row].country_code ?? "","dial_code":InvoiceSavedListArr[indexPath.row].dial_code ?? "","website":InvoiceSavedListArr[indexPath.row].website ?? ""]
             selectedAddress.append(selectedDict)
         }
         print(selectedAddress)

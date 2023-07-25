@@ -31,17 +31,20 @@ struct InvoicelistModel : Codable {
 struct InvoiceListData : Codable {
     let id : String?
     let invoice_number : String?
+    let estimate_no : String?
 
     enum CodingKeys: String, CodingKey {
 
         case id = "id"
         case invoice_number = "invoice_number"
+        case estimate_no = "estimate_no"
     }
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(String.self, forKey: .id)
         invoice_number = try values.decodeIfPresent(String.self, forKey: .invoice_number)
+        estimate_no = try values.decodeIfPresent(String.self, forKey: .estimate_no)        
     }
 
 }

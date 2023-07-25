@@ -71,8 +71,9 @@ class AFWrapperClass{
                    }
            }
        }
+    
+    
     class func requestGETURL(_ strURL: String, params : [String : AnyObject]?,headers : HTTPHeaders?, success:@escaping (AnyObject) -> Void, failure:@escaping (NSError) -> Void) {
-        
         let urlwithPercentEscapes = strURL.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)
         AF.request(urlwithPercentEscapes!, method: .get, parameters: params, encoding: JSONEncoding.default,headers: headers)
             .responseJSON { (response) in
@@ -80,7 +81,6 @@ class AFWrapperClass{
                 case .success(let value):
                     if let JSON = value as? Any {
                         success(JSON as AnyObject)
-                      //  print(JSON)
                     }
                 case .failure(let error):
                     let error : NSError = error as NSError
@@ -88,6 +88,8 @@ class AFWrapperClass{
                 }
         }
     }
+    
+    
     class func requestPostWithMultiFormData(_ strURL : String, params : [String : Any]?, headers : HTTPHeaders?, success:@escaping (NSDictionary) -> Void, failure:@escaping (NSError) -> Void){
              let urlwithPercentEscapes = strURL.addingPercentEncoding( withAllowedCharacters: CharacterSet.urlQueryAllowed)
              AF.request(urlwithPercentEscapes!, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { response in

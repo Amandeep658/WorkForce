@@ -27,6 +27,7 @@ class CityViewController: UIViewController,UITextFieldDelegate,CLLocationManager
     let locationManager = CLLocationManager()
     var lat = ""
     var long = ""
+    var stateHere = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,14 +162,20 @@ class CityViewController: UIViewController,UITextFieldDelegate,CLLocationManager
             }
         }else{
             if (UserType.userTypeInstance.userLogin == .Bussiness){
+                self.professionalUserDict.city = self.cityTF.text
+                self.professionalUserDict.state = self.stateHere
                 let vc = JobPhotoViewController()
+                vc.professionalUserDict = professionalUserDict
                 self.pushViewController(vc,true)
             }else if UserType.userTypeInstance.userLogin == .Professional{
                 self.professionalUserDict.city = self.cityTF.text
-                self.professionalUserDict.state = self.stateTF.text
+                self.professionalUserDict.state = self.stateHere
                 hitProfessionalSignUpApi()
             }else if UserType.userTypeInstance.userLogin == .Coustomer{
+                self.professionalUserDict.city = self.cityTF.text
+                self.professionalUserDict.state = self.stateHere
                 let vc = JobPhotoViewController()
+                vc.professionalUserDict = professionalUserDict
                 self.pushViewController(vc,true)
             }
         }
@@ -256,17 +263,21 @@ extension CityViewController: GMSAutocompleteViewControllerDelegate {
 
     func getPlaceAddressFrom(location: CLLocationCoordinate2D, completion: @escaping (_ address: String , _ line: [String]) -> Void) {
             let geocoder = GMSGeocoder()
-            geocoder.reverseGeocodeCoordinate(location) { response, error in
+        geocoder.reverseGeocodeCoordinate(location) { [self] response, error in
                 if error != nil {
                     print("reverse geodcode fail: \(error!.localizedDescription)")
                 } else {
                     guard let places = response?.results(),
                         let place = places.first,
+                        let state = place.administrativeArea,
                         let lines = place.lines else {
                             completion("",[""])
                             return
                     }
                     print("addressssss",place)
+                    self.stateHere = state
+                    self.professionalUserDict.state = stateHere
+                    
                     completion(place.locality ?? "", place.lines ?? [])
                 }
             }

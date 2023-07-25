@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -234,6 +234,57 @@
                                                 <constraint firstItem="pWK-00-cNG" firstAttribute="top" secondItem="Qw0-Ue-dQH" secondAttribute="top" constant="15" id="zHr-yL-e6i"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmn-hz-xSv">
+                                            <rect key="frame" x="0.0" y="213" width="414" height="110"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="State" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fhu-YT-qDH">
+                                                    <rect key="frame" x="20" y="15" width="374" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="uFs-3P-3NP"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5EC-Nb-8rl">
+                                                    <rect key="frame" x="20" y="50" width="374" height="45"/>
+                                                    <subviews>
+                                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X0B-2g-EhU">
+                                                            <rect key="frame" x="10" y="0.0" width="364" height="45"/>
+                                                            <color key="tintColor" red="0.26345872879999999" green="0.68022900819999998" blue="0.83910650009999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="X0B-2g-EhU" secondAttribute="bottom" id="Ldb-I5-pLv"/>
+                                                        <constraint firstItem="X0B-2g-EhU" firstAttribute="top" secondItem="5EC-Nb-8rl" secondAttribute="top" id="Tnu-QR-vG8"/>
+                                                        <constraint firstItem="X0B-2g-EhU" firstAttribute="leading" secondItem="5EC-Nb-8rl" secondAttribute="leading" constant="10" id="imN-DA-xTp"/>
+                                                        <constraint firstAttribute="height" constant="45" id="tUC-yv-dr9"/>
+                                                        <constraint firstAttribute="trailing" secondItem="X0B-2g-EhU" secondAttribute="trailing" id="wp8-5R-zQX"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            <constraints>
+                                                <constraint firstItem="5EC-Nb-8rl" firstAttribute="top" secondItem="fhu-YT-qDH" secondAttribute="bottom" constant="15" id="BTB-8q-24h"/>
+                                                <constraint firstItem="5EC-Nb-8rl" firstAttribute="leading" secondItem="vmn-hz-xSv" secondAttribute="leading" constant="20" id="Qf2-hM-ItZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="fhu-YT-qDH" secondAttribute="trailing" constant="20" id="Qvq-es-TPs"/>
+                                                <constraint firstItem="fhu-YT-qDH" firstAttribute="top" secondItem="vmn-hz-xSv" secondAttribute="top" constant="15" id="VZh-Hk-jNd"/>
+                                                <constraint firstAttribute="bottom" secondItem="5EC-Nb-8rl" secondAttribute="bottom" constant="15" id="amM-qe-efq"/>
+                                                <constraint firstAttribute="trailing" secondItem="5EC-Nb-8rl" secondAttribute="trailing" constant="20" id="j5Y-km-vsm"/>
+                                                <constraint firstItem="fhu-YT-qDH" firstAttribute="leading" secondItem="vmn-hz-xSv" secondAttribute="leading" constant="20" id="sdI-fj-fmP"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5v-oc-pas">
                                             <rect key="frame" x="0.0" y="213" width="414" height="156"/>
                                             <subviews>
@@ -287,6 +338,11 @@
                                             </constraints>
                                         </view>
                                     </subviews>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="vmn-hz-xSv"/>
+                                        </mask>
+                                    </variation>
                                 </stackView>
                                 <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Apc-Rz-FcM" customClass="ActualGradientButton" customModule="WorkForce" customModuleProvider="target">
                                     <rect key="frame" x="20" y="671" width="374" height="40"/>
@@ -360,7 +416,7 @@
         <image name="cm-1" width="59" height="59"/>
         <image name="placeholder" width="1192" height="1194"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
