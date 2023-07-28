@@ -27,9 +27,26 @@ class CustomerBillingAddressVC: UIViewController {
     var iconClick = true
     var selectedAddressitems:[[String:String]] = []
     var is_customer_address = ""
+    var navfromPDF:Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        if navfromPDF == true{
+            addressTF.text = UserInvoiceAddressDict.customer_address
+            cityTF.text = UserInvoiceAddressDict.customer_city
+            stateTF.text = UserInvoiceAddressDict.customer_state
+            countryTF.text = UserInvoiceAddressDict.customer_country
+            if UserInvoiceAddressDict.is_customer_address == "1"{
+                selectImgVw.image = UIImage(named: "clickblueTickcircle")
+                selectImgVw.contentMode = .scaleAspectFill
+                self.is_customer_address = "1"
+            }else{
+                selectImgVw.image = UIImage(named: "clickbluecircle")
+                selectImgVw.contentMode = .scaleAspectFill
+                self.is_customer_address = "2"
+            }
+            return
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -104,14 +121,29 @@ class CustomerBillingAddressVC: UIViewController {
             showAlertMessage(title: "U2 CONNECT", message: "Please enter country." , okButton: "Ok", controller: self) {
             }
         }else{
-            UserInvoiceAddressDict.customer_address = addressTF.text ?? ""
-            UserInvoiceAddressDict.customer_city = cityTF.text ?? ""
-            UserInvoiceAddressDict.customer_state = stateTF.text ?? ""
-            UserInvoiceAddressDict.customer_country = countryTF.text ?? ""
-            UserInvoiceAddressDict.is_customer_address = self.is_customer_address
-            let vc = ShippingAddressVC()
-            vc.UserInvoiceAddressDict = UserInvoiceAddressDict
-            self.navigationController?.pushViewController(vc, animated: false)
+            if navfromPDF == true{
+                UserInvoiceAddressDict.customer_address = addressTF.text ?? ""
+                UserInvoiceAddressDict.customer_city = cityTF.text ?? ""
+                UserInvoiceAddressDict.customer_state = stateTF.text ?? ""
+                UserInvoiceAddressDict.customer_country = countryTF.text ?? ""
+                UserInvoiceAddressDict.is_customer_address = self.is_customer_address
+                let vc = ShippingAddressVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                vc.navfromPDF = true
+                self.navigationController?.pushViewController(vc, animated: false)
+
+            }else{
+                UserInvoiceAddressDict.customer_address = addressTF.text ?? ""
+                UserInvoiceAddressDict.customer_city = cityTF.text ?? ""
+                UserInvoiceAddressDict.customer_state = stateTF.text ?? ""
+                UserInvoiceAddressDict.customer_country = countryTF.text ?? ""
+                UserInvoiceAddressDict.is_customer_address = self.is_customer_address
+                let vc = ShippingAddressVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                self.navigationController?.pushViewController(vc, animated: false)
+
+            }
+        
         }
     }
 }

@@ -34,12 +34,19 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var pdfView: UIView!
     @IBOutlet weak var totalinvoiceLbl: UILabel!
-
+    @IBOutlet weak var turntoInvoiceBtn: UIButton!
+    @IBOutlet weak var editBtn: UIButton!
+    
     var invoiceDetail = [InvoiceAddressData]()
     var invoiceId = ""
     var pdfimageview = UIImageView()
     var setImage = UIImage()
     var totalValue = 0
+    var UserInvoiceAddressDict = InvoiceCreateModel()
+
+    
+    var invoicePdfId = ""
+    var estimateText = "Estimate:"
 
 
     override func viewDidLoad() {
@@ -59,9 +66,29 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func editBtn(_ sender: UIButton) {
+        let appdelegate = UIApplication.shared.delegate as! AppDelegate
+        let newEstimateAddress = NewEstimateAddressVC()
+        newEstimateAddress.navFromPDF = true
+        newEstimateAddress.UserInvoiceAddressDict = UserInvoiceAddressDict
+        newEstimateAddress.invoiceId = invoicePdfId
+        let homeVC = TabBarVC()
+        homeVC.selectedIndex = 4
+        let nav = UINavigationController()
+        nav.setViewControllers([homeVC,newEstimateAddress], animated: true)
+        nav.navigationBar.isHidden = true
+        appdelegate.window?.rootViewController = nav
+    }
+    
+    
+    @IBAction func turntoInvoiceBtn(_ sender: UIButton) {
+        
+    }
     
     @IBAction func savePdfBtn(_ sender: UIButton) {
         self.savePDFBtn.isHidden = true
+        self.editBtn.isHidden = true
+        self.turntoInvoiceBtn.isHidden = true
         UIGraphicsBeginImageContextWithOptions(pdfView.bounds.size, true, 1.0)
         pdfView.drawHierarchy(in: CGRect(origin: CGPoint.zero, size: pdfView.bounds.size), afterScreenUpdates: true)
         if let image = UIGraphicsGetImageFromCurrentImageContext() {
@@ -76,6 +103,8 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
         pdfView.document = pdfDocument
         pdfView.isHidden = false
         self.savePDFBtn.isHidden = true
+        self.editBtn.isHidden = true
+        self.turntoInvoiceBtn.isHidden = true
         guard let pdfData = pdfDocument.dataRepresentation() else {
             return
         }
@@ -97,6 +126,8 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
             }else{
                 self.pdfView.isHidden = false
                 self.savePDFBtn.isHidden = false
+                self.editBtn.isHidden = false
+                self.turntoInvoiceBtn.isHidden = false
             }
         }
         present(activityViewController, animated: true, completion: nil)
@@ -109,6 +140,53 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
         itemTableView.dataSource = self
         itemTableView.register(UINib(nibName: "InvoiceBillViewCell", bundle: nil), forCellReuseIdentifier: "InvoiceBillViewCell")
     }
+    
+    //    MARK: Get Invoice Detail
+    func setEstimateToInvoiceApi(){
+        DispatchQueue.main.async {
+            AFWrapperClass.svprogressHudShow(title: "LOADING".localized(), view: self)
+        }
+        let authToken  = AppDefaults.token ?? ""
+        let headers: HTTPHeaders = ["Token":authToken]
+        print(headers)
+        let param = ["id" : "\(invoicePdfId)","is_invoice":"2"] as [String : Any]
+        print(param)
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.updateestimate, params:param, headers: headers) { [self] (response) in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            print(response)
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: response, options: .prettyPrinted)
+                let reqJSONStr = String(data: jsonData, encoding: .utf8)
+                let data = reqJSONStr?.data(using: .utf8)
+                let jsonDecoder = JSONDecoder()
+                let aContact = try jsonDecoder.decode(InvoiceAddAddressModel.self, from: data!)
+                print(aContact)
+                let status = aContact.status
+                let message = aContact.message
+                if status == 1{
+                    showAlert(message: "\(message ?? "")", title: "U2CONNECT") { [self] in
+                        self.estimateText = "Invoice:"
+                        self.estimateLbl.text = "\(estimateText) \(invoiceDetail.first?.estimate_no ?? "")"
+                        self.turntoInvoiceBtn.isHidden = true
+                        self.dismiss(animated: true)
+                    }
+                }
+                else {
+                    self.itemTableView.setBackgroundView(message: message!)
+                    self.itemTableView.reloadData()
+                }
+            }
+            catch let parseError {
+                print("JSON Error \(parseError.localizedDescription)")
+            }
+        }failure: { error in
+            AFWrapperClass.svprogressHudDismiss(view: self)
+            alert(AppAlertTitle.appName.rawValue, message: error.localizedDescription, view: self)
+        }
+    }
+    
+    
+    
     
     //MARK: Get Invoice Detail
     func getInvoiceDetail(){
@@ -134,14 +212,60 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
                 let message = aContact.message
                 if status == 1{
                     self.invoiceDetail = aContact.data!
+                    self.invoicePdfId = aContact.data?.first?.id ?? ""
                     self.nameLbl.text =  aContact.data?.first?.invoice_number ?? ""
                     self.businessAddressLbl.text = aContact.data?.first?.business_address ?? ""
                     self.addressLbl.text = "\(aContact.data?.first?.dial_code ?? "") \(aContact.data?.first?.business_phone_number ?? "")"
                     self.websiteLbl.text = aContact.data?.first?.website ?? ""
                     self.billingAddressLbl.text = "\(aContact.data?.first?.customer_address ?? ""),\(aContact.data?.first?.customer_city ?? ""),\(aContact.data?.first?.customer_state ?? ""),\(aContact.data?.first?.customer_country ?? "")"
                     self.shippingAddressLbl.text = "\(aContact.data?.first?.shipping_address ?? ""),\(aContact.data?.first?.shipping_city ?? ""),\(aContact.data?.first?.shipping_state ?? ""),\(aContact.data?.first?.shipping_country ?? "")"
-                    self.estimateLbl.text = "Estimate \(aContact.data?.first?.estimate_no ?? "")"
+                    if aContact.data?.first?.is_invoice == "1"{
+                        self.estimateText = "Estimate:"
+                        self.estimateLbl.text = "\(estimateText) \(aContact.data?.first?.estimate_no ?? "")"
+                        self.turntoInvoiceBtn.isHidden = false
+                    }else{
+                        self.estimateText = "Invoice:"
+                        self.estimateLbl.text = "\(estimateText) \(aContact.data?.first?.estimate_no ?? "")"
+                        self.turntoInvoiceBtn.isHidden = true
+                    }
                     self.dateLbl.text = "DATE \(aContact.data?.first?.date ?? "")"
+                    
+                    UserInvoiceAddressDict.invoice_number = aContact.data?.first?.invoice_number ?? ""
+                    UserInvoiceAddressDict.business_address = "\(aContact.data?.first?.business_address ?? "")"
+                    UserInvoiceAddressDict.dial_code = "\(aContact.data?.first?.dial_code ?? "")"
+                    UserInvoiceAddressDict.country_code = "\(aContact.data?.first?.country_code ?? "")"
+                    UserInvoiceAddressDict.business_phone_number = "\(aContact.data?.first?.business_phone_number ?? "")"
+                    UserInvoiceAddressDict.website = "\(aContact.data?.first?.website ?? "")"
+                    UserInvoiceAddressDict.estimate_no = "\(aContact.data?.first?.estimate_no ?? "")"
+                    UserInvoiceAddressDict.date = "\(aContact.data?.first?.date ?? "")"
+                    UserInvoiceAddressDict.is_business_address = "\(aContact.data?.first?.is_business_address ?? "")"
+                    UserInvoiceAddressDict.customer_address = "\(aContact.data?.first?.customer_address ?? "")"
+                    UserInvoiceAddressDict.customer_city = "\(aContact.data?.first?.customer_city ?? "")"
+                    UserInvoiceAddressDict.customer_state = "\(aContact.data?.first?.customer_state ?? "")"
+                    UserInvoiceAddressDict.customer_country = "\(aContact.data?.first?.customer_country ?? "")"
+                    UserInvoiceAddressDict.is_customer_address = "\(aContact.data?.first?.is_customer_address ?? "")"
+                    UserInvoiceAddressDict.shipping_address = "\(aContact.data?.first?.shipping_address ?? "")"
+                    UserInvoiceAddressDict.shipping_city = "\(aContact.data?.first?.shipping_city ?? "")"
+                    UserInvoiceAddressDict.shipping_state = "\(aContact.data?.first?.shipping_state ?? "")"
+                    UserInvoiceAddressDict.shipping_country = "\(aContact.data?.first?.shipping_country ?? "")"
+                    UserInvoiceAddressDict.is_shipping_address = "\(aContact.data?.first?.is_shipping_address ?? "")"
+                    if let productArr = aContact.data?.first?.product_drtails,
+                       productArr.count > 0 {
+                        if UserInvoiceAddressDict.product == nil {
+                            UserInvoiceAddressDict.product = [AddProductItemModel]()
+                        }
+                        productArr.forEach { prod in
+                            var obj = AddProductItemModel()
+                            obj.item = prod.item
+                            obj.quantity = prod.quantity
+                            obj.rate = prod.rate
+                            obj.amount = prod.amount
+                            obj.shipping = prod.shipping
+                            obj.total = prod.total
+                            UserInvoiceAddressDict.product?.append(obj)
+                        }
+                    }
+                    print("",UserInvoiceAddressDict.product?.count)
                     self.itemTableView.setBackgroundView(message: "")
                     self.itemTableView.reloadData()
                 }

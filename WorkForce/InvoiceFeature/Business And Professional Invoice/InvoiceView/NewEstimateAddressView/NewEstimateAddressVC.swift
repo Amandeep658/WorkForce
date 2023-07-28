@@ -37,10 +37,12 @@ class NewEstimateAddressVC: UIViewController {
     let datePicker = UIDatePicker()
     var is_business_address = ""
     let countryPicker = ADCountryPicker()
-    var countryFlagCode = "US"
+    var countryFlagCode = ""
     var estimateNumber = ""
     var invoiceListData = [InvoiceListData]()
-
+    var navFromPDF:Bool?
+    var invoiceId = ""
+    var is_invoice = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,10 +58,36 @@ class NewEstimateAddressVC: UIViewController {
             let date = Date()
             let milliseconds = Int(date.timeIntervalSince1970 * 1000)
             print(milliseconds)
-            self.estimateNumberTF.text = "\(milliseconds)"
+            self.estimateNumberTF.text = "1"
         }
         
         self.estimateNumberTF.isUserInteractionEnabled = false
+        if navFromPDF == true{
+            UserInvoiceAddressDict.id = invoiceId
+            self.invoiceNameTF.text = UserInvoiceAddressDict.business_name
+            self.invoiceNameTF.text = UserInvoiceAddressDict.invoice_number
+            self.businessAddressTF.text = UserInvoiceAddressDict.business_address
+            let flagImage = countryPicker.getFlag(countryCode: UserInvoiceAddressDict.country_code ?? "")
+            self.countryImgView.image = flagImage
+            self.countryFlagCode = UserInvoiceAddressDict.country_code ?? ""
+            self.countryCodeLbl.text = UserInvoiceAddressDict.dial_code
+            self.phonnumberTF.text = UserInvoiceAddressDict.business_phone_number
+            self.websiteTF.text = UserInvoiceAddressDict.website
+            self.is_invoice = UserInvoiceAddressDict.is_invoice ?? ""
+            self.estimateNumberTF.text = UserInvoiceAddressDict.estimate_no
+            self.dateTF.text = UserInvoiceAddressDict.date
+            
+            if UserInvoiceAddressDict.is_business_address == "1"{
+                selectImgVw.image = UIImage(named: "clickblueTickcircle")
+                selectImgVw.contentMode = .scaleAspectFill
+                self.is_business_address = "1"
+            }else{
+                selectImgVw.image = UIImage(named: "clickbluecircle")
+                selectImgVw.contentMode = .scaleAspectFill
+                self.is_business_address = "2"
+            }
+            return
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -93,6 +121,7 @@ class NewEstimateAddressVC: UIViewController {
                 
                 let countryCode = userName.map{ ($0["country_code"]! as String)}
                 print("countryCode is here",countryCode)
+                self.countryFlagCode =  countryCode.first ?? ""
                 let flagImage =  countryPicker.getFlag(countryCode: "\(countryCode.first ?? "")")
                 print("flagImage",flagImage as Any)
                 self.countryImgView.image = flagImage
@@ -186,10 +215,7 @@ class NewEstimateAddressVC: UIViewController {
         }else if (phonnumberTF.text?.trimWhiteSpace.isEmpty)!{
             showAlertMessage(title: "U2 CONNECT", message: "Please_enter_number".localized() , okButton: "Ok", controller: self) {
             }
-        }else if (websiteTF.text?.trimWhiteSpace.isEmpty)!{
-            showAlertMessage(title: "U2 CONNECT", message: "please_enter_website".localized() , okButton: "Ok", controller: self) {
-            }
-        }else if validateWebsiteURL("\(websiteTF.text ?? "")") == false{
+        }else if (self.websiteTF.text?.count ?? 0 > 0  && validateWebsiteURL("\(websiteTF.text ?? "")") == false){
             showAlertMessage(title: "U2 CONNECT", message: "please_enter_valid_website".localized() , okButton: "Ok", controller: self) {
             }
         }else if (estimateNumberTF.text?.trimWhiteSpace.isEmpty)!{
@@ -199,19 +225,43 @@ class NewEstimateAddressVC: UIViewController {
             showAlertMessage(title: "U2 CONNECT", message: "please_enter_date".localized() , okButton: "Ok", controller: self) {
             }
         }else{
-            UserInvoiceAddressDict.business_name = self.invoiceNameTF.text ?? ""
-            UserInvoiceAddressDict.invoice_number = self.invoiceNameTF.text ?? ""
-            UserInvoiceAddressDict.business_address = self.businessAddressTF.text ?? ""
-            UserInvoiceAddressDict.country_code = countryFlagCode
-            UserInvoiceAddressDict.dial_code = "\(self.countryCodeLbl.text ?? "")"
-            UserInvoiceAddressDict.business_phone_number = "\(self.phonnumberTF.text ?? "")"
-            UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
-            UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
-            UserInvoiceAddressDict.date =  self.dateTF.text ?? ""
-            UserInvoiceAddressDict.is_business_address =  self.is_business_address
-            let vc = CustomerBillingAddressVC()
-            vc.UserInvoiceAddressDict = UserInvoiceAddressDict
-            self.navigationController?.pushViewController(vc, animated: false)
+            if navFromPDF == true{
+                UserInvoiceAddressDict.id = invoiceId
+                UserInvoiceAddressDict.business_name = self.invoiceNameTF.text ?? ""
+                UserInvoiceAddressDict.invoice_number = self.invoiceNameTF.text ?? ""
+                UserInvoiceAddressDict.business_address = self.businessAddressTF.text ?? ""
+                UserInvoiceAddressDict.country_code = countryFlagCode
+                UserInvoiceAddressDict.dial_code = "\(self.countryCodeLbl.text ?? "")"
+                UserInvoiceAddressDict.business_phone_number = "\(self.phonnumberTF.text ?? "")"
+                UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
+                UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
+                UserInvoiceAddressDict.date =  self.dateTF.text ?? ""
+                UserInvoiceAddressDict.is_business_address = self.is_business_address
+                let vc = CustomerBillingAddressVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                vc.navfromPDF = true
+                self.navigationController?.pushViewController(vc, animated: false)
+            }else{
+                UserInvoiceAddressDict.business_name = self.invoiceNameTF.text ?? ""
+                UserInvoiceAddressDict.invoice_number = self.invoiceNameTF.text ?? ""
+                UserInvoiceAddressDict.business_address = self.businessAddressTF.text ?? ""
+                if countryFlagCode == "" {
+                    UserInvoiceAddressDict.country_code = "US"
+                }else{
+                    UserInvoiceAddressDict.country_code = self.countryFlagCode
+                }
+                UserInvoiceAddressDict.dial_code = "\(self.countryCodeLbl.text ?? "")"
+                UserInvoiceAddressDict.business_phone_number = "\(self.phonnumberTF.text ?? "")"
+                UserInvoiceAddressDict.website = self.websiteTF.text ?? ""
+                UserInvoiceAddressDict.is_invoice = "1"
+                UserInvoiceAddressDict.estimate_no = self.estimateNumberTF.text ?? ""
+                UserInvoiceAddressDict.date =  self.dateTF.text ?? ""
+                UserInvoiceAddressDict.is_business_address =  self.is_business_address
+                let vc = CustomerBillingAddressVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+            
         }
     }
     

@@ -35,6 +35,7 @@ struct InvoiceAddAddressData : Codable {
     let dial_code : String?
     let business_phone_number : String?
     let website : String?
+    let is_invoice : String?
     let estimate_no : String?
     let date : String?
     let created_at : String?
@@ -63,6 +64,7 @@ struct InvoiceAddAddressData : Codable {
         case business_address = "business_address"
         case business_phone_number = "business_phone_number"
         case website = "website"
+        case is_invoice = "is_invoice"
         case estimate_no = "estimate_no"
         case date = "date"
         case created_at = "created_at"
@@ -91,6 +93,7 @@ struct InvoiceAddAddressData : Codable {
         business_address = try values.decodeIfPresent(String.self, forKey: .business_address)
         business_phone_number = try values.decodeIfPresent(String.self, forKey: .business_phone_number)
         website = try values.decodeIfPresent(String.self, forKey: .website)
+        is_invoice = try values.decodeIfPresent(String.self, forKey: .is_invoice)
         estimate_no = try values.decodeIfPresent(String.self, forKey: .estimate_no)
         date = try values.decodeIfPresent(String.self, forKey: .date)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)

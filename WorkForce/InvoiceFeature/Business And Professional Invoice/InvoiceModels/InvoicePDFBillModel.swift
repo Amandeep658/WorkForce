@@ -30,9 +30,11 @@ struct InvoiceAddressData : Codable {
     let id : String?
     let user_id : String?
     let dial_code : String?
+    let country_code : String?
     let business_address : String?
     let business_phone_number : String?
     let website : String?
+    let is_invoice : String?
     let estimate_no : String?
     let date : String?
     let created_at : String?
@@ -56,10 +58,12 @@ struct InvoiceAddressData : Codable {
         case id = "id"
         case user_id = "user_id"
         case dial_code = "dial_code"
+        case country_code = "country_code"
         case invoice_number = "invoice_number"
         case business_address = "business_address"
         case business_phone_number = "business_phone_number"
         case website = "website"
+        case is_invoice = "is_invoice"
         case estimate_no = "estimate_no"
         case date = "date"
         case created_at = "created_at"
@@ -83,10 +87,12 @@ struct InvoiceAddressData : Codable {
         id = try values.decodeIfPresent(String.self, forKey: .id)
         user_id = try values.decodeIfPresent(String.self, forKey: .user_id)
         dial_code = try values.decodeIfPresent(String.self, forKey: .dial_code)
+        country_code = try values.decodeIfPresent(String.self, forKey: .country_code)
         invoice_number = try values.decodeIfPresent(String.self, forKey: .invoice_number)
         business_address = try values.decodeIfPresent(String.self, forKey: .business_address)
         business_phone_number = try values.decodeIfPresent(String.self, forKey: .business_phone_number)
         website = try values.decodeIfPresent(String.self, forKey: .website)
+        is_invoice = try values.decodeIfPresent(String.self, forKey: .is_invoice)
         estimate_no = try values.decodeIfPresent(String.self, forKey: .estimate_no)
         date = try values.decodeIfPresent(String.self, forKey: .date)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
@@ -144,6 +150,21 @@ struct AddListproduct_drtails : Codable {
         shipping = try values.decodeIfPresent(String.self, forKey: .shipping)
         total = try values.decodeIfPresent(String.self, forKey: .total)
         created_at = try values.decodeIfPresent(String.self, forKey: .created_at)
+    }
+    
+    func convertGetDict()-> NSMutableDictionary{
+        let dict = NSMutableDictionary()
+        dict.setValue(self.id, forKey: "id")
+        dict.setValue(self.estimate_id, forKey: "estimate_id")
+        dict.setValue(self.user_id, forKey: "user_id")
+        dict.setValue(self.item, forKey: "item")
+        dict.setValue(self.quantity, forKey: "quantity")
+        dict.setValue(self.rate, forKey: "rate")
+        dict.setValue(self.amount, forKey: "amount")
+        dict.setValue(self.shipping, forKey: "shipping")
+        dict.setValue(self.total, forKey: "total")
+        dict.setValue(self.created_at, forKey: "created_at")
+        return dict
     }
 
 }

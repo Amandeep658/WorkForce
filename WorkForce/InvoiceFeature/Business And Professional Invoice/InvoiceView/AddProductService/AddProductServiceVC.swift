@@ -45,6 +45,7 @@ class AddProductServiceVC: UIViewController, getProductItemDetail,UITextFieldDel
     var item = "cross"
     var index = 0
     var totalValue = Int()
+    var navfroPDF:Bool?
 
     
     override func viewDidLoad() {
@@ -53,6 +54,13 @@ class AddProductServiceVC: UIViewController, getProductItemDetail,UITextFieldDel
         updateTotal = { [self] in
             calculateTotalAmount()
         }
+        if navfroPDF == true{
+            self.productItemModel = UserInvoiceAddressDict.product ?? []
+            self.ShippingTF.text = UserInvoiceAddressDict.product?[0].shipping ?? ""
+            self.totalTF.text = UserInvoiceAddressDict.product?[0].total ?? ""
+            return
+        }
+       
     }
     
     func setTable(){
@@ -157,7 +165,7 @@ class AddProductServiceVC: UIViewController, getProductItemDetail,UITextFieldDel
         let authToken  = AppDefaults.token ?? ""
         let headers: HTTPHeaders = ["Token":authToken]
         print(headers)
-        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.addinvoiceList, params: UserInvoiceAddressDict.convertModelToDict() as! Parameters , headers: headers) { [self] (response) in
+        AFWrapperClass.requestPOSTURL(kBASEURL + WSMethods.addinvoicev2, params: UserInvoiceAddressDict.convertModelToDict() as! Parameters , headers: headers) { [self] (response) in
             AFWrapperClass.svprogressHudDismiss(view: self)
             print(response)
             do {
@@ -173,6 +181,7 @@ class AddProductServiceVC: UIViewController, getProductItemDetail,UITextFieldDel
                     showAlert(message: message ?? "", title: AppAlertTitle.appName.rawValue) { [self] in
                         let vc = InvoiceBillViewVC()
                         vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                        vc.invoiceHitId = aContact.data?.id ?? ""
                         self.navigationController?.pushViewController(vc, animated: false)
                     }
                 }else{
@@ -201,6 +210,7 @@ extension AddProductServiceVC:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListItemCell", for: indexPath) as! ProductListItemCell
+       
         cell.itemTF.text = self.productItemModel[indexPath.row].item
         cell.quantityTF.text = self.productItemModel[indexPath.row].quantity
         cell.rateTF.text = self.productItemModel[indexPath.row].rate

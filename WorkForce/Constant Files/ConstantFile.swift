@@ -106,8 +106,11 @@ struct WSMethods {
     static let invoiceEstimateAddressList = "businessaddressinvoice.php"
     static let invoiceCustomerAddressList = "customeraddressinvoice.php"
     static let invoiceShippingAddressList = "shippingaddressinvoice.php"
-    static let addinvoiceList = "addinvoice.php"
+//    static let addinvoiceList = "addinvoice.php"
+    static let addinvoicev2 = "addinvoicev2.php"
     static let getinvoice = "getinvoice.php"
+    static let updateestimate = "updateestimate.php"
+
 }
 
 

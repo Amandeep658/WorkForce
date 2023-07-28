@@ -7,6 +7,7 @@
 
 import Foundation
 struct InvoiceCreateModel: Decodable{
+    var id:String?
     var business_name:String?
     var invoice_number:String?
     var business_address: String?
@@ -15,6 +16,7 @@ struct InvoiceCreateModel: Decodable{
     var business_phone_number: String?
     var is_business_address:String?
     var website: String?
+    var is_invoice: String?
     var estimate_no: String?
     var date: String?
     var customer_address: String?
@@ -33,6 +35,7 @@ struct InvoiceCreateModel: Decodable{
     
     func convertModelToDict()->NSMutableDictionary{
         let dict = NSMutableDictionary()
+        dict.setValue(self.id, forKey: "id")
         dict.setValue(self.business_name, forKey: "business_name")
         dict.setValue(self.invoice_number, forKey: "invoice_number")
         dict.setValue(self.business_address, forKey: "business_address")
@@ -43,6 +46,8 @@ struct InvoiceCreateModel: Decodable{
         
         dict.setValue(self.website, forKey: "website")
         dict.setValue(self.estimate_no, forKey: "estimate_no")
+
+        dict.setValue(self.is_invoice, forKey: "is_invoice")
         dict.setValue(self.date, forKey: "date")
         
         dict.setValue(self.customer_address, forKey: "customer_address")

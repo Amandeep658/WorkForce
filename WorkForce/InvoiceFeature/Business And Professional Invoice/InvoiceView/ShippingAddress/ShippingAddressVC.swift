@@ -28,9 +28,27 @@ class ShippingAddressVC: UIViewController {
     var iconSameBillingAddress = true
     var selectedAddressitems:[[String:String]] = []
     var is_shipping_address = ""
+    var navfromPDF:Bool?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if navfromPDF == true{
+            self.addressTF.text = UserInvoiceAddressDict.shipping_address
+            self.cityTF.text = UserInvoiceAddressDict.shipping_city
+            self.stateTF.text = UserInvoiceAddressDict.shipping_state
+            self.countryTF.text = UserInvoiceAddressDict.shipping_country
+            if UserInvoiceAddressDict.is_shipping_address == "1"{
+                saveListImgVww.image = UIImage(named: "clickblueTickcircle")
+                saveListImgVww.contentMode = .scaleAspectFill
+                self.is_shipping_address = "1"
+            }else{
+                saveListImgVww.image = UIImage(named: "clickbluecircle")
+                saveListImgVww.contentMode = .scaleAspectFill
+                self.is_shipping_address = "2"
+            }
+            return
+        }
 
     }
     
@@ -124,14 +142,27 @@ class ShippingAddressVC: UIViewController {
             showAlertMessage(title: "U2 CONNECT", message: "Please enter country." , okButton: "Ok", controller: self) {
             }
         }else{
-            UserInvoiceAddressDict.shipping_address = self.addressTF.text ?? ""
-            UserInvoiceAddressDict.shipping_city = self.cityTF.text ?? ""
-            UserInvoiceAddressDict.shipping_state = self.stateTF.text ?? ""
-            UserInvoiceAddressDict.shipping_country = self.countryTF.text ?? ""
-            UserInvoiceAddressDict.is_shipping_address = self.is_shipping_address
-            let vc = AddProductServiceVC()
-            vc.UserInvoiceAddressDict = UserInvoiceAddressDict
-            self.navigationController?.pushViewController(vc, animated: false)
+            if navfromPDF == true{
+                UserInvoiceAddressDict.shipping_address = self.addressTF.text ?? ""
+                UserInvoiceAddressDict.shipping_city = self.cityTF.text ?? ""
+                UserInvoiceAddressDict.shipping_state = self.stateTF.text ?? ""
+                UserInvoiceAddressDict.shipping_country = self.countryTF.text ?? ""
+                UserInvoiceAddressDict.is_shipping_address = self.is_shipping_address
+                let vc = AddProductServiceVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                vc.navfroPDF = true
+                self.navigationController?.pushViewController(vc, animated: false)
+            }else{
+                UserInvoiceAddressDict.shipping_address = self.addressTF.text ?? ""
+                UserInvoiceAddressDict.shipping_city = self.cityTF.text ?? ""
+                UserInvoiceAddressDict.shipping_state = self.stateTF.text ?? ""
+                UserInvoiceAddressDict.shipping_country = self.countryTF.text ?? ""
+                UserInvoiceAddressDict.is_shipping_address = self.is_shipping_address
+                let vc = AddProductServiceVC()
+                vc.UserInvoiceAddressDict = UserInvoiceAddressDict
+                self.navigationController?.pushViewController(vc, animated: false)
+            }
+            
         }
     }
     
