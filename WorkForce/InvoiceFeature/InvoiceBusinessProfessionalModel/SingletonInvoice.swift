@@ -57,6 +57,8 @@ struct InvoiceCreateModel: Decodable{
         dict.setValue(self.is_customer_address, forKey: "is_customer_address")
         
         dict.setValue(self.shipping_address, forKey: "shipping_address")
+        dict.setValue(self.shipping_city, forKey: "shipping_city")
+
         dict.setValue(self.shipping_state, forKey: "shipping_state")
         dict.setValue(self.shipping_country, forKey: "shipping_country")
         dict.setValue(self.is_shipping_address, forKey: "is_shipping_address")

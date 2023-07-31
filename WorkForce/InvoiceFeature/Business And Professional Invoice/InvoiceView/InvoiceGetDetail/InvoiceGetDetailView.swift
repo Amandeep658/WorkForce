@@ -72,8 +72,8 @@ class InvoiceGetDetailView: UIViewController, UIDocumentInteractionControllerDel
         newEstimateAddress.navFromPDF = true
         newEstimateAddress.UserInvoiceAddressDict = UserInvoiceAddressDict
         newEstimateAddress.invoiceId = invoicePdfId
-        let homeVC = TabBarVC()
-        homeVC.selectedIndex = 4
+        let homeVC = InvoiceListVC()
+        homeVC.checkBook = true
         let nav = UINavigationController()
         nav.setViewControllers([homeVC,newEstimateAddress], animated: true)
         nav.navigationBar.isHidden = true

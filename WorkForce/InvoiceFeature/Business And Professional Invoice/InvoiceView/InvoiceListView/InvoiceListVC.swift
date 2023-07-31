@@ -17,6 +17,7 @@ class InvoiceListVC: UIViewController {
     @IBOutlet weak var backbtn: UIButton!
     
     var invoiceListData = [InvoiceListData]()
+    var checkBook:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,17 @@ class InvoiceListVC: UIViewController {
     
     
     @IBAction func backbtn(_ sender: UIButton) {
-        self.navigationController?.popViewController(animated: true)
+        if checkBook == true{
+            let appdelegate = UIApplication.shared.delegate as! AppDelegate
+            let homeVC = TabBarVC()
+            homeVC.selectedIndex = 4
+            let nav = UINavigationController()
+            nav.setViewControllers([homeVC], animated: true)
+            nav.navigationBar.isHidden = true
+            appdelegate.window?.rootViewController = nav
+        }else{
+            self.navigationController?.popViewController(animated: true)
+        }
     }
     
     @IBAction func searchBtnAction(_ sender: UIButton) {

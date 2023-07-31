@@ -4683,7 +4683,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
@@ -4713,7 +4713,7 @@
 				CODE_SIGN_ENTITLEMENTS = WorkForce/WorkForce.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = TN5JXJQ6VC;
 				INFOPLIST_FILE = WorkForce/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
